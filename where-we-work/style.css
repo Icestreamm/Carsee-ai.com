@@ -1,0 +1,194 @@
+/* Where we work — map page (Leaflet + GeoJSON) */
+
+:root {
+  --wm-bg: #f4f5f7;
+  --wm-surface: #ffffff;
+  --wm-brand: #0d3b6e;
+  --wm-brand-hover: #1a5494;
+  --wm-brand-muted: rgba(13, 59, 110, 0.12);
+  --wm-text: #1a1d21;
+  --wm-muted: #5c6370;
+  --wm-radius: 14px;
+  --wm-shadow: 0 8px 32px rgba(13, 59, 110, 0.08);
+  --wm-transition: 240ms ease;
+}
+
+.wm-page {
+  background: var(--wm-bg);
+  min-height: 100vh;
+}
+
+.wm-hero {
+  padding: 4.5rem 0 2rem;
+  text-align: center;
+}
+
+.wm-hero h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--wm-text);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.wm-hero p {
+  max-width: 36rem;
+  margin: 0 auto;
+  color: var(--wm-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.wm-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 320px);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .wm-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wm-map-shell {
+  position: relative;
+  border-radius: var(--wm-radius);
+  overflow: hidden;
+  box-shadow: var(--wm-shadow);
+  background: var(--wm-surface);
+  opacity: 0;
+  transition: opacity 380ms ease;
+}
+
+.wm-map-shell.is-visible {
+  opacity: 1;
+}
+
+.wm-map-frame {
+  height: min(72vh, 560px);
+  min-height: 320px;
+  width: 100%;
+}
+
+.wm-map-frame .leaflet-container {
+  font-family: inherit;
+  background: var(--wm-bg);
+}
+
+.wm-map-frame .leaflet-interactive {
+  cursor: pointer;
+}
+
+/* Floating currency codes on active markets (Leaflet divIcon) */
+.wm-map-frame .wm-currency-marker {
+  background: transparent;
+  border: none;
+}
+
+@keyframes wm-currency-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.wm-map-frame .wm-currency-float {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--wm-brand);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(13, 59, 110, 0.35);
+  pointer-events: none;
+  user-select: none;
+  animation: wm-currency-bob 2.8s ease-in-out infinite;
+}
+
+/* Smooth SVG path transitions (Leaflet GeoJSON) */
+.wm-map-frame .leaflet-interactive {
+  transition:
+    fill var(--wm-transition),
+    stroke var(--wm-transition),
+    stroke-width var(--wm-transition),
+    fill-opacity var(--wm-transition);
+}
+
+.wm-panel {
+  background: var(--wm-surface);
+  border-radius: var(--wm-radius);
+  box-shadow: var(--wm-shadow);
+  padding: 1.35rem 1.25rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.wm-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--wm-text);
+}
+
+.wm-currencies-intro {
+  margin: 0 0 1.1rem;
+  font-size: 0.9rem;
+  color: var(--wm-muted);
+  line-height: 1.55;
+}
+
+.wm-currency-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.wm-currency-list li {
+  margin: 0;
+}
+
+.wm-currency-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.25rem;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--wm-brand);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(13, 59, 110, 0.2);
+}
+
+.wm-map-error {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  color: #b42318;
+  line-height: 1.45;
+}
+
+[dir="rtl"] .wm-layout {
+  direction: rtl;
+}
+
+[dir="rtl"] .wm-currency-list {
+  text-align: right;
+}

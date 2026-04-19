@@ -1,0 +1,246 @@
+/* Responsive Styles */
+
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .hero-title {
+        font-size: 56px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .header {
+        padding: 16px 24px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 72px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 72px);
+        background: var(--dark-navy, #0A1628);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px;
+        gap: 24px;
+        transition: left 0.3s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+        display: flex;
+        border-top: 1px solid var(--outline, #2E3D52);
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .solution-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .solution-card.reverse {
+        direction: ltr;
+    }
+    
+    .professionals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer .container {
+        grid-template-columns: 1fr;
+        row-gap: 40px;
+    }
+
+    .footer-brand-row {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .footer-content {
+        grid-column: 1;
+        grid-row: auto;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-bottom {
+        margin-top: 36px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero {
+        padding: 60px 0;
+        background-attachment: scroll;
+        background-position: center center;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 36px;
+    }
+    
+    .section-subtitle {
+        font-size: 42px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .solution-header h4 {
+        font-size: 28px;
+    }
+    
+    .professionals-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .partners-logos {
+        gap: 24px;
+    }
+    
+    .partners-logos img {
+        height: 40px;
+    }
+    
+    .partners-mentors-logos {
+        gap: 24px;
+    }
+    
+    .partners-mentors-logos img {
+        height: 40px;
+    }
+    
+    .footer-brand-row {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons .btn-primary,
+    .cta-buttons .btn-secondary {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .section-subtitle {
+        font-size: 32px;
+    }
+    
+    .solution-header h4 {
+        font-size: 24px;
+    }
+    
+    .survey-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .survey-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .banner-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+}

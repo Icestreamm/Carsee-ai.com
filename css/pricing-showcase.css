@@ -1,0 +1,314 @@
+/* CarSee pricing — 21st.dev–inspired showcase (static HTML; no Tailwind) */
+
+.ps-showcase {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding: clamp(4rem, 10vw, 6.5rem) 1rem clamp(5rem, 12vw, 7rem);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 212, 245, 0.12), transparent 55%),
+    linear-gradient(180deg, #070a10 0%, #0a0f18 40%, #0e1623 100%);
+}
+
+.ps-stars-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ps-showcase__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.ps-showcase__intro {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
+}
+
+.ps-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00d4f5;
+  margin-bottom: 1rem;
+}
+
+.ps-title {
+  font-family: var(--font-heading, "Oswald", system-ui, sans-serif);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.ps-lede {
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.65;
+  color: rgba(200, 216, 238, 0.88);
+}
+
+/* Intro + side billing + cards */
+.ps-showcase__layout {
+  display: grid;
+  grid-template-columns: minmax(148px, auto) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .ps-showcase__layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .ps-billing--vertical {
+    width: 100%;
+    max-width: 16rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.ps-billing--vertical {
+  position: sticky;
+  top: 88px;
+  justify-self: start;
+}
+
+.ps-billing__track.ps-billing__track--vertical {
+  flex-direction: column;
+  width: 100%;
+  min-width: 148px;
+  max-width: 200px;
+  border-radius: 16px;
+}
+
+[dir="rtl"] .ps-billing__track:not(.ps-billing__track--vertical) {
+  direction: ltr;
+}
+
+[dir="rtl"] .ps-billing__track--vertical .ps-billing__btn {
+  direction: rtl;
+  text-align: center;
+}
+
+.ps-billing__track {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.ps-billing__track--vertical .ps-billing__pill {
+  width: calc(100% - 8px);
+  height: auto;
+  min-height: 36px;
+  border-radius: 12px;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ps-billing__track:not(.ps-billing__track--vertical) .ps-billing__pill {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ps-billing__pill {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(100% - 8px);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #00d4f5, #0097b2);
+  box-shadow: 0 0 24px rgba(0, 212, 245, 0.35);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ps-billing__track--vertical .ps-billing__btn {
+  width: 100%;
+  border-radius: 12px;
+  white-space: normal;
+  text-align: center;
+  padding: 0.65rem 0.75rem;
+}
+
+.ps-billing__btn {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  color: rgba(200, 216, 238, 0.55);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+@media (min-width: 480px) {
+  .ps-billing__btn {
+    padding: 0.65rem 1.35rem;
+    font-size: 0.9rem;
+  }
+}
+
+.ps-billing__btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ps-billing__btn.active {
+  color: #050a12;
+}
+
+.ps-billing__hint {
+  display: none;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+@media (min-width: 640px) {
+  .ps-billing__hint {
+    display: inline;
+  }
+}
+
+/* Plan grid inside showcase */
+.ps-showcase .plans-grid {
+  align-items: stretch;
+}
+
+/* Grid items fill row height so Free / Pro / Plus match the tallest card */
+.ps-showcase .plans-grid > .plan-card {
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
+}
+
+.ps-showcase .plan-features {
+  flex: 1 1 auto;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.ps-showcase .plan-features li {
+  margin-bottom: 0.65rem;
+}
+
+.ps-showcase .plan-name {
+  margin-bottom: 0.35rem;
+}
+
+.ps-showcase .plan-tagline {
+  margin-bottom: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.ps-showcase .plan-price {
+  margin-top: auto;
+  margin-bottom: 0.35rem;
+}
+
+.ps-showcase .plan-cta {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .ps-showcase .plans-grid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.ps-showcase .plan-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.125rem 1.75rem 1.75rem;
+  background: rgba(26, 37, 53, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.35);
+}
+
+.ps-showcase .plan-card:hover {
+  border-color: rgba(0, 212, 245, 0.22);
+  box-shadow: 0 20px 56px rgba(0, 212, 245, 0.08);
+}
+
+.ps-showcase .plan-card.featured {
+  border: 2px solid rgba(0, 212, 245, 0.65);
+  background: linear-gradient(165deg, rgba(13, 59, 110, 0.45), rgba(26, 37, 53, 0.65));
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 245, 0.15),
+    0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.ps-showcase .plan-badge {
+  top: 0;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.12em;
+}
+
+.ps-billed-note {
+  font-size: 0.75rem;
+  color: rgba(106, 128, 153, 0.95);
+  margin-top: 0.35rem;
+  min-height: 1.25em;
+}
+
+.ps-footnote {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.75rem;
+  color: rgba(106, 128, 153, 0.95);
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.ps-showcase .price-amount {
+  font-variant-numeric: tabular-nums;
+  transition: opacity 0.2s ease;
+}
+
+.ps-showcase .price-amount.is-updating {
+  opacity: 0.45;
+}
+
+/* Check alignment RTL */
+body.rtl .ps-showcase .plan-features li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+body.rtl .ps-showcase .check-icon {
+  margin-right: 0;
+  margin-left: 12px;
+}

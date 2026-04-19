@@ -1,0 +1,13 @@
+{
+  "name": "carsee-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CarSee static website — deploy to Cloudflare Pages via Wrangler",
+  "scripts": {
+    "deploy:pages": "wrangler pages deploy .",
+    "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^4.54.0"
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — CarSee</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: #091425;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .error-code {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(96px, 18vw, 180px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -4px;
+      background: linear-gradient(135deg, #0D3B6E, #00D4F5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .error-code::after {
+      content: '';
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 50%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,212,245,0.6),
+        transparent
+      );
+      animation: scanMove 2.5s ease-in-out infinite;
+    }
+    @keyframes scanMove {
+      0%   { top: 20%; opacity: 0;   }
+      20%  { opacity: 1;             }
+      80%  { opacity: 1;             }
+      100% { top: 80%; opacity: 0;   }
+    }
+    .error-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      color: #C8D8EE;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+    .error-subtitle {
+      font-size: 16px;
+      color: rgba(200,216,238,0.55);
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 40px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-home {
+      padding: 13px 28px;
+      background: #0D3B6E;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .btn-home:hover {
+      background: #00D4F5;
+      color: #091425;
+      transform: translateY(-2px);
+    }
+    .btn-contact {
+      padding: 13px 28px;
+      background: transparent;
+      color: #C8D8EE;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 100px;
+      border: 1px solid rgba(200,216,238,0.2);
+      text-decoration: none;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .btn-contact:hover {
+      border-color: #00D4F5;
+      color: #00D4F5;
+    }
+    .error-brand {
+      margin-bottom: 48px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+    }
+    .error-brand span { color: #00D4F5; }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="error-brand">Car<span>See</span></a>
+  <div class="error-code">404</div>
+  <h1 class="error-title">Page not found</h1>
+  <p class="error-subtitle">
+    The page you're looking for has moved, been removed,
+    or doesn't exist. Our AI is good — but not at finding
+    missing pages.
+  </p>
+  <div class="error-actions">
+    <a href="index.html" class="btn-home">Go to Homepage</a>
+    <a href="index.html#contact" class="btn-contact">Contact Us</a>
+  </div>
+</body>
+</html>

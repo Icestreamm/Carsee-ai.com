@@ -1,0 +1,104 @@
+# CarSee — AI Vehicle Inspection & Damage Evaluation
+# CarSee — فحص المركبات وتقييم الأضرار بالذكاء الاصطناعي
+
+> CarSee is an AI-powered vehicle inspection platform that automates damage detection, generates bilingual PDF reports with local repair pricing, and helps car traders, rental companies, fleet managers, and private car owners make faster, more confident vehicle decisions.
+
+> CarSee منصة ذكاء اصطناعي لفحص المركبات تُؤتمت الكشف عن الأضرار، وتُنتج تقارير PDF ثنائية اللغة مع أسعار الإصلاح المحلية، وتُساعد تجار السيارات وشركات التأجير ومديري الأساطيل وأصحاب السيارات على اتخاذ قرارات أسرع وأكثر ثقة.
+
+---
+
+## What CarSee Does | ما الذي تفعله CarSee
+
+CarSee uses computer vision and AI to inspect any vehicle in under 3 minutes. Users photograph the vehicle through the CarSee mobile app (iOS & Android), and the AI instantly detects damage, estimates repair costs in local currency, and produces a professional bilingual (English/Arabic) PDF report.
+
+تستخدم CarSee الرؤية الحاسوبية والذكاء الاصطناعي لفحص أي مركبة في أقل من 3 دقائق. يلتقط المستخدمون صور المركبة عبر تطبيق CarSee (iOS و Android)، ويكشف الذكاء الاصطناعي فورًا عن الأضرار ويُقدّر تكاليف الإصلاح بالعملة المحلية، ويُنتج تقريرًا احترافيًا ثنائي اللغة (عربي/إنجليزي).
+
+---
+
+## Core Products | المنتجات الأساسية
+
+- **CarSee Mobile App | تطبيق CarSee** — Free on iOS & Android. First report is free. Inspect any vehicle in under 3 minutes. | مجاني على iOS و Android. أول تقرير مجاني. افحص أي مركبة في أقل من 3 دقائق.
+- **Remote Trade-In | الاستبدال عن بُعد** — Source used vehicles remotely with AI-verified condition reports and accurate cash offer generation. | احصل على تقارير حالة موثّقة بالذكاء الاصطناعي وقدم عروض شراء دقيقة عن بُعد.
+- **On-Site Trade-In | الاستبدال في الموقع** — Guided photo tour at point of sale, damage detection, costing, and DMS integration. | جولة صور موجّهة عند نقطة البيع مع كشف الأضرار والتكاليف والتكامل مع أنظمة الإدارة.
+- **Remarketing | إعادة التسويق** — AI checks image conformity and auto-retouches vehicle photos to professionalise listings. | يتحقق الذكاء الاصطناعي من صور المركبات ويُعيد لمسها تلقائيًا لإعلانات أكثر احترافية.
+- **API Inspection | واجهة فحص API** — REST API that integrates CarSee AI into existing apps, databases, and business workflows. | واجهة برمجية REST تُدمج ذكاء CarSee في تطبيقاتك وقواعد بياناتك وسير عملك.
+- **Fleet Management | إدارة الأساطيل** — Inspect entire fleets faster, improve consistency, and control repair costs. | افحص أساطيل كاملة بسرعة وبتناسق أعلى وتكاليف إصلاح أقل.
+
+---
+
+## Who CarSee Serves | من يخدم CarSee
+
+- **Car Traders & Dealerships | تجار السيارات والوكلاء** — Eliminate disputes, accelerate trade-in appraisals, produce instant resale documentation. | أنهِ النزاعات، سرّع تقييم الاستبدال، واحصل على توثيق إعادة البيع فورًا.
+- **Rental Companies | شركات التأجير** — Automate pre/post-rental damage comparison, AI odometer reading, tamper-proof reports. | أتمتة مقارنة الأضرار قبل وبعد التأجير وقراءة العداد بالذكاء الاصطناعي وتقارير مضادة للتلاعب.
+- **Fleet Operators | مشغّلو الأساطيل** — Standardise inspections, track damage over time, reduce admin overhead. | توحيد الفحوصات وتتبع الأضرار بمرور الوقت وتقليل العبء الإداري.
+- **Private Car Owners | أصحاب السيارات الخاصة** — Detect hidden damage before buying, know fair repair costs, protect resale value. | اكشف الأضرار الخفية قبل الشراء، اعرف تكاليف الإصلاح العادلة، وحافظ على قيمة إعادة البيع.
+
+---
+
+## Key Features | المميزات الرئيسية
+
+- AI damage detection (dents, scratches, cracks, missing parts) from smartphone photos | كشف الأضرار بالذكاء الاصطناعي (خدوش، حفر، كسور، قطع مفقودة) من صور الهاتف
+- Bilingual PDF reports (English & Arabic) | تقارير PDF ثنائية اللغة (عربي وإنجليزي)
+- Local repair cost estimation in regional currency | تقدير تكاليف الإصلاح بالعملة المحلية
+- Tamper-proof, timestamped documentation | توثيق مختوم بالتوقيت ومضاد للتلاعب
+- White-label solutions for enterprise clients | حلول بعلامة تجارية خاصة للعملاء المؤسسيين
+- Pre/post rental damage comparison | مقارنة الأضرار قبل وبعد التأجير
+- AI odometer reading | قراءة عداد المسافة بالذكاء الاصطناعي
+- API access for custom integrations | وصول API للتكاملات المخصصة
+
+---
+
+## Pricing | الأسعار
+
+- **Free trial | تجربة مجانية**: 1 full month free, no credit card | شهر كامل مجاني بدون بطاقة ائتمان
+- **Starter | ستارتر**: Individual drivers and occasional inspectors | للأفراد والمفتشين العرضيين
+- **Pro | برو**: Active traders and small fleets | للتجار النشطين والأساطيل الصغيرة
+- **Annual | سنوي**: Enterprise and high-volume operators | للمؤسسات وكثيري الاستخدام
+
+---
+
+## Company | الشركة
+
+CarSee is a technology company and European leader in AI vehicle inspection. The platform combines automotive expertise with computer vision, making professional-grade assessments accessible to anyone with a smartphone.
+
+CarSee شركة تقنية ورائدة أوروبية في فحص المركبات بالذكاء الاصطناعي. تجمع المنصة بين الخبرة في صناعة السيارات والرؤية الحاسوبية لتجعل التقييمات الاحترافية في متناول كل من يملك هاتفًا ذكيًا.
+
+---
+
+## Pages | الصفحات
+
+### English
+- [Home](https://www.carsee.ai/) — AI vehicle inspection overview
+- [How It Works](https://www.carsee.ai/how-it-works/) — 3-step inspection walkthrough
+- [Why CarSee?](https://www.carsee.ai/benefits.html) — ROI data, time saved, disputes eliminated
+- [Pricing](https://www.carsee.ai/pricing.html) — Plans and free trial
+- [Our App](https://www.carsee.ai/our-app.html) — Mobile app download
+- [Car Traders](https://www.carsee.ai/solution/car-traders/)
+- [Rental Companies](https://www.carsee.ai/solution/rental-companies/)
+- [Private Car Owners](https://www.carsee.ai/solution/private-car-owners/)
+- [Remote Trade-In](https://www.carsee.ai/solution/remote-trade-in/)
+- [On-Site Trade-In](https://www.carsee.ai/solution/on-site-trade-in/)
+- [Remarketing](https://www.carsee.ai/solution/remarketing/)
+- [API Inspection](https://www.carsee.ai/solution/inspection/)
+- [Fleet Management](https://www.carsee.ai/solution/car-fleet/)
+- [Blog](https://www.carsee.ai/blog/)
+- [About](https://www.carsee.ai/company/carsee/)
+- [Contact](https://www.carsee.ai/contact/)
+
+### Arabic | العربية
+- [الرئيسية](https://www.carsee.ai/ar/) — نظرة عامة على فحص المركبات بالذكاء الاصطناعي
+- [كيف يعمل](https://www.carsee.ai/ar/how-it-works/) — شرح خطوات الفحص
+- [لماذا CarSee؟](https://www.carsee.ai/ar/benefits.html) — بيانات العائد على الاستثمار
+- [الأسعار](https://www.carsee.ai/ar/pricing.html) — الخطط والتجربة المجانية
+- [تحميل التطبيق](https://www.carsee.ai/ar/our-app.html) — تحميل التطبيق
+- [تجار السيارات](https://www.carsee.ai/ar/solution/car-traders/)
+- [شركات التأجير](https://www.carsee.ai/ar/solution/rental-companies/)
+- [أصحاب السيارات](https://www.carsee.ai/ar/solution/private-car-owners/)
+- [الاستبدال عن بُعد](https://www.carsee.ai/ar/solution/remote-trade-in/)
+- [الاستبدال في الموقع](https://www.carsee.ai/ar/solution/on-site-trade-in/)
+- [إعادة التسويق](https://www.carsee.ai/ar/solution/remarketing/)
+- [واجهة API](https://www.carsee.ai/ar/solution/inspection/)
+- [إدارة الأساطيل](https://www.carsee.ai/ar/solution/car-fleet/)
+- [المدونة](https://www.carsee.ai/ar/blog/)
+- [عن الشركة](https://www.carsee.ai/ar/company/carsee/)
+- [تواصل معنا](https://www.carsee.ai/ar/contact/)

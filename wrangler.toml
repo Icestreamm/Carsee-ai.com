@@ -1,0 +1,6 @@
+# Cloudflare Pages — static CarSee site (HTML/CSS/JS at repo root).
+# Deploy with: npm run deploy:pages
+# Do not use `wrangler deploy` here; that targets Workers (requires a Worker entry module).
+
+name = "carsee-website"
+compatibility_date = "2025-01-01"

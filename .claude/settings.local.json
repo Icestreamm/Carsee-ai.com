@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python _update_headers.py)",
+      "Bash(xargs -I{} file {})",
+      "Bash(cp \"C:/Users/shatn/AppData/Local/Temp/2e44b928-8244-4f39-a54f-630525f804de.tmp\" \"C:/Users/shatn/AppData/Local/Temp/test-upload.jpg\")",
+      "Bash(identify \"C:/Users/shatn/AppData/Local/Temp/test-upload.jpg\")",
+      "Bash(python -c ':*)",
+      "Bash(echo \"Verification of path adjustments:\" echo \"==================================\" echo \"\" echo \"Files with no path prefix \\(Level 0\\):\" grep -l \"href=\\\\\"how-it-works\" /c/Users/shatn/Desktop/Startup_files/CarSee/Website/version220126_2.3/*.html)",
+      "Bash(wc -l echo \"\" echo \"Files with ../ prefix \\(Level 1 English\\):\" grep -l \"href=\\\\\"\\\\.\\\\.\\\\/how-it-works\" /c/Users/shatn/Desktop/Startup_files/CarSee/Website/version220126_2.3/*/index.html)",
+      "Bash(wc -l echo \"\" echo \"Files with ../../ prefix \\(Level 2 English\\):\" grep -l \"href=\\\\\"\\\\.\\\\.\\\\/..\\\\/\" /c/Users/shatn/Desktop/Startup_files/CarSee/Website/version220126_2.3/*/*/index.html)",
+      "Bash(wc -l echo \"\" echo \"Files with ../ prefix \\(Level 1 Arabic\\):\" grep -l \"href=\\\\\"\\\\.\\\\.\\\\/how-it-works\" /c/Users/shatn/Desktop/Startup_files/CarSee/Website/version220126_2.3/ar/*/index.html)",
+      "Bash(wc -l echo \"\" echo \"Files with ../../ prefix \\(Level 2 Arabic\\):\" grep -l \"href=\\\\\"\\\\.\\\\.\\\\/..\\\\/\" /c/Users/shatn/Desktop/Startup_files/CarSee/Website/version220126_2.3/ar/*/*/index.html)"
+    ]
+  }
+}

@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports." />
+  <meta name="keywords" content="CarSee pricing, vehicle damage AI, insurance adjuster software, GCC fleet management, Arabic vehicle assessment, MENA insurance technology" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="CarSee Pricing — AI Vehicle Intelligence" />
+  <meta property="og:description" content="Professional AI vehicle damage assessment for GCC insurance and fleet. Plans starting from $6.99/month." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://carsee.ai/pricing" />
+  <meta property="og:image" content="/assets/og-pricing.png" />
+  <link rel="canonical" href="https://carsee.ai/pricing" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CarSee",
+    "applicationCategory": "BusinessApplication",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Pro Monthly",
+        "price": "6.99",
+        "priceCurrency": "USD",
+        "billingPeriod": "P1M"
+      },
+      {
+        "@type": "Offer",
+        "name": "Plus Monthly",
+        "price": "9.99",
+        "priceCurrency": "USD",
+        "billingPeriod": "P1M"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:wght@300;400;500&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <title>CarSee Pricing — AI Vehicle Intelligence</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/cookies.css" />
+  <link rel="stylesheet" href="css/pricing-showcase.css" />
+
+  <style>
+    :root {
+      /* Core Palette */
+      --color-abyss-navy: #091425;
+      --color-command-blue: #0D3B6E;
+      --color-dark-navy: #0A1628;
+      --color-midnight: #0E1623;
+      --color-dark-card: #1A2535;
+      --color-scan-cyan: #00D4F5;
+      --color-precision-teal: #0097B2;
+      --color-ice-surface: #F4F6FA;
+      --color-alert-amber: #F5A623;
+      --color-hazard-red: #B91C1C;
+      --color-verified-green: #166534;
+
+      /* Semantic */
+      --bg-page: #0E1623;
+      --bg-card: #1A2535;
+      --bg-card-featured: #0D3B6E;
+      --text-primary: #C8D8EE;
+      --text-heading: #FFFFFF;
+      --text-muted: #6A8099;
+      --border-subtle: #2E3D52;
+      --accent: #00D4F5;
+      --accent-hover: #00BADC;
+
+      /* Typography */
+      --font-heading: 'Oswald', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-arabic: 'Cairo', sans-serif;
+
+      /* Spacing */
+      --section-padding: 96px 0;
+      --card-radius: 16px;
+      --card-padding: 22px 28px 32px 28px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.rtl {
+      font-family: var(--font-arabic);
+      letter-spacing: 0;
+      direction: rtl;
+    }
+
+    body.rtl h1, body.rtl h2, body.rtl h3,
+    body.rtl .plan-name, body.rtl .plan-tagline {
+      font-family: var(--font-arabic);
+      letter-spacing: 0;
+      line-height: 1.35;
+    }
+
+    body.rtl p, body.rtl li, body.rtl span {
+      font-family: var(--font-arabic);
+      letter-spacing: 0;
+      line-height: 1.65;
+    }
+
+    body.rtl .check-icon {
+      margin-right: 0;
+      margin-left: 12px;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-dark-navy);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 212, 245, 0.1);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo .logo-car { color: #fff; }
+    .logo .logo-see { color: var(--accent); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .lang-btn.active {
+      color: var(--accent);
+      background: rgba(0, 212, 245, 0.1);
+    }
+
+    .lang-btn:hover {
+      color: var(--accent);
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      background-image: linear-gradient(160deg, rgba(9,20,37,0.72) 0%, rgba(12,30,53,0.65) 50%, rgba(13,59,110,0.55) 100%), url('assets/images/hero-2.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,245,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,245,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--text-heading);
+    }
+
+    .hero-sub {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    body.page-loaded .hero-badge {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.1s;
+    }
+
+    body.page-loaded .hero-h1 {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.25s;
+    }
+
+    body.page-loaded .hero-sub {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.4s;
+    }
+
+    /* ========== BILLING TOGGLE ========== */
+    .billing-toggle {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 60px;
+      background: rgba(13, 59, 110, 0.2);
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 212, 245, 0.2);
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    body.page-loaded .billing-toggle {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.55s;
+    }
+
+    .billing-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .billing-btn.active {
+      background: var(--accent);
+      color: var(--color-abyss-navy);
+    }
+
+    .billing-btn:hover {
+      color: var(--accent);
+    }
+
+    /* ========== PLANS SECTION ========== */
+    .plans-section {
+      padding: var(--section-padding);
+      background: var(--bg-page);
+    }
+
+    .section-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-eyebrow {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+      color: var(--text-heading);
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 56px;
+      line-height: 1.6;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
+
+    .plan-card {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      position: relative;
+      padding: var(--card-padding);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--card-radius);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan-card.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .plan-card:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .plan-card:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0, 212, 245, 0.1);
+    }
+
+    .plan-card.featured {
+      background: var(--bg-card-featured);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(0, 212, 245, 0.2);
+    }
+
+    .plan-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: var(--card-radius) var(--card-radius) 0 0;
+      animation: scanPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes scanPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--color-precision-teal), var(--accent));
+      color: var(--color-abyss-navy);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 8px;
+    }
+
+    .plan-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .plan-price {
+      margin-bottom: 6px;
+    }
+
+    .price-amount {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1;
+    }
+
+    .plan-card.featured .price-amount {
+      color: var(--accent);
+    }
+
+    .price-period {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .plan-cta {
+      width: 100%;
+      padding: 14px 24px;
+      margin: 24px 0;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .plan-card.featured .plan-cta {
+      background: var(--accent);
+      color: var(--color-abyss-navy);
+    }
+
+    .plan-card.featured .plan-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .plan-card:not(.featured) .plan-cta {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+
+    .plan-card:not(.featured) .plan-cta:hover {
+      background: rgba(0, 212, 245, 0.1);
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 24px 0;
+    }
+
+    .plan-features {
+      list-style: none;
+      flex: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .check-icon {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      color: var(--accent);
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    /* ========== BENEFITS SECTION ========== */
+    .benefits-section {
+      padding: var(--section-padding);
+      background: var(--color-midnight);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .benefit-card {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      padding: 32px;
+      background: rgba(13, 59, 110, 0.2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--card-radius);
+      text-align: center;
+    }
+
+    .benefit-card.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .benefit-card:nth-child(2) {
+      transition-delay: 0.08s;
+    }
+
+    .benefit-card:nth-child(3) {
+      transition-delay: 0.16s;
+    }
+
+    .benefit-card:nth-child(4) {
+      transition-delay: 0.08s;
+    }
+
+    .benefit-card:nth-child(5) {
+      transition-delay: 0.16s;
+    }
+
+    .benefit-card:nth-child(6) {
+      transition-delay: 0.24s;
+    }
+
+    .benefit-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+    }
+
+    .benefit-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ========== COMPARISON SECTION ========== */
+    .comparison-section {
+      padding: var(--section-padding);
+      background: var(--bg-page);
+      overflow-x: auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-body);
+      font-size: 14px;
+    }
+
+    .comparison-table th {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      color: var(--text-heading);
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(0, 212, 245, 0.05);
+    }
+
+    body.rtl .comparison-table th {
+      text-align: right;
+    }
+
+    .comparison-table td {
+      padding: 14px 20px;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .comparison-table td.col-pro,
+    .comparison-table th.col-pro {
+      background: rgba(13, 59, 110, 0.3);
+    }
+
+    .check {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .cross {
+      color: var(--text-muted);
+    }
+
+    /* ========== FAQ SECTION ========== */
+    .faq-section {
+      padding: var(--section-padding);
+      background: var(--bg-page);
+    }
+
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      margin-bottom: 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+    }
+
+    .faq-item.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px;
+      background: var(--bg-card);
+      border: none;
+      color: var(--text-heading);
+      font-size: 15px;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s ease;
+    }
+
+    body.rtl .faq-question {
+      text-align: right;
+    }
+
+    .faq-question:hover {
+      background: rgba(0, 212, 245, 0.1);
+    }
+
+    .faq-toggle {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      background: rgba(0, 212, 245, 0.05);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 20px;
+    }
+
+    .faq-text {
+      color: var(--text-primary);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      padding: var(--section-padding);
+      background: linear-gradient(160deg, var(--color-abyss-navy), var(--color-command-blue));
+      text-align: center;
+    }
+
+    .cta-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text-heading);
+      margin-bottom: 16px;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cta-btn.primary {
+      background: var(--accent);
+      color: var(--color-abyss-navy);
+    }
+
+    .cta-btn.primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+
+    .cta-btn.secondary:hover {
+      background: rgba(0, 212, 245, 0.1);
+    }
+
+    .cta-support {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--color-dark-navy);
+      padding: 48px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .footer-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    body.rtl .footer-links {
+      gap: 24px;
+    }
+
+    .footer-link:hover {
+      color: var(--accent);
+    }
+
+    .footer-support {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .footer-copyright {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .pricing-footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .pricing-footer-brand .footer-logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .pricing-footer-brand .footer-logo-link {
+      display: flex;
+      width: 100%;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    .pricing-footer-brand .footer-logo-img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    body.rtl .pricing-footer-brand {
+      flex-direction: row-reverse;
+    }
+
+    .pricing-footer-social {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pricing-footer-social a {
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      transition: color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .pricing-footer-social a:hover {
+      color: var(--accent);
+      transform: translateY(-3px) scale(1.05);
+      border-color: rgba(0, 212, 245, 0.35);
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <!-- Header (same as rest of site) -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="assets/logos/logo-png-big.png" alt="CarSee Logo" id="logo">
+                            <span class="logo-text-wrap">
+                                <span class="nav-logo-text">Car<span class="logo-see">See</span></span>
+                                <span class="nav-logo-subtitle">AI Damage Evaluation</span>
+                            </span>
+                        </a>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item"><a href="how-it-works/index.html" class="nav-link">How it works</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="solutions/index.html" class="nav-link">Our Solutions Include <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="solution/car-traders/index.html">Car Traders</a></li>
+                                <li><a href="solution/rental-companies/index.html">Rental Companies</a></li>
+                                <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="blog/index.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="benefits.html" class="nav-link">Why CarSee?</a></li>
+                        <li class="nav-item"><a href="our-app.html" class="nav-link">Our App</a></li>
+                        <li class="nav-item"><a href="where-we-work/index.html" class="nav-link">Where we work</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">About <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="company/career/index.html">Career</a></li>
+                                <li><a href="company/partners/index.html">Become a Partner</a></li>
+                                <li><a href="contact/index.html">Contact us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="nav-actions">
+                        <div class="language-selector">
+                            <span>EN</span>
+                            <ul class="language-menu">
+                                <li><a href="ar/pricing.html">AR</a></li>
+                            </ul>
+                        </div>
+                        <a href="our-app.html" class="btn-demo">Download Now!</a>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+  <main>
+    <section class="plans-section ps-showcase" id="psShowcase">
+      <canvas class="ps-stars-canvas" id="psStars" aria-hidden="true"></canvas>
+      <div class="ps-showcase__inner">
+        <div class="ps-showcase__intro">
+          <p class="ps-eyebrow" data-en="TRANSPARENT PRICING" data-ar="أسعار شفافة">TRANSPARENT PRICING</p>
+          <h1 class="ps-title" data-en="Simple plans. Serious assessments." data-ar="خطط بسيطة. تقييمات جادة.">Simple plans. Serious assessments.</h1>
+          <p class="ps-lede" data-en="Built for GCC adjusters, fleets, and rental teams. Pick monthly, quarterly, or annual billing — all amounts in USD." data-ar="مُصمَّم للمُقيِّمين ومديري الأساطيل وشركات التأجير في الخليج. اختر الفوترة الشهرية أو الربعية أو السنوية — المبالغ بالدولار الأمريكي.">Built for GCC adjusters, fleets, and rental teams. Pick monthly, quarterly, or annual billing — all amounts in USD.</p>
+        </div>
+
+        <div class="ps-showcase__layout">
+          <div class="ps-billing ps-billing--vertical" role="group" aria-label="Billing period">
+            <div class="ps-billing__track ps-billing__track--vertical" id="psBillingTrack">
+              <span class="ps-billing__pill" id="psBillingPill" aria-hidden="true"></span>
+              <button type="button" class="ps-billing__btn active" data-period="monthly"><span data-en="Monthly" data-ar="شهري">Monthly</span></button>
+              <button type="button" class="ps-billing__btn" data-period="quarterly"><span data-en="Quarterly" data-ar="ربع سنوي">Quarterly</span><span class="ps-billing__hint"><span data-en=" · every 3 mo" data-ar=" · كل 3 أشهر"> · every 3 mo</span></span></button>
+              <button type="button" class="ps-billing__btn" data-period="annual"><span data-en="Annual" data-ar="سنوي">Annual</span><span class="ps-billing__hint"><span data-en=" · save ~20%" data-ar=" · وفر ~20٪"> · save ~20%</span></span></button>
+            </div>
+          </div>
+
+          <div class="section-container ps-showcase__cards" style="padding: 0; min-width: 0; max-width: 100%;">
+        <div class="plans-grid ps-plans-grid">
+          <div class="plan-card" data-plan="free">
+            <div class="plan-name" data-en="Free" data-ar="مجاني">Free</div>
+            <div class="plan-tagline" data-en="Try before you commit" data-ar="جرّب قبل الالتزام">Try before you commit</div>
+            <ul class="plan-features">
+              <li><span class="check-icon">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Exploring the nearby workshops" data-ar="استكشاف الورش القريبة">Exploring the nearby workshops</span></li>
+              <li><span class="check-icon">✓</span><span data-en="No credit card needed" data-ar="لا حاجة لبطاقة ائتمان">No credit card needed</span></li>
+            </ul>
+            <div class="plan-divider"></div>
+            <div class="plan-price" style="display: flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap;">
+              <div class="price-amount">$0</div>
+              <div class="price-period ps-price-suffix">/mo</div>
+            </div>
+            <p class="ps-billed-note js-billed-note" aria-live="polite"></p>
+            <button type="button" class="plan-cta" data-en="Download free" data-ar="حمّل مجاناً">Download free</button>
+          </div>
+
+          <div class="plan-card featured" data-plan="pro">
+            <div class="plan-badge" data-en="MOST POPULAR" data-ar="الأكثر شيوعاً">MOST POPULAR</div>
+            <div class="plan-name" data-en="Pro" data-ar="برو">Pro</div>
+            <div class="plan-tagline" data-en="Single seat, full power" data-ar="مستخدم واحد، إمكانات كاملة">Single seat, full power</div>
+            <ul class="plan-features">
+              <li><span class="check-icon">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Exploring the nearby workshops" data-ar="استكشاف الورش القريبة">Exploring the nearby workshops</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Create new reports — up to 40 per month" data-ar="إنشاء تقارير جديدة — حتى 40 تقريراً شهرياً">Create new reports — up to 40 per month</span></li>
+              <li><span class="check-icon">✓</span><span data-en="PDF report generation" data-ar="توليد تقارير PDF">PDF report generation</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Single-user account" data-ar="حساب لمستخدم واحد">Single-user account</span></li>
+            </ul>
+            <div class="plan-divider"></div>
+            <div class="plan-price" style="display: flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap;">
+              <div class="price-amount" data-plan="pro">$6.99</div>
+              <div class="price-period ps-price-suffix">/mo</div>
+            </div>
+            <p class="ps-billed-note js-billed-note" aria-live="polite"></p>
+            <button type="button" class="plan-cta" data-en="Start Pro — 30 days free" data-ar="ابدأ برو — 30 يوماً مجاناً">Start Pro — 30 days free</button>
+          </div>
+
+          <div class="plan-card" data-plan="plus">
+            <div class="plan-name" data-en="Plus" data-ar="بلس">Plus</div>
+            <div class="plan-tagline" data-en="Built for teams" data-ar="مُصمَّم للفرق">Built for teams</div>
+            <ul class="plan-features">
+              <li><span class="check-icon">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Exploring the nearby workshops" data-ar="استكشاف الورش القريبة">Exploring the nearby workshops</span></li>
+              <li><span class="check-icon">✓</span><span data-en="All assessment features" data-ar="جميع ميزات التقييم">All assessment features</span></li>
+              <li><span class="check-icon">✓</span><span data-en="PDF report generation" data-ar="توليد تقارير PDF">PDF report generation</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Microsoft Excel export" data-ar="تصدير Microsoft Excel">Microsoft Excel export</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Multi-user support across three devices" data-ar="دعم متعدد المستخدمين على ثلاثة أجهزة">Multi-user support across three devices</span></li>
+              <li><span class="check-icon">✓</span><span data-en="Dual-logo PDF headers (company logo + CarSee)" data-ar="ترويسات PDF بشعارين (شعار شركتك + CarSee)">Dual-logo PDF headers (company logo + CarSee)</span></li>
+            </ul>
+            <div class="plan-divider"></div>
+            <div class="plan-price" style="display: flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap;">
+              <div class="price-amount" data-plan="plus">$9.99</div>
+              <div class="price-period ps-price-suffix">/mo</div>
+            </div>
+            <p class="ps-billed-note js-billed-note" aria-live="polite"></p>
+            <button type="button" class="plan-cta" data-en="Start Plus — 30 days free" data-ar="ابدأ بلس — 30 يوماً مجاناً">Start Plus — 30 days free</button>
+          </div>
+        </div>
+
+        <p class="ps-footnote" data-en="Large figures are the monthly equivalent. You are charged the invoice totals below. All amounts in USD." data-ar="الأرقام الكبيرة هي ما يعادل شهرياً. يُحمَل عليك إجمالي الفاتورة كما في السطر أدناه. المبالغ بالدولار الأمريكي.">Large figures are the monthly equivalent. You are charged the invoice totals below. All amounts in USD.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits-section">
+      <div class="section-container">
+        <div class="section-eyebrow" data-en="WHAT YOU GAIN" data-ar="ما ستحصل عليه">WHAT YOU GAIN</div>
+        <h2 class="section-heading" data-en="What You Actually Gain" data-ar="ما ستحصل عليه فعلاً">What You Actually Gain</h2>
+        <p class="section-sub" data-en="CarSee is built for the GCC — not retrofitted for it." data-ar="CarSee مبني للخليج — وليس مُكيَّفاً معه.">CarSee is built for the GCC — not retrofitted for it.</p>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <h3 class="benefit-title" data-en="Reports in Seconds, Not Hours" data-ar="تقارير في ثوانٍ، لا ساعات">Reports in Seconds, Not Hours</h3>
+            <p class="benefit-text" data-en="Three AI models assess damage simultaneously. Get a structured bilingual PDF ready to submit — in under 60 seconds." data-ar="ثلاثة نماذج ذكاء اصطناعي تُقيِّم الضرر في آنٍ واحد. احصل على PDF هيكلي ثنائي اللغة جاهز للتسليم في أقل من 60 ثانية.">Three AI models assess damage simultaneously. Get a structured bilingual PDF ready to submit — in under 60 seconds.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🌍</div>
+            <h3 class="benefit-title" data-en="Truly Bilingual — Arabic First" data-ar="ثنائي اللغة حقيقي — العربية أولاً">Truly Bilingual — Arabic First</h3>
+            <p class="benefit-text" data-en="Not a translation plugin. Arabic is a first-class output — correct RTL rendering, Cairo font, Gulf terminology, zero letter spacing." data-ar="ليس مجرد ترجمة. العربية مُخرَج أصيل — تقديم RTL صحيح، خط Cairo، مصطلحات خليجية، بدون تباعد حروف.">Not a translation plugin. Arabic is a first-class output — correct RTL rendering, Cairo font, Gulf terminology, zero letter spacing.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🔧</div>
+            <h3 class="benefit-title" data-en="GCC Repair Costs, Not Global Averages" data-ar="تكاليف إصلاح خليجية، لا متوسطات عالمية">GCC Repair Costs, Not Global Averages</h3>
+            <p class="benefit-text" data-en="Repair estimates calibrated to actual Gulf market rates. No more manual adjustments after an AI gives you US or EU pricing." data-ar="تقديرات معايَرة على أسعار سوق الخليج الفعلية. لا مزيد من التعديلات اليدوية بعد أن يعطيك الذكاء الاصطناعي أسعاراً أمريكية أو أوروبية.">Repair estimates calibrated to actual Gulf market rates. No more manual adjustments after an AI gives you US or EU pricing.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📊</div>
+            <h3 class="benefit-title" data-en="Odometer Reading Without Manual Entry" data-ar="قراءة العداد بدون إدخال يدوي">Odometer Reading Without Manual Entry</h3>
+            <p class="benefit-text" data-en="Point the camera at the dashboard. AI reads the mileage and factors excess distance into your cost report automatically." data-ar="وجّه الكاميرا نحو لوحة العدادات. يقرأ الذكاء الاصطناعي المسافة ويحتسب الأميال الزائدة في تقرير التكاليف تلقائياً.">Point the camera at the dashboard. AI reads the mileage and factors excess distance into your cost report automatically.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">👥</div>
+            <h3 class="benefit-title" data-en="Team Access on One Account (Plus)" data-ar="وصول الفريق على حساب واحد (بلس)">Team Access on One Account (Plus)</h3>
+            <p class="benefit-text" data-en="Assign two secondary users under your Plus account. Their reports roll up into your dashboard — full visibility, no shared passwords." data-ar="أضف مستخدمَين ثانويَّين ضمن حساب بلس. تقاريرهم تظهر في لوحتك — رؤية كاملة، بدون مشاركة كلمات المرور.">Assign two secondary users under your Plus account. Their reports roll up into your dashboard — full visibility, no shared passwords.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🏢</div>
+            <h3 class="benefit-title" data-en="Your Logo on Every Report (Plus)" data-ar="شعارك على كل تقرير (بلس)">Your Logo on Every Report (Plus)</h3>
+            <p class="benefit-text" data-en="Upload your company logo once. Every PDF carries your brand alongside CarSee — professional for clients, clear for regulators." data-ar="ارفع شعار شركتك مرة واحدة. كل PDF يحمل علامتك التجارية إلى جانب CarSee — احترافي للعملاء، واضح للجهات التنظيمية.">Upload your company logo once. Every PDF carries your brand alongside CarSee — professional for clients, clear for regulators.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON SECTION -->
+    <section class="comparison-section">
+      <div class="section-container">
+        <div class="section-eyebrow" data-en="COMPARE PLANS" data-ar="قارن الخطط">COMPARE PLANS</div>
+        <h2 class="section-heading" data-en="Plan Comparison" data-ar="مقارنة الخطط">Plan Comparison</h2>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th data-en="Feature" data-ar="الميزة">Feature</th>
+              <th class="col-pro" data-en="Free" data-ar="مجاني">Free</th>
+              <th class="col-pro" data-en="Pro" data-ar="برو">Pro</th>
+              <th class="col-pro" data-en="Plus" data-ar="بلس">Plus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-en="Monthly reports" data-ar="التقارير الشهرية">Monthly reports</td>
+              <td>5</td>
+              <td class="col-pro">100</td>
+              <td class="col-pro"><span class="check">Unlimited</span></td>
+            </tr>
+            <tr>
+              <td data-en="Bilingual PDF (AR+EN)" data-ar="PDF ثنائي اللغة">Bilingual PDF (AR+EN)</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="AI detection models" data-ar="نماذج كشف الذكاء الاصطناعي">AI detection models</td>
+              <td>1</td>
+              <td class="col-pro">3</td>
+              <td class="col-pro">3</td>
+            </tr>
+            <tr>
+              <td data-en="GCC repair pricing" data-ar="أسعار إصلاح الخليج">GCC repair pricing</td>
+              <td><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Odometer AI reading" data-ar="قراءة العداد">Odometer AI reading</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Excel export" data-ar="تصدير Excel">Excel export</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Repair workshops map" data-ar="خريطة الورش">Repair workshops map</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Push notifications" data-ar="الإشعارات">Push notifications</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Team users" data-ar="مستخدمو الفريق">Team users</td>
+              <td>1</td>
+              <td class="col-pro">1</td>
+              <td class="col-pro">3</td>
+            </tr>
+            <tr>
+              <td data-en="Company logo on PDF" data-ar="شعار الشركة">Company logo on PDF</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Priority support" data-ar="دعم ذو أولوية">Priority support</td>
+              <td><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="cross">✗</span></td>
+              <td class="col-pro"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td data-en="Free trial" data-ar="تجربة مجانية">Free trial</td>
+              <td>—</td>
+              <td class="col-pro" data-en="30 days" data-ar="30 يوم">30 days</td>
+              <td class="col-pro" data-en="30 days" data-ar="30 يوم">30 days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <div class="section-container">
+        <div class="section-eyebrow" data-en="HAVE QUESTIONS?" data-ar="هل لديك أسئلة؟">HAVE QUESTIONS?</div>
+        <h2 class="section-heading" data-en="Frequently Asked Questions" data-ar="الأسئلة الشائعة">Frequently Asked Questions</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-en="Is the free trial really free?" data-ar="هل التجربة المجانية مجانية فعلاً؟">Is the free trial really free?</span>
+              <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-text" data-en="Yes. 30 days full Pro or Plus access, no charge. Cancel anytime before the trial ends — you will not be billed." data-ar="نعم. 30 يوماً وصول كامل لخطة برو أو بلس، بدون رسوم. ألغِ في أي وقت قبل انتهاء التجربة ولن تُحاسَب.">Yes. 30 days full Pro or Plus access, no charge. Cancel anytime before the trial ends — you will not be billed.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-en="What currency are charges made in?" data-ar="بأي عملة تتم معالجة الدفعات؟">What currency are charges made in?</span>
+              <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-text" data-en="All charges are processed in USD. Local currency figures shown on this page are approximate display only and may vary with exchange rates." data-ar="جميع الدفعات بالدولار الأمريكي. الأرقام بالعملات المحلية المعروضة تقريبية للاستئناس فقط وقد تتغير مع أسعار الصرف.">All charges are processed in USD. Local currency figures shown on this page are approximate display only and may vary with exchange rates.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-en="Can I switch plans later?" data-ar="هل يمكنني تغيير الخطة لاحقاً؟">Can I switch plans later?</span>
+              <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-text" data-en="Yes. You can upgrade or downgrade at any time from within the app. Changes take effect at your next billing cycle." data-ar="نعم. يمكنك الترقية أو التخفيض في أي وقت من داخل التطبيق. تسري التغييرات في دورة الفوترة التالية.">Yes. You can upgrade or downgrade at any time from within the app. Changes take effect at your next billing cycle.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-en="How do secondary users work on Plus?" data-ar="كيف يعمل المستخدمون الثانويون في بلس؟">How do secondary users work on Plus?</span>
+              <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-text" data-en="The main account holder invites up to 2 colleagues by email. They get full app access under your Plus subscription. All their reports appear in the main account dashboard." data-ar="صاحب الحساب الرئيسي يدعو ما يصل إلى مستخدمَين بالبريد الإلكتروني. يحصلون على وصول كامل للتطبيق ضمن اشتراك بلس. جميع تقاريرهم تظهر في لوحة الحساب الرئيسي.">The main account holder invites up to 2 colleagues by email. They get full app access under your Plus subscription. All their reports appear in the main account dashboard.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-en="Is my data stored securely?" data-ar="هل بياناتي مخزنة بأمان؟">Is my data stored securely?</span>
+              <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-text" data-en="All data is encrypted and stored on Supabase with row-level security. Reports and vehicle images are stored under your account only, with signed URLs for access." data-ar="جميع البيانات مشفرة ومخزنة على Supabase مع أمان على مستوى الصفوف. التقارير وصور المركبات مخزنة تحت حسابك فقط بعناوين URL موقَّعة.">All data is encrypted and stored on Supabase with row-level security. Reports and vehicle images are stored under your account only, with signed URLs for access.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <h2 class="cta-heading" data-en="Start Your 30-Day Free Trial" data-ar="ابدأ تجربتك المجانية لمدة 30 يوماً">Start Your 30-Day Free Trial</h2>
+      <p class="cta-sub" data-en="No credit card required. Full access from day one." data-ar="لا حاجة لبطاقة ائتمانية. وصول كامل من اليوم الأول.">No credit card required. Full access from day one.</p>
+      <div class="cta-buttons">
+        <button class="cta-btn primary" data-en="Download on App Store" data-ar="حمّل من App Store">Download on App Store</button>
+        <button class="cta-btn secondary" data-en="Get it on Google Play" data-ar="احصل عليه من Google Play">Get it on Google Play</button>
+      </div>
+      <p class="cta-support" data-en="Questions? carsee.ai@gmail.com" data-ar="أسئلة؟ carsee.ai@gmail.com">Questions? carsee.ai@gmail.com</p>
+    </section>
+  </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand-row">
+                <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
+                    <img src="assets/logos/footer-logo-banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                </a>
+                <nav class="footer-social" aria-label="Social media">
+                    <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.7 31.7 0 0 0 .5-5.8 31.7 31.7 0 0 0-.5-5.8zM9.7 15.5V8.5L15.7 12l-6 3.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.instagram.com/carseeai/" target="_blank" rel="noopener noreferrer" title="Instagram — @carseeai" aria-label="Instagram @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://x.com/carseeai" target="_blank" rel="noopener noreferrer" title="X — @carseeai" aria-label="X @carseeai">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="how-it-works/index.html">How it works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
+                        <li><a href="benefits.html">Why CarSee?</a></li>
+                        <li><a href="our-app.html">Our App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Solutions Include</h4>
+                    <ul>
+                        <li><a href="solutions/index.html">Overview</a></li>
+                        <li><a href="solution/car-traders/index.html">Car Traders</a></li>
+                        <li><a href="solution/rental-companies/index.html">Rental Companies</a></li>
+                        <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="company/career/index.html">Career</a></li>
+                        <li><a href="company/partners/index.html">Become a Partner</a></li>
+                        <li><a href="contact/index.html">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CarSee. All right reserved.</p>
+                <div class="footer-links">
+                    <span class="legal-links">
+                        <a href="privacy.html">Privacy Policy</a>
+                        <span>·</span>
+                        <a href="cookies.html">Cookies Policy</a>
+                        <span>·</span>
+                        <a href="terms.html">Terms of Service</a>
+                        <span>·</span>
+                        <a href="mailto:legal@carsee.app">Legal</a>
+                    </span>
+                    <a href="#" id="cookiesSettings">Cookies Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="contact/index.html" class="floating-cta" id="floatingCta" aria-label="Contact us">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8"  y1="2" x2="8"  y2="6"/>
+            <line x1="3"  y1="10" x2="21" y2="10"/>
+        </svg>
+        <span>Contact</span>
+    </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="js/pricing-showcase.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cookies.js"></script>
+  <script>
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll('.plan-card, .benefit-card, .faq-item').forEach(el => {
+      observer.observe(el);
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Page load animation trigger
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.body.classList.add('page-loaded');
+      }, 100);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حمل التطبيق — CarSee ذكاء اصطناعي للمركبات</title>
+    <meta name="description" content="افحص أي مركبة في أقل من 3 دقائق. حمّل CarSee مجاناً على iOS و Android.">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/cookies.css">
+    <style>
+    /* Arabic: Cairo everywhere, no letter-spacing */
+    body.app-page, .app-page * { font-family: 'Cairo', sans-serif !important; }
+    .app-page * { letter-spacing: 0 !important; }
+    .app-page p, .app-page .hero .hero-p, .app-page .feature-desc, .app-page .how-desc, .app-page .showcase-caption-text { line-height: 1.65; }
+    .app-page h1, .app-page h2, .app-page .section-title, .app-page .how-title, .app-page .feature-title, .app-page .showcase-caption-title { line-height: 1.35; }
+    .app-page .hero-h1 { font-size: clamp(32px, 4vw, 56px); }
+    .app-page .section-subtitle { font-size: 15px; }
+    .app-page .feature-desc, .app-page .how-desc, .app-page .showcase-caption-text { font-size: 13px; }
+    .app-page .eyebrow-pill, .app-page .section-tag { font-size: 10px; }
+    .app-page .how-card::after { transform-origin: right; }
+    .app-page .btn-store-text { text-align: right; }
+    .app-page .qr-text { text-align: right; }
+    /* App page: tokens (if not in style.css) and layout scoped under body.app-page */
+    :root {
+      --dark-card: #1A2535;
+      --midnight: #0E1623;
+      --precision-teal: #0097B2;
+      --alert-amber: #F5A623;
+      --green-bright: #22C55E;
+    }
+    /* Keyframes (global) */
+    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:0.4; transform:scale(0.8); } }
+    @keyframes scanMove { 0%{ top:0%; } 100%{ top:100%; } }
+    @keyframes float { 0%,100%{ transform:translateY(0px) rotate(-12deg) perspective(600px) rotateY(18deg); } 50%{ transform:translateY(-14px) rotate(-12deg) perspective(600px) rotateY(18deg); } }
+    @keyframes float2 { 0%,100%{ transform:translateY(-6px) rotate(12deg) perspective(600px) rotateY(-18deg); } 50%{ transform:translateY(10px) rotate(12deg) perspective(600px) rotateY(-18deg); } }
+    @keyframes floatCenter { 0%,100%{ transform:translateY(0px) perspective(800px) rotateY(0deg); } 50%{ transform:translateY(-14px) perspective(800px) rotateY(0deg); } }
+    @keyframes glowPulse { 0%,100%{ opacity:0.5; transform:scale(1); } 50%{ opacity:0.8; transform:scale(1.04); } }
+    @keyframes scanRing { 0%{ transform:translate(-50%,-50%) scale(0.8); opacity:0.8; } 100%{ transform:translate(-50%,-50%) scale(2.2); opacity:0; } }
+    @keyframes fadeSlideUp { from{ opacity:0; transform:translateY(40px); } to{ opacity:1; transform:translateY(0); } }
+
+    .app-page .hero {
+      min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:40px; padding:140px 60px 100px; position:relative;
+      background-color:transparent;
+      background-image:url('../assets/images/hero-3.png');
+      background-size:cover; background-position:center; background-repeat:no-repeat; overflow:hidden;
+    }
+    .app-page .hero-grid-bg { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(0,212,245,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,245,0.04) 1px,transparent 1px); background-size:60px 60px; }
+    .app-page .scan-line { position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--scan-cyan),transparent); box-shadow:0 0 20px var(--scan-cyan); animation:scanMove 4s linear infinite; opacity:0.5; }
+    .app-page .hero-left { position:relative; z-index:2; background:transparent; display:flex; justify-content:flex-start; align-items:flex-start; }
+    .app-page .hero .hero-content-panel {
+      max-width:560px; width:100%;
+      padding:24px 26px 26px; border-radius:16px;
+      background:rgba(9,20,37,0.48); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,0.14);
+      box-shadow:0 16px 56px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .app-page .hero-right { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; background:transparent; }
+    .app-page .hero-h1 { font-family:'Oswald',sans-serif; font-weight:800; font-size:clamp(36px,4.5vw,62px); line-height:1.07; letter-spacing:-1.5px; color:#fff; margin-bottom:22px; text-shadow:0 2px 28px rgba(0,0,0,0.55),0 1px 2px rgba(0,0,0,0.4); }
+    .app-page .hero .hero-content-panel .hero-h1 { text-shadow:0 1px 14px rgba(0,0,0,0.4); }
+    .app-page .hero-h1 em { font-style:normal; color:var(--scan-cyan); }
+    .app-page .hero .hero-p {
+      font-size:16px; line-height:1.7; color:rgba(200,216,238,0.96); margin-bottom:40px;
+    }
+    .app-page .hero-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:0; }
+    .app-page .hero-social-proof { margin-top:0; padding-top:24px; border-top:1px solid var(--outline); display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+    .app-page .hero-social-proof .stars { color:var(--alert-amber); font-size:18px; letter-spacing:2px; }
+    .app-page .hero-social-proof .rating { font-size:14px; color:#fff; font-weight:600; }
+    .app-page .hero-social-proof .rating-sub { font-size:13px; color:var(--on-surface-variant); }
+
+    .app-page .phone-cluster { position:relative; width:440px; height:560px; flex-shrink:0; transform-style:preserve-3d; }
+    .app-page .phone-cluster .phone-center { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); animation:floatCenter 5s ease-in-out infinite; z-index:3; filter:drop-shadow(0 32px 48px rgba(0,0,0,0.55)); }
+    .app-page .phone-cluster .phone-left { position:absolute; left:-24px; top:50%; transform:translateY(-46%); animation:float 6s ease-in-out infinite; z-index:2; opacity:0.85; width:210px; filter:drop-shadow(-8px 24px 40px rgba(0,0,0,0.5)); }
+    .app-page .phone-cluster .phone-right { position:absolute; right:-24px; top:50%; transform:translateY(-46%); animation:float2 6.5s ease-in-out infinite; z-index:2; opacity:0.85; width:210px; filter:drop-shadow(8px 24px 40px rgba(0,0,0,0.5)); }
+    .app-page .phone-cluster::after { content:''; position:absolute; bottom:-30px; left:50%; transform:translateX(-50%); width:200px; height:60px; background:radial-gradient(ellipse,rgba(0,212,245,0.3),transparent 70%); animation:glowPulse 3s ease-in-out infinite; }
+    .app-page .phone-cluster::before { content:''; position:absolute; left:50%; top:45%; width:260px; height:260px; border:1px solid rgba(0,212,245,0.15); border-radius:50%; animation:scanRing 3.5s ease-out infinite; }
+
+    .app-page .phone-mockup { width:260px; background:transparent; border-radius:28px; border:2px solid rgba(0,212,245,0.2); box-shadow:0 0 0 1px rgba(0,212,245,0.08),0 40px 80px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.06); overflow:hidden; position:relative; flex-shrink:0; }
+    .app-page .phone-mockup::before { display:none; }
+    .app-page .phone-screen { width:100%; aspect-ratio:9/19.5; background:transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+    .app-page .hero-phone-screen { padding:0; display:block; }
+    .app-page .hero-phone-screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; }
+    .app-page .phone-scan { position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--scan-cyan),transparent); box-shadow:0 0 12px var(--scan-cyan); animation:scanMove 3s linear infinite; opacity:0.7; }
+    .app-page .phone-status { display:flex; justify-content:space-between; align-items:center; padding:32px 20px 8px; font-size:10px; color:rgba(255,255,255,0.5); font-weight:600; letter-spacing:0.3px; }
+    .app-page .phone-content { flex:1; padding:12px 16px; display:flex; flex-direction:column; gap:10px; }
+
+    .app-page .eyebrow-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(0,212,245,0.1); border:1px solid rgba(0,212,245,0.25); border-radius:100px; padding:6px 16px; font-size:11px; font-weight:500; color:var(--scan-cyan); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:28px; }
+    .app-page .eyebrow-pill::before { content:''; width:6px; height:6px; background:var(--scan-cyan); border-radius:50%; animation:pulse 2s infinite; }
+
+    .app-page .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--scan-cyan); color:var(--abyss-navy); border:none; padding:14px 28px; border-radius:12px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; cursor:pointer; text-decoration:none; transition:all 0.25s; white-space:nowrap; }
+    .app-page .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(0,212,245,0.35); }
+    .app-page .btn-store { display:inline-flex; align-items:center; gap:12px; background:var(--dark-card); color:#fff; border:1.5px solid var(--outline); padding:12px 22px; border-radius:12px; text-decoration:none; cursor:pointer; transition:all 0.25s; white-space:nowrap; }
+    .app-page .btn-store:hover { border-color:rgba(0,212,245,0.5); background:#1e2e42; transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
+    .app-page .btn-store-icon { flex-shrink:0; }
+    .app-page .btn-store-text { text-align:left; }
+    .app-page .btn-store-sub { font-size:10px; color:var(--on-surface-variant); display:block; line-height:1; margin-bottom:2px; }
+    .app-page .btn-store-name { font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; display:block; }
+    .app-page .btn-ghost-line { display:inline-flex; align-items:center; gap:8px; color:var(--scan-cyan); border:1.5px solid rgba(0,212,245,0.35); background:transparent; padding:13px 26px; border-radius:12px; text-decoration:none; font-size:15px; font-weight:500; transition:all 0.2s; cursor:pointer; white-space:nowrap; }
+    .app-page .btn-ghost-line:hover { background:rgba(0,212,245,0.08); border-color:var(--scan-cyan); }
+
+    /* Hero: one glass panel for all copy — no nested blur stacks (AR) */
+    .app-page .hero .hero-content-panel .eyebrow-pill {
+      background: rgba(0, 212, 245, 0.1);
+      border: 1px solid rgba(0, 212, 245, 0.32);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .app-page .hero .hero-content-panel .btn-store {
+      background: rgba(13, 27, 48, 0.72);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    }
+    .app-page .hero .hero-content-panel .btn-store:hover {
+      background: rgba(22, 44, 72, 0.92);
+      border-color: rgba(0, 212, 245, 0.45);
+    }
+    .app-page .hero .hero-content-panel .btn-ghost-line {
+      background: rgba(0, 212, 245, 0.07);
+      border: 1.5px solid rgba(0, 212, 245, 0.42);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .app-page .hero .hero-content-panel .btn-ghost-line:hover {
+      background: rgba(0, 212, 245, 0.14);
+      border-color: var(--scan-cyan);
+    }
+    .app-page .hero .hero-content-panel .hero-social-proof { border-top-color: rgba(255, 255, 255, 0.2); }
+
+    .app-page .section-tag { font-size:11px; font-weight:500; color:var(--scan-cyan); letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; display:block; }
+    .app-page .section-title { font-family:'Oswald',sans-serif; font-weight:800; font-size:clamp(28px,3.5vw,44px); letter-spacing:-0.8px; color:#fff; margin-bottom:16px; line-height:1.15; }
+    .app-page .section-subtitle { font-size:16px; color:var(--on-surface-variant); max-width:520px; line-height:1.7; margin-bottom:56px; }
+
+    .app-page .anim-fade { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .app-page .anim-fade.visible { opacity:1; transform:none; }
+    .app-page .anim-stagger > * { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .app-page .anim-stagger.visible > *:nth-child(1){ opacity:1; transform:none; transition-delay:0s; }
+    .app-page .anim-stagger.visible > *:nth-child(2){ opacity:1; transform:none; transition-delay:0.12s; }
+    .app-page .anim-stagger.visible > *:nth-child(3){ opacity:1; transform:none; transition-delay:0.24s; }
+    .app-page .anim-stagger.visible > *:nth-child(4){ opacity:1; transform:none; transition-delay:0.36s; }
+    .app-page .anim-stagger.visible > *:nth-child(5){ opacity:1; transform:none; transition-delay:0.48s; }
+    .app-page .anim-stagger.visible > *:nth-child(6){ opacity:1; transform:none; transition-delay:0.6s; }
+
+    .app-page .ui-header-bar { background:rgba(0,212,245,0.1); border:1px solid rgba(0,212,245,0.2); border-radius:10px; padding:10px 14px; display:flex; align-items:center; gap:8px; }
+    .app-page .ui-header-bar span:first-child { width:8px; height:8px; background:var(--scan-cyan); border-radius:50%; flex-shrink:0; box-shadow:0 0 8px var(--scan-cyan); }
+    .app-page .ui-label { font-size:9px; color:var(--scan-cyan); font-weight:600; letter-spacing:0.8px; text-transform:uppercase; }
+    .app-page .ui-card { background:rgba(26,37,53,0.8); border:1px solid rgba(46,61,82,0.8); border-radius:10px; padding:12px; }
+    .app-page .ui-card-title { font-size:9px; color:#fff; font-weight:600; margin-bottom:6px; letter-spacing:0.3px; }
+    .app-page .ui-bar-row { display:flex; align-items:center; gap:6px; margin-bottom:4px; }
+    .app-page .ui-bar-label { font-size:8px; color:var(--on-surface-variant); width:52px; flex-shrink:0; }
+    .app-page .ui-bar-track { flex:1; height:4px; background:rgba(46,61,82,0.8); border-radius:2px; overflow:hidden; }
+    .app-page .ui-bar-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--precision-teal),var(--scan-cyan)); }
+    .app-page .ui-badge-row { display:flex; gap:6px; flex-wrap:wrap; margin-top:4px; }
+    .app-page .ui-badge { font-size:7.5px; font-weight:600; padding:3px 8px; border-radius:100px; letter-spacing:0.5px; text-transform:uppercase; }
+    .app-page .ui-badge.green { background:rgba(34,197,94,0.15); color:var(--green-bright); border:1px solid rgba(34,197,94,0.25); }
+    .app-page .ui-badge.amber { background:rgba(245,166,35,0.15); color:var(--alert-amber); border:1px solid rgba(245,166,35,0.25); }
+    .app-page .ui-badge.cyan { background:rgba(0,212,245,0.12); color:var(--scan-cyan); border:1px solid rgba(0,212,245,0.2); }
+    .app-page .ui-photo-row { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+    .app-page .ui-photo-thumb { aspect-ratio:1; border-radius:6px; background:linear-gradient(135deg,#1a2535,#243044); border:1px solid rgba(46,61,82,0.6); display:flex; align-items:center; justify-content:center; font-size:14px; }
+    .app-page .ui-stat-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+    .app-page .ui-stat { background:rgba(13,59,110,0.25); border:1px solid rgba(0,212,245,0.12); border-radius:8px; padding:8px; }
+    .app-page .ui-stat-val { font-family:'Oswald',sans-serif; font-size:16px; font-weight:800; color:var(--scan-cyan); letter-spacing:-0.5px; }
+    .app-page .ui-stat-lbl { font-size:7px; color:var(--on-surface-variant); text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+    .app-page .ui-cta-btn { margin-top:auto; background:var(--scan-cyan); border-radius:10px; padding:10px; text-align:center; font-family:'Oswald',sans-serif; font-weight:700; font-size:9px; color:var(--abyss-navy); letter-spacing:0.5px; text-transform:uppercase; }
+
+    .app-page .download-strip { background:var(--dark-navy); border-top:1px solid var(--outline); border-bottom:1px solid var(--outline); padding:36px 60px; display:flex; align-items:center; justify-content:space-between; gap:32px; position:relative; z-index:1; flex-wrap:wrap; }
+    .app-page .download-strip-left { max-width:420px; }
+    .app-page .download-strip-title { font-family:'Oswald',sans-serif; font-weight:800; font-size:22px; color:#fff; letter-spacing:-0.5px; margin-bottom:4px; }
+    .app-page .download-strip-sub { font-size:14px; color:var(--on-surface-variant); }
+    .app-page .download-strip-actions { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+
+    .app-page .showcase-section { padding:100px 60px; background:var(--midnight); position:relative; z-index:1; overflow:hidden; }
+    .app-page .showcase-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+    .app-page .showcase-card { background:var(--dark-card); border:1px solid var(--outline); border-radius:20px; overflow:hidden; transition:all 0.35s; cursor:default; }
+    .app-page .showcase-card:hover { transform:translateY(-8px); border-color:rgba(0,212,245,0.35); box-shadow:0 24px 60px rgba(0,0,0,0.4); }
+    .app-page .showcase-screen { width:100%; aspect-ratio:9/18; background:transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; padding:16px 14px 14px; gap:8px; }
+    .app-page .showcase-screen > div { display:none; }
+    .app-page .showcase-caption { padding:20px; }
+    .app-page .showcase-caption-num { font-family:'Oswald',sans-serif; font-weight:800; font-size:32px; color:rgba(0,212,245,0.15); letter-spacing:-1px; line-height:1; margin-bottom:10px; }
+    .app-page .showcase-caption-title { font-family:'Oswald',sans-serif; font-weight:700; font-size:15px; color:#fff; margin-bottom:6px; letter-spacing:-0.2px; }
+    .app-page .showcase-caption-text { font-size:13px; color:var(--on-surface-variant); line-height:1.6; }
+
+    .app-page .how-section { padding:100px 60px; background:var(--abyss-navy); position:relative; z-index:1; overflow:hidden; }
+    .app-page .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; background:var(--outline); border:2px solid var(--outline); border-radius:20px; overflow:hidden; }
+    .app-page .how-card { background:var(--dark-card); padding:44px 36px; position:relative; transition:background 0.3s; }
+    .app-page .how-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--scan-cyan); transform:scaleX(0); transition:transform 0.3s ease; transform-origin:left; }
+    .app-page .how-card:hover::after { transform:scaleX(1); }
+    .app-page .how-card:hover { background:#1e2e42; }
+    .app-page .how-card:not(:last-child)::before { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); color:var(--scan-cyan); font-size:20px; z-index:2; opacity:0.5; }
+    .app-page .how-step-num { font-family:'Oswald',sans-serif; font-weight:800; font-size:64px; color:rgba(0,212,245,0.1); letter-spacing:-2px; line-height:1; margin-bottom:20px; }
+    .app-page .how-icon { width:48px; height:48px; margin-bottom:20px; }
+    .app-page .how-title { font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; color:#fff; margin-bottom:10px; letter-spacing:-0.3px; }
+    .app-page .how-desc { font-size:14px; color:var(--on-surface-variant); line-height:1.65; }
+    .app-page .how-time { display:inline-flex; align-items:center; gap:6px; margin-top:18px; background:rgba(0,212,245,0.08); border:1px solid rgba(0,212,245,0.15); color:var(--scan-cyan); font-size:11px; font-weight:600; padding:4px 12px; border-radius:100px; letter-spacing:0.5px; }
+
+    .app-page .features-section { padding:100px 60px; background:var(--midnight); position:relative; z-index:1; }
+    .app-page .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .app-page .feature-card { background:var(--dark-card); border:1px solid var(--outline); border-radius:16px; padding:32px; transition:all 0.3s; }
+    .app-page .feature-card:hover { border-color:rgba(0,212,245,0.3); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.3); }
+    .app-page .feature-icon-wrap { width:48px; height:48px; border-radius:12px; background:rgba(0,212,245,0.1); border:1px solid rgba(0,212,245,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+    .app-page .feature-title { font-family:'Oswald',sans-serif; font-weight:700; font-size:16px; color:#fff; margin-bottom:8px; letter-spacing:-0.2px; }
+    .app-page .feature-desc { font-size:13px; color:var(--on-surface-variant); line-height:1.6; }
+
+    .app-page .cta-section { padding:120px 60px; text-align:center; background:linear-gradient(160deg,#091425,#0C1E35,#0D3B6E); position:relative; z-index:1; overflow:hidden; }
+    .app-page .cta-section .hero-grid-bg { position:absolute; inset:0; }
+    .app-page .cta-inner { position:relative; z-index:2; }
+    .app-page .cta-h2 { font-family:'Oswald',sans-serif; font-weight:800; font-size:clamp(30px,4vw,50px); color:#fff; letter-spacing:-1px; margin-bottom:16px; line-height:1.12; }
+    .app-page .cta-p { font-size:16px; color:var(--on-surface-variant); margin-bottom:40px; }
+    .app-page .cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .app-page .qr-hint { display:flex; align-items:center; gap:16px; margin-top:48px; justify-content:center; }
+    .app-page .qr-box { width:80px; height:80px; border-radius:10px; background:var(--dark-card); border:1px solid var(--outline); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .app-page .qr-placeholder { display:grid; grid-template-columns:repeat(5,10px); gap:2px; }
+    .app-page .qr-placeholder span { width:10px; height:10px; border-radius:2px; background:var(--scan-cyan); }
+    .app-page .qr-placeholder span:nth-child(even) { opacity:0.25; }
+    .app-page .qr-placeholder span:nth-child(3n) { opacity:0.55; }
+    .app-page .qr-text { font-size:13px; color:var(--on-surface-variant); line-height:1.5; text-align:left; }
+    .app-page .qr-text strong { color:#fff; display:block; margin-bottom:2px; }
+
+    @media (max-width:1100px) {
+      .app-page .hero { grid-template-columns:1fr; padding:120px 40px 80px; }
+      .app-page .hero-right { display:none; }
+      .app-page .showcase-grid { grid-template-columns:repeat(2,1fr); }
+      .app-page .how-grid { grid-template-columns:1fr; }
+      .app-page .how-card::before { display:none; }
+      .app-page .features-grid { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:900px) {
+      .app-page .showcase-section, .app-page .how-section, .app-page .features-section, .app-page .cta-section { padding:70px 24px; }
+      .app-page .download-strip { padding:28px 24px; }
+      .app-page .features-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:600px) {
+      .app-page .showcase-grid { grid-template-columns:1fr 1fr; }
+      .app-page .hero .hero-content-panel { padding:18px 16px 20px; }
+      .app-page .hero-actions { flex-direction:column; align-items:flex-start; }
+      .app-page .cta-actions { flex-direction:column; align-items:center; }
+    }
+    </style>
+</head>
+<body class="app-page">
+            <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="../assets/logos/logo-png-big.png" alt="CarSee Logo" id="logo">
+                            <span class="logo-text-wrap">
+                                <span class="nav-logo-text">Car<span class="logo-see">See</span></span>
+                                <span class="nav-logo-subtitle">تقييم الأضرار بالذكاء الاصطناعي</span>
+                            </span>
+                        </a>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item"><a href="how-it-works/index.html" class="nav-link">كيف يعمل</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="solutions/index.html" class="nav-link">حلولنا تشمل <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="solution/car-traders/index.html">تجار السيارات</a></li>
+                                <li><a href="solution/rental-companies/index.html">شركات التأجير</a></li>
+                                <li><a href="solution/private-car-owners/index.html">أصحاب السيارات الخاصة</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">الأسعار</a></li>
+                        <li class="nav-item"><a href="blog/index.html" class="nav-link">المدونة</a></li>
+                        <li class="nav-item"><a href="benefits.html" class="nav-link">لماذا CarSee؟</a></li>
+                        <li class="nav-item"><a href="our-app.html" class="nav-link">تطبيقنا</a></li>
+                        <li class="nav-item"><a href="where-we-work/index.html" class="nav-link">أين نعمل</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">عن CarSee <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="company/career/index.html">الوظائف</a></li>
+                                <li><a href="company/partners/index.html">انضم كشريك</a></li>
+                                <li><a href="contact/index.html">اتصل بنا</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="nav-actions">
+                        <div class="language-selector">
+                            <span>AR</span>
+                            <ul class="language-menu">
+                                <li><a href="../our-app.html">EN</a></li>
+                            </ul>
+                        </div>
+                        <a href="our-app.html" class="btn-demo">تنزيل التطبيق الآن</a>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+<section class="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="scan-line"></div>
+        <div class="hero-left">
+            <div class="hero-content-panel">
+            <div class="eyebrow-pill">متاح الآن على iOS و Android</div>
+            <h1 class="hero-h1">
+                افحص أي مركبة.<br>
+                <em>في 3 دقائق.</em><br>
+                أي ضرر. خلاص.
+            </h1>
+            <p class="hero-p">
+                صوّر. ارفع. احصل على تقرير فحص مركبة مدعوم بالذكاء الاصطناعي وقابل للدفاع قانونياً — يشمل الصور وتصنيف الأضرار وملف PDF ثنائي اللغة.
+            </p>
+            <div class="hero-actions" id="download">
+                <a href="#" class="btn-store">
+                    <svg class="btn-store-icon" width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="btn-store-text">
+                        <span class="btn-store-sub">حمّل من</span>
+                        <span class="btn-store-name">App Store</span>
+                    </div>
+                </a>
+                <a href="#" class="btn-store">
+                    <svg class="btn-store-icon" width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <path d="M3.18 23.76c.3.17.64.23.99.16l12.14-6.99-2.54-2.54-10.59 9.37zm-.99-20.6v19.69c0 .37.1.7.29.97l.09.08 11.02-11.02v-.26L2.48 2.11l-.29.05c-.19.27-.29.6-.29.97zm17.5 8.32l-2.44-1.41-2.86 2.86 2.86 2.86 2.44-1.41c.7-.4.7-1.5 0-1.9zM4.17 0l12.14 6.99-2.54 2.54L3.18.16C3.48-.01 3.86-.05 4.17 0z"/>
+                    </svg>
+                    <div class="btn-store-text">
+                        <span class="btn-store-sub">احصل عليه من</span>
+                        <span class="btn-store-name">Google Play</span>
+                    </div>
+                </a>
+                <a href="#" class="btn-ghost-line">جرّب مجاناً →</a>
+            </div>
+            <div class="hero-social-proof">
+                <span class="stars">★★★★★</span>
+                <span class="rating">4.9 / 5 نجوم</span>
+                <span class="rating-sub">تقييم من أكثر من 2,400 مستخدم على App Store و Google Play</span>
+            </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="phone-cluster">
+                <div class="phone-left">
+                    <div class="phone-mockup" style="width:210px; transform:rotate(-12deg) perspective(700px) rotateY(22deg); transform-origin:center center;">
+                        <div class="phone-screen hero-phone-screen">
+                            <img src="../assets/screenshots/screen-scan.png" alt="CarSee التطبيق" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+                        </div>
+                    </div>
+                </div>
+                <div class="phone-center">
+                    <div class="phone-mockup" style="width:210px; transform:rotate(12deg) perspective(700px) rotateY(-22deg); transform-origin:center center;">
+                        <div class="phone-screen hero-phone-screen">
+                            <img src="../assets/screenshots/screen-ai.png" alt="CarSee التطبيق" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="download-strip anim-fade">
+        <div class="download-strip-left">
+            <div class="download-strip-title">تحميل مجاني. التقرير الأول مجاني.</div>
+            <div class="download-strip-sub">لا بطاقة ائتمان. لا إعداد. افحص مركبتك الأولى في أقل من 5 دقائق.</div>
+        </div>
+        <div class="download-strip-actions">
+            <a href="#" class="btn-store">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <div class="btn-store-text"><span class="btn-store-sub">حمّل من</span><span class="btn-store-name">App Store</span></div>
+            </a>
+            <a href="#" class="btn-store">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.23.99.16l12.14-6.99-2.54-2.54-10.59 9.37zm-.99-20.6v19.69c0 .37.1.7.29.97l.09.08 11.02-11.02v-.26L2.48 2.11l-.29.05c-.19.27-.29.6-.29.97zm17.5 8.32l-2.44-1.41-2.86 2.86 2.86 2.86 2.44-1.41c.7-.4.7-1.5 0-1.9zM4.17 0l12.14 6.99-2.54 2.54L3.18.16C3.48-.01 3.86-.05 4.17 0z"/></svg>
+                <div class="btn-store-text"><span class="btn-store-sub">احصل عليه من</span><span class="btn-store-name">Google Play</span></div>
+            </a>
+            <a href="#" class="btn-primary">جرّب مجاناً — شهر واحد</a>
+        </div>
+    </div>
+
+    <section class="showcase-section">
+        <div class="section-tag anim-fade">لقطات التطبيق</div>
+        <h2 class="section-title anim-fade">كل شاشة مبنية للسرعة والوضوح</h2>
+        <p class="section-subtitle anim-fade">أربع لحظات تحدد كيف يبدو CarSee بين يديك.</p>
+        <div class="showcase-grid anim-stagger">
+            <div class="showcase-card">
+                <div class="showcase-screen">
+                    <img src="../assets/screenshots/screen-scan.png" alt="لقطة التقاط صور موجّه" style="width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0;">
+                    <div class="ui-header-bar" aria-hidden="true"><span></span><span class="ui-label">New Inspection</span></div>
+                    <div class="ui-photo-row">
+                        <div class="ui-photo-thumb">📸</div>
+                        <div class="ui-photo-thumb">🔍</div>
+                        <div class="ui-photo-thumb">🚗</div>
+                    </div>
+                    <div class="ui-card">
+                        <div class="ui-card-title">Guide me to photograph</div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Front</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:100%"></div></div></div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Left side</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:65%"></div></div></div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Rear</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:0%"></div></div></div>
+                    </div>
+                    <div class="ui-badge-row"><span class="ui-badge cyan">2 of 6 photos</span></div>
+                    <div class="ui-cta-btn">Continue →</div>
+                </div>
+                <div class="showcase-caption">
+                    <div class="showcase-caption-num">١</div>
+                    <div class="showcase-caption-title">التقاط صور موجّه</div>
+                    <div class="showcase-caption-text">التطبيق يخبرك بالضبط أين تقف وماذا تصوّر. لا تخمين، لا زوايا فائتة.</div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-screen">
+                    <img src="../assets/screenshots/screen-ai.png" alt="لقطة تحليل الأضرار بالذكاء الاصطناعي" style="width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0;">
+                    <div class="ui-header-bar" aria-hidden="true"><span></span><span class="ui-label">AI Analysing…</span></div>
+                    <div class="ui-stat-row" style="gap:6px">
+                        <div class="ui-stat"><div class="ui-stat-val">98%</div><div class="ui-stat-lbl">Confidence</div></div>
+                        <div class="ui-stat"><div class="ui-stat-val">0:42</div><div class="ui-stat-lbl">Elapsed</div></div>
+                    </div>
+                    <div class="ui-card">
+                        <div class="ui-card-title">Damage Detection</div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Scratches</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:80%"></div></div></div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Dents</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:45%"></div></div></div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Paint fade</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:30%"></div></div></div>
+                    </div>
+                    <div class="ui-badge-row">
+                        <span class="ui-badge cyan">AI Active</span>
+                        <span class="ui-badge amber">3 findings</span>
+                    </div>
+                </div>
+                <div class="showcase-caption">
+                    <div class="showcase-caption-num">٢</div>
+                    <div class="showcase-caption-title">تحليل الأضرار بالذكاء الاصطناعي</div>
+                    <div class="showcase-caption-text">الذكاء الاصطناعي يفحص كل بكسل في أقل من 60 ثانية. درجات ثقة لكل اكتشاف.</div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-screen">
+                    <img src="../assets/screenshots/screen-report.png" alt="لقطة تقرير الفحص الكامل" style="width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0;">
+                    <div class="ui-header-bar" aria-hidden="true"><span></span><span class="ui-label">Your Report</span></div>
+                    <div class="ui-stat-row" style="gap:6px">
+                        <div class="ui-stat"><div class="ui-stat-val">3</div><div class="ui-stat-lbl">Damages</div></div>
+                        <div class="ui-stat"><div class="ui-stat-val">A3</div><div class="ui-stat-lbl">Grade</div></div>
+                    </div>
+                    <div class="ui-card">
+                        <div class="ui-card-title">Inspection Summary</div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Front bumper</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:70%"></div></div></div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">Rear door</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:35%"></div></div></div>
+                    </div>
+                    <div class="ui-badge-row">
+                        <span class="ui-badge green">✓ Timestamped</span>
+                        <span class="ui-badge green">✓ Legal ready</span>
+                    </div>
+                    <div class="ui-cta-btn">Export PDF →</div>
+                </div>
+                <div class="showcase-caption">
+                    <div class="showcase-caption-num">٣</div>
+                    <div class="showcase-caption-title">تقرير الفحص الكامل</div>
+                    <div class="showcase-caption-text">كل اكتشاف موثق بالصور والتواريخ ودرجة الضرر. جاهز للمشاركة فوراً.</div>
+                </div>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-screen">
+                    <img src="../assets/screenshots/screen-export.png" alt="لقطة مشاركة التقرير" style="width:100%;height:100%;object-fit:cover;object-position:top;position:absolute;inset:0;">
+                    <div class="ui-header-bar" aria-hidden="true"><span></span><span class="ui-label">Share Report</span></div>
+                    <div class="ui-card">
+                        <div class="ui-card-title">Export Options</div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">PDF (EN)</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:100%"></div></div></div>
+                        <div class="ui-bar-row"><div class="ui-bar-label">PDF (AR)</div><div class="ui-bar-track"><div class="ui-bar-fill" style="width:100%"></div></div></div>
+                    </div>
+                    <div class="ui-badge-row">
+                        <span class="ui-badge cyan">WhatsApp</span>
+                        <span class="ui-badge cyan">Email</span>
+                        <span class="ui-badge green">✓ Cloud saved</span>
+                    </div>
+                    <div class="ui-stat-row" style="gap:6px; margin-top:4px">
+                        <div class="ui-stat"><div class="ui-stat-val" style="font-size:11px;letter-spacing:0">EN</div><div class="ui-stat-lbl">English PDF</div></div>
+                        <div class="ui-stat"><div class="ui-stat-val" style="font-size:11px;letter-spacing:0">AR</div><div class="ui-stat-lbl">Arabic PDF</div></div>
+                    </div>
+                    <div class="ui-cta-btn">Send Now →</div>
+                </div>
+                <div class="showcase-caption">
+                    <div class="showcase-caption-num">٤</div>
+                    <div class="showcase-caption-title">شارك في ثوانٍ</div>
+                    <div class="showcase-caption-text">أرسل تقارير PDF ثنائية اللغة عبر واتساب أو البريد الإلكتروني أو نظامك.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="section-tag anim-fade">كيف يعمل؟</div>
+        <h2 class="section-title anim-fade">ثلاث خطوات.<br>دقيقة واحدة للبدء.</h2>
+        <p class="section-subtitle anim-fade">لا تدريب. لا أدلة. فقط افتح التطبيق وابدأ.</p>
+        <div class="how-grid anim-stagger">
+            <div class="how-card">
+                <div class="how-step-num">٠١</div>
+                <svg class="how-icon" viewBox="0 0 48 48" fill="none">
+                    <rect x="10" y="6" width="28" height="36" rx="4" stroke="#00D4F5" stroke-width="1.5"/>
+                    <circle cx="24" cy="32" r="3" stroke="#00D4F5" stroke-width="1.5"/>
+                    <rect x="18" y="14" width="12" height="8" rx="2" stroke="#00D4F5" stroke-width="1.5"/>
+                    <path d="M20 18h8" stroke="#00D4F5" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <div class="how-title">افتح وصوّر</div>
+                <div class="how-desc">حمّل التطبيق، افتح فحصاً جديداً، واتبع إرشادات الكاميرا. CarSee يخبرك بالزاوية التالية.</div>
+                <div class="how-time">⏱ 90 ثانية</div>
+            </div>
+            <div class="how-card">
+                <div class="how-step-num">٠٢</div>
+                <svg class="how-icon" viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="14" stroke="#00D4F5" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <path d="M17 24l5 5 9-9" stroke="#00D4F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="24" cy="8" r="2" fill="#00D4F5" opacity="0.5"/>
+                    <circle cx="24" cy="40" r="2" fill="#00D4F5" opacity="0.5"/>
+                    <circle cx="8" cy="24" r="2" fill="#00D4F5" opacity="0.5"/>
+                    <circle cx="40" cy="24" r="2" fill="#00D4F5" opacity="0.5"/>
+                </svg>
+                <div class="how-title">الذكاء الاصطناعي يعمل</div>
+                <div class="how-desc">نموذج رؤية الكمبيوتر يحلل كل صورة — يكتشف الخدوش والحفر والصدأ وتشققات الزجاج ومشاكل الطلاء بدقة 98%.</div>
+                <div class="how-time">⏱ أقل من 60 ثانية</div>
+            </div>
+            <div class="how-card">
+                <div class="how-step-num">٠٣</div>
+                <svg class="how-icon" viewBox="0 0 48 48" fill="none">
+                    <rect x="8" y="6" width="24" height="30" rx="3" stroke="#00D4F5" stroke-width="1.5"/>
+                    <path d="M14 14h12M14 20h8M14 26h10" stroke="#00D4F5" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M28 28l8 8M32 28h4v4" stroke="#00D4F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="how-title">احصل على التقرير وشاركه</div>
+                <div class="how-desc">احصل على تقرير الفحص PDF ثنائي اللغة مع صور مؤرخة ودرجات الأضرار. شاركه فوراً عبر واتساب أو البريد أو نظامك.</div>
+                <div class="how-time">⏱ تصدير فوري</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="section-tag anim-fade">لماذا CarSee</div>
+        <h2 class="section-title anim-fade">مبني حول هدف واحد:<br>وقتك</h2>
+        <p class="section-subtitle anim-fade">كل ميزة موجودة لتقليص الوقت بين "وصلت المركبة" و"أُرسل التقرير".</p>
+        <div class="features-grid anim-stagger">
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D4F5" stroke-width="2" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <div class="feature-title">فحص في 3 دقائق</div>
+                <div class="feature-desc">ما كان يستغرق 60–90 دقيقة بات يستغرق أقل من 3. يعني 27 مركبة إضافية يومياً لكل مفتش.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D4F5" stroke-width="2" stroke-linecap="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <div class="feature-title">PDF ثنائي اللغة EN + AR</div>
+                <div class="feature-desc">كل تقرير يُولَّد بالإنجليزية والعربية في آنٍ واحد. ضغطة واحدة — لغتان، صفر جهد إضافي.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D4F5" stroke-width="2" stroke-linecap="round">
+                        <path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <div class="feature-title">تكامل API</div>
+                <div class="feature-desc">أرسل التقارير مباشرة لنظامك أو منصة التأمين أو نظام التأجير. REST API كامل لحسابات Business.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="hero-grid-bg"></div>
+        <div class="scan-line"></div>
+        <div class="cta-inner anim-fade">
+            <div class="eyebrow-pill" style="margin:0 auto 24px">مجاني للبدء</div>
+            <h2 class="cta-h2">حمّل CarSee.<br>التقرير الأول مجاني.</h2>
+            <p class="cta-p">لا بطاقة ائتمان. لا التزام. افحص مركبتك الأولى في أقل من 5 دقائق.</p>
+            <div class="cta-actions">
+                <a href="#" class="btn-store" style="padding:14px 26px">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <div class="btn-store-text"><span class="btn-store-sub">حمّل من</span><span class="btn-store-name">App Store</span></div>
+                </a>
+                <a href="#" class="btn-store" style="padding:14px 26px">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.23.99.16l12.14-6.99-2.54-2.54-10.59 9.37zm-.99-20.6v19.69c0 .37.1.7.29.97l.09.08 11.02-11.02v-.26L2.48 2.11l-.29.05c-.19.27-.29.6-.29.97zm17.5 8.32l-2.44-1.41-2.86 2.86 2.86 2.86 2.44-1.41c.7-.4.7-1.5 0-1.9zM4.17 0l12.14 6.99-2.54 2.54L3.18.16C3.48-.01 3.86-.05 4.17 0z"/></svg>
+                    <div class="btn-store-text"><span class="btn-store-sub">احصل عليه من</span><span class="btn-store-name">Google Play</span></div>
+                </a>
+                <a href="#" class="btn-primary">جرّب مجاناً — شهر واحد</a>
+            </div>
+            <div class="qr-hint">
+                <div class="qr-box">
+                    <div class="qr-placeholder">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="qr-text">
+                    <strong>امسح للتحميل فوراً</strong>
+                    وجّه كاميرا هاتفك على هذا الكود.<br>يعمل مع iOS و Android.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand-row">
+                <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
+                    <img src="../assets/logos/logo_banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                </a>
+                <nav class="footer-social" aria-label="Social media">
+                    <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.7 31.7 0 0 0 .5-5.8 31.7 31.7 0 0 0-.5-5.8zM9.7 15.5V8.5L15.7 12l-6 3.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.instagram.com/carseeai/" target="_blank" rel="noopener noreferrer" title="Instagram — @carseeai" aria-label="Instagram @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://x.com/carseeai" target="_blank" rel="noopener noreferrer" title="X — @carseeai" aria-label="X @carseeai">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>المنتج</h4>
+                    <ul>
+                        <li><a href="how-it-works/index.html">كيف يعمل</a></li>
+                        <li><a href="pricing.html">الأسعار</a></li>
+                        <li><a href="blog/index.html">المدونة</a></li>
+                        <li><a href="benefits.html">لماذا CarSee؟</a></li>
+                        <li><a href="our-app.html">تطبيقنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>حلولنا تشمل</h4>
+                    <ul>
+                        <li><a href="solution/car-traders/index.html">تجار السيارات</a></li>
+                        <li><a href="solution/rental-companies/index.html">شركات التأجير</a></li>
+                        <li><a href="solution/private-car-owners/index.html">أصحاب السيارات الخاصة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>عن CarSee</h4>
+                    <ul>
+                        <li><a href="company/career/index.html">الوظائف</a></li>
+                        <li><a href="company/partners/index.html">انضم كشريك</a></li>
+                        <li><a href="contact/index.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CarSee. جميع الحقوق محفوظة.</p>
+                <div class="footer-links">
+                    <span class="legal-links">
+                        <a href="privacy.html">سياسة الخصوصية</a>
+                        <span>·</span>
+                        <a href="cookies.html">سياسة ملفات تعريف الارتباط</a>
+                        <span>·</span>
+                        <a href="terms.html">شروط الخدمة</a>
+                        <span>·</span>
+                        <a href="mailto:legal@carsee.app">قانوني</a>
+                    </span>
+                    <a href="#" id="cookiesSettings">إعدادات ملفات التعريف</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+      var header = document.querySelector('.header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.app-page .anim-fade, .app-page .anim-stagger').forEach(function(el) { io.observe(el); });
+      var heroLeft = document.querySelector('.app-page .hero-left');
+      if (heroLeft) setTimeout(function() { heroLeft.style.animation = 'fadeSlideUp 0.9s ease forwards'; }, 100);
+    })();
+    </script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cookies.js"></script>
+</body>
+</html>

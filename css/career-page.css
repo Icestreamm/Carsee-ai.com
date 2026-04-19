@@ -1,0 +1,60 @@
+/* Career pages: job detail cards below blog-style role rail (light theme) */
+
+.career-job-anchor {
+  scroll-margin-top: 96px;
+}
+
+.career-detail-article {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 36px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(9, 20, 37, 0.1);
+  border: 1px solid var(--border-color, #dde3ec);
+}
+
+.career-detail-article header {
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color, #dde3ec);
+}
+
+.career-detail-article h2 {
+  font-size: 1.75rem;
+  margin: 0 0 12px;
+  color: var(--text-dark);
+  line-height: 1.25;
+}
+
+.career-detail-article h3 {
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+  color: var(--text-dark);
+}
+
+.career-detail-article p,
+.career-detail-article li {
+  color: #3d4f63;
+  line-height: 1.75;
+}
+
+.career-detail-article ul {
+  margin: 0 0 28px;
+  padding-left: 1.25rem;
+}
+
+[dir="rtl"] .career-detail-article ul {
+  padding-left: 0;
+  padding-right: 1.25rem;
+}
+
+.career-general-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(9, 20, 37, 0.1);
+  border: 1px solid var(--border-color, #dde3ec);
+}

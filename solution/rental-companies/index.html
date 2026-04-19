@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarSee for Rental Companies - Fleet Management & Damage Documentation</title>
+    <meta name="description" content="CarSee for rental fleet management — pre/post rental damage comparison, AI odometer reading, and tamper-proof bilingual reports." />
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <style>
+        body { background: #070f1a; }
+        .sol-hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding-top: 72px;
+            background: linear-gradient(135deg, #060e1b 0%, #0a1828 50%, #0d2240 100%);
+            overflow: hidden;
+            position: relative;
+        }
+        .sol-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(0,212,245,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,245,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        .sol-hero-scan { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,245,0.4), transparent); animation: heroScan 6s linear infinite; }
+        @keyframes heroScan { 0% { top: 72px; } 100% { top: 100%; } }
+        .sol-hero-left { padding: 80px 60px 80px 80px; position: relative; z-index: 2; opacity: 0; transform: translateX(-40px); animation: fadeSlideRight 0.9s cubic-bezier(.22,.68,0,1.2) 0.2s forwards; }
+        @keyframes fadeSlideRight { to { opacity: 1; transform: translateX(0); } }
+        .sol-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,212,245,0.08); border: 1px solid rgba(0,212,245,0.2); border-radius: 100px; padding: 6px 18px; font-size: 11px; font-weight: 600; color: var(--scan-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 28px; }
+        .sol-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--scan-cyan); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.8); } }
+        .sol-hero-title { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(36px, 3.8vw, 58px); line-height: 1.08; letter-spacing: -1.5px; color: #fff; margin-bottom: 24px; }
+        .sol-hero-title em { font-style: normal; color: var(--scan-cyan); }
+        .sol-hero-sub { font-size: 16px; line-height: 1.75; color: var(--on-surface-variant); max-width: 480px; margin-bottom: 40px; }
+        .sol-hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .sol-btn-primary { background: var(--scan-cyan); color: #060e1b; border: none; padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.25s; letter-spacing: 0.3px; }
+        .sol-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,212,245,0.4); }
+        .sol-btn-ghost { color: var(--on-surface-variant); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: color 0.2s; border: 1px solid rgba(255,255,255,0.1); padding: 13px 24px; border-radius: 10px; }
+        .sol-btn-ghost:hover { color: var(--scan-cyan); border-color: rgba(0,212,245,0.3); }
+        .sol-hero-right { position: relative; height: 100%; min-height: 600px; overflow: hidden; opacity: 0; animation: fadeIn 1.1s ease 0.5s forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .sol-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.05); animation: zoomOut 8s ease forwards; }
+        @keyframes zoomOut { to { transform: scale(1); } }
+        .sol-hero-img-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, #070f1a 0%, rgba(7,15,26,0.3) 40%, transparent 100%); }
+        .sol-hero-img-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(transparent, #070f1a); }
+        .sol-float-badge { position: absolute; bottom: 48px; right: 40px; background: rgba(7,15,26,0.85); backdrop-filter: blur(16px); border: 1px solid rgba(0,212,245,0.25); border-radius: 16px; padding: 18px 24px; display: flex; align-items: center; gap: 14px; opacity: 0; transform: translateY(20px); animation: floatUp 0.8s ease 1.2s forwards; }
+        @keyframes floatUp { to { opacity: 1; transform: translateY(0); } }
+        .sol-float-badge-icon { width: 40px; height: 40px; background: rgba(0,212,245,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .sol-float-badge-label { font-size: 11px; color: var(--on-surface-variant); }
+        .sol-float-badge-val { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 800; color: var(--scan-cyan); }
+        .sol-stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #0b1826; border-top: 1px solid rgba(0,212,245,0.1); border-bottom: 1px solid rgba(0,212,245,0.1); }
+        .sol-stat { padding: 36px 40px; border-right: 1px solid rgba(0,212,245,0.08); text-align: center; opacity: 0; transform: translateY(16px); animation: fadeSlideUp 0.6s ease forwards; }
+        .sol-stat:nth-child(1) { animation-delay: 0.1s; }
+        .sol-stat:nth-child(2) { animation-delay: 0.25s; }
+        .sol-stat:nth-child(3) { animation-delay: 0.4s; border-right: none; }
+        @keyframes fadeSlideUp { to { opacity: 1; transform: translateY(0); } }
+        .sol-stat-num { font-family: 'Oswald', sans-serif; font-size: 42px; font-weight: 800; color: var(--scan-cyan); letter-spacing: -1px; line-height: 1; margin-bottom: 8px; }
+        .sol-stat-label { font-size: 13px; font-weight: 600; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.8px; }
+        .sol-body { padding: 100px 0; background: #0a1424; }
+        .sol-body .container { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+        .sol-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 80px; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .sol-intro.visible { opacity: 1; transform: translateY(0); }
+        .sol-section-tag { font-size: 11px; font-weight: 600; color: var(--scan-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+        .sol-section-title { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(26px, 2.8vw, 38px); letter-spacing: -0.8px; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+        .sol-section-title em { font-style: normal; color: var(--scan-cyan); }
+        .sol-text { font-size: 15px; line-height: 1.8; color: var(--on-surface-variant); margin-bottom: 16px; }
+        .sol-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: rgba(0,212,245,0.06); border: 1px solid rgba(0,212,245,0.08); border-radius: 20px; overflow: hidden; margin-bottom: 80px; }
+        .sol-feature { background: #0b1826; padding: 36px 32px; position: relative; opacity: 0; transform: translateY(20px); transition: background 0.3s, opacity 0.6s ease, transform 0.6s ease; }
+        .sol-feature.visible { opacity: 1; transform: translateY(0); }
+        .sol-feature:hover { background: #0f2035; }
+        .sol-feature::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--scan-cyan); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+        .sol-feature:hover::after { transform: scaleX(1); }
+        .sol-feature-num { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; color: var(--scan-cyan); letter-spacing: 2px; margin-bottom: 16px; opacity: 0.6; }
+        .sol-feature-title { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 10px; }
+        .sol-feature-desc { font-size: 13px; color: var(--on-surface-variant); line-height: 1.6; }
+        .sol-cta { background: linear-gradient(135deg, #071525, #0d2a47); border: 1px solid rgba(0,212,245,0.12); border-radius: 24px; padding: 64px 60px; text-align: center; position: relative; overflow: hidden; }
+        .sol-cta::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,212,245,0.08) 0%, transparent 70%); pointer-events: none; }
+        .sol-cta-title { font-family: 'Oswald', sans-serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .sol-cta-sub { font-size: 15px; color: var(--on-surface-variant); margin-bottom: 36px; line-height: 1.7; }
+        .sol-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 900px) {
+            .sol-hero { grid-template-columns: 1fr; }
+            .sol-hero-left { padding: 60px 32px; }
+            .sol-hero-right { min-height: 320px; }
+            .sol-hero-img-overlay { background: linear-gradient(transparent, #070f1a 90%); }
+            .sol-intro { grid-template-columns: 1fr; gap: 40px; }
+            .sol-body .container { padding: 0 24px; }
+        }
+    </style>
+</head>
+<body>
+                    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="../../index.html" class="logo-link">
+                            <img src="../../assets/logos/logo-png-big.png" alt="CarSee Logo" id="logo">
+                            <span class="logo-text-wrap">
+                                <span class="nav-logo-text">Car<span class="logo-see">See</span></span>
+                                <span class="nav-logo-subtitle">AI Damage Evaluation</span>
+                            </span>
+                        </a>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item"><a href="../../how-it-works/index.html" class="nav-link">How it works</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="../../solutions/index.html" class="nav-link">Our Solutions Include <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../solution/car-traders/index.html">Car Traders</a></li>
+                                <li><a href="../../solution/rental-companies/index.html">Rental Companies</a></li>
+                                <li><a href="../../solution/private-car-owners/index.html">Private Car Owners</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="../../pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="../../blog/index.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="../../benefits.html" class="nav-link">Why CarSee?</a></li>
+                        <li class="nav-item"><a href="../../our-app.html" class="nav-link">Our App</a></li>
+                        <li class="nav-item"><a href="../../where-we-work/index.html" class="nav-link">Where we work</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">About <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../company/career/index.html">Career</a></li>
+                                <li><a href="../../company/partners/index.html">Become a Partner</a></li>
+                                <li><a href="../../contact/index.html">Contact us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="nav-actions">
+                        <div class="language-selector">
+                            <span>EN</span>
+                            <ul class="language-menu">
+                                <li><a href="../../ar/solution/rental-companies/index.html">AR</a></li>
+                            </ul>
+                        </div>
+                        <a href="../../our-app.html" class="btn-demo">Download Now!</a>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+<section class="sol-hero">
+        <div class="sol-hero-scan"></div>
+        <div class="sol-hero-left">
+            <div class="sol-eyebrow">Rental Companies</div>
+            <h1 class="sol-hero-title">Zero Disputes.<br><em>Total Accountability.</em></h1>
+            <p class="sol-hero-sub">Document before. Document after. Every scan is timestamped, geotagged, and locked into a professional PDF report within seconds. Never argue over damage again.</p>
+            <div class="sol-hero-actions">
+                <a href="../../our-app.html" class="sol-btn-primary">Download Now</a>
+                <a href="../../contact/index.html" class="sol-btn-ghost">Talk to sales →</a>
+            </div>
+        </div>
+        <div class="sol-hero-right">
+            <img src="../../assets/images/rental-companies-hero.jpg" alt="Rental agent documenting vehicle damage with phone" class="sol-hero-img">
+            <div class="sol-hero-img-overlay"></div>
+            <div class="sol-hero-img-overlay-bottom"></div>
+            <div class="sol-float-badge">
+                <div class="sol-float-badge-icon">🔍</div>
+                <div>
+                    <div class="sol-float-badge-label">AI scanning</div>
+                    <div class="sol-float-badge-val">6 Models Active</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sol-stats-bar">
+        <div class="sol-stat">
+            <div class="sol-stat-num" data-stat-target="5" data-stat-less-than="true" dir="ltr">0</div>
+            <div class="sol-stat-label">Minutes Per Scan</div>
+        </div>
+        <div class="sol-stat">
+            <div class="sol-stat-num" data-stat-target="6" data-stat-suffix="×" dir="ltr">0</div>
+            <div class="sol-stat-label">AI Models Running</div>
+        </div>
+        <div class="sol-stat">
+            <div class="sol-stat-num" data-stat-target="100" data-stat-suffix="%" dir="ltr">0%</div>
+            <div class="sol-stat-label">Bilingual Reports</div>
+        </div>
+    </div>
+
+    <section class="sol-body">
+        <div class="container">
+            <div class="sol-intro" id="solIntro">
+                <div>
+                    <div class="sol-section-tag">The Problem</div>
+                    <h2 class="sol-section-title">Damage disputes are the <em>costliest</em> problem in car rental</h2>
+                </div>
+                <div>
+                    <p class="sol-text">Without objective pre- and post-rental documentation, your company absorbs the loss — or risks damaging the customer relationship trying to recover it.</p>
+                    <p class="sol-text">CarSee transforms your check-in and check-out process into a fully documented, legally defensible workflow. Your team captures more, disputes less, and recovers damage costs with confidence.</p>
+                </div>
+            </div>
+
+            <div class="sol-features">
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">01</div>
+                    <div class="sol-feature-title">Pre/post rental damage comparison with timestamped evidence</div>
+                    <div class="sol-feature-desc">Objective documentation for every transaction — disputes resolved before they start.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">02</div>
+                    <div class="sol-feature-title">Mileage tracking via AI odometer reading, excess fees auto-calculated</div>
+                    <div class="sol-feature-desc">Automated billing for overage miles — no manual counting, no disputes.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">03</div>
+                    <div class="sol-feature-title">Fleet-wide condition reporting exportable to Excel</div>
+                    <div class="sol-feature-desc">Manage your entire fleet's condition at scale with structured data.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">04</div>
+                    <div class="sol-feature-title">Local repair cost estimates for instant damage recovery billing</div>
+                    <div class="sol-feature-desc">Accurate local market pricing so you recover the exact right amount.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">05</div>
+                    <div class="sol-feature-title">Multi-user team access — all your staff under one account</div>
+                    <div class="sol-feature-desc">Seamless fleet-wide deployment across every location and shift.</div>
+                </div>
+            </div>
+
+            <div class="sol-cta">
+                <h2 class="sol-cta-title">Ready to eliminate rental damage disputes?</h2>
+                <p class="sol-cta-sub">Transform your fleet check-in/check-out process into a legal-proof workflow. Start in minutes.</p>
+                <div class="sol-cta-btns">
+                    <a href="../../our-app.html" class="sol-btn-primary">Download Now!</a>
+                    <a href="../../contact/index.html" class="sol-btn-ghost">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Footer -->    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand-row">
+                <a href="../../index.html" class="footer-logo-link" aria-label="CarSee home">
+                    <img src="../../assets/logos/logo_banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                </a>
+                <nav class="footer-social" aria-label="Social media">
+                    <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.7 31.7 0 0 0 .5-5.8 31.7 31.7 0 0 0-.5-5.8zM9.7 15.5V8.5L15.7 12l-6 3.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.instagram.com/carseeai/" target="_blank" rel="noopener noreferrer" title="Instagram — @carseeai" aria-label="Instagram @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://x.com/carseeai" target="_blank" rel="noopener noreferrer" title="X — @carseeai" aria-label="X @carseeai">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="../../how-it-works/index.html">How it works</a></li>
+                        <li><a href="../../pricing.html">Pricing</a></li>
+                        <li><a href="../../blog/index.html">Blog</a></li>
+                        <li><a href="../../benefits.html">Why CarSee?</a></li>
+                        <li><a href="../../our-app.html">Our App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Solutions Include</h4>
+                    <ul>
+                        <li><a href="../../solution/car-traders/index.html">Car Traders</a></li>
+                        <li><a href="../../solution/rental-companies/index.html">Rental Companies</a></li>
+                        <li><a href="../../solution/private-car-owners/index.html">Private Car Owners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="../../company/career/index.html">Career</a></li>
+                        <li><a href="../../company/partners/index.html">Become a Partner</a></li>
+                        <li><a href="../../contact/index.html">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CarSee. All right reserved.</p>
+                <div class="footer-links">
+                    <span class="legal-links">
+                        <a href="../../privacy.html">Privacy Policy</a>
+                        <span>·</span>
+                        <a href="../../cookies.html">Cookies Policy</a>
+                        <span>·</span>
+                        <a href="../../terms.html">Terms of Service</a>
+                        <span>·</span>
+                        <a href="mailto:legal@carsee.app">Legal</a>
+                    </span>
+                    <a href="#" id="cookiesSettings">Cookies Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/solution-stats-counter.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 120); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('#solIntro, [data-animate]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

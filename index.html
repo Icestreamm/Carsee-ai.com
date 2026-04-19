@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarSee - AI Vehicle Inspection | Unlock faster, more accurate vehicle AI-inspections</title>
+    <meta name="description" content="CarSee AI vehicle damage reports for car traders — bilingual PDF, local repair pricing, instant resale documentation.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@400;500&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/cookies.css">
+    <style>
+    /* ═══════════════════════════════════════════════
+       HERO 50%–50%: left = text, right = parallax stage
+    ═══════════════════════════════════════════════ */
+    .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 700px;
+        width: 100%;
+    }
+    .hero-left {
+        display: flex;
+        align-items: center;
+        padding: 60px 0;
+    }
+    .hero-right {
+        position: relative;
+        min-height: 700px;
+    }
+    #heroStage {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        perspective: 1400px;
+        overflow: hidden;
+        cursor: crosshair;
+    }
+    #heroScene {
+        position: absolute;
+        width: 620px;
+        height: 420px;
+        left: 50%;
+        top: 50%;
+        margin-left: -310px;
+        margin-top: -210px;
+        transform-style: preserve-3d;
+        will-change: transform;
+        transform-origin: center center;
+    }
+    #heroCar {
+        position: absolute;
+        width: 620px;
+        z-index: 6;
+        pointer-events: none;
+        will-change: transform;
+    }
+    #heroCar img { width: 100%; display: block; }
+    #heroA1 {
+        position: absolute;
+        width: 190px;
+        z-index: 12;
+        pointer-events: none;
+        will-change: transform;
+    }
+    #heroA1 img { width: 100%; display: block; }
+    #heroA2 {
+        position: absolute;
+        width: 180px;
+        z-index: 7;
+        pointer-events: none;
+        will-change: transform;
+    }
+    #heroA2 img { width: 100%; display: block; }
+    #heroA3 {
+        position: absolute;
+        width: 170px;
+        z-index: 10;
+        pointer-events: none;
+        will-change: transform;
+    }
+    #heroA3 img { width: 100%; display: block; }
+    #heroConnSvg {
+        position: absolute;
+        left: 0; top: 0;
+        width: 620px; height: 420px;
+        overflow: visible;
+        pointer-events: none;
+        z-index: 5;
+    }
+    #heroConnSvg line {
+        stroke: #00D4F5;
+        stroke-width: 1;
+        stroke-dasharray: 5 5;
+        opacity: 0.22;
+    }
+    .hero-bracket {
+        position: absolute;
+        width: 40px; height: 40px;
+        opacity: 0.22;
+        pointer-events: none;
+        z-index: 25;
+    }
+    .hero-br-tl { top: 12px; left: 12px; border-top: 2px solid #00D4F5; border-left: 2px solid #00D4F5; border-radius: 5px 0 0 0; }
+    .hero-br-tr { top: 12px; right: 12px; border-top: 2px solid #00D4F5; border-right: 2px solid #00D4F5; border-radius: 0 5px 0 0; }
+    .hero-br-bl { bottom: 12px; left: 12px; border-bottom: 2px solid #00D4F5; border-left: 2px solid #00D4F5; border-radius: 0 0 0 5px; }
+    .hero-br-br { bottom: 12px; right: 12px; border-bottom: 2px solid #00D4F5; border-right: 2px solid #00D4F5; border-radius: 0 0 5px 0; }
+    @media (max-width: 900px) {
+        .hero-inner { grid-template-columns: 1fr; }
+        .hero-right { min-height: 420px; order: -1; }
+    }
+    </style>
+</head>
+<body>
+                    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="index.html" class="logo-link">
+                            <img src="assets/logos/logo-png-big.png" alt="CarSee Logo" id="logo">
+                            <span class="logo-text-wrap">
+                                <span class="nav-logo-text">Car<span class="logo-see">See</span></span>
+                                <span class="nav-logo-subtitle">AI Damage Evaluation</span>
+                            </span>
+                        </a>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item"><a href="how-it-works/index.html" class="nav-link">How it works</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="solutions/index.html" class="nav-link">Our Solutions Include <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="solution/car-traders/index.html">Car Traders</a></li>
+                                <li><a href="solution/rental-companies/index.html">Rental Companies</a></li>
+                                <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="blog/index.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="benefits.html" class="nav-link">Why CarSee?</a></li>
+                        <li class="nav-item"><a href="our-app.html" class="nav-link">Our App</a></li>
+                        <li class="nav-item"><a href="where-we-work/index.html" class="nav-link">Where we work</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">About <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="company/career/index.html">Career</a></li>
+                                <li><a href="company/partners/index.html">Become a Partner</a></li>
+                                <li><a href="contact/index.html">Contact us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="nav-actions">
+                        <div class="language-selector">
+                            <span>EN</span>
+                            <ul class="language-menu">
+                                <li><a href="ar/index.html">AR</a></li>
+                            </ul>
+                        </div>
+                        <a href="our-app.html" class="btn-demo">Download Now!</a>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+<!-- Hero Section — 50% text (left), 50% parallax scene (right) -->
+    <section class="hero" id="heroSection">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="container">
+                    <h1 class="hero-title">
+                        <span class="highlight">Why</span> are vehicle inspections<span class="highlight"> still</span> <span class="highlight">slow</span> <span class="highlight">and</span> <span class="highlight">expensive?</span>
+                    </h1>
+                    <p class="hero-subtitle">With CarSee. What if you could automate vehicle inspections for faster, more accurate, and cost-efficient results?</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <img src="assets/icons/icon-check.png" alt="Fast report">
+                            </div>
+                            <h3>Damage report generated in minutes</h3>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <img src="assets/icons/icon-check.png" alt="Bilingual">
+                            </div>
+                            <h3>Ready to share Arabic/English reports</h3>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <img src="assets/icons/icon-check.png" alt="Local costs">
+                            </div>
+                            <h3>Local repair costs, designed for the arabic speaking region</h3>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="our-app.html" class="btn-primary">Download Now!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right" id="heroStageWrap">
+                <div id="heroStage" aria-hidden="true">
+                    <div class="hero-bracket hero-br-tl"></div>
+                    <div class="hero-bracket hero-br-tr"></div>
+                    <div class="hero-bracket hero-br-bl"></div>
+                    <div class="hero-bracket hero-br-br"></div>
+                    <div id="heroScene">
+                        <svg id="heroConnSvg" viewBox="0 0 620 420" preserveAspectRatio="none">
+                            <line id="hcLine1"/>
+                            <line id="hcLine2"/>
+                        </svg>
+                        <div id="heroCar"><img src="assets/images/demo-car.png" alt=""></div>
+                        <div id="heroA1"><img src="assets/images/demo-anchor1.png" alt=""></div>
+                        <div id="heroA2"><img src="assets/images/demo-anchor2.png" alt=""></div>
+                        <div id="heroA3"><img src="assets/images/demo-anchor3.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+<!-- CarSee AI Section -->
+    <section class="carsee-ai">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CarSee</h2>
+                <h3 class="section-subtitle">How CarSee Works?</h3>
+                <p class="section-description">CarSee gives car dealers, car rental offices and ordinary users the ability to accurately assess car damage, generate reports in English and Arabic, and get real repair prices according to the local market, all in minutes, not hours. </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/icons/icon-check.png" alt="Instant damage detection">
+                    </div>
+                    <h3>Instant damage detection</h3>
+                    <p>AI-powered precise identification of every visible defect</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/icons/icon-check.png" alt="Repair cost estimation">
+                    </div>
+                    <h3>Repair cost estimation</h3>
+                    <p>Direct pricing designed for the local region</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="assets/icons/icon-check.png" alt="Repair shops near you">
+                    </div>
+                    <h3>Repair shops near you</h3>
+                    <p>Direct connection with the nearest authorized service center</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our white-labelled solutions tailored to your needs</h2>
+                <p class="section-description">All powered by CarSee.</p>
+            </div>
+
+            <!-- Remote Trade-In -->
+            <div class="solution-card">
+                <div class="solution-content">
+                    <div class="solution-header">
+                        <h3>Remote Trade-In</h3>
+                        <h4>Source more Used Vehicles with remote inspection</h4>
+                        <p>Get comprehensive vehicle condition reports remotely. With damage detection and repair cost estimation, make accurate cash trade-in offers in minutes. Accelerate your vehicle sourcing with AI-assisted remote vehicle trade-in.</p>
+                    </div>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Qualified leads">
+                            <span>Qualified leads</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Accelerated offers">
+                            <span>Accelerated trade-in offers</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Customer experience">
+                            <span>Optimized customer experience</span>
+                        </div>
+                    </div>
+                    <a href="solution/remote-trade-in/index.html" class="solution-link">Explore remote vehicle assessment solutions</a>
+                </div>
+                <div class="solution-image">
+                    <img src="assets/images/remote-trade-in.webp" alt="Remote Trade-In Interface" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <!-- On Site Trade-In -->
+            <div class="solution-card reverse">
+                <div class="solution-content">
+                    <div class="solution-header">
+                        <h3>On Site Trade-In</h3>
+                        <h4>Simplify the recovery of used vehicles on site</h4>
+                        <p>Optimized customer registration integrated with your management tools, guided photo tour, damage detection and costing. Inspect vehicles on site in a few minutes and make your sales staff's life easier, while optimizing the trade-in experience for the customer!</p>
+                    </div>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Phygital experience">
+                            <span>Phygital trade-in experience</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Integration">
+                            <span>Integration with your management tools</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Vehicle valuation">
+                            <span>Accelerated vehicle valuation</span>
+                        </div>
+                    </div>
+                    <a href="solution/on-site-trade-in/index.html" class="solution-link">Discover on-site inspection solutions</a>
+                </div>
+                <div class="solution-image">
+                    <img src="assets/images/on-site-trade-in.webp" alt="On Site Trade-In Interface" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <!-- Remarketing -->
+            <div class="solution-card">
+                <div class="solution-content">
+                    <div class="solution-header">
+                        <h3>Remarketing</h3>
+                        <h4>Resell your vehicles faster and professionalize your ads</h4>
+                        <p>Our AI checks the conformity of your images and retouches them automatically according to your wishes. Clipping, background modification, blurring, plate recognition, image enhancement... Maximize the potential of your images and professionalize your ads.</p>
+                    </div>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Standardized ads">
+                            <span>Standardised ads</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Optimized images">
+                            <span>Optimized images</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Accelerated resale">
+                            <span>Accelerated vehicle resale</span>
+                        </div>
+                    </div>
+                    <a href="solution/remarketing/index.html" class="solution-link">See AI remarketing capabilities</a>
+                </div>
+                <div class="solution-image">
+                    <img src="assets/images/remarketing.webp" alt="Remarketing Interface" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <!-- Inspection API -->
+            <div class="solution-card reverse">
+                <div class="solution-content">
+                    <div class="solution-header">
+                        <h3>Inspection API</h3>
+                        <h4>Accelerate and optimize inspection with our API</h4>
+                        <p>You need to know the condition of a vehicle? CarSee easily integrates into your existing apps, databases and business flows. CarSee helps you get instant result detecting the damage and estimating the cost of repair.</p>
+                    </div>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Detection and costing">
+                            <span>Detection and costing</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="Standardized inspection">
+                            <span>Accelerated and standardized inspection</span>
+                        </div>
+                        <div class="solution-feature">
+                            <img src="assets/icons/icon-check.png" alt="API integration">
+                            <span>Integration via widget or API</span>
+                        </div>
+                    </div>
+                    <a href="solution/inspection/index.html" class="solution-link">View API integration documentation</a>
+                </div>
+                <div class="solution-image">
+                    <img src="assets/images/inspection-api.webp" alt="Inspection API Interface" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <p class="section-description">CarSee combines a unique artificial intelligence with business layers dedicated to the automotive industry. Discover how we turn your inspections into value-added data.</p>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-image">
+                        <img src="assets/icons/data-acquisition.png" alt="Data acquisition" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Data acquisition</h3>
+                    <p>CarSee compiles all the raw images taken by the user, regardless of the device that is used.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-image">
+                        <img src="assets/icons/data-treatment.png" alt="Data treatment" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Data treatment</h3>
+                    <p>Our CarSee technology allows for unprecedented multimodal image processing. It filters, cleans, analyses and enriches the raw data thanks to its complex deep learning algorithms.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-image">
+                        <img src="assets/icons/data-delivery.png" alt="Data delivery" onerror="this.style.display='none'">
+                    </div>
+                    <h3>Data delivery</h3>
+                    <p>The processed data is translated into clear data trough our API and dashboard.</p>
+                </div>
+            </div>
+            <div class="cta-section">
+                <a href="our-app.html" class="btn-primary">Download Now!</a>
+                <a href="contact/index.html" class="btn-secondary">Contact us</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- CTA Section -->
+    <section class="cta-final" id="demo">
+        <div class="container">
+            <h2 class="section-title">Start using AI to inspect your vehicles.</h2>
+            <p class="section-description">We will be happy to hear your needs or your projects in terms of inspection and remarketing.<br>Ask us for more information!</p>
+            <div class="cta-buttons">
+                <a href="our-app.html" class="btn-primary">Download Now!</a>
+                <a href="contact/index.html" class="btn-secondary">Contact us</a>
+            </div>
+            <p class="cta-footer">Our unique Artificial Intelligence CarSee is a game changer in car inspections. Discover how to integrate an immediate car condition response and remote solutions tailored to your needs.</p>
+            <a href="our-app.html" class="btn-primary">Get a demo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->    <!-- Footer -->    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand-row">
+                <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
+                    <img src="assets/logos/logo_banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                </a>
+                <nav class="footer-social" aria-label="Social media">
+                    <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.7 31.7 0 0 0 .5-5.8 31.7 31.7 0 0 0-.5-5.8zM9.7 15.5V8.5L15.7 12l-6 3.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.instagram.com/carseeai/" target="_blank" rel="noopener noreferrer" title="Instagram — @carseeai" aria-label="Instagram @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://x.com/carseeai" target="_blank" rel="noopener noreferrer" title="X — @carseeai" aria-label="X @carseeai">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="how-it-works/index.html">How it works</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
+                        <li><a href="benefits.html">Why CarSee?</a></li>
+                        <li><a href="our-app.html">Our App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Solutions Include</h4>
+                    <ul>
+                        <li><a href="solutions/index.html">Overview</a></li>
+                        <li><a href="solution/car-traders/index.html">Car Traders</a></li>
+                        <li><a href="solution/rental-companies/index.html">Rental Companies</a></li>
+                        <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="company/career/index.html">Career</a></li>
+                        <li><a href="company/partners/index.html">Become a Partner</a></li>
+                        <li><a href="contact/index.html">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CarSee. All right reserved.</p>
+                <div class="footer-links">
+                    <span class="legal-links">
+                        <a href="privacy.html">Privacy Policy</a>
+                        <span>·</span>
+                        <a href="cookies.html">Cookies Policy</a>
+                        <span>·</span>
+                        <a href="terms.html">Terms of Service</a>
+                        <span>·</span>
+                        <a href="mailto:legal@carsee.app">Legal</a>
+                    </span>
+                    <a href="#" id="cookiesSettings">Cookies Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#demo" class="floating-cta" id="floatingCta" aria-label="Book a Demo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8"  y1="2" x2="8"  y2="6"/>
+            <line x1="3"  y1="10" x2="21" y2="10"/>
+        </svg>
+        <span>Book a Demo</span>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script src="js/cookies.js"></script>
+    <script>
+    /* ═══════════════════════════════════════════════════════
+       HERO 3-D PARALLAX TILT — CarSee homepage background
+    ═══════════════════════════════════════════════════════ */
+    (function () {
+        var heroStage = document.getElementById('heroStage');
+        if (!heroStage) return;
+
+        /* Parameters (fixed tuned values) */
+        var P = {
+            maxTiltX : 20,
+            maxTiltY : 19,
+            car : { x: -16,  y: -14,  s: 1.4  },
+            a1  : { x: 251,  y: -17,  i: 14,  s: 1.3  },
+            a2  : { x: -122, y: -120, i: 16,  s: 0.65 },
+            a3  : { x: 141,  y: 104,  i: 61,  s: 1.35 }
+        };
+
+        var tarX = 0, tarY = 0, curX = 0, curY = 0, drift = 0;
+        var gyroEnabled = false;
+
+        var heroScene = document.getElementById('heroScene');
+        var heroCar   = document.getElementById('heroCar');
+        var heroA1    = document.getElementById('heroA1');
+        var heroA2    = document.getElementById('heroA2');
+        var heroA3    = document.getElementById('heroA3');
+        var hcLine1   = document.getElementById('hcLine1');
+        var hcLine2   = document.getElementById('hcLine2');
+
+        /* Mouse tracking only on the right panel (parallax stage) */
+        heroStage.addEventListener('mousemove', function (e) {
+            if (gyroEnabled) return;
+            var r = heroStage.getBoundingClientRect();
+            tarX = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
+            tarY = ((e.clientY - r.top)   / r.height - 0.5) * 2;
+        });
+        heroStage.addEventListener('mouseleave', function () {
+            if (!gyroEnabled) { tarX = 0; tarY = 0; }
+        });
+
+        /* Gyroscope (mobile): tap to enable, then tilt device */
+        function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+        function onOrient(e) {
+            tarX = clamp(e.gamma         / 45, -1, 1);
+            tarY = clamp((e.beta - 30)   / 45, -1, 1);
+        }
+        function enableGyro() {
+            if (gyroEnabled) return;
+            if (typeof DeviceOrientationEvent !== 'undefined' &&
+                typeof DeviceOrientationEvent.requestPermission === 'function') {
+                DeviceOrientationEvent.requestPermission()
+                    .then(function (perm) {
+                        if (perm === 'granted') {
+                            window.addEventListener('deviceorientation', onOrient);
+                            gyroEnabled = true;
+                        }
+                    }).catch(console.error);
+            } else {
+                window.addEventListener('deviceorientation', onOrient);
+                gyroEnabled = true;
+            }
+        }
+        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            /* Android etc.: enable gyro immediately. iOS: enable on first touch (permission requires user gesture). */
+            if (typeof DeviceOrientationEvent !== 'undefined' &&
+                typeof DeviceOrientationEvent.requestPermission !== 'function') {
+                enableGyro();
+            } else {
+                document.body.addEventListener('touchstart', function handler() {
+                    enableGyro();
+                    document.body.removeEventListener('touchstart', handler);
+                }, { once: true, passive: true });
+            }
+        }
+
+        function animate() {
+            curX += (tarX - curX) * 0.07;
+            curY += (tarY - curY) * 0.07;
+            drift += 0.007;
+
+            /* Design size 620×420; scale scene to fit right panel */
+            var stageW = heroStage.offsetWidth;
+            var stageH = heroStage.offsetHeight;
+            var SW = 620, SH = 420;
+            var fit = Math.min(stageW / SW, stageH / SH, 1);
+
+            var rotX = -curY * P.maxTiltX;
+            var rotY =  curX * P.maxTiltY;
+
+            heroScene.style.transform =
+                'scale(' + fit + ') rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+
+            /* Car */
+            var cL = SW / 2 + P.car.x;
+            var cT = SH / 2 + P.car.y;
+            heroCar.style.left      = cL + 'px';
+            heroCar.style.top       = cT + 'px';
+            heroCar.style.transform = 'translate(-50%,-50%) scale(' + P.car.s + ')';
+
+            /* Anchor 1 — always in front */
+            var a1L = SW / 2 + P.a1.x + curX * P.a1.i;
+            var a1T = SH / 2 + P.a1.y + curY * (P.a1.i * 0.68);
+            heroA1.style.left      = a1L + 'px';
+            heroA1.style.top       = a1T + 'px';
+            heroA1.style.transform = 'translate(-50%,-50%) scale(' + P.a1.s + ')';
+            heroA1.style.zIndex    = '12';
+
+            /* Anchor 2 — circular drift, can go behind */
+            var dX = Math.cos(drift) * 9;
+            var dY = Math.sin(drift) * 9;
+            var a2L = SW / 2 + P.a2.x - curX * P.a2.i + dX;
+            var a2T = SH / 2 + P.a2.y - curY * (P.a2.i * 0.68) + dY;
+            heroA2.style.left      = a2L + 'px';
+            heroA2.style.top       = a2T + 'px';
+            heroA2.style.transform = 'translate(-50%,-50%) scale(' + P.a2.s + ')';
+            heroA2.style.zIndex    = rotY > 4 ? '3' : '8';
+
+            /* Anchor 3 — counter-moves, always foreground */
+            var a3L = SW / 2 + P.a3.x - curX * P.a3.i;
+            var a3T = SH / 2 + P.a3.y - curY * (P.a3.i * 0.68);
+            heroA3.style.left      = a3L + 'px';
+            heroA3.style.top       = a3T + 'px';
+            heroA3.style.transform = 'translate(-50%,-50%) scale(' + P.a3.s + ')';
+
+            /* Connector lines */
+            hcLine1.setAttribute('x1', String(cL + 155));
+            hcLine1.setAttribute('y1', String(cT - 20));
+            hcLine1.setAttribute('x2', String(a1L));
+            hcLine1.setAttribute('y2', String(a1T));
+
+            hcLine2.setAttribute('x1', String(cL + 145));
+            hcLine2.setAttribute('y1', String(cT + 30));
+            hcLine2.setAttribute('x2', String(a2L));
+            hcLine2.setAttribute('y2', String(a2T));
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    })();
+    </script>
+    </body>
+</html>
