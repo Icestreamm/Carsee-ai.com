@@ -14,13 +14,13 @@
   const i18n = window.WHERE_WE_WORK_I18N || {};
 
   const BRAND = "#0d3b6e";
-  const BRAND_HOVER = "#1a5494";
-  const BRAND_SEL = "#164a82";
+  const BRAND_HOVER = "#0d3b6e";
+  const BRAND_SEL = "#0d3b6e";
   const MUTED = "#c8ccd0";
 
   function adm0A3(feature) {
     const p = feature.properties || {};
-    return p.ADM0_A3 || "";
+    return p.ADM0_A3 || p.ISO_A3 || p["ISO3166-1-Alpha-3"] || p.ISO3 || "";
   }
 
   function isActive(feature) {
@@ -132,10 +132,16 @@
   }
 
   const map = L.map(mapEl, {
-    scrollWheelZoom: true,
+    scrollWheelZoom: false,
+    dragging: false,
+    touchZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    zoomSnap: 0.1,
     zoomControl: true,
     attributionControl: false,
-    maxBoundsViscosity: 0.85,
+    maxBoundsViscosity: 1.0,
   }).setView([24, 47], 5);
 
   window.addEventListener("load", function () {
@@ -202,54 +208,122 @@
     return;
   }
 
-  const feats = (data.features || []).slice();
-  feats.sort(function (a, b) {
-    return (isActive(a) ? 1 : 0) - (isActive(b) ? 1 : 0);
-  });
-
-  const inactive = {
-    type: "FeatureCollection",
-    features: feats.filter(function (f) {
-      return !isActive(f);
-    }),
+  const borderCountriesWanted = {
+    CHD: true, // Chad
+    LBY: true, // Libya
+    SDN: true, // Sudan
+    SSD: true, // South Sudan
+    YEM: true, // Yemen
+    PAK: true, // Pakistan
+    ISR: true,
+    PSE: true,
+    LBN: true,
+    SYR: true,
+    IRQ: true,
+    KWT: true,
+    QAT: true,
+    OMN: true,
   };
-  const active = {
-    type: "FeatureCollection",
-    features: feats.filter(function (f) {
-      return isActive(f);
-    }),
-  };
 
-  addInactiveLayer(inactive);
-  const activeGroup = addActiveLayer(active);
-  activeGroup.bringToFront();
-
-  const activeFeats = active.features || [];
-  addFloatingCurrencyLabels(map, activeFeats);
-
-  var focusBounds = null;
-  if (activeFeats.length) {
-    focusBounds = L.geoJSON({ type: "FeatureCollection", features: activeFeats }).getBounds();
-  }
-  if (!focusBounds || !focusBounds.isValid()) {
-    focusBounds = L.geoJSON(data).getBounds();
-  }
-  if (focusBounds.isValid()) {
-    map.fitBounds(focusBounds, { padding: [36, 36], maxZoom: 6, animate: false });
-    map.setMaxBounds(focusBounds.pad(0.22));
-  }
-
-  map.on("click", function (e) {
-    var t = e.originalEvent && e.originalEvent.target;
-    if (t && typeof t.closest === "function" && t.closest(".leaflet-interactive")) {
-      return;
-    }
-    clearSelectionVisual();
-  });
-
-  if (shell) {
-    requestAnimationFrame(function () {
-      shell.classList.add("is-visible");
+  function renderMap(dataset) {
+    const feats = (dataset.features || []).slice();
+    feats.sort(function (a, b) {
+      return (isActive(a) ? 1 : 0) - (isActive(b) ? 1 : 0);
     });
+
+    const inactive = {
+      type: "FeatureCollection",
+      features: feats.filter(function (f) {
+        return !isActive(f);
+      }),
+    };
+    const active = {
+      type: "FeatureCollection",
+      features: feats.filter(function (f) {
+        return isActive(f);
+      }),
+    };
+
+    addInactiveLayer(inactive);
+    const activeGroup = addActiveLayer(active);
+    activeGroup.bringToFront();
+
+    const activeFeats = active.features || [];
+    addFloatingCurrencyLabels(map, activeFeats);
+
+    var fixedViewBounds = L.latLngBounds([9.0, 12.0], [37.2, 62.5]);
+    var fullRegionBounds = L.geoJSON(dataset).getBounds();
+    var fitBounds = fixedViewBounds;
+    if ((!fitBounds || !fitBounds.isValid()) && fullRegionBounds && fullRegionBounds.isValid()) {
+      fitBounds = fullRegionBounds;
+    } else if ((!fitBounds || !fitBounds.isValid()) && activeFeats.length) {
+      fitBounds = L.geoJSON({ type: "FeatureCollection", features: activeFeats }).getBounds();
+    }
+    if (fitBounds && fitBounds.isValid()) {
+      var isMobile = window.matchMedia("(max-width: 900px)").matches;
+      map.fitBounds(fitBounds, {
+        padding: isMobile ? [16, 16] : [32, 32],
+        maxZoom: isMobile ? 7 : 6,
+        animate: false,
+      });
+      var lockedZoom = map.getZoom();
+      var targetZoom = lockedZoom + 0.75; // +10% more from previous locked view
+      map.setZoom(targetZoom, { animate: false });
+      map.panBy([Math.round(map.getSize().x * 0.1), -Math.round(map.getSize().y * 0.1)], { animate: false }); // shift right ~10% and up ~10%
+      map.setMinZoom(targetZoom);
+      map.setMaxZoom(targetZoom);
+      map.setMaxBounds(fitBounds.pad(0.02));
+    }
+
+    map.on("click", function (e) {
+      var t = e.originalEvent && e.originalEvent.target;
+      if (t && typeof t.closest === "function" && t.closest(".leaflet-interactive")) {
+        return;
+      }
+      clearSelectionVisual();
+    });
+
+    if (shell) {
+      requestAnimationFrame(function () {
+        shell.classList.add("is-visible");
+      });
+    }
   }
+
+  function ensureBorderCountries(dataset) {
+    var existing = {};
+    (dataset.features || []).forEach(function (f) {
+      existing[adm0A3(f)] = true;
+    });
+
+    var missing = Object.keys(borderCountriesWanted).filter(function (code) {
+      return !existing[code];
+    });
+
+    if (!missing.length) return Promise.resolve(dataset);
+
+    return fetch("https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson")
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (world) {
+        if (!world || !world.features) return dataset;
+        var added = [];
+        for (var i = 0; i < world.features.length; i++) {
+          var f = world.features[i];
+          var code = adm0A3(f);
+          if (borderCountriesWanted[code] && !existing[code]) {
+            added.push(f);
+            existing[code] = true;
+          }
+        }
+        if (!added.length) return dataset;
+        return { type: "FeatureCollection", features: (dataset.features || []).concat(added) };
+      })
+      .catch(function () {
+        return dataset;
+      });
+  }
+
+  ensureBorderCountries(data).then(renderMap);
 })();

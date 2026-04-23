@@ -53,6 +53,11 @@
   .wm-layout {
     grid-template-columns: 1fr;
   }
+
+  .wm-map-frame {
+    height: min(52vh, 420px);
+    min-height: 300px;
+  }
 }
 
 .wm-map-shell {
@@ -78,6 +83,14 @@
 .wm-map-frame .leaflet-container {
   font-family: inherit;
   background: var(--wm-bg);
+}
+
+/* Keep map controls/layers below the fixed site header. */
+.wm-map-frame .leaflet-top,
+.wm-map-frame .leaflet-bottom,
+.wm-map-frame .leaflet-pane,
+.wm-map-frame .leaflet-control {
+  z-index: 50 !important;
 }
 
 .wm-map-frame .leaflet-interactive {

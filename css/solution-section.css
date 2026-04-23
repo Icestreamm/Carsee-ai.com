@@ -32,7 +32,7 @@
 }
 
 #solution .solution-h2 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: 800;
 }
 
@@ -430,7 +430,7 @@ body.ar #solution .audience-badge {
 }
 
 #solution .card-title {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: 800;
   font-size: clamp(22px, 2.5vw, 28px);
   margin-bottom: 10px;
@@ -538,7 +538,7 @@ body.ar #solution .card-title {
 }
 
 #solution .stat-value {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-weight: 800;
   font-size: 22px;
   color: var(--scan-cyan);

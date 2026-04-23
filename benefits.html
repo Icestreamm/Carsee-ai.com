@@ -7,7 +7,7 @@
     <meta name="description" content="Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=DM+Sans:wght@400;500&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=DM+Sans:wght@400;500&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/cookies.css">
@@ -22,10 +22,17 @@
     .benefits-page .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,212,245,0.1); border: 1px solid rgba(0,212,245,0.25); border-radius: 100px; padding: 6px 16px; font-size: 11px; font-weight: 500; color: var(--scan-cyan); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 28px; }
     .benefits-page .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--scan-cyan); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
-    .benefits-page .hero h1 { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(38px, 5vw, 64px); line-height: 1.08; letter-spacing: -1.5px; color: #fff; margin-bottom: 24px; }
+    .benefits-page .hero h1 { font-family: 'Cairo', sans-serif; font-weight: 800; font-size: clamp(38px, 5vw, 64px); line-height: 1.08; letter-spacing: -1.5px; color: #fff; margin-bottom: 24px; }
     .benefits-page .hero h1 em { font-style: normal; color: var(--scan-cyan); }
     .benefits-page .hero p { font-size: 17px; line-height: 1.7; color: var(--on-surface-variant); max-width: 540px; margin-bottom: 40px; }
     .benefits-page .hero-actions { display: flex; gap: 16px; align-items: center; }
+    .benefits-page .hero-cta-float {
+        position: absolute;
+        right: clamp(80px, 14vw, 220px);
+        top: 52%;
+        transform: translateY(-50%);
+        z-index: 2;
+    }
     .benefits-page .btn-primary { background: var(--scan-cyan); color: var(--abyss-navy); border: none; padding: 14px 32px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
     .benefits-page .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,245,0.35); }
     .benefits-page .btn-ghost { color: var(--on-surface); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
@@ -33,11 +40,11 @@
     .benefits-page .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--outline); background: rgba(10,22,40,0.7); backdrop-filter: blur(12px); z-index: 2; }
     .benefits-page .hero-stat { padding: 28px 32px; border-right: 1px solid var(--outline); }
     .benefits-page .hero-stat:last-child { border-right: none; }
-    .benefits-page .hero-stat-num { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: 36px; color: var(--scan-cyan); letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
+    .benefits-page .hero-stat-num { font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 36px; color: var(--scan-cyan); letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
     .benefits-page .hero-stat-label { font-size: 12px; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.8px; }
     .benefits-page section { position: relative; z-index: 1; padding: 100px 60px; }
     .benefits-page .section-tag { font-size: 11px; font-weight: 500; color: var(--scan-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .benefits-page .section-title { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -0.8px; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+    .benefits-page .section-title { font-family: 'Cairo', sans-serif; font-weight: 800; font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -0.8px; color: #fff; margin-bottom: 16px; line-height: 1.15; }
     .benefits-page .section-subtitle { font-size: 16px; color: var(--on-surface-variant); max-width: 520px; line-height: 1.7; margin-bottom: 64px; }
     .benefits-page .pain-section { background: var(--midnight); }
     .benefits-page .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--outline); border: 2px solid var(--outline); border-radius: 16px; overflow: hidden; }
@@ -46,9 +53,12 @@
     .benefits-page .pain-card:hover::after { transform: scaleX(1); }
     .benefits-page .pain-card:hover { background: #1e2e42; }
     .benefits-page .pain-icon { width: 44px; height: 44px; margin-bottom: 24px; opacity: 0.9; }
-    .benefits-page .pain-title { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 12px; letter-spacing: -0.3px; }
+    .benefits-page .pain-title { font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 12px; letter-spacing: -0.3px; }
     .benefits-page .pain-desc { font-size: 14px; color: var(--on-surface-variant); line-height: 1.65; }
     .benefits-page .pain-badge { display: inline-block; margin-top: 20px; background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.25); color: var(--alert-amber); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.5px; }
+    .benefits-page .roi-cur-btn { background: rgba(0,212,245,0.06); border: 1px solid var(--outline); color: var(--on-surface-variant); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Cairo', sans-serif; }
+    .benefits-page .roi-cur-btn:hover { border-color: rgba(0,212,245,0.4); color: var(--scan-cyan); }
+    .benefits-page .roi-cur-btn.roi-cur-active { background: var(--scan-cyan); color: var(--abyss-navy); border-color: var(--scan-cyan); }
     .benefits-page .roi-section { background: var(--midnight); }
     .benefits-page .roi-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .benefits-page .roi-inputs { display: flex; flex-direction: column; gap: 28px; }
@@ -57,17 +67,17 @@
     .benefits-page .roi-slider { flex: 1; -webkit-appearance: none; height: 4px; background: var(--outline); border-radius: 2px; outline: none; }
     .benefits-page .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--scan-cyan); cursor: pointer; box-shadow: 0 0 0 4px rgba(0,212,245,0.15); transition: box-shadow 0.2s; }
     .benefits-page .roi-slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 8px rgba(0,212,245,0.2); }
-    .benefits-page .roi-slider-val { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 18px; color: #fff; min-width: 60px; text-align: right; }
+    .benefits-page .roi-slider-val { font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 18px; color: #fff; min-width: 60px; text-align: right; }
     .benefits-page .roi-results { background: linear-gradient(135deg, var(--command-blue), #0c2a50); border: 1px solid rgba(0,212,245,0.2); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; }
     .benefits-page .roi-results::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,212,245,0.15), transparent 70%); pointer-events: none; }
     .benefits-page .roi-result-title { font-size: 12px; color: rgba(0,212,245,0.7); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 32px; }
     .benefits-page .roi-result-item { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .benefits-page .roi-result-item:last-child { border-bottom: none; }
     .benefits-page .roi-result-name { font-size: 14px; color: var(--on-surface); }
-    .benefits-page .roi-result-amount { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 22px; color: var(--scan-cyan); letter-spacing: -0.5px; }
+    .benefits-page .roi-result-amount { font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 22px; color: var(--scan-cyan); letter-spacing: -0.5px; }
     .benefits-page .roi-total { margin-top: 24px; padding-top: 24px; border-top: 2px solid rgba(0,212,245,0.3); display: flex; justify-content: space-between; align-items: baseline; }
-    .benefits-page .roi-total-label { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 16px; color: #fff; }
-    .benefits-page .roi-total-val { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: 36px; color: var(--green-bright); letter-spacing: -1px; }
+    .benefits-page .roi-total-label { font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 16px; color: #fff; }
+    .benefits-page .roi-total-val { font-family: 'Cairo', sans-serif; font-weight: 800; font-size: 36px; color: var(--green-bright); letter-spacing: -1px; }
     .benefits-page .compare-section { background: var(--abyss-navy); }
     .benefits-page .compare-table { width: 100%; border-collapse: collapse; border-radius: 16px; overflow: hidden; border: 1px solid var(--outline); }
     .benefits-page .compare-table th { padding: 20px 28px; text-align: left; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; background: var(--dark-navy); color: var(--on-surface-variant); }
@@ -82,10 +92,10 @@
     .benefits-page .industry-card { background: var(--dark-card); border: 1px solid var(--outline); border-radius: 14px; padding: 32px 24px; text-align: center; transition: all 0.3s; cursor: default; }
     .benefits-page .industry-card:hover { border-color: rgba(0,212,245,0.3); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
     .benefits-page .industry-icon { font-size: 36px; margin-bottom: 16px; display: block; }
-    .benefits-page .industry-name { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 15px; color: #fff; margin-bottom: 10px; }
+    .benefits-page .industry-name { font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 15px; color: #fff; margin-bottom: 10px; }
     .benefits-page .industry-desc { font-size: 13px; color: var(--on-surface-variant); line-height: 1.6; }
     .benefits-page .cta-section { background: linear-gradient(160deg, #091425, #0C1E35, #0D3B6E); text-align: center; padding: 120px 60px; }
-    .benefits-page .cta-section h2 { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); color: #fff; letter-spacing: -1px; margin-bottom: 20px; }
+    .benefits-page .cta-section h2 { font-family: 'Cairo', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); color: #fff; letter-spacing: -1px; margin-bottom: 20px; }
     .benefits-page .cta-section p { font-size: 16px; color: var(--on-surface-variant); margin-bottom: 40px; }
     .benefits-page .cta-actions { display: flex; gap: 16px; justify-content: center; align-items: center; }
     .benefits-page .btn-outline { background: transparent; color: var(--scan-cyan); border: 1.5px solid var(--scan-cyan); padding: 14px 32px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
@@ -103,6 +113,12 @@
     @media (max-width: 900px) {
         .benefits-page section { padding: 70px 24px; }
         .benefits-page .hero { padding: 120px 24px 100px; }
+        .benefits-page .hero-cta-float {
+            position: static;
+            transform: none;
+            margin-top: 8px;
+            margin-bottom: 24px;
+        }
         .benefits-page .hero-stats { grid-template-columns: repeat(2, 1fr); }
         .benefits-page .pain-grid { grid-template-columns: 1fr 1fr; }
         .benefits-page .roi-wrap { grid-template-columns: 1fr; }
@@ -122,7 +138,7 @@
     <meta name="twitter:title" content="Why CarSee? — AI Vehicle Damage Evaluation">
     <meta name="twitter:description" content="Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.">
     <meta name="twitter:image" content="https://carsee.ai/assets/logos/logo_banner.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://carsee.ai/#organization","name":"CarSee","url":"https://carsee.ai","logo":"https://carsee.ai/assets/logos/logo-png-big.png","sameAs":["https://x.com/carseeai","https://www.youtube.com/@carseeai","https://www.instagram.com/carseeai/","https://www.facebook.com/carseeeai"]},{"@type":"WebPage","@id":"https://carsee.ai/benefits.html#webpage","url":"https://carsee.ai/benefits.html","name":"Why CarSee? — AI Vehicle Damage Evaluation","description":"Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://carsee.ai","name":"CarSee"},"about":{"@id":"https://carsee.ai/#organization"}},{"@type":"FAQPage","@id":"https://carsee.ai/benefits.html#faq","mainEntity":[{"@type":"Question","name":"What is CarSee?","acceptedAnswer":{"@type":"Answer","text":"CarSee is an AI-assisted vehicle damage inspection platform that produces structured assessments and repair cost signals."}},{"@type":"Question","name":"Who is this page for?","acceptedAnswer":{"@type":"Answer","text":"Automotive, insurance, fleet, and platform teams evaluating CarSee for GCC and MENA workflows."}},{"@type":"Question","name":"Does CarSee support bilingual reporting?","acceptedAnswer":{"@type":"Answer","text":"CarSee is built to support Arabic and English outputs where applicable to the product surface."}},{"@type":"Question","name":"How can I contact CarSee?","acceptedAnswer":{"@type":"Answer","text":"Use the on-site contact form or the official email channels referenced in the footer."}},{"@type":"Question","name":"Is there a mobile app?","acceptedAnswer":{"@type":"Answer","text":"See the Our App page for download links and onboarding guidance when available."}},{"@type":"Question","name":"Where does CarSee operate?","acceptedAnswer":{"@type":"Answer","text":"CarSee focuses on GCC/MENA markets; see Where we work for market context."}},{"@type":"Question","name":"Is my data handled securely?","acceptedAnswer":{"@type":"Answer","text":"CarSee follows common SaaS security practices; read the privacy policy for specifics."}},{"@type":"Question","name":"Can CarSee integrate via API?","acceptedAnswer":{"@type":"Answer","text":"API-oriented inspection workflows exist for teams that need a consistent vehicle condition signal."}},{"@type":"Question","name":"What outputs does CarSee generate?","acceptedAnswer":{"@type":"Answer","text":"Structured inspection narratives, damage categorization, and repair cost signals aligned to regional repair economics."}},{"@type":"Question","name":"Does CarSee replace a physical appraiser?","acceptedAnswer":{"@type":"Answer","text":"CarSee augments workflows with consistent photo-to-report automation; final decisions remain with your team and policies."}}]},{"@type":"BreadcrumbList","@id":"https://carsee.ai/benefits.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://carsee.ai/"},{"@type":"ListItem","position":2,"name":"Benefits","item":"https://carsee.ai/benefits.html"}]},{"@type":"ProfessionalService","@id":"https://carsee.ai/#professionalService","name":"CarSee","image":"https://carsee.ai/assets/logos/logo_banner.png","url":"https://carsee.ai","description":"Software-enabled AI vehicle damage inspection and reporting.","areaServed":["GCC","Middle East","North Africa"],"parentOrganization":{"@id":"https://carsee.ai/#organization"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://carsee.ai/#organization","name":"CarSee","url":"https://carsee.ai","logo":"https://carsee.ai/assets/logos/carsee-logo-svg2.svg","sameAs":["https://x.com/carseeai","https://www.youtube.com/@carseeai","https://www.instagram.com/carseeai/","https://www.facebook.com/carseeeai"]},{"@type":"WebPage","@id":"https://carsee.ai/benefits.html#webpage","url":"https://carsee.ai/benefits.html","name":"Why CarSee? — AI Vehicle Damage Evaluation","description":"Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://carsee.ai","name":"CarSee"},"about":{"@id":"https://carsee.ai/#organization"}},{"@type":"FAQPage","@id":"https://carsee.ai/benefits.html#faq","mainEntity":[{"@type":"Question","name":"What is CarSee?","acceptedAnswer":{"@type":"Answer","text":"CarSee is an AI-assisted vehicle damage inspection platform that produces structured assessments and repair cost signals."}},{"@type":"Question","name":"Who is this page for?","acceptedAnswer":{"@type":"Answer","text":"Automotive, insurance, fleet, and platform teams evaluating CarSee for GCC and MENA workflows."}},{"@type":"Question","name":"Does CarSee support bilingual reporting?","acceptedAnswer":{"@type":"Answer","text":"CarSee is built to support Arabic and English outputs where applicable to the product surface."}},{"@type":"Question","name":"How can I contact CarSee?","acceptedAnswer":{"@type":"Answer","text":"Use the on-site contact form or the official email channels referenced in the footer."}},{"@type":"Question","name":"Is there a mobile app?","acceptedAnswer":{"@type":"Answer","text":"See the Our App page for download links and onboarding guidance when available."}},{"@type":"Question","name":"Where does CarSee operate?","acceptedAnswer":{"@type":"Answer","text":"CarSee focuses on GCC/MENA markets; see Where we work for market context."}},{"@type":"Question","name":"Is my data handled securely?","acceptedAnswer":{"@type":"Answer","text":"CarSee follows common SaaS security practices; read the privacy policy for specifics."}},{"@type":"Question","name":"Can CarSee integrate via API?","acceptedAnswer":{"@type":"Answer","text":"API-oriented inspection workflows exist for teams that need a consistent vehicle condition signal."}},{"@type":"Question","name":"What outputs does CarSee generate?","acceptedAnswer":{"@type":"Answer","text":"Structured inspection narratives, damage categorization, and repair cost signals aligned to regional repair economics."}},{"@type":"Question","name":"Does CarSee replace a physical appraiser?","acceptedAnswer":{"@type":"Answer","text":"CarSee augments workflows with consistent photo-to-report automation; final decisions remain with your team and policies."}}]},{"@type":"BreadcrumbList","@id":"https://carsee.ai/benefits.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://carsee.ai/"},{"@type":"ListItem","position":2,"name":"Benefits","item":"https://carsee.ai/benefits.html"}]},{"@type":"ProfessionalService","@id":"https://carsee.ai/#professionalService","name":"CarSee","image":"https://carsee.ai/assets/logos/logo_banner.png","url":"https://carsee.ai","description":"Software-enabled AI vehicle damage inspection and reporting.","areaServed":["GCC","Middle East","North Africa"],"parentOrganization":{"@id":"https://carsee.ai/#organization"}}]}</script>
 <!-- /AEO:inject v1 -->
 </head>
 <body class="benefits-page">
@@ -139,7 +155,7 @@
                 <div class="nav-wrapper">
                     <div class="logo">
                         <a href="index.html" class="logo-link">
-                            <img src="assets/logos/logo-png-big.png" alt="CarSee Logo" id="logo">
+                            <img src="assets/logos/carsee-logo-svg2.svg" alt="CarSee Logo" id="logo">
                             <span class="logo-text-wrap">
                                 <span class="nav-logo-text">Car<span class="logo-see">See</span></span>
                                 <span class="nav-logo-subtitle">AI Damage Evaluation</span>
@@ -197,10 +213,10 @@
             <h1>Why Businesses Choose <em>CarSee</em> Over Everything Else</h1>
             <p>From cutting inspection time by up to 62% to strengthening your dispute record — the clearest, measurable gains CarSee can deliver, with headline figures kept realistic for real-world operations.</p>
             <div class="hero-actions">
-                <a href="our-app.html" class="btn-primary">Start Saving Today</a>
                 <a href="#roi" class="btn-ghost">↓ ROI calculator</a>
             </div>
         </div>
+        <a href="our-app.html" class="btn-primary hero-cta-float">Start Saving Today</a>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="hero-stat-num"><span class="counter" data-target="62">0</span>%</div>
@@ -260,48 +276,51 @@
         </div>
     </section>
 
-    <section class="roi-section" id="roi">
+    <section class="roi-section" id="roi" style="padding-top:60px;">
         <div class="section-tag anim-fade">ROI CALCULATOR</div>
-        <h2 class="section-title anim-fade">Your company inputs</h2>
-        <p class="section-subtitle anim-fade">See your savings projections</p>
+        <h2 class="section-title anim-fade">Calculate your savings</h2>
+        <p class="section-subtitle anim-fade">Enter your in-house inspection team's numbers and see annual labour efficiency gains</p>
+
+        <div class="roi-currency-bar anim-fade" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;">
+            <button class="roi-cur-btn roi-cur-active" data-cur="USD">$ USD</button>
+            <button class="roi-cur-btn" data-cur="EUR">€ EUR</button>
+            <button class="roi-cur-btn" data-cur="AED">د.إ AED</button>
+            <button class="roi-cur-btn" data-cur="SAR">﷼ SAR</button>
+            <button class="roi-cur-btn" data-cur="JOD">د.ا JOD</button>
+            <button class="roi-cur-btn" data-cur="EGP">ج.م EGP</button>
+        </div>
+
         <div class="roi-wrap">
             <div class="roi-inputs anim-fade">
                 <div class="roi-input-group">
                     <label>Vehicles inspected per month</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="vehicles" min="10" max="350" value="40" step="10">
+                        <input type="range" class="roi-slider" id="vehicles" min="10" max="500" value="40" step="10">
                         <div class="roi-slider-val" id="vehiclesVal">40</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
-                    <label>Current cost per inspection (USD)</label>
+                    <label>Inspector monthly salary (<span id="salaryUnit">USD</span>)</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="cost" min="0.5" max="10" value="5" step="0.5">
-                        <div class="roi-slider-val" id="costVal">$5</div>
+                        <input type="range" class="roi-slider" id="salary" min="200" max="8000" value="2000" step="100">
+                        <div class="roi-slider-val" id="salaryVal">2,000</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
-                    <label>Staff loaded hourly cost (USD)</label>
+                    <label>Current time per inspection (minutes)</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="hourly" min="1" max="20" value="12" step="1">
-                        <div class="roi-slider-val" id="hourlyVal">$12</div>
-                    </div>
-                </div>
-                <div class="roi-input-group">
-                    <label>Current inspection time (minutes)</label>
-                    <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="time" min="10" max="30" value="20" step="1">
-                        <div class="roi-slider-val" id="timeVal">20 min</div>
+                        <input type="range" class="roi-slider" id="time" min="10" max="60" value="25" step="1">
+                        <div class="roi-slider-val" id="timeVal">25 min</div>
                     </div>
                 </div>
             </div>
             <div class="roi-results anim-fade">
-                <div class="roi-result-title">Your savings outlook (USD)</div>
-                <div class="roi-result-item"><div class="roi-result-name">💰 Direct cost savings</div><div class="roi-result-amount" id="costSaving">$2,280</div></div>
-                <div class="roi-result-item"><div class="roi-result-name">⏱ Labour hours recovered</div><div class="roi-result-amount" id="timeSaving">120 hrs</div></div>
-                <div class="roi-result-item"><div class="roi-result-name">📋 Reports generated</div><div class="roi-result-amount" id="reports">480</div></div>
-                <div class="roi-result-item"><div class="roi-result-name">⚖️ Dispute risk reduction</div><div class="roi-result-amount" id="disputes">~112</div></div>
-                <div class="roi-total"><div class="roi-total-label">Total annual value (USD)</div><div class="roi-total-val" id="totalVal">$3,720</div></div>
+                <div class="roi-result-title">Annual savings outlook (<span id="resultsCur">USD</span>)</div>
+                <div class="roi-result-item"><div class="roi-result-name">⏱ Labour cost recovered</div><div class="roi-result-amount" id="labourSaving">—</div></div>
+                <div class="roi-result-item"><div class="roi-result-name">🕐 Hours freed per year</div><div class="roi-result-amount" id="timeSaving">—</div></div>
+                <div class="roi-result-item"><div class="roi-result-name">📋 Annual reports generated</div><div class="roi-result-amount" id="reports">—</div></div>
+                <div class="roi-result-item"><div class="roi-result-name">⚖️ Disputes avoided</div><div class="roi-result-amount" id="disputes">—</div></div>
+                <div class="roi-total"><div class="roi-total-label">Total annual value</div><div class="roi-total-val" id="totalVal">—</div></div>
             </div>
         </div>
     </section>
@@ -370,7 +389,7 @@
         <div class="container">
             <div class="footer-brand-row">
                 <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
-                    <img src="assets/logos/logo_banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                    <img src="assets/images/logo-banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
                 </a>
                 <nav class="footer-social" aria-label="Social media">
                     <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
@@ -469,47 +488,80 @@
             requestAnimationFrame(update);
         });
     }
-    var sliders = {
-        vehicles: { el: document.getElementById('vehicles'), display: document.getElementById('vehiclesVal'), prefix: '', suffix: '' },
-        cost: { el: document.getElementById('cost'), display: document.getElementById('costVal'), prefix: '$', suffix: '' },
-        hourly: { el: document.getElementById('hourly'), display: document.getElementById('hourlyVal'), prefix: '$', suffix: '' },
-        time: { el: document.getElementById('time'), display: document.getElementById('timeVal'), prefix: '', suffix: ' min' }
+    var CURRENCIES = {
+        USD: { symbol: '$',   rate: 1,    code: 'USD', nameEn: 'US Dollar',        nameAr: 'دولار أمريكي' },
+        EUR: { symbol: '€',   rate: 0.92, code: 'EUR', nameEn: 'Euro',             nameAr: 'يورو' },
+        AED: { symbol: 'د.إ', rate: 3.67, code: 'AED', nameEn: 'UAE Dirham',       nameAr: 'درهم إماراتي' },
+        SAR: { symbol: '﷼',   rate: 3.75, code: 'SAR', nameEn: 'Saudi Riyal',      nameAr: 'ريال سعودي' },
+        JOD: { symbol: 'د.ا', rate: 0.71, code: 'JOD', nameEn: 'Jordanian Dinar',  nameAr: 'دينار أردني' },
+        EGP: { symbol: 'ج.م', rate: 50.5, code: 'EGP', nameEn: 'Egyptian Pound',   nameAr: 'جنيه مصري' }
     };
+    var isArabicUi = (document.documentElement.lang || '').toLowerCase().indexOf('ar') === 0 || document.documentElement.dir === 'rtl';
+    var activeCur = 'USD';
+    var CARSEE_MINUTES = 5;
+    var WORKING_HOURS_PER_MONTH = 176;
+
+    var elVehicles = document.getElementById('vehicles');
+    var elSalary = document.getElementById('salary');
+    var elTime = document.getElementById('time');
+
+    function fmt(n) { return Math.round(n).toLocaleString(); }
+    function sym() { return CURRENCIES[activeCur].symbol; }
+    function curLabel(cur) {
+        var c = CURRENCIES[cur || activeCur];
+        var localizedName = isArabicUi ? c.nameAr : c.nameEn;
+        return localizedName + ' (' + c.code + ')';
+    }
+
     function calcROI() {
-        var v = parseInt(sliders.vehicles.el.value, 10) || 0;
-        var c = parseInt(sliders.cost.el.value, 10) || 0;
-        var h = parseInt(sliders.hourly.el.value, 10) || 0;
-        var t = parseInt(sliders.time.el.value, 10) || 0;
-        var carseeCostPerReport = 22;
-        var carseeMinutesPerInspection = 5;
-        var annualVehicles = v * 12;
-        var costSaving = Math.max(0, (c - carseeCostPerReport) * annualVehicles);
-        var hoursRecovered = Math.max(0, (t - carseeMinutesPerInspection) / 60) * annualVehicles;
-        var labourSaving = hoursRecovered * h;
-        var totalVal = costSaving + labourSaving;
+        var vehicles = parseInt(elVehicles.value, 10) || 0;
+        var salary = parseFloat(elSalary.value) || 0;
+        var timeMin = parseInt(elTime.value, 10) || 0;
+        var annualVehicles = vehicles * 12;
+        var hourlyRate = salary / WORKING_HOURS_PER_MONTH;
+        var currentLabourPerVehicle = (timeMin / 60) * hourlyRate;
+        var carseeLabourPerVehicle = (CARSEE_MINUTES / 60) * hourlyRate;
+        var labourSaved = Math.max(0, currentLabourPerVehicle - carseeLabourPerVehicle) * annualVehicles;
+        var hoursSaved = Math.max(0, (timeMin - CARSEE_MINUTES) / 60) * annualVehicles;
         var disputes = Math.round(annualVehicles * 0.3 * 0.78);
-        document.getElementById('costSaving').textContent = '$' + costSaving.toLocaleString();
-        document.getElementById('timeSaving').textContent = Math.round(hoursRecovered).toLocaleString() + ' hrs';
-        document.getElementById('reports').textContent = annualVehicles.toLocaleString();
-        document.getElementById('disputes').textContent = '~' + disputes;
-        document.getElementById('totalVal').textContent = '$' + Math.round(totalVal).toLocaleString();
+        var total = labourSaved;
+
+        document.getElementById('labourSaving').textContent = sym() + ' ' + fmt(labourSaved);
+        document.getElementById('timeSaving').textContent = fmt(hoursSaved) + ' hrs';
+        document.getElementById('reports').textContent = fmt(annualVehicles);
+        document.getElementById('disputes').textContent = '~' + fmt(disputes);
+        document.getElementById('totalVal').textContent = sym() + ' ' + fmt(total);
     }
-    if (sliders.vehicles.el) {
-        Object.keys(sliders).forEach(function(k) {
-            var s = sliders[k];
-            s.el.addEventListener('input', function() {
-                if (k === 'cost') {
-                    var cv = parseFloat(s.el.value) || 0;
-                    var str = (Math.round(cv * 10) % 10 === 0) ? String(Math.round(cv)) : cv.toFixed(1);
-                    s.display.textContent = s.prefix + str + s.suffix;
-                } else {
-                    s.display.textContent = s.prefix + s.el.value + s.suffix;
-                }
-                calcROI();
-            });
+
+    function updateDisplays() {
+        document.getElementById('vehiclesVal').textContent = elVehicles.value;
+        document.getElementById('salaryVal').textContent = fmt(parseFloat(elSalary.value));
+        document.getElementById('timeVal').textContent = elTime.value + ' min';
+        document.getElementById('salaryUnit').textContent = curLabel();
+        document.getElementById('resultsCur').textContent = curLabel();
+        document.querySelectorAll('.roi-cur-btn').forEach(function(btn) {
+            var cur = btn.dataset.cur;
+            var c = CURRENCIES[cur];
+            var localizedName = isArabicUi ? c.nameAr : c.nameEn;
+            btn.textContent = c.symbol + ' ' + localizedName;
         });
-        calcROI();
     }
+
+    document.querySelectorAll('.roi-cur-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelector('.roi-cur-active').classList.remove('roi-cur-active');
+            btn.classList.add('roi-cur-active');
+            activeCur = btn.dataset.cur;
+            updateDisplays();
+            calcROI();
+        });
+    });
+
+    [elVehicles, elSalary, elTime].forEach(function(el) {
+        if (el) el.addEventListener('input', function() { updateDisplays(); calcROI(); });
+    });
+
+    if (elVehicles) { updateDisplays(); calcROI(); }
     </script>
 </body>
 </html>

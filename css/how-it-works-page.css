@@ -89,7 +89,7 @@
 }
 
 .hiw-page .hiw-hero h1 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: clamp(2.2rem, 6vw, 4.2rem);
   line-height: 1.1;
   max-width: 760px;
@@ -388,7 +388,7 @@
 }
 
 .hiw-page .hiw-section-title {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: clamp(1.9rem, 4vw, 2.8rem);
   text-align: center;
   line-height: 1.2;
@@ -449,7 +449,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1rem;
   color: var(--hiw-cyan);
   flex-shrink: 0;
@@ -505,7 +505,7 @@
 }
 
 .hiw-page .hiw-step-content h3 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: clamp(1.3rem, 3vw, 1.75rem);
   line-height: 1.2;
   margin-bottom: 0.9rem;
@@ -621,7 +621,7 @@
 }
 
 .hiw-page .hiw-md-total-val {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1rem;
   color: var(--hiw-cyan);
 }
@@ -648,7 +648,7 @@
 }
 
 .hiw-page .hiw-rp-logo {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 0.82rem;
   color: var(--hiw-cyan);
 }
@@ -746,7 +746,7 @@
 }
 
 .hiw-page .hiw-feat h4 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: var(--hiw-white);
@@ -798,14 +798,14 @@
 }
 
 .hiw-page .hiw-who-num {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 2.2rem;
   color: rgba(0, 212, 245, 0.25);
   margin-bottom: 0.8rem;
 }
 
 .hiw-page .hiw-who-card h4 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 1.05rem;
   margin-bottom: 0.6rem;
   color: var(--hiw-white);
@@ -833,7 +833,7 @@
 }
 
 .hiw-page .hiw-cta-section h2 {
-  font-family: "Oswald", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: clamp(2rem, 4.5vw, 3rem);
   max-width: 640px;
   margin: 0 auto 1.2rem;

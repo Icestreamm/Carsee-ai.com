@@ -1,5 +1,5 @@
 /* Reset and Base Styles */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -51,7 +51,7 @@ body {
     color: var(--text-dark);
     background-color: #ffffff;
     overflow-x: hidden;
-    padding-top: 72px;
+    padding-top: 86px;
 }
 
 body::before {
@@ -136,7 +136,7 @@ body::before {
     line-height: 1;
 }
 
-/* Header — carsee_b2b restyle: dark bg, blur, cyan accents */
+/* Header — same visual language as benefits hero (ar/benefits): 160° navy→blue + cyan grid + glass */
 .header {
     position: fixed;
     top: 0;
@@ -146,17 +146,31 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 60px;
-    background: rgba(9, 20, 37, 0.85);
+    padding: 24px 60px;
+    background-color: rgba(9, 20, 37, 0.78);
+    background-image:
+        linear-gradient(rgba(0, 212, 245, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 245, 0.04) 1px, transparent 1px),
+        linear-gradient(160deg, rgba(9, 20, 37, 0.92), rgba(12, 30, 53, 0.9), rgba(13, 59, 110, 0.88));
+    background-size: 60px 60px, 60px 60px, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat;
+    background-position: 0 0, 0 0, center top;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--outline);
-    transition: background 0.3s ease;
-    font-family: 'Oswald', sans-serif;
+    transition: background-color 0.3s ease, background-image 0.3s ease;
+    font-family: 'Cairo', sans-serif;
 }
 
 .header.scrolled {
-    background: rgba(9, 20, 37, 0.97);
+    background-color: rgba(9, 20, 37, 0.92);
+    background-image:
+        linear-gradient(rgba(0, 212, 245, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 245, 0.045) 1px, transparent 1px),
+        linear-gradient(160deg, rgba(9, 20, 37, 0.99), rgba(12, 30, 53, 0.98), rgba(13, 59, 110, 0.97));
+    background-size: 60px 60px, 60px 60px, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat;
+    background-position: 0 0, 0 0, center top;
 }
 
 .navbar {
@@ -178,14 +192,15 @@ body::before {
 .logo a {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 13px;
     text-decoration: none;
 }
 
 .logo img {
-    height: 40px;
+    height: 56px;
     width: auto;
     flex-shrink: 0;
+    transition: height 0.25s ease, transform 0.25s ease;
 }
 
 .nav-logo-text {
@@ -208,6 +223,7 @@ body::before {
     flex-direction: column;
     align-items: flex-start;
     font-family: 'Cairo', sans-serif;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .nav-logo-subtitle {
@@ -218,6 +234,10 @@ body::before {
     font-weight: 500;
     display: block;
     margin-top: 2px;
+    max-height: 18px;
+    opacity: 1;
+    overflow: hidden;
+    transition: opacity 0.2s ease, max-height 0.2s ease, margin-top 0.2s ease;
 }
 
 [dir="rtl"] .nav-logo-subtitle {
@@ -227,8 +247,10 @@ body::before {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 36px;
+    gap: 44px;
     align-items: center;
+    animation: navMenuFadeIn 0.45s ease-out both;
+    animation-delay: 0.06s;
 }
 
 .nav-item {
@@ -237,15 +259,16 @@ body::before {
 
 .nav-link,
 .nav-menu .nav-link {
-    color: var(--on-surface-variant);
+    color: rgba(200, 216, 238, 0.9);
     text-decoration: none;
+    font-family: 'Cairo', sans-serif;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.3px;
     background: none;
     border: none;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -255,6 +278,8 @@ body::before {
 .nav-link.active,
 .nav-link.nav-link--current {
     color: var(--scan-cyan);
+    text-shadow: 0 0 10px rgba(0, 212, 245, 0.35);
+    transform: translateY(-1px);
 }
 
 /* Current page: cyan scan line through nav label (same language as hiw-scan-beam / hero scan) */
@@ -353,9 +378,9 @@ body::before {
 .dropdown-arrow,
 .nav-dropdown-arrow {
     font-size: 10px;
-    color: var(--on-surface-variant);
+    color: rgba(200, 216, 238, 0.9);
     margin-left: 4px;
-    transition: color 0.2s, transform 0.2s;
+    transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .nav-link:hover .dropdown-arrow,
@@ -402,14 +427,16 @@ body::before {
     display: block;
     padding: 12px 20px;
     color: var(--on-surface);
+    font-family: 'Cairo', sans-serif;
     text-decoration: none;
     font-size: 14px;
-    transition: background 0.3s, color 0.2s;
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .dropdown-menu a:hover {
-    background: rgba(0, 212, 245, 0.08);
+    background: rgba(0, 212, 245, 0.12);
     color: var(--scan-cyan);
+    box-shadow: inset 2px 0 0 var(--scan-cyan);
 }
 
 .nav-actions {
@@ -519,8 +546,34 @@ body::before {
 
 .btn-demo:hover,
 .nav-cta:hover {
-    opacity: 0.85;
+    opacity: 0.92;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 212, 245, 0.22);
+}
+
+.header.scrolled .logo img {
+    height: 42px;
+}
+
+.header.scrolled .nav-logo-subtitle {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+}
+
+.header.scrolled .logo-text-wrap {
     transform: translateY(-1px);
+}
+
+@keyframes navMenuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 [dir="rtl"] .btn-demo,
@@ -560,7 +613,7 @@ body::before {
 }
 
 .hero-title {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 1.2;
@@ -708,7 +761,7 @@ body::before {
 }
 
 .section-title {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 16px;
@@ -716,7 +769,7 @@ body::before {
 }
 
 .section-subtitle {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 56px;
     font-weight: 700;
     margin-bottom: 24px;
@@ -796,7 +849,7 @@ body::before {
 }
 
 .solution-header h3 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: var(--primary);
@@ -804,7 +857,7 @@ body::before {
 }
 
 .solution-header h4 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 16px;
@@ -896,7 +949,7 @@ body::before {
 }
 
 .professional-card h3 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -1517,6 +1570,31 @@ html[dir="rtl"] .header .logo-text-wrap {
 }
 
 @media (max-width: 992px) {
+  .logo img {
+    height: 48px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .language-selector span,
+  .lang-switch {
+    padding: 6px 10px;
+    min-width: 44px;
+    text-align: center;
+  }
+
+  .btn-demo,
+  .nav-cta {
+    padding: 10px 14px;
+  }
+
+  .logo,
+  .logo a {
+    gap: 8px;
+  }
+
   html[dir="rtl"] .nav-wrapper {
     display: flex;
     justify-content: space-between;
@@ -1570,7 +1648,7 @@ html[dir="rtl"] .ty-box h1 {
   text-align: center;
 }
 
-/* Homepage sections (index-sections.css uses Oswald on display titles) */
+/* Homepage sections (index-sections.css uses Cairo on display titles) */
 html[dir="rtl"] .home .idx-intro__title,
 html[dir="rtl"] .home .idx-sol__title,
 html[dir="rtl"] .home .idx-spot__title,

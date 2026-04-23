@@ -44,7 +44,7 @@
 }
 
 .ps-title {
-  font-family: var(--font-heading, "Oswald", system-ui, sans-serif);
+  font-family: var(--font-heading, "Cairo", system-ui, sans-serif);
   font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.03em;
