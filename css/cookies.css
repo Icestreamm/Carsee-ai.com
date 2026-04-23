@@ -2,6 +2,14 @@
  * Cookie Consent Banner & Settings Modal Styles
  */
 
+.cookie-banner,
+.cookie-settings-modal,
+.cookie-settings-content,
+.cookie-banner *,
+.cookie-settings-modal * {
+    box-sizing: border-box;
+}
+
 /* Cookie Banner */
 .cookie-banner {
     display: none;
@@ -9,6 +17,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
     background: rgba(26, 26, 26, 0.98);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -138,6 +147,7 @@
 .cookie-settings-modal {
     display: none;
     position: fixed;
+    inset: 0;
     top: 0;
     left: 0;
     right: 0;
@@ -145,6 +155,9 @@
     z-index: 10000;
     align-items: center;
     justify-content: center;
+    padding: 12px;
+    text-align: start;
+    isolation: isolate;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
@@ -154,10 +167,12 @@
 
 .cookie-settings-overlay {
     position: absolute;
+    inset: 0;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 0;
     background: rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
@@ -167,11 +182,13 @@
     background: #fff;
     border-radius: 12px;
     max-width: 500px;
-    width: 90%;
+    width: min(500px, calc(100% - 24px));
+    margin-inline: auto;
     max-height: 80vh;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     z-index: 1;
+    text-align: start;
 }
 
 .cookie-settings-header {
@@ -254,6 +271,7 @@
     font-size: 13px;
     color: #666;
     line-height: 1.5;
+    text-align: start;
 }
 
 .cookie-settings-footer {
@@ -298,7 +316,7 @@
 
 [dir="rtl"] .cookie-setting-header {
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 [dir="rtl"] .cookie-settings-footer {

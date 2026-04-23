@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports." />
+  <meta name="description" content="CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports."> />
   <meta name="keywords" content="CarSee pricing, vehicle damage AI, insurance adjuster software, GCC fleet management, Arabic vehicle assessment, MENA insurance technology" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="CarSee Pricing — AI Vehicle Intelligence" />
@@ -118,9 +118,9 @@
       line-height: 1.65;
     }
 
-    body.rtl .check-icon {
+    body.rtl .plan-features li .check-icon.check {
       margin-right: 0;
-      margin-left: 12px;
+      margin-left: 0;
     }
 
     /* ========== HEADER ========== */
@@ -412,37 +412,6 @@
       box-shadow: 0 0 0 2px rgba(0, 212, 245, 0.2);
     }
 
-    .plan-card.featured::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      border-radius: var(--card-radius) var(--card-radius) 0 0;
-      animation: scanPulse 2.5s ease-in-out infinite;
-    }
-
-    @keyframes scanPulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-
-    .plan-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--color-precision-teal), var(--accent));
-      color: var(--color-abyss-navy);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-
     .plan-name {
       font-family: var(--font-heading);
       font-size: 28px;
@@ -534,140 +503,29 @@
       line-height: 1.4;
     }
 
-    .check-icon {
+    /* Plan feature ticks (match Arabic pricing circular style) */
+    .plan-features li .check-icon.check {
       width: 18px;
       height: 18px;
       min-width: 18px;
-      color: var(--accent);
-      font-weight: bold;
-      margin-right: 12px;
-    }
-
-    /* ========== BENEFITS SECTION ========== */
-    .benefits-section {
-      padding: var(--section-padding);
-      background: var(--color-midnight);
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    @media (max-width: 900px) {
-      .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .benefit-card {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-      padding: 32px;
-      background: rgba(13, 59, 110, 0.2);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--card-radius);
-      text-align: center;
-    }
-
-    .benefit-card.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .benefit-card:nth-child(2) {
-      transition-delay: 0.08s;
-    }
-
-    .benefit-card:nth-child(3) {
-      transition-delay: 0.16s;
-    }
-
-    .benefit-card:nth-child(4) {
-      transition-delay: 0.08s;
-    }
-
-    .benefit-card:nth-child(5) {
-      transition-delay: 0.16s;
-    }
-
-    .benefit-card:nth-child(6) {
-      transition-delay: 0.24s;
-    }
-
-    .benefit-icon {
-      font-size: 32px;
-      margin-bottom: 16px;
-    }
-
-    .benefit-title {
-      font-family: var(--font-heading);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-heading);
-      margin-bottom: 12px;
-    }
-
-    .benefit-text {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ========== COMPARISON SECTION ========== */
-    .comparison-section {
-      padding: var(--section-padding);
-      background: var(--bg-page);
-      overflow-x: auto;
-    }
-
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--font-body);
-      font-size: 14px;
-    }
-
-    .comparison-table th {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      color: var(--text-heading);
-      padding: 16px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(0, 212, 245, 0.05);
-    }
-
-    body.rtl .comparison-table th {
-      text-align: right;
-    }
-
-    .comparison-table td {
-      padding: 14px 20px;
-      color: var(--text-primary);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .comparison-table td.col-pro,
-    .comparison-table th.col-pro {
-      background: rgba(13, 59, 110, 0.3);
-    }
-
-    .check {
-      color: var(--accent);
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 10px;
       font-weight: 600;
+      line-height: 1;
+      color: #22c55e;
     }
 
-    .cross {
-      color: var(--text-muted);
+    .plan-features li .check-icon.check.check-cyan {
+      background: rgba(0, 212, 245, 0.15);
+      border-color: rgba(0, 212, 245, 0.4);
+      color: var(--accent);
     }
 
     /* ========== FAQ SECTION ========== */
@@ -751,75 +609,6 @@
       color: var(--text-primary);
       font-size: 14px;
       line-height: 1.65;
-    }
-
-    /* ========== CTA SECTION ========== */
-    .cta-section {
-      padding: var(--section-padding);
-      background: linear-gradient(160deg, var(--color-abyss-navy), var(--color-command-blue));
-      text-align: center;
-    }
-
-    .cta-heading {
-      font-family: var(--font-heading);
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: var(--text-heading);
-      margin-bottom: 16px;
-    }
-
-    .cta-sub {
-      font-size: 16px;
-      color: var(--text-primary);
-      margin-bottom: 32px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn {
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 15px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .cta-btn.primary {
-      background: var(--accent);
-      color: var(--color-abyss-navy);
-    }
-
-    .cta-btn.primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    .cta-btn.secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 1.5px solid var(--accent);
-    }
-
-    .cta-btn.secondary:hover {
-      background: rgba(0, 212, 245, 0.1);
-    }
-
-    .cta-support {
-      font-size: 14px;
-      color: var(--text-muted);
     }
 
     /* ========== FOOTER ========== */
@@ -944,11 +733,32 @@
       }
     }
   </style>
+<!-- AEO:inject v1 -->
+<link rel="canonical" href="https://carsee.ai/pricing.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CarSee">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://carsee.ai/pricing.html">
+    <meta property="og:title" content="CarSee Pricing — AI Vehicle Intelligence">
+    <meta property="og:description" content="CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports.">
+    <meta property="og:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CarSee Pricing — AI Vehicle Intelligence">
+    <meta name="twitter:description" content="CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports.">
+    <meta name="twitter:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://carsee.ai/#organization","name":"CarSee","url":"https://carsee.ai","logo":"https://carsee.ai/assets/logos/logo-png-big.png","sameAs":["https://x.com/carseeai","https://www.youtube.com/@carseeai","https://www.instagram.com/carseeai/","https://www.facebook.com/carseeeai"]},{"@type":"WebPage","@id":"https://carsee.ai/pricing.html#webpage","url":"https://carsee.ai/pricing.html","name":"CarSee Pricing — AI Vehicle Intelligence","description":"CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports.","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://carsee.ai","name":"CarSee"},"about":{"@id":"https://carsee.ai/#organization"}},{"@type":"FAQPage","@id":"https://carsee.ai/pricing.html#faq","mainEntity":[{"@type":"Question","name":"What is CarSee?","acceptedAnswer":{"@type":"Answer","text":"CarSee is an AI-assisted vehicle damage inspection platform that produces structured assessments and repair cost signals."}},{"@type":"Question","name":"Who is this page for?","acceptedAnswer":{"@type":"Answer","text":"Automotive, insurance, fleet, and platform teams evaluating CarSee for GCC and MENA workflows."}},{"@type":"Question","name":"Does CarSee support bilingual reporting?","acceptedAnswer":{"@type":"Answer","text":"CarSee is built to support Arabic and English outputs where applicable to the product surface."}},{"@type":"Question","name":"How can I contact CarSee?","acceptedAnswer":{"@type":"Answer","text":"Use the on-site contact form or the official email channels referenced in the footer."}},{"@type":"Question","name":"Is there a mobile app?","acceptedAnswer":{"@type":"Answer","text":"See the Our App page for download links and onboarding guidance when available."}},{"@type":"Question","name":"Where does CarSee operate?","acceptedAnswer":{"@type":"Answer","text":"CarSee focuses on GCC/MENA markets; see Where we work for market context."}},{"@type":"Question","name":"Is my data handled securely?","acceptedAnswer":{"@type":"Answer","text":"CarSee follows common SaaS security practices; read the privacy policy for specifics."}},{"@type":"Question","name":"Can CarSee integrate via API?","acceptedAnswer":{"@type":"Answer","text":"API-oriented inspection workflows exist for teams that need a consistent vehicle condition signal."}},{"@type":"Question","name":"What outputs does CarSee generate?","acceptedAnswer":{"@type":"Answer","text":"Structured inspection narratives, damage categorization, and repair cost signals aligned to regional repair economics."}},{"@type":"Question","name":"Does CarSee replace a physical appraiser?","acceptedAnswer":{"@type":"Answer","text":"CarSee augments workflows with consistent photo-to-report automation; final decisions remain with your team and policies."}}]},{"@type":"BreadcrumbList","@id":"https://carsee.ai/pricing.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://carsee.ai/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://carsee.ai/pricing.html"}]},{"@type":"ProfessionalService","@id":"https://carsee.ai/#professionalService","name":"CarSee","image":"https://carsee.ai/assets/logos/logo_banner.png","url":"https://carsee.ai","description":"Software-enabled AI vehicle damage inspection and reporting.","areaServed":["GCC","Middle East","North Africa"],"parentOrganization":{"@id":"https://carsee.ai/#organization"}}]}</script>
+<!-- /AEO:inject v1 -->
 </head>
 
 <body>
-    <!-- Header (same as rest of site) -->
-    <header class="header">
+<!-- AEO:body v1 -->
+<div style="display:none" data-ai-summary="true" aria-hidden="true">
+<ul><li>Page topic: CarSee Pricing — AI Vehicle Intelligence.</li><li>Audience: automotive, insurance, fleet, and marketplace teams evaluating AI inspection workflows.</li><li>Key facts: CarSee AI vehicle damage assessment pricing. Pro and Plus plans for insurance adjusters, fleet managers, and rental companies in the GCC and MENA region. Bilingual Arabic/English reports.</li><li>Unique value: structured, bilingual-ready inspection outputs with GCC-aware repair economics where applicable.</li><li>Canonical reference: https://carsee.ai/pricing.html</li></ul>
+</div>
+<!-- /AEO:body v1 -->
+
+<!-- Header (same as rest of site) -->
+    <header class="header" role="banner">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
@@ -963,6 +773,7 @@
                     </div>
                     <ul class="nav-menu" id="navMenu">
                         <li class="nav-item"><a href="how-it-works/index.html" class="nav-link">How it works</a></li>
+                        <li class="nav-item"><a href="our-app.html" class="nav-link">Our App</a></li>
                         <li class="nav-item dropdown">
                             <a href="solutions/index.html" class="nav-link">Our Solutions Include <span class="dropdown-arrow">▼</span></a>
                             <ul class="dropdown-menu">
@@ -971,10 +782,8 @@
                                 <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                        <li class="nav-item"><a href="blog/index.html" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="benefits.html" class="nav-link">Why CarSee?</a></li>
-                        <li class="nav-item"><a href="our-app.html" class="nav-link">Our App</a></li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
                         <li class="nav-item"><a href="where-we-work/index.html" class="nav-link">Where we work</a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link">About <span class="dropdown-arrow">▼</span></a>
@@ -984,6 +793,7 @@
                                 <li><a href="contact/index.html">Contact us</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item"><a href="blog/index.html" class="nav-link">Blog</a></li>
                     </ul>
                     <div class="nav-actions">
                         <div class="language-selector">
@@ -1008,19 +818,13 @@
     <section class="plans-section ps-showcase" id="psShowcase">
       <canvas class="ps-stars-canvas" id="psStars" aria-hidden="true"></canvas>
       <div class="ps-showcase__inner">
-        <div class="ps-showcase__intro">
-          <p class="ps-eyebrow" data-en="TRANSPARENT PRICING" data-ar="أسعار شفافة">TRANSPARENT PRICING</p>
-          <h1 class="ps-title" data-en="Simple plans. Serious assessments." data-ar="خطط بسيطة. تقييمات جادة.">Simple plans. Serious assessments.</h1>
-          <p class="ps-lede" data-en="Built for GCC adjusters, fleets, and rental teams. Pick monthly, quarterly, or annual billing — all amounts in USD." data-ar="مُصمَّم للمُقيِّمين ومديري الأساطيل وشركات التأجير في الخليج. اختر الفوترة الشهرية أو الربعية أو السنوية — المبالغ بالدولار الأمريكي.">Built for GCC adjusters, fleets, and rental teams. Pick monthly, quarterly, or annual billing — all amounts in USD.</p>
-        </div>
-
         <div class="ps-showcase__layout">
           <div class="ps-billing ps-billing--vertical" role="group" aria-label="Billing period">
             <div class="ps-billing__track ps-billing__track--vertical" id="psBillingTrack">
               <span class="ps-billing__pill" id="psBillingPill" aria-hidden="true"></span>
-              <button type="button" class="ps-billing__btn active" data-period="monthly"><span data-en="Monthly" data-ar="شهري">Monthly</span></button>
-              <button type="button" class="ps-billing__btn" data-period="quarterly"><span data-en="Quarterly" data-ar="ربع سنوي">Quarterly</span><span class="ps-billing__hint"><span data-en=" · every 3 mo" data-ar=" · كل 3 أشهر"> · every 3 mo</span></span></button>
-              <button type="button" class="ps-billing__btn" data-period="annual"><span data-en="Annual" data-ar="سنوي">Annual</span><span class="ps-billing__hint"><span data-en=" · save ~20%" data-ar=" · وفر ~20٪"> · save ~20%</span></span></button>
+              <button type="button" class="ps-billing__btn" data-period="monthly"><span data-en="Monthly" data-ar="شهري">Monthly</span></button>
+              <button type="button" class="ps-billing__btn" data-period="quarterly"><span data-en="3 months" data-ar="3 أشهر">3 months</span></button>
+              <button type="button" class="ps-billing__btn active" data-period="annual"><span data-en="Annual" data-ar="سنوي">Annual</span><span class="ps-billing__hint"><span data-en=" · save ~20%" data-ar=" · وفر ~20٪"> · save ~20%</span></span></button>
             </div>
           </div>
 
@@ -1030,13 +834,13 @@
             <div class="plan-name" data-en="Free" data-ar="مجاني">Free</div>
             <div class="plan-tagline" data-en="Try before you commit" data-ar="جرّب قبل الالتزام">Try before you commit</div>
             <ul class="plan-features">
-              <li><span class="check-icon">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Exploring the nearby workshops" data-ar="استكشاف الورش القريبة">Exploring the nearby workshops</span></li>
-              <li><span class="check-icon">✓</span><span data-en="No credit card needed" data-ar="لا حاجة لبطاقة ائتمان">No credit card needed</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Exploring nearby workshops" data-ar="استكشاف الورش القريبة">Exploring nearby workshops</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="No credit card needed" data-ar="لا حاجة لبطاقة ائتمان">No credit card needed</span></li>
             </ul>
             <div class="plan-divider"></div>
             <div class="plan-price" style="display: flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap;">
-              <div class="price-amount">$0</div>
+              <div class="price-amount">$0.00</div>
               <div class="price-period ps-price-suffix">/mo</div>
             </div>
             <p class="ps-billed-note js-billed-note" aria-live="polite"></p>
@@ -1044,15 +848,14 @@
           </div>
 
           <div class="plan-card featured" data-plan="pro">
-            <div class="plan-badge" data-en="MOST POPULAR" data-ar="الأكثر شيوعاً">MOST POPULAR</div>
             <div class="plan-name" data-en="Pro" data-ar="برو">Pro</div>
             <div class="plan-tagline" data-en="Single seat, full power" data-ar="مستخدم واحد، إمكانات كاملة">Single seat, full power</div>
             <ul class="plan-features">
-              <li><span class="check-icon">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Exploring the nearby workshops" data-ar="استكشاف الورش القريبة">Exploring the nearby workshops</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Create new reports — up to 40 per month" data-ar="إنشاء تقارير جديدة — حتى 40 تقريراً شهرياً">Create new reports — up to 40 per month</span></li>
-              <li><span class="check-icon">✓</span><span data-en="PDF report generation" data-ar="توليد تقارير PDF">PDF report generation</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Single-user account" data-ar="حساب لمستخدم واحد">Single-user account</span></li>
+              <li><span class="check-icon check check-cyan">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
+              <li><span class="check-icon check check-cyan">✓</span><span data-en="Exploring nearby workshops" data-ar="استكشاف الورش القريبة">Exploring nearby workshops</span></li>
+              <li><span class="check-icon check check-cyan">✓</span><span data-en="40 new report per month" data-ar="إنشاء تقارير جديدة — حتى 40 تقريراً شهرياً">40 new report per month</span></li>
+              <li><span class="check-icon check check-cyan">✓</span><span data-en="PDF report generation" data-ar="توليد تقارير PDF">PDF report generation</span></li>
+              <li><span class="check-icon check check-cyan">✓</span><span data-en="1 Device per subscription" data-ar="حساب لمستخدم واحد">1 Device per subscription</span></li>
             </ul>
             <div class="plan-divider"></div>
             <div class="plan-price" style="display: flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap;">
@@ -1060,20 +863,20 @@
               <div class="price-period ps-price-suffix">/mo</div>
             </div>
             <p class="ps-billed-note js-billed-note" aria-live="polite"></p>
-            <button type="button" class="plan-cta" data-en="Start Pro — 30 days free" data-ar="ابدأ برو — 30 يوماً مجاناً">Start Pro — 30 days free</button>
+            <div class="plan-cta-slot" aria-hidden="true"></div>
           </div>
 
           <div class="plan-card" data-plan="plus">
             <div class="plan-name" data-en="Plus" data-ar="بلس">Plus</div>
             <div class="plan-tagline" data-en="Built for teams" data-ar="مُصمَّم للفرق">Built for teams</div>
             <ul class="plan-features">
-              <li><span class="check-icon">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Exploring the nearby workshops" data-ar="استكشاف الورش القريبة">Exploring the nearby workshops</span></li>
-              <li><span class="check-icon">✓</span><span data-en="All assessment features" data-ar="جميع ميزات التقييم">All assessment features</span></li>
-              <li><span class="check-icon">✓</span><span data-en="PDF report generation" data-ar="توليد تقارير PDF">PDF report generation</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Microsoft Excel export" data-ar="تصدير Microsoft Excel">Microsoft Excel export</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Multi-user support across three devices" data-ar="دعم متعدد المستخدمين على ثلاثة أجهزة">Multi-user support across three devices</span></li>
-              <li><span class="check-icon">✓</span><span data-en="Dual-logo PDF headers (company logo + CarSee)" data-ar="ترويسات PDF بشعارين (شعار شركتك + CarSee)">Dual-logo PDF headers (company logo + CarSee)</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Viewing your old reports" data-ar="عرض تقاريرك السابقة">Viewing your old reports</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Exploring nearby workshops" data-ar="استكشاف الورش القريبة">Exploring nearby workshops</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Unlimited new reports " data-ar="تقارير غير محدودة">unlimited new reports </span></li>
+              <li><span class="check-icon check">✓</span><span data-en="PDF report generation" data-ar="توليد تقارير PDF">PDF report generation</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="3 devices per subscription" data-ar="دعم متعدد المستخدمين على ثلاثة أجهزة"> 3 devices per subscription</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Microsoft Excel export" data-ar="تصدير Microsoft Excel">Microsoft Excel export</span></li>
+              <li><span class="check-icon check">✓</span><span data-en="Include your company's logo in the report" data-ar="ترويسات PDF بشعارين (شعار شركتك + CarSee)">Include your company's logo in the report</span></li>
             </ul>
             <div class="plan-divider"></div>
             <div class="plan-price" style="display: flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap;">
@@ -1091,146 +894,6 @@
       </div>
     </section>
 
-    <!-- BENEFITS SECTION -->
-    <section class="benefits-section">
-      <div class="section-container">
-        <div class="section-eyebrow" data-en="WHAT YOU GAIN" data-ar="ما ستحصل عليه">WHAT YOU GAIN</div>
-        <h2 class="section-heading" data-en="What You Actually Gain" data-ar="ما ستحصل عليه فعلاً">What You Actually Gain</h2>
-        <p class="section-sub" data-en="CarSee is built for the GCC — not retrofitted for it." data-ar="CarSee مبني للخليج — وليس مُكيَّفاً معه.">CarSee is built for the GCC — not retrofitted for it.</p>
-
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon">⚡</div>
-            <h3 class="benefit-title" data-en="Reports in Seconds, Not Hours" data-ar="تقارير في ثوانٍ، لا ساعات">Reports in Seconds, Not Hours</h3>
-            <p class="benefit-text" data-en="Three AI models assess damage simultaneously. Get a structured bilingual PDF ready to submit — in under 60 seconds." data-ar="ثلاثة نماذج ذكاء اصطناعي تُقيِّم الضرر في آنٍ واحد. احصل على PDF هيكلي ثنائي اللغة جاهز للتسليم في أقل من 60 ثانية.">Three AI models assess damage simultaneously. Get a structured bilingual PDF ready to submit — in under 60 seconds.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">🌍</div>
-            <h3 class="benefit-title" data-en="Truly Bilingual — Arabic First" data-ar="ثنائي اللغة حقيقي — العربية أولاً">Truly Bilingual — Arabic First</h3>
-            <p class="benefit-text" data-en="Not a translation plugin. Arabic is a first-class output — correct RTL rendering, Cairo font, Gulf terminology, zero letter spacing." data-ar="ليس مجرد ترجمة. العربية مُخرَج أصيل — تقديم RTL صحيح، خط Cairo، مصطلحات خليجية، بدون تباعد حروف.">Not a translation plugin. Arabic is a first-class output — correct RTL rendering, Cairo font, Gulf terminology, zero letter spacing.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">🔧</div>
-            <h3 class="benefit-title" data-en="GCC Repair Costs, Not Global Averages" data-ar="تكاليف إصلاح خليجية، لا متوسطات عالمية">GCC Repair Costs, Not Global Averages</h3>
-            <p class="benefit-text" data-en="Repair estimates calibrated to actual Gulf market rates. No more manual adjustments after an AI gives you US or EU pricing." data-ar="تقديرات معايَرة على أسعار سوق الخليج الفعلية. لا مزيد من التعديلات اليدوية بعد أن يعطيك الذكاء الاصطناعي أسعاراً أمريكية أو أوروبية.">Repair estimates calibrated to actual Gulf market rates. No more manual adjustments after an AI gives you US or EU pricing.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">📊</div>
-            <h3 class="benefit-title" data-en="Odometer Reading Without Manual Entry" data-ar="قراءة العداد بدون إدخال يدوي">Odometer Reading Without Manual Entry</h3>
-            <p class="benefit-text" data-en="Point the camera at the dashboard. AI reads the mileage and factors excess distance into your cost report automatically." data-ar="وجّه الكاميرا نحو لوحة العدادات. يقرأ الذكاء الاصطناعي المسافة ويحتسب الأميال الزائدة في تقرير التكاليف تلقائياً.">Point the camera at the dashboard. AI reads the mileage and factors excess distance into your cost report automatically.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">👥</div>
-            <h3 class="benefit-title" data-en="Team Access on One Account (Plus)" data-ar="وصول الفريق على حساب واحد (بلس)">Team Access on One Account (Plus)</h3>
-            <p class="benefit-text" data-en="Assign two secondary users under your Plus account. Their reports roll up into your dashboard — full visibility, no shared passwords." data-ar="أضف مستخدمَين ثانويَّين ضمن حساب بلس. تقاريرهم تظهر في لوحتك — رؤية كاملة، بدون مشاركة كلمات المرور.">Assign two secondary users under your Plus account. Their reports roll up into your dashboard — full visibility, no shared passwords.</p>
-          </div>
-
-          <div class="benefit-card">
-            <div class="benefit-icon">🏢</div>
-            <h3 class="benefit-title" data-en="Your Logo on Every Report (Plus)" data-ar="شعارك على كل تقرير (بلس)">Your Logo on Every Report (Plus)</h3>
-            <p class="benefit-text" data-en="Upload your company logo once. Every PDF carries your brand alongside CarSee — professional for clients, clear for regulators." data-ar="ارفع شعار شركتك مرة واحدة. كل PDF يحمل علامتك التجارية إلى جانب CarSee — احترافي للعملاء، واضح للجهات التنظيمية.">Upload your company logo once. Every PDF carries your brand alongside CarSee — professional for clients, clear for regulators.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPARISON SECTION -->
-    <section class="comparison-section">
-      <div class="section-container">
-        <div class="section-eyebrow" data-en="COMPARE PLANS" data-ar="قارن الخطط">COMPARE PLANS</div>
-        <h2 class="section-heading" data-en="Plan Comparison" data-ar="مقارنة الخطط">Plan Comparison</h2>
-
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th data-en="Feature" data-ar="الميزة">Feature</th>
-              <th class="col-pro" data-en="Free" data-ar="مجاني">Free</th>
-              <th class="col-pro" data-en="Pro" data-ar="برو">Pro</th>
-              <th class="col-pro" data-en="Plus" data-ar="بلس">Plus</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-en="Monthly reports" data-ar="التقارير الشهرية">Monthly reports</td>
-              <td>5</td>
-              <td class="col-pro">100</td>
-              <td class="col-pro"><span class="check">Unlimited</span></td>
-            </tr>
-            <tr>
-              <td data-en="Bilingual PDF (AR+EN)" data-ar="PDF ثنائي اللغة">Bilingual PDF (AR+EN)</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="AI detection models" data-ar="نماذج كشف الذكاء الاصطناعي">AI detection models</td>
-              <td>1</td>
-              <td class="col-pro">3</td>
-              <td class="col-pro">3</td>
-            </tr>
-            <tr>
-              <td data-en="GCC repair pricing" data-ar="أسعار إصلاح الخليج">GCC repair pricing</td>
-              <td><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Odometer AI reading" data-ar="قراءة العداد">Odometer AI reading</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Excel export" data-ar="تصدير Excel">Excel export</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Repair workshops map" data-ar="خريطة الورش">Repair workshops map</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Push notifications" data-ar="الإشعارات">Push notifications</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Team users" data-ar="مستخدمو الفريق">Team users</td>
-              <td>1</td>
-              <td class="col-pro">1</td>
-              <td class="col-pro">3</td>
-            </tr>
-            <tr>
-              <td data-en="Company logo on PDF" data-ar="شعار الشركة">Company logo on PDF</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Priority support" data-ar="دعم ذو أولوية">Priority support</td>
-              <td><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="cross">✗</span></td>
-              <td class="col-pro"><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td data-en="Free trial" data-ar="تجربة مجانية">Free trial</td>
-              <td>—</td>
-              <td class="col-pro" data-en="30 days" data-ar="30 يوم">30 days</td>
-              <td class="col-pro" data-en="30 days" data-ar="30 يوم">30 days</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
     <!-- FAQ SECTION -->
     <section class="faq-section">
       <div class="section-container">
@@ -1244,7 +907,7 @@
               <span class="faq-toggle">▼</span>
             </button>
             <div class="faq-answer">
-              <div class="faq-text" data-en="Yes. 30 days full Pro or Plus access, no charge. Cancel anytime before the trial ends — you will not be billed." data-ar="نعم. 30 يوماً وصول كامل لخطة برو أو بلس، بدون رسوم. ألغِ في أي وقت قبل انتهاء التجربة ولن تُحاسَب.">Yes. 30 days full Pro or Plus access, no charge. Cancel anytime before the trial ends — you will not be billed.</div>
+              <div class="faq-text" data-en="Yes. 30 days full Plus access, no charge. Cancel anytime before the trial ends — you will not be billed." data-ar="نعم. 30 يوماً وصول كامل لخطة بلس، بدون رسوم. ألغِ في أي وقت قبل انتهاء التجربة.">Yes. 30 days full Pro or Plus access, no charge. Cancel anytime before the trial ends — you will not be billed.</div>
             </div>
           </div>
 
@@ -1254,17 +917,7 @@
               <span class="faq-toggle">▼</span>
             </button>
             <div class="faq-answer">
-              <div class="faq-text" data-en="All charges are processed in USD. Local currency figures shown on this page are approximate display only and may vary with exchange rates." data-ar="جميع الدفعات بالدولار الأمريكي. الأرقام بالعملات المحلية المعروضة تقريبية للاستئناس فقط وقد تتغير مع أسعار الصرف.">All charges are processed in USD. Local currency figures shown on this page are approximate display only and may vary with exchange rates.</div>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              <span data-en="Can I switch plans later?" data-ar="هل يمكنني تغيير الخطة لاحقاً؟">Can I switch plans later?</span>
-              <span class="faq-toggle">▼</span>
-            </button>
-            <div class="faq-answer">
-              <div class="faq-text" data-en="Yes. You can upgrade or downgrade at any time from within the app. Changes take effect at your next billing cycle." data-ar="نعم. يمكنك الترقية أو التخفيض في أي وقت من داخل التطبيق. تسري التغييرات في دورة الفوترة التالية.">Yes. You can upgrade or downgrade at any time from within the app. Changes take effect at your next billing cycle.</div>
+              <div class="faq-text" data-en="All charges are processed in USD. Local currency figures when shown are approximate display only and may vary with exchange rates." data-ar="جميع الدفعات بالدولار الأمريكي. الأرقام بالعملات المحلية المعروضة تقريبية فقط وقد تتغير مع أسعار الصرف.">All charges are processed in USD. Local currency figures shown on this page are approximate display only and may vary with exchange rates.</div>
             </div>
           </div>
 
@@ -1284,30 +937,19 @@
               <span class="faq-toggle">▼</span>
             </button>
             <div class="faq-answer">
-              <div class="faq-text" data-en="All data is encrypted and stored on Supabase with row-level security. Reports and vehicle images are stored under your account only, with signed URLs for access." data-ar="جميع البيانات مشفرة ومخزنة على Supabase مع أمان على مستوى الصفوف. التقارير وصور المركبات مخزنة تحت حسابك فقط بعناوين URL موقَّعة.">All data is encrypted and stored on Supabase with row-level security. Reports and vehicle images are stored under your account only, with signed URLs for access.</div>
+              <div class="faq-text" data-en="All data is encrypted and stored with high-level security. Reports and vehicle images are stored under your account only, with signed URLs for access." data-ar="جميع البيانات مشفرة ومخزنة مع أمان على مستوى عالي. التقارير وصور المركبات مخزنة تحت حسابك فقط بعناوين URL موقَّعة.">All data is encrypted and stored on Supabase with row-level security. Reports and vehicle images are stored under your account only, with signed URLs for access.</div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-      <h2 class="cta-heading" data-en="Start Your 30-Day Free Trial" data-ar="ابدأ تجربتك المجانية لمدة 30 يوماً">Start Your 30-Day Free Trial</h2>
-      <p class="cta-sub" data-en="No credit card required. Full access from day one." data-ar="لا حاجة لبطاقة ائتمانية. وصول كامل من اليوم الأول.">No credit card required. Full access from day one.</p>
-      <div class="cta-buttons">
-        <button class="cta-btn primary" data-en="Download on App Store" data-ar="حمّل من App Store">Download on App Store</button>
-        <button class="cta-btn secondary" data-en="Get it on Google Play" data-ar="احصل عليه من Google Play">Get it on Google Play</button>
-      </div>
-      <p class="cta-support" data-en="Questions? carsee.ai@gmail.com" data-ar="أسئلة؟ carsee.ai@gmail.com">Questions? carsee.ai@gmail.com</p>
-    </section>
   </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-brand-row">
                 <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
-                    <img src="assets/logos/footer-logo-banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                    <img src="assets/logos/logo_banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
                 </a>
                 <nav class="footer-social" aria-label="Social media">
                     <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
@@ -1320,7 +962,10 @@
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
                     </a>
                     <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="mailto:carsee.ai@gmail.com" title="Email — carsee.ai@gmail.com" aria-label="Email carsee.ai@gmail.com">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4L12 13 4 8V6l8 5 8-5v2z"/></svg>
                     </a>
                 </nav>
             </div>
@@ -1371,15 +1016,11 @@
         </div>
     </footer>
 
-    <a href="contact/index.html" class="floating-cta" id="floatingCta" aria-label="Contact us">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-            <rect x="3" y="4" width="18" height="18" rx="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8"  y1="2" x2="8"  y2="6"/>
-            <line x1="3"  y1="10" x2="21" y2="10"/>
+    <a href="our-app.html" class="floating-cta" id="floatingCta" aria-label="Download Now!">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12M8 11l4 4 4-4M4 21h16"/>
         </svg>
-        <span>Contact</span>
+        <span>Download Now!</span>
     </a>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -1399,7 +1040,7 @@
       { threshold: 0.12 }
     );
 
-    document.querySelectorAll('.plan-card, .benefit-card, .faq-item').forEach(el => {
+    document.querySelectorAll('.plan-card, .faq-item').forEach(el => {
       observer.observe(el);
     });
 

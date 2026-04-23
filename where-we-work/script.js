@@ -1,13 +1,14 @@
 (function () {
   "use strict";
 
-  /** Active markets — GeoJSON `ADM0_A3` (Jordan, Saudi Arabia, UAE only in brand fill). */
-  const activeAdm0A3 = { JOR: true, SAU: true, ARE: true };
+  /** Active markets — GeoJSON `ADM0_A3` (brand fill for listed countries). */
+  const activeAdm0A3 = { JOR: true, SAU: true, ARE: true, EGY: true };
 
   const currencyByAdm0 = {
     JOR: "JOD",
     SAU: "SAR",
     ARE: "AED",
+    EGY: "EGP",
   };
 
   const i18n = window.WHERE_WE_WORK_I18N || {};

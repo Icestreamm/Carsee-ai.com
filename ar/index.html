@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarSee - فحص المركبات بالذكاء الاصطناعي | فحوصات أسرع وأدق للمركبات</title>
-    <meta name="description" content="نقدّم حلاً برمجياً يؤتمت الفحوصات البصرية بفضل الرؤية الحاسوبية والذكاء الاصطناعي.">
+    <meta name="description" content="CarSee: فحص مركبات بالذكاء الاصطناعي للوكلاء والمنصات—الاستبدال عن بُعد، التقاط في الموقع، صور جاهزة لإعادة التسويق، تقديرات إصلاح للخليج، وواجهة برمجية للفحص.">
     <link rel="icon" type="image/png" href="../assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/cookies.css">
+    <link rel="stylesheet" href="../css/index-sections.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="../where-we-work/style.css">
     <style>
         /* Section 1 — Font loading: force Cairo on every RTL element */
         [dir="rtl"],
@@ -209,9 +212,6 @@
         [dir="rtl"] .nav-menu { margin-right: 0; margin-left: auto; }
         [dir="rtl"] .nav-actions { margin-right: auto; margin-left: 0; }
         [dir="rtl"] .dropdown-menu { right: auto; left: 0; }
-        [dir="rtl"] .solution-card.reverse { direction: ltr; }
-        [dir="rtl"] .solution-card.reverse .solution-content { direction: rtl; text-align: right; }
-        [dir="rtl"] .solution-card.reverse .solution-image { direction: rtl; }
 
         /* Hero 50%–50%: in RTL first column = text (right), second = parallax (left) */
         .hero-inner {
@@ -311,11 +311,33 @@
             .hero-inner { grid-template-columns: 1fr; }
             .hero-right { min-height: 420px; order: -1; }
         }
+
     </style>
+<!-- AEO:inject v1 -->
+<link rel="canonical" href="https://carsee.ai/ar/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CarSee">
+    <meta property="og:locale" content="ar_AE">
+    <meta property="og:url" content="https://carsee.ai/ar/">
+    <meta property="og:title" content="CarSee - فحص المركبات بالذكاء الاصطناعي | فحوصات أسرع وأدق للمركبات">
+    <meta property="og:description" content="CarSee: فحص مركبات بالذكاء الاصطناعي للوكلاء والمنصات—الاستبدال عن بُعد، التقاط في الموقع، صور جاهزة لإعادة التسويق، تقديرات إصلاح للخليج، وواجهة برمجية للفحص.">
+    <meta property="og:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CarSee - فحص المركبات بالذكاء الاصطناعي | فحوصات أسرع وأدق للمركبات">
+    <meta name="twitter:description" content="CarSee: فحص مركبات بالذكاء الاصطناعي للوكلاء والمنصات—الاستبدال عن بُعد، التقاط في الموقع، صور جاهزة لإعادة التسويق، تقديرات إصلاح للخليج، وواجهة برمجية للفحص.">
+    <meta name="twitter:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://carsee.ai/#organization","name":"CarSee","url":"https://carsee.ai","logo":"https://carsee.ai/assets/logos/logo-png-big.png","sameAs":["https://x.com/carseeai","https://www.youtube.com/@carseeai","https://www.instagram.com/carseeai/","https://www.facebook.com/carseeeai"]},{"@type":"WebPage","@id":"https://carsee.ai/ar/#webpage","url":"https://carsee.ai/ar/","name":"CarSee - فحص المركبات بالذكاء الاصطناعي | فحوصات أسرع وأدق للمركبات","description":"CarSee: فحص مركبات بالذكاء الاصطناعي للوكلاء والمنصات—الاستبدال عن بُعد، التقاط في الموقع، صور جاهزة لإعادة التسويق، تقديرات إصلاح للخليج، وواجهة برمجية للفحص.","inLanguage":"ar","isPartOf":{"@type":"WebSite","url":"https://carsee.ai","name":"CarSee"},"about":{"@id":"https://carsee.ai/#organization"}},{"@type":"FAQPage","@id":"https://carsee.ai/ar/#faq","mainEntity":[{"@type":"Question","name":"ما هي CarSee؟","acceptedAnswer":{"@type":"Answer","text":"CarSee منصة لفحص أضرار المركبات بالذكاء الاصطناعي وتقدير تكاليف الإصلاح وفق السوق المحلي."}},{"@type":"Question","name":"من يستفيد من هذه الصفحة؟","acceptedAnswer":{"@type":"Answer","text":"الفرق التجارية والتقنية والمهتمون بخدمات CarSee في منطقة الخليج والشرق الأوسط."}},{"@type":"Question","name":"هل التقارير ثنائية اللغة؟","acceptedAnswer":{"@type":"Answer","text":"نعم، يدعم CarSee مخرجات بالعربية والإنجليزية حيث ينطبق ذلك على المنتج."}},{"@type":"Question","name":"كيف أتواصل مع CarSee؟","acceptedAnswer":{"@type":"Answer","text":"يمكن التواصل عبر نموذج الاتصال في الموقع أو البريد الرسمي للشركة."}},{"@type":"Question","name":"هل يوجد تطبيق جوال؟","acceptedAnswer":{"@type":"Answer","text":"تتوفر تجربة التطبيق عبر صفحة «تطبيقنا» مع روابط المتاجر عند توفرها."}},{"@type":"Question","name":"أين تعمل CarSee جغرافياً؟","acceptedAnswer":{"@type":"Answer","text":"تركز CarSee على أسواق الخليج والشرق الأوسط مع توسع وفق الإعلانات الرسمية."}},{"@type":"Question","name":"هل البيانات آمنة؟","acceptedAnswer":{"@type":"Answer","text":"تُطبّق ممارسات أمنية قياسية لخدمات SaaS؛ راجع سياسة الخصوصية للتفاصيل."}},{"@type":"Question","name":"هل تدعم المنصات التكامل API؟","acceptedAnswer":{"@type":"Answer","text":"تتوفر قدرات تكامل للفرق التي تحتاج إشارة فحص موحدة ضمن منتجاتها."}},{"@type":"Question","name":"ما المخرجات التي يولدها CarSee؟","acceptedAnswer":{"@type":"Answer","text":"سرد منظم للفحص وتصنيف الأضرار وإشارات تكلفة إصلاح متوافقة مع اقتصاديات الإصلاح في المنطقة."}},{"@type":"Question","name":"هل يستبدل CarSee المقيم الميداني؟","acceptedAnswer":{"@type":"Answer","text":"يعزز CarSee سير العمل بأتمتة ثابتة من الصورة إلى التقرير؛ القرار النهائي يبقى لدى فريقكم وسياساتكم."}}]},{"@type":"BreadcrumbList","@id":"https://carsee.ai/ar/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://carsee.ai/"},{"@type":"ListItem","position":2,"name":"العربية","item":"https://carsee.ai/ar/"}]},{"@type":"ProfessionalService","@id":"https://carsee.ai/#professionalService","name":"CarSee","image":"https://carsee.ai/assets/logos/logo_banner.png","url":"https://carsee.ai","description":"خدمات برمجية لفحص أضرار المركبات بالذكاء الاصطناعي.","areaServed":["GCC","Middle East","North Africa"],"parentOrganization":{"@id":"https://carsee.ai/#organization"}}]}</script>
+<!-- /AEO:inject v1 -->
 </head>
-<body>
-                    <!-- Header -->
-    <header class="header">
+<body class="home">
+<!-- AEO:body v1 -->
+<div style="display:none" data-ai-summary="true" aria-hidden="true">
+<ul><li>الصفحة: CarSee - فحص المركبات بالذكاء الاصطناعي | فحوصات أسرع وأدق للمركبات.</li><li>الجمهور: فرق الأعمال والتقنية في قطاع السيارات والتأمين والأساطيل في المنطقة.</li><li>الوصف المختصر: CarSee: فحص مركبات بالذكاء الاصطناعي للوكلاء والمنصات—الاستبدال عن بُعد، التقاط في الموقع، صور جاهزة لإعادة التسويق، تقديرات إصلاح للخليج، وواجهة برمجية للفحص.</li><li>قيمة مميزة: تقييم أضرار أسرع مع مخرجات منظمة ودعم سياقات سوق الخليج.</li><li>المصدر الرسمي للرابط: https://carsee.ai/ar/</li></ul>
+</div>
+<!-- /AEO:body v1 -->
+
+<!-- Header -->
+    <header class="header" role="banner">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
@@ -330,18 +352,18 @@
                     </div>
                     <ul class="nav-menu" id="navMenu">
                         <li class="nav-item"><a href="how-it-works/index.html" class="nav-link">كيف يعمل</a></li>
+                        <li class="nav-item"><a href="our-app.html" class="nav-link">تطبيقنا</a></li>
                         <li class="nav-item dropdown">
                             <a href="solutions/index.html" class="nav-link">حلولنا تشمل <span class="dropdown-arrow">▼</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="solution/car-traders/index.html">تجار السيارات</a></li>
                                 <li><a href="solution/rental-companies/index.html">شركات التأجير</a></li>
                                 <li><a href="solution/private-car-owners/index.html">أصحاب السيارات الخاصة</a></li>
+                                <li><a href="solution/car-dealerships/index.html">وكالات السيارات</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="pricing.html" class="nav-link">الأسعار</a></li>
-                        <li class="nav-item"><a href="blog/index.html" class="nav-link">المدونة</a></li>
                         <li class="nav-item"><a href="benefits.html" class="nav-link">لماذا CarSee؟</a></li>
-                        <li class="nav-item"><a href="our-app.html" class="nav-link">تطبيقنا</a></li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">الأسعار</a></li>
                         <li class="nav-item"><a href="where-we-work/index.html" class="nav-link">أين نعمل</a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link">عن CarSee <span class="dropdown-arrow">▼</span></a>
@@ -351,6 +373,7 @@
                                 <li><a href="contact/index.html">اتصل بنا</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item"><a href="blog/index.html" class="nav-link">المدونة</a></li>
                     </ul>
                     <div class="nav-actions">
                         <div class="language-selector">
@@ -376,27 +399,27 @@
             <div class="hero-left">
                 <div class="container">
                     <h1 class="hero-title">
-                        <span class="highlight">هل</span> لا تزال عمليات فحص السيارات<span class="highlight"> تستغرق وقتًا</span> <span class="highlight">أطول</span> <span class="highlight">من</span> <span class="highlight">المطلوب،</span> <span class="highlight">أو</span> <span class="highlight">قد تكون</span> <span class="highlight">مكلفة</span> <span class="highlight">أكثر</span> <span class="highlight">مما ينبغي؟</span>
+                        <span class="highlight">لماذا</span> لا يزال فحص المركبات<span class="highlight"> بطيئًا</span> <span class="highlight">و</span> <span class="highlight">مكلفًا؟</span>
                     </h1>
-                    <p class="hero-subtitle">ماذا لو كان بإمكانك إجراء فحوصات سيارات أسرع، أدق، وبتكلفة أقل؟ وفر وقتك ونقودك مع CarSee</p>
+                    <p class="hero-subtitle">مع CarSee: ماذا لو أتمتتم فحص المركبات لنتائج أسرع وأدق وأقل تكلفة؟</p>
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <img src="../assets/icons/icon-check.png" alt="تقرير سريع">
+                                <img src="../assets/icons/icon-check.png" alt="تقرير أضرار سريع">
                             </div>
-                            <h3>تقرير جاهز في دقائق</h3>
+                            <h3>تقرير أضرار جاهز في دقائق</h3>
                         </div>
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <img src="../assets/icons/icon-check.png" alt="ثنائي اللغة">
+                                <img src="../assets/icons/icon-check.png" alt="تقارير ثنائية اللغة">
                             </div>
-                            <h3>جاهز للمشاركة باللغتين العربية والإنجليزية</h3>
+                            <h3>تقارير جاهزة للمشاركة بالعربية والإنجليزية</h3>
                         </div>
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <img src="../assets/icons/icon-check.png" alt="تكاليف محلية">
+                                <img src="../assets/icons/icon-check.png" alt="تكاليف إصلاح محلية">
                             </div>
-                            <h3>تكاليف إصلاح مصممة للمنطقة العربية</h3>
+                            <h3>تكاليف إصلاح محلية مصممة للمنطقة العربية</h3>
                         </div>
                     </div>
                     <div class="hero-cta">
@@ -425,294 +448,87 @@
         </div>
     </section>
 
-    
-
-<!-- CarSee AI Section -->
-    <section class="carsee-ai">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">CarSee</h2>
-                <h3 class="section-subtitle">كيف يعمل CarSee؟</h3>
-                <p class="section-description">CarSee يمنح تجار السيارات ومكاتب تأجير السيارات والمستخدمين العاديين القدرة على تقييم أضرار السيارات بدقة،  انشاء تقارير باللغة الانجليزية والعربية، وأسعار إصلاح حقيقية وفقا للسوق المحلي، وكل ذلك في دقائق لا ساعات</strong>.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="../assets/icons/icon-check.png" alt="كشف الأضرار فورياً">
+    <!-- CarSee intro — animated flow (homepage; see index-sections.css) -->
+    <section class="carsee-ai idx-intro" aria-labelledby="idx-intro-title">
+        <div class="idx-intro__mesh" aria-hidden="true"></div>
+        <div class="idx-intro__gridlines" aria-hidden="true"></div>
+        <div class="container idx-intro__wrap">
+            <header class="idx-intro__head idx-reveal">
+                <p class="idx-eyebrow">CarSee</p>
+                <h2 id="idx-intro-title" class="idx-intro__title">كيف يعمل CarSee؟</h2>
+                <p class="idx-intro__lede">يمكّن CarSee الوكلاء ومكاتب التأجير والمستخدمين من تقييم أضرار المركبة بدقة، وإصدار تقارير بالعربية والإنجليزية، والحصول على تكاليف إصلاح واقعية وفق السوق المحلي—خلال دقائق لا ساعات.</p>
+            </header>
+            <div class="idx-flow">
+                <article class="idx-flow__lead idx-reveal">
+                    <div class="idx-flow__lead-glow" aria-hidden="true"></div>
+                    <div class="idx-bento__tile-inner">
+                        <h3 class="idx-bento__h">مصمم لسير عمل حقيقي</h3>
+                        <p class="idx-bento__p">من أول صورة إلى تقرير قابل للمشاركة، يحافظ CarSee على بيانات الفحص منظمة وثنائية اللغة ومتناسقة مع اقتصاديات الإصلاح المحلي—حتى يتحرك الفريق بسرعة دون تبادل غير ضروري.</p>
                     </div>
-                    <h3>كشف الأضرار فورياً</h3>
-                    <p>تحديد دقيق لكل عيب مرئي بالذكاء الاصطناعي</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="../assets/icons/icon-check.png" alt="تقدير تكاليف الإصلاح">
-                    </div>
-                    <h3>تقدير تكاليف الإصلاح</h3>
-                    <p>أسعار مباشرة وحقيقية بناء على أسعار السوق المحلية</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <img src="../assets/icons/icon-check.png" alt="ورش إصلاح قريبة">
-                    </div>
-                    <h3>ورش إصلاح قريبة منك</h3>
-                    <p> تواصل مباشرة مع أقرب محل صيانة معتمدة</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solutions Section -->
-    <section class="solutions">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">حلولنا المميزة باسمكم مصممة لاحتياجاتكم</h2>
-                <p class="section-description">مدعومة كلها بـ CarSee.</p>
-            </div>
-
-            <!-- Remote Trade-In -->
-            <div class="solution-card">
-                <div class="solution-content">
-                    <div class="solution-header">
-                        <h3>الاستبدال عن بُعد</h3>
-                        <h4>اجلب مركبات مستعملة أكثر بفحص عن بُعد</h4>
-                        <p>احصل على تقارير شاملة عن حالة المركبة عن بُعد. مع كشف الأضرار وتقدير تكلفة الإصلاح، قدّم عروض استبدال نقدي دقيقة خلال دقائق. سرّع عملية جلب المركبات بمساعدة الذكاء الاصطناعي للاستبدال عن بُعد.</p>
-                    </div>
-                    <div class="solution-features">
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="عملاء محتملون مؤهلون">
-                            <span>عملاء محتملون مؤهلون</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="عروض استبدال أسرع">
-                            <span>عروض استبدال أسرع</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="تجربة عميل محسّنة">
-                            <span>تجربة عميل محسّنة</span>
-                        </div>
-                    </div>
-                    <a href="solution/remote-trade-in/index.html" class="solution-link">اكتشف حلول تقييم المركبات عن بُعد</a>
-                </div>
-                <div class="solution-image">
-                    <img src="../assets/images/remote-trade-in.webp" alt="واجهة الاستبدال عن بُعد" onerror="this.style.display='none'">
-                </div>
-            </div>
-
-            <!-- On Site Trade-In -->
-            <div class="solution-card reverse">
-                <div class="solution-content">
-                    <div class="solution-header">
-                        <h3>الاستبدال في الموقع</h3>
-                        <h4>بسّط استلام المركبات المستعملة في الموقع</h4>
-                        <p>تسجيل عميل محسّن ومتكامل مع أدوات الإدارة، جولة تصوير موجهة، كشف الأضرار والتسعير. افحص المركبات في الموقع خلال دقائق ويسّر عمل فريق المبيعات، مع تحسين تجربة الاستبدال للعميل.</p>
-                    </div>
-                    <div class="solution-features">
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="تجربة استبدال مادية-رقمية">
-                            <span>تجربة استبدال مادية-رقمية</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="التكامل">
-                            <span>التكامل مع أدوات إدارتكم</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="تقييم المركبات">
-                            <span>تقييم مركبات أسرع</span>
-                        </div>
-                    </div>
-                    <a href="solution/on-site-trade-in/index.html" class="solution-link">اكتشف حلول الفحص في الموقع</a>
-                </div>
-                <div class="solution-image">
-                    <img src="../assets/images/on-site-trade-in.webp" alt="واجهة الاستبدال في الموقع" onerror="this.style.display='none'">
-                </div>
-            </div>
-
-            <!-- Car Fleet -->
-            <div class="solution-card">
-                <div class="solution-content">
-                    <div class="solution-header">
-                        <h3>إدارة الأساطيل</h3>
-                        <h4>افحص الأساطيل أسرع، حسّن الاتساق، وتحكم في التكاليف بالذكاء الاصطناعي</h4>
-                        <p>احترف فحص مركباتك واختصر وقت الفحص بفضل الذكاء الاصطناعي. افحص الأساطيل أسرع مع اتساق في النتائج والتحكم في التكاليف.</p>
-                    </div>
-                    <div class="solution-features">
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="فحص أسرع">
-                            <span>فحص أسطول أسرع</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="اتساق">
-                            <span>اتساق النتائج</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="التحكم في التكاليف">
-                            <span>التحكم في التكاليف</span>
-                        </div>
-                    </div>
-                    <a href="solution/car-fleet/index.html" class="solution-link">اكتشف حلول إدارة الأساطيل</a>
-                </div>
-                <div class="solution-image">
-                    <img src="../assets/images/remote-trade-in.webp" alt="إدارة الأساطيل" onerror="this.style.display='none'">
-                </div>
-            </div>
-
-            <!-- Remarketing -->
-            <div class="solution-card">
-                <div class="solution-content">
-                    <div class="solution-header">
-                        <h3>إعادة التسويق</h3>
-                        <h4>أعد بيع مركباتك أسرع واعلاناتك أكثر احترافية</h4>
-                        <p>تتحقق تقنية الذكاء الاصطناعي من مطابقة صوركم وتحسّنها تلقائياً حسب رغباتكم. القص، تعديل الخلفية، الطمس، التعرف على اللوحات، تحسين الصورة... استفد إلى أقصى حد من صوركم واعلاناتكم الاحترافية.</p>
-                    </div>
-                    <div class="solution-features">
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="اعلانات موحدة">
-                            <span>اعلانات موحدة</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="صور محسّنة">
-                            <span>صور محسّنة</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="إعادة بيع أسرع">
-                            <span>إعادة بيع أسرع للمركبات</span>
-                        </div>
-                    </div>
-                    <a href="solution/remarketing/index.html" class="solution-link">تعرّف على إمكانات إعادة التسويق بالذكاء الاصطناعي</a>
-                </div>
-                <div class="solution-image">
-                    <img src="../assets/images/remarketing.webp" alt="واجهة إعادة التسويق" onerror="this.style.display='none'">
-                </div>
-            </div>
-
-            <!-- Inspection API -->
-            <div class="solution-card reverse">
-                <div class="solution-content">
-                    <div class="solution-header">
-                        <h3>واجهة فحص API</h3>
-                        <h4>سرّع وحسّن الفحص بواجهتنا البرمجية</h4>
-                        <p>تحتاج معرفة حالة مركبة؟ CarSee يندمج بسهولة في تطبيقاتكم وقواعد البيانات وسير عملكم. CarSee يساعدكم في الحصول على نتيجة فورية لكشف الأضرار وتقدير تكلفة الإصلاح.</p>
-                    </div>
-                    <div class="solution-features">
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="الكشف والتسعير">
-                            <span>الكشف والتسعير</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="فحص موحّد">
-                            <span>فحص أسرع وموحّد</span>
-                        </div>
-                        <div class="solution-feature">
-                            <img src="../assets/icons/icon-check.png" alt="التكامل">
-                            <span>التكامل عبر عنصر واجهة أو API</span>
-                        </div>
-                    </div>
-                    <a href="solution/inspection/index.html" class="solution-link">عرض توثيق تكامل الواجهة البرمجية</a>
-                </div>
-                <div class="solution-image">
-                    <img src="../assets/images/inspection-api.webp" alt="واجهة فحص API" onerror="this.style.display='none'">
+                </article>
+                <div class="idx-flow__steps" role="list">
+                    <article class="idx-flow__step idx-reveal" role="listitem">
+                        <div class="idx-bento__icon" aria-hidden="true"><img src="../assets/icons/icon-check.png" alt=""></div>
+                        <h3 class="idx-bento__h">كشف الأضرار فورًا</h3>
+                        <p class="idx-bento__p">تحديد دقيق لكل عيب مرئي بالذكاء الاصطناعي.</p>
+                    </article>
+                    <article class="idx-flow__step idx-reveal" role="listitem">
+                        <div class="idx-bento__icon" aria-hidden="true"><img src="../assets/icons/icon-check.png" alt=""></div>
+                        <h3 class="idx-bento__h">تقدير تكاليف الإصلاح</h3>
+                        <p class="idx-bento__p">تسعير مباشر مصمم للمنطقة المحلية.</p>
+                    </article>
+                    <article class="idx-flow__step idx-reveal" role="listitem">
+                        <div class="idx-bento__icon" aria-hidden="true"><img src="../assets/icons/icon-check.png" alt=""></div>
+                        <h3 class="idx-bento__h">ورش إصلاح قريبة</h3>
+                        <p class="idx-bento__p">ربط مباشر بأقرب مركز صيانة معتمد.</p>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- You Are Section -->
-    <section class="you-are">
-        <div class="container">
-            <h2 class="section-title">نعمل يداً بيد مع متخصصي السيارات.</h2>
-            <div class="professionals-grid">
-                <div class="professional-card">
-                    <h3>الوكلاء</h3>
-                    <p>فحص الأضرار للاستبدال أو الإصلاح</p>
-                    <a href="clients/dealerships/index.html">اعرف المزيد</a>
-                </div>
-                <div class="professional-card">
-                    <h3>الأسواق</h3>
-                    <p>الفحص عن بُعد وتوحيد الصور</p>
-                    <a href="clients/uv-marketplaces/index.html">اعرف المزيد</a>
-                </div>
-                <div class="professional-card">
-                    <h3>مصنعو السيارات</h3>
-                    <p>الفحص وإعادة التسويق لكم أو لشبكة وكلائكم.</p>
-                    <a href="clients/oem/index.html">اعرف المزيد</a>
-                </div>
-                <div class="professional-card">
-                    <h3>ناشرو البرمجيات</h3>
-                    <p>ناشرو البرمجيات يدمجون CarSee في حلولكم.</p>
-                    <a href="clients/software-publishers/index.html">اعرف المزيد</a>
-                </div>
-                <div class="professional-card">
-                    <h3>التأجير التمويلي والأساطيل</h3>
-                    <p>فحص إعادة الشراء / ما قبل إعادة الشراء</p>
-                    <a href="clients/leasing/index.html">اعرف المزيد</a>
-                </div>
-                <div class="professional-card">
-                    <h3>تأجير السيارات والاستخدام المشترك</h3>
-                    <p>الفحص قبل وبعد كل تأجير.</p>
-                    <a href="clients/rental-cars-car-sharing/index.html">اعرف المزيد</a>
-                </div>
-                <div class="professional-card">
-                    <h3>شركات التأمين والخبراء</h3>
-                    <p>الفحص عند المطالبة.</p>
-                    <a href="clients/insurers-experts/index.html">اعرف المزيد</a>
+    <section id="currencies-map" class="idx-wm" aria-labelledby="idx-wm-title">
+        <div class="container idx-wm__head">
+            <h2 id="idx-wm-title" class="idx-wm__title">العملات المدعومة في تقارير التخمين</h2>
+            <p class="idx-wm__lede">خريطة تفاعلية لأسواق CarSee النشطة في المنطقة. الدول المظللة هي أسواقنا اليوم.</p>
+        </div>
+        <div class="wm-layout">
+            <div>
+                <div class="wm-map-shell">
+                    <div id="wm-map" class="wm-map-frame" role="application" aria-label="خريطة الشرق الأوسط، حدود الدول"></div>
                 </div>
             </div>
+            <aside class="wm-panel" aria-labelledby="wm-currencies-title">
+                <h2 id="wm-currencies-title">عملات التقييم</h2>
+                <p class="wm-currencies-intro">العملات التالية متاحة لإصدار تقييم الأضرار في أسواقنا النشطة.</p>
+                <ul class="wm-currency-list" role="list">
+                    <li><span class="wm-currency-pill">AED</span></li>
+                    <li><span class="wm-currency-pill">SAR</span></li>
+                    <li><span class="wm-currency-pill">JOD</span></li>
+                    <li><span class="wm-currency-pill">EGP</span></li>
+                </ul>
+                <p id="wm-map-error" class="wm-map-error" hidden></p>
+            </aside>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">كيف يعمل</h2>
-            <p class="section-description">يجمع CarSee ذكاءً اصطناعياً فريداً مع طبقات أعمال مخصصة لقطاع السيارات. اكتشف كيف نحوّل فحوصاتكم إلى بيانات ذات قيمة مضافة.</p>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-image">
-                        <img src="../assets/icons/data-acquisition.png" alt="جمع البيانات" onerror="this.style.display='none'">
-                    </div>
-                    <h3>جمع البيانات</h3>
-                    <p>يجمع CarSee جميع الصور الأولية التي يلتقطها المستخدم، بغض النظر عن الجهاز المستخدم.</p>
+    <section class="cta-final idx-cta" id="demo">
+        <div class="idx-cta__aurora" aria-hidden="true"></div>
+        <div class="container idx-cta__wrap">
+            <div class="idx-cta__card idx-reveal">
+                <h2 class="idx-cta__title">ابدأ استخدام الذكاء الاصطناعي لفحص مركباتك.</h2>
+                <p class="idx-cta__lede">يسعدنا سماع احتياجاتكم أو مشاريعكم في الفحص وإعادة التسويق.<br>اطلبوا المزيد من المعلومات!</p>
+                <div class="idx-cta__actions">
+                    <a href="our-app.html" class="btn-primary idx-btn idx-btn--primary">تنزيل التطبيق الآن</a>
+                    <a href="contact/index.html" class="btn-secondary idx-btn idx-btn--ghost">اتصل بنا</a>
                 </div>
-                <div class="process-step">
-                    <div class="step-image">
-                        <img src="../assets/icons/data-treatment.png" alt="معالجة البيانات" onerror="this.style.display='none'">
-                    </div>
-                    <h3>معالجة البيانات</h3>
-                    <p>تتيح تقنية CarSee معالجة صور متعددة الأنماط لم يسبق لها مثيل. تصفّي البيانات الأولية وتنظفها وتحللها وتُثريها بفضل خوارزميات التعلم العميق المعقدة.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-image">
-                        <img src="../assets/icons/data-delivery.png" alt="تسليم البيانات" onerror="this.style.display='none'">
-                    </div>
-                    <h3>تسليم البيانات</h3>
-                    <p>تُترجم البيانات المعالجة إلى بيانات واضحة عبر واجهتنا البرمجية ولوحة التحكم.</p>
-                </div>
+                <a href="our-app.html" class="idx-cta__demo">احصل على عرض</a>
             </div>
-            <div class="cta-section">
-                <a href="our-app.html" class="btn-primary">تنزيل التطبيق الآن</a>
-                <a href="contact/index.html" class="btn-secondary">اتصل بنا</a>
-            </div>
-        </div>
-    </section>
-
-    
-
-    <!-- CTA Section -->
-    <section class="cta-final" id="demo">
-        <div class="container">
-            <h2 class="section-title">ابدأ استخدام الذكاء الاصطناعي لفحص مركباتك.</h2>
-            <p class="section-description">سنكون سعداء بسماع احتياجاتكم أو مشاريعكم في الفحص وإعادة التسويق.<br>اطلبوا المزيد من المعلومات!</p>
-            <div class="cta-buttons">
-                <a href="our-app.html" class="btn-primary">تنزيل التطبيق الآن</a>
-                <a href="contact/index.html" class="btn-secondary">اتصل بنا</a>
-            </div>
-            <p class="cta-footer">ذكاء CarSee الاصطناعي الفريد CarSee يغيّر قواعد اللعبة في فحص السيارات. اكتشف كيفية دمج تقرير فوري عن حالة المركبة وحلول عن بُعد تلائم احتياجاتكم.</p>
-            <a href="our-app.html" class="btn-primary">احصل على عرض</a>
         </div>
     </section>
 
     <!-- Footer -->    <!-- Footer -->    <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-brand-row">
                 <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
@@ -729,7 +545,10 @@
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
                     </a>
                     <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="mailto:carsee.ai@gmail.com" title="Email — carsee.ai@gmail.com" aria-label="Email carsee.ai@gmail.com">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4L12 13 4 8V6l8 5 8-5v2z"/></svg>
                     </a>
                 </nav>
             </div>
@@ -751,6 +570,7 @@
                         <li><a href="solution/car-traders/index.html">تجار السيارات</a></li>
                         <li><a href="solution/rental-companies/index.html">شركات التأجير</a></li>
                         <li><a href="solution/private-car-owners/index.html">أصحاب السيارات الخاصة</a></li>
+                        <li><a href="solution/car-dealerships/index.html">وكالات السيارات</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -780,19 +600,25 @@
         </div>
     </footer>
 
-    <a href="#demo" class="floating-cta floating-cta--rtl" id="floatingCta" aria-label="تنزيل التطبيق الآن">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-            <rect x="3" y="4" width="18" height="18" rx="2"/>
-            <line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8"  y1="2" x2="8"  y2="6"/>
-            <line x1="3"  y1="10" x2="21" y2="10"/>
+    <a href="our-app.html" class="floating-cta floating-cta--rtl" id="floatingCta" aria-label="تنزيل التطبيق الآن">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12M8 11l4 4 4-4M4 21h16"/>
         </svg>
         <span>تنزيل التطبيق الآن</span>
     </a>
 
+    <script src="../js/index-sections.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cookies.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="../where-we-work/region-data.js"></script>
+    <script>
+    window.WHERE_WE_WORK_I18N = {
+        loadError: "تعذّر تحميل بيانات الخريطة. حدّث الصفحة وحاول مجدداً.",
+        errorTitle: "الخريطة غير متاحة"
+    };
+    </script>
+    <script src="../where-we-work/script.js"></script>
     <script>
     /* Hero 3-D parallax — Arabic home (text right, parallax left via RTL grid) */
     (function () {
@@ -829,38 +655,67 @@
             if (!gyroEnabled) { tarX = 0; tarY = 0; }
         });
 
+        var orientHasValues = false;
         function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
         function onOrient(e) {
-            tarX = clamp(e.gamma         / 45, -1, 1);
-            tarY = clamp((e.beta - 30)   / 45, -1, 1);
+            if (!e) return;
+            if (typeof e.gamma === 'number' && typeof e.beta === 'number' &&
+                !isNaN(e.gamma) && !isNaN(e.beta)) {
+                orientHasValues = true;
+                tarX = clamp(e.gamma / 45, -1, 1);
+                tarY = clamp((e.beta - 30) / 45, -1, 1);
+            }
         }
+        function onMotion(e) {
+            if (orientHasValues) return;
+            var acc = e && e.accelerationIncludingGravity;
+            if (!acc || typeof acc.x !== 'number' || typeof acc.y !== 'number') return;
+            var x = acc.x;
+            var y = acc.y;
+            var z = typeof acc.z === 'number' ? acc.z : 0;
+            var len = Math.sqrt(x * x + y * y + z * z);
+            if (!len || len < 0.5) return;
+            tarX = clamp((x / len) * 1.8, -1, 1);
+            tarY = clamp(-(y / len) * 1.25, -1, 1);
+        }
+        function attachSensors() {
+            if (gyroEnabled) return;
+            window.addEventListener('deviceorientation', onOrient, { passive: true });
+            window.addEventListener('devicemotion', onMotion, { passive: true });
+            gyroEnabled = true;
+        }
+        var orientPermPending = false;
         function enableGyro() {
             if (gyroEnabled) return;
             if (typeof DeviceOrientationEvent !== 'undefined' &&
                 typeof DeviceOrientationEvent.requestPermission === 'function') {
+                if (orientPermPending) return;
+                orientPermPending = true;
                 DeviceOrientationEvent.requestPermission()
                     .then(function (perm) {
-                        if (perm === 'granted') {
-                            window.addEventListener('deviceorientation', onOrient);
-                            gyroEnabled = true;
+                        orientPermPending = false;
+                        if (perm !== 'granted') return;
+                        var chain = Promise.resolve();
+                        if (typeof DeviceMotionEvent !== 'undefined' &&
+                            typeof DeviceMotionEvent.requestPermission === 'function') {
+                            chain = DeviceMotionEvent.requestPermission().catch(function () {});
                         }
-                    }).catch(console.error);
-            } else {
-                window.addEventListener('deviceorientation', onOrient);
-                gyroEnabled = true;
+                        return chain.then(function () { attachSensors(); });
+                    })
+                    .catch(function () { orientPermPending = false; });
+                return;
             }
+            attachSensors();
         }
-        if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-            if (typeof DeviceOrientationEvent !== 'undefined' &&
-                typeof DeviceOrientationEvent.requestPermission !== 'function') {
+        function armMobileGyro() {
+            if (!/Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''))) return;
+            function onFirstInteraction() {
                 enableGyro();
-            } else {
-                document.body.addEventListener('touchstart', function handler() {
-                    enableGyro();
-                    document.body.removeEventListener('touchstart', handler);
-                }, { once: true, passive: true });
             }
+            window.addEventListener('touchstart', onFirstInteraction, { once: true, capture: true, passive: true });
+            window.addEventListener('pointerdown', onFirstInteraction, { once: true, capture: true });
         }
+        armMobileGyro();
 
         function animate() {
             curX += (tarX - curX) * 0.07;

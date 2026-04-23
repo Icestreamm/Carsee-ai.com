@@ -1,0 +1,139 @@
+/* company/partners — scoped layout only */
+
+.partners-page .partners-hero {
+  padding: 5.5rem 0 3rem;
+}
+
+.partners-page .partners-hero .hero-title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.15;
+}
+
+.partners-page .partners-hero .hero-subtitle {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partners-page .partners-band {
+  padding: 2.5rem 0 3.5rem;
+  background: var(--section-bg, #f6f8fb);
+  border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+.partners-page .partners-band__inner {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.partners-page .partners-band p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-dark, #1a1a2e);
+}
+
+.partners-page .partners-grid-section {
+  padding: 2.5rem 0 3rem;
+}
+
+.partners-page .partners-grid-head {
+  max-width: 38rem;
+  margin-bottom: 2rem;
+}
+
+.partners-page .partners-grid-head h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  margin: 0 0 0.5rem;
+  color: var(--text-dark, #1a1a2e);
+}
+
+.partners-page .partners-grid-head p {
+  margin: 0;
+  color: var(--text-muted, #5c6578);
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+.partners-page .partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1.25rem;
+}
+
+.partners-page .partners-card {
+  background: #fff;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 12px;
+  padding: 1.35rem 1.35rem 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.partners-page .partners-card:hover {
+  border-color: rgba(0, 151, 178, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.partners-page .partners-card h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.1rem;
+  color: var(--text-dark, #1a1a2e);
+}
+
+.partners-page .partners-card .pain {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted, #5c6578);
+}
+
+.partners-page .partners-card .angle {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-dark, #1a1a2e);
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-color, #e8ecf1);
+}
+
+.partners-page .partners-footnote {
+  padding: 0 0 2.5rem;
+}
+
+.partners-page .partners-footnote .box {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.35rem;
+  background: #f0f9fb;
+  border: 1px solid rgba(0, 151, 178, 0.2);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-dark, #1a1a2e);
+}
+
+.partners-page .partners-form-section {
+  padding: 2rem 0 4rem;
+}
+
+.partners-page .partners-form-section h2 {
+  text-align: center;
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+}
+
+.partners-page .partners-form-section .sub {
+  text-align: center;
+  margin: 0 auto 1.75rem;
+  max-width: 32rem;
+  color: var(--text-muted, #5c6578);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .partners-page .partners-hero {
+    padding: 4.25rem 0 2rem;
+  }
+}

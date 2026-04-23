@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarSee for Car Agencies — AI Inspections for Showrooms &amp; Service Lanes</title>
+    <meta name="description" content="CarSee for car agencies and dealerships — faster trade-in appraisals, bilingual damage reports, consistent handover documentation, and confident retail customers."> />
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <style>
+        body { background: #070f1a; }
+        .sol-hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding-top: 72px; background: linear-gradient(135deg, #060e1b 0%, #0a1828 50%, #0d2240 100%); overflow: hidden; position: relative; }
+        .sol-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,212,245,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,245,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+        .sol-hero-scan { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,245,0.4), transparent); animation: heroScan 6s linear infinite; }
+        @keyframes heroScan { 0% { top: 72px; } 100% { top: 100%; } }
+        .sol-hero-left { padding: 80px 60px 80px 80px; position: relative; z-index: 2; opacity: 0; transform: translateX(-40px); animation: fadeSlideRight 0.9s cubic-bezier(.22,.68,0,1.2) 0.2s forwards; }
+        @keyframes fadeSlideRight { to { opacity: 1; transform: translateX(0); } }
+        .sol-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,212,245,0.08); border: 1px solid rgba(0,212,245,0.2); border-radius: 100px; padding: 6px 18px; font-size: 11px; font-weight: 600; color: var(--scan-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 28px; }
+        .sol-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--scan-cyan); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.8); } }
+        .sol-hero-title { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(36px, 3.8vw, 58px); line-height: 1.08; letter-spacing: -1.5px; color: #fff; margin-bottom: 24px; }
+        .sol-hero-title em { font-style: normal; color: var(--scan-cyan); }
+        .sol-hero-sub { font-size: 16px; line-height: 1.75; color: var(--on-surface-variant); max-width: 480px; margin-bottom: 40px; }
+        .sol-hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .sol-btn-primary { background: var(--scan-cyan); color: #060e1b; border: none; padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.25s; letter-spacing: 0.3px; }
+        .sol-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,212,245,0.4); }
+        .sol-hero-right { position: relative; height: 100%; min-height: 600px; overflow: hidden; opacity: 0; animation: fadeIn 1.1s ease 0.5s forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .sol-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.05); animation: zoomOut 8s ease forwards; }
+        @keyframes zoomOut { to { transform: scale(1); } }
+        .sol-hero-img-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, #070f1a 0%, rgba(7,15,26,0.3) 40%, transparent 100%); }
+        .sol-hero-img-overlay-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(transparent, #070f1a); }
+        .sol-float-badge { position: absolute; bottom: 48px; right: 40px; background: rgba(7,15,26,0.85); backdrop-filter: blur(16px); border: 1px solid rgba(0,212,245,0.25); border-radius: 16px; padding: 18px 24px; display: flex; align-items: center; gap: 14px; opacity: 0; transform: translateY(20px); animation: floatUp 0.8s ease 1.2s forwards; }
+        @keyframes floatUp { to { opacity: 1; transform: translateY(0); } }
+        .sol-float-badge-icon { width: 40px; height: 40px; background: rgba(0,212,245,0.12); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .sol-float-badge-label { font-size: 11px; color: var(--on-surface-variant); }
+        .sol-float-badge-val { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 800; color: var(--scan-cyan); }
+        .sol-stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #0b1826; border-top: 1px solid rgba(0,212,245,0.1); border-bottom: 1px solid rgba(0,212,245,0.1); }
+        .sol-stat { padding: 36px 40px; border-right: 1px solid rgba(0,212,245,0.08); text-align: center; opacity: 0; transform: translateY(16px); animation: fadeSlideUp 0.6s ease forwards; }
+        .sol-stat:nth-child(1) { animation-delay: 0.1s; }
+        .sol-stat:nth-child(2) { animation-delay: 0.25s; }
+        .sol-stat:nth-child(3) { animation-delay: 0.4s; border-right: none; }
+        @keyframes fadeSlideUp { to { opacity: 1; transform: translateY(0); } }
+        .sol-stat-num { font-family: 'Oswald', sans-serif; font-size: 42px; font-weight: 800; color: var(--scan-cyan); letter-spacing: -1px; line-height: 1; margin-bottom: 8px; }
+        .sol-stat-label { font-size: 13px; font-weight: 600; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.8px; }
+        .sol-body { padding: 100px 0; background: #0a1424; }
+        .sol-body .container { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+        .sol-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 80px; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .sol-intro.visible { opacity: 1; transform: translateY(0); }
+        .sol-section-tag { font-size: 11px; font-weight: 600; color: var(--scan-cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+        .sol-section-title { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: clamp(26px, 2.8vw, 38px); letter-spacing: -0.8px; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+        .sol-section-title em { font-style: normal; color: var(--scan-cyan); }
+        .sol-text { font-size: 15px; line-height: 1.8; color: var(--on-surface-variant); margin-bottom: 16px; }
+        .sol-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: rgba(0,212,245,0.06); border: 1px solid rgba(0,212,245,0.08); border-radius: 20px; overflow: hidden; margin-bottom: 80px; }
+        .sol-feature { background: #0b1826; padding: 36px 32px; position: relative; opacity: 0; transform: translateY(20px); transition: background 0.3s, opacity 0.6s ease, transform 0.6s ease; }
+        .sol-feature.visible { opacity: 1; transform: translateY(0); }
+        .sol-feature:hover { background: #0f2035; }
+        .sol-feature::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--scan-cyan); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+        .sol-feature:hover::after { transform: scaleX(1); }
+        .sol-feature-num { font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; color: var(--scan-cyan); letter-spacing: 2px; margin-bottom: 16px; opacity: 0.6; }
+        .sol-feature-title { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.45; margin-bottom: 10px; }
+        .sol-feature-desc { font-size: 13px; color: var(--on-surface-variant); line-height: 1.6; }
+        .sol-cta { background: linear-gradient(135deg, #071525, #0d2a47); border: 1px solid rgba(0,212,245,0.12); border-radius: 24px; padding: 64px 60px; text-align: center; position: relative; overflow: hidden; }
+        .sol-cta::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,212,245,0.08) 0%, transparent 70%); pointer-events: none; }
+        .sol-cta-title { font-family: 'Oswald', sans-serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 800; color: #fff; margin-bottom: 16px; letter-spacing: -0.5px; }
+        .sol-cta-sub { font-size: 15px; color: var(--on-surface-variant); margin-bottom: 36px; line-height: 1.7; }
+        .sol-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 900px) {
+            .sol-hero { grid-template-columns: 1fr; }
+            .sol-hero-left { padding: 60px 32px; }
+            .sol-hero-right { min-height: 320px; }
+            .sol-hero-img-overlay { background: linear-gradient(transparent, #070f1a 90%); }
+            .sol-intro { grid-template-columns: 1fr; gap: 40px; }
+            .sol-body .container { padding: 0 24px; }
+        }
+    </style>
+<!-- AEO:inject v1 -->
+<link rel="canonical" href="https://carsee.ai/solution/car-dealerships/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CarSee">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://carsee.ai/solution/car-dealerships/">
+    <meta property="og:title" content="CarSee for Car Agencies — AI Inspections for Showrooms &amp; Service Lanes">
+    <meta property="og:description" content="CarSee for car agencies and dealerships — faster trade-in appraisals, bilingual damage reports, consistent handover documentation, and confident retail customers.">
+    <meta property="og:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CarSee for Car Agencies — AI Inspections for Showrooms &amp; Service Lanes">
+    <meta name="twitter:description" content="CarSee for car agencies and dealerships — faster trade-in appraisals, bilingual damage reports, consistent handover documentation, and confident retail customers.">
+    <meta name="twitter:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://carsee.ai/#organization","name":"CarSee","url":"https://carsee.ai","logo":"https://carsee.ai/assets/logos/logo-png-big.png","sameAs":["https://x.com/carseeai","https://www.youtube.com/@carseeai","https://www.instagram.com/carseeai/","https://www.facebook.com/carseeeai"]},{"@type":"WebPage","@id":"https://carsee.ai/solution/car-dealerships/#webpage","url":"https://carsee.ai/solution/car-dealerships/","name":"CarSee for Car Agencies — AI Inspections for Showrooms & Service Lanes","description":"CarSee for car agencies and dealerships — faster trade-in appraisals, bilingual damage reports, consistent handover documentation, and confident retail customers.","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://carsee.ai","name":"CarSee"},"about":{"@id":"https://carsee.ai/#organization"}},{"@type":"FAQPage","@id":"https://carsee.ai/solution/car-dealerships/#faq","mainEntity":[{"@type":"Question","name":"What is CarSee?","acceptedAnswer":{"@type":"Answer","text":"CarSee is an AI-assisted vehicle damage inspection platform that produces structured assessments and repair cost signals."}},{"@type":"Question","name":"Who is this page for?","acceptedAnswer":{"@type":"Answer","text":"Automotive, insurance, fleet, and platform teams evaluating CarSee for GCC and MENA workflows."}},{"@type":"Question","name":"Does CarSee support bilingual reporting?","acceptedAnswer":{"@type":"Answer","text":"CarSee is built to support Arabic and English outputs where applicable to the product surface."}},{"@type":"Question","name":"How can I contact CarSee?","acceptedAnswer":{"@type":"Answer","text":"Use the on-site contact form or the official email channels referenced in the footer."}},{"@type":"Question","name":"Is there a mobile app?","acceptedAnswer":{"@type":"Answer","text":"See the Our App page for download links and onboarding guidance when available."}},{"@type":"Question","name":"Where does CarSee operate?","acceptedAnswer":{"@type":"Answer","text":"CarSee focuses on GCC/MENA markets; see Where we work for market context."}},{"@type":"Question","name":"Is my data handled securely?","acceptedAnswer":{"@type":"Answer","text":"CarSee follows common SaaS security practices; read the privacy policy for specifics."}},{"@type":"Question","name":"Can CarSee integrate via API?","acceptedAnswer":{"@type":"Answer","text":"API-oriented inspection workflows exist for teams that need a consistent vehicle condition signal."}},{"@type":"Question","name":"What outputs does CarSee generate?","acceptedAnswer":{"@type":"Answer","text":"Structured inspection narratives, damage categorization, and repair cost signals aligned to regional repair economics."}},{"@type":"Question","name":"Does CarSee replace a physical appraiser?","acceptedAnswer":{"@type":"Answer","text":"CarSee augments workflows with consistent photo-to-report automation; final decisions remain with your team and policies."}}]},{"@type":"BreadcrumbList","@id":"https://carsee.ai/solution/car-dealerships/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://carsee.ai/"},{"@type":"ListItem","position":2,"name":"Solutions","item":"https://carsee.ai/solution/"},{"@type":"ListItem","position":3,"name":"Car Dealerships","item":"https://carsee.ai/solution/car-dealerships/"}]},{"@type":"ProfessionalService","@id":"https://carsee.ai/#professionalService","name":"CarSee","image":"https://carsee.ai/assets/logos/logo_banner.png","url":"https://carsee.ai","description":"Software-enabled AI vehicle damage inspection and reporting.","areaServed":["GCC","Middle East","North Africa"],"parentOrganization":{"@id":"https://carsee.ai/#organization"}},{"@type":"Service","@id":"https://carsee.ai/solution/car-dealerships/#service","name":"CarSee for Car Agencies — AI Inspections for Showrooms & Service Lanes","serviceType":"Vehicle inspection software","provider":{"@id":"https://carsee.ai/#organization"},"areaServed":["AE","SA","QA","KW","BH","OM","EG","JO"],"description":"CarSee for car agencies and dealerships — faster trade-in appraisals, bilingual damage reports, consistent handover documentation, and confident retail customers."}]}</script>
+<!-- /AEO:inject v1 -->
+</head>
+<body>
+<!-- AEO:body v1 -->
+<div style="display:none" data-ai-summary="true" aria-hidden="true">
+<ul><li>Page topic: CarSee for Car Agencies — AI Inspections for Showrooms &amp; Service Lanes.</li><li>Audience: automotive, insurance, fleet, and marketplace teams evaluating AI inspection workflows.</li><li>Key facts: CarSee for car agencies and dealerships — faster trade-in appraisals, bilingual damage reports, consistent handover documentation, and confident retail customers.</li><li>Unique value: structured, bilingual-ready inspection outputs with GCC-aware repair economics where applicable.</li><li>Canonical reference: https://carsee.ai/solution/car-dealerships/</li></ul>
+</div>
+<!-- /AEO:body v1 -->
+
+<header class="header" role="banner">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="../../index.html" class="logo-link">
+                            <img src="../../assets/logos/logo-png-big.png" alt="CarSee Logo" id="logo">
+                            <span class="logo-text-wrap">
+                                <span class="nav-logo-text">Car<span class="logo-see">See</span></span>
+                                <span class="nav-logo-subtitle">AI Damage Evaluation</span>
+                            </span>
+                        </a>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item"><a href="../../how-it-works/index.html" class="nav-link">How it works</a></li>
+                        <li class="nav-item"><a href="../../our-app.html" class="nav-link">Our App</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="../../solutions/index.html" class="nav-link">Our Solutions Include <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../solution/car-traders/index.html">Car Traders</a></li>
+                                <li><a href="../../solution/rental-companies/index.html">Rental Companies</a></li>
+                                <li><a href="../../solution/private-car-owners/index.html">Private Car Owners</a></li>
+                                <li><a href="../../solution/car-dealerships/index.html">Car agencies</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="../../benefits.html" class="nav-link">Why CarSee?</a></li>
+                        <li class="nav-item"><a href="../../pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="../../where-we-work/index.html" class="nav-link">Where we work</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link">About <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../../company/career/index.html">Career</a></li>
+                                <li><a href="../../company/partners/index.html">Become a Partner</a></li>
+                                <li><a href="../../contact/index.html">Contact us</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="../../blog/index.html" class="nav-link">Blog</a></li>
+                    </ul>
+                    <div class="nav-actions">
+                        <div class="language-selector">
+                            <span>EN</span>
+                            <ul class="language-menu">
+                                <li><a href="../../ar/solution/car-dealerships/index.html">AR</a></li>
+                            </ul>
+                        </div>
+                        <a href="../../our-app.html" class="btn-demo">Download Now!</a>
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="sol-hero">
+        <div class="sol-hero-scan"></div>
+        <div class="sol-hero-left">
+            <div class="sol-eyebrow">Car agencies</div>
+            <h1 class="sol-hero-title">Your showroom runs<br>on <em>trust &amp; speed</em></h1>
+            <p class="sol-hero-sub">Give every trade-in, demo, and delivery the same professional AI readout your customers already expect from traders and rental fleets — bilingual reports, local repair estimates, and a clear record at every handover.</p>
+            <div class="sol-hero-actions">
+                <a href="../../our-app.html" class="sol-btn-primary">Download now</a>
+            </div>
+        </div>
+        <div class="sol-hero-right">
+            <img src="../../assets/images/car-dealership.webp" alt="Modern car dealership showroom with vehicles on display" class="sol-hero-img" width="1200" height="800" loading="eager" decoding="async">
+            <div class="sol-hero-img-overlay"></div>
+            <div class="sol-hero-img-overlay-bottom"></div>
+            <div class="sol-float-badge">
+                <div class="sol-float-badge-icon">🏢</div>
+                <div>
+                    <div class="sol-float-badge-label">From the lane to</div>
+                    <div class="sol-float-badge-val">Retail-ready</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sol-stats-bar">
+        <div class="sol-stat">
+            <div class="sol-stat-num" data-stat-target="5" data-stat-less-than="true" dir="ltr">0</div>
+            <div class="sol-stat-label">Minutes Per Scan</div>
+        </div>
+        <div class="sol-stat">
+            <div class="sol-stat-num" data-stat-target="6" data-stat-suffix="×" dir="ltr">0</div>
+            <div class="sol-stat-label">AI Models Running</div>
+        </div>
+        <div class="sol-stat">
+            <div class="sol-stat-num" data-stat-target="100" data-stat-suffix="%" dir="ltr">0%</div>
+            <div class="sol-stat-label">Bilingual Reports</div>
+        </div>
+    </div>
+
+    <section class="sol-body">
+        <div class="container">
+            <div class="sol-intro" id="solIntro">
+                <div>
+                    <div class="sol-section-tag">Why agencies choose CarSee</div>
+                    <h2 class="sol-section-title">One workflow for <em>trade-ins</em>, deliveries, and retail peace of mind</h2>
+                </div>
+                <div>
+                    <p class="sol-text">Independent traders already use CarSee to close deals with defensible damage reports and local repair numbers. Rental teams rely on it for consistent pick-up and return documentation. Private buyers and sellers use the same scan to understand value before money changes hands.</p>
+                    <p class="sol-text">Your agency can unify all of that on the showroom floor: faster appraisals, fewer disputes, and a customer experience that feels as polished as your vehicles.</p>
+                </div>
+            </div>
+
+            <div class="sol-features">
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">01</div>
+                    <div class="sol-feature-title">Trade-in &amp; appraisal lane — instant AI damage readouts</div>
+                    <div class="sol-feature-desc">Same bilingual, timestamped reporting traders use — sized for high-volume showroom traffic.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">02</div>
+                    <div class="sol-feature-title">Pre-delivery &amp; demo checks with a clear handover file</div>
+                    <div class="sol-feature-desc">Borrowing from rental workflows: document condition in minutes before keys leave the desk.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">03</div>
+                    <div class="sol-feature-title">Retail customers buy and sell with confidence</div>
+                    <div class="sol-feature-desc">Offer private-owner clarity on damage and value — right inside your dealership journey.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">04</div>
+                    <div class="sol-feature-title">Local repair estimates your desk can stand behind</div>
+                    <div class="sol-feature-desc">Transparent numbers for reconditioning, CPO packs, and customer conversations.</div>
+                </div>
+                <div class="sol-feature" data-animate>
+                    <div class="sol-feature-num">05</div>
+                    <div class="sol-feature-title">Arabic &amp; English PDFs ready to print or email</div>
+                    <div class="sol-feature-desc">Built for GCC showrooms — one standard for sales, service, and compliance.</div>
+                </div>
+            </div>
+
+            <div class="sol-cta">
+                <h2 class="sol-cta-title">Bring AI inspections to every vehicle on your floor</h2>
+                <p class="sol-cta-sub">Download CarSee and start producing professional damage reports in minutes.</p>
+                <div class="sol-cta-btns">
+                    <a href="../../our-app.html" class="sol-btn-primary">Download now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-brand-row">
+                <a href="../../index.html" class="footer-logo-link" aria-label="CarSee home">
+                    <img src="../../assets/logos/logo_banner.png" alt="CarSee" class="footer-logo-img" loading="lazy">
+                </a>
+                <nav class="footer-social" aria-label="Social media">
+                    <a class="footer-social-link" href="https://www.youtube.com/@carseeai" target="_blank" rel="noopener noreferrer" title="YouTube — @carseeai" aria-label="YouTube @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31.7 31.7 0 0 0 .5-5.8 31.7 31.7 0 0 0-.5-5.8zM9.7 15.5V8.5L15.7 12l-6 3.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.instagram.com/carseeai/" target="_blank" rel="noopener noreferrer" title="Instagram — @carseeai" aria-label="Instagram @carseeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.25-4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 5.5z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://x.com/carseeai" target="_blank" rel="noopener noreferrer" title="X — @carseeai" aria-label="X @carseeai">
+                        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="mailto:carsee.ai@gmail.com" title="Email — carsee.ai@gmail.com" aria-label="Email carsee.ai@gmail.com">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4L12 13 4 8V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="../../how-it-works/index.html">How it works</a></li>
+                        <li><a href="../../pricing.html">Pricing</a></li>
+                        <li><a href="../../blog/index.html">Blog</a></li>
+                        <li><a href="../../benefits.html">Why CarSee?</a></li>
+                        <li><a href="../../our-app.html">Our App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Solutions Include</h4>
+                    <ul>
+                        <li><a href="../../solution/car-traders/index.html">Car Traders</a></li>
+                        <li><a href="../../solution/rental-companies/index.html">Rental Companies</a></li>
+                        <li><a href="../../solution/private-car-owners/index.html">Private Car Owners</a></li>
+                        <li><a href="../../solution/car-dealerships/index.html">Car agencies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="../../company/career/index.html">Career</a></li>
+                        <li><a href="../../company/partners/index.html">Become a Partner</a></li>
+                        <li><a href="../../contact/index.html">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CarSee. All right reserved.</p>
+                <div class="footer-links">
+                    <span class="legal-links">
+                        <a href="../../privacy.html">Privacy Policy</a>
+                        <span>·</span>
+                        <a href="../../cookies.html">Cookies Policy</a>
+                        <span>·</span>
+                        <a href="../../terms.html">Terms of Service</a>
+                        <span>·</span>
+                        <a href="mailto:legal@carsee.app">Legal</a>
+                    </span>
+                    <a href="#" id="cookiesSettings">Cookies Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/solution-stats-counter.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 120); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('#solIntro, [data-animate]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -194,23 +194,28 @@
   }
 }
 
-/* Plan grid inside showcase */
-.ps-showcase .plans-grid {
+/* Plan grid — subgrid aligns feature blocks and price rows across columns */
+.ps-showcase .ps-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.4vw, 1.5rem);
   align-items: stretch;
+  grid-template-rows: auto auto 1fr auto auto auto auto;
 }
 
-/* Grid items fill row height so Free / Pro / Plus match the tallest card */
-.ps-showcase .plans-grid > .plan-card {
-  height: 100%;
+.ps-showcase .ps-plans-grid > .plan-card {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 7;
   min-height: 0;
-  align-self: stretch;
+  height: auto;
 }
 
 .ps-showcase .plan-features {
-  flex: 1 1 auto;
-  margin: 0 0 1.25rem;
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.45;
+  min-height: 0;
 }
 
 .ps-showcase .plan-features li {
@@ -227,27 +232,51 @@
 }
 
 .ps-showcase .plan-price {
-  margin-top: auto;
+  margin-top: 0;
   margin-bottom: 0.35rem;
 }
 
 .ps-showcase .plan-cta {
-  margin-top: 0.75rem;
+  margin: 0.75rem 0 0;
+  align-self: stretch;
+}
+
+/* Pro has no CTA — empty cell shares subgrid row 7 height with sibling CTAs */
+.ps-showcase .plan-cta-slot {
+  margin: 0;
+  min-height: 0;
+}
+
+.ps-showcase .plan-divider {
+  margin: 0.75rem 0;
 }
 
 @media (max-width: 900px) {
-  .ps-showcase .plans-grid {
-    grid-template-columns: 1fr;
+  .ps-showcase .ps-plans-grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: none;
     max-width: 28rem;
     margin-left: auto;
     margin-right: auto;
+    gap: 1.25rem;
+  }
+
+  .ps-showcase .ps-plans-grid > .plan-card {
+    display: flex;
+    flex-direction: column;
+    grid-row: auto;
+    grid-template-rows: none;
+  }
+
+  .ps-showcase .plan-cta-slot {
+    display: none;
   }
 }
 
 .ps-showcase .plan-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1.125rem 1.75rem 1.75rem;
+  display: grid;
+  padding: 1.125rem 1.75rem 1.5rem;
   background: rgba(26, 37, 53, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -267,12 +296,6 @@
   box-shadow:
     0 0 0 1px rgba(0, 212, 245, 0.15),
     0 24px 64px rgba(0, 0, 0, 0.45);
-}
-
-.ps-showcase .plan-badge {
-  top: 0;
-  transform: translate(-50%, -50%);
-  letter-spacing: 0.12em;
 }
 
 .ps-billed-note {

@@ -1,3 +1,78 @@
+/**
+ * Mark the nav link for the current page with .nav-link--current (scan animation in style.css).
+ * Resolves relative hrefs against the document URL so it works from /ar/, nested folders, etc.
+ */
+(function highlightCurrentNavLink() {
+    function pageKey(pathname) {
+        var p = (pathname || '').replace(/\\/g, '/');
+        try {
+            p = decodeURIComponent(p);
+        } catch (e) {
+            /* keep */
+        }
+        if (!p || p === '/') return '/';
+        var parts = p.split('/').filter(Boolean);
+        if (!parts.length) return '/';
+        var last = parts[parts.length - 1];
+        if (last === 'index.html') {
+            parts.pop();
+        } else if (/\.html$/i.test(last)) {
+            parts[parts.length - 1] = last.replace(/\.html$/i, '');
+        }
+        return '/' + parts.join('/');
+    }
+
+    function samePage(pathA, pathB) {
+        return pageKey(pathA) === pageKey(pathB);
+    }
+
+    function markNav() {
+        var navMenu = document.getElementById('navMenu');
+        if (!navMenu) return;
+
+        var locPath = window.location.pathname;
+
+        navMenu.querySelectorAll('a[href]').forEach(function (a) {
+            var href = a.getAttribute('href');
+            if (!href || href.charAt(0) === '#') return;
+            try {
+                var u = new URL(a.href, window.location.href);
+                if (u.origin !== window.location.origin) return;
+                if (samePage(locPath, u.pathname)) {
+                    if (a.closest('.dropdown-menu')) {
+                        a.classList.add('dropdown-link--current');
+                    } else {
+                        a.classList.add('nav-link--current');
+                    }
+                }
+            } catch (e) {
+                /* ignore bad href */
+            }
+        });
+
+        navMenu.querySelectorAll('.nav-item.dropdown').forEach(function (item) {
+            if (item.querySelector('a.dropdown-link--current')) {
+                var parentLink = item.querySelector(':scope > a.nav-link');
+                if (parentLink) parentLink.classList.add('nav-link--current');
+            }
+        });
+
+        var k = pageKey(locPath);
+        if (!navMenu.querySelector('a.nav-link--current') && !navMenu.querySelector('a.dropdown-link--current')) {
+            if (k === '/blog' || (k.length > 5 && k.slice(0, 6) === '/blog/')) {
+                var blogLink = navMenu.querySelector('a.nav-link[href*="blog"]');
+                if (blogLink) blogLink.classList.add('nav-link--current');
+            }
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', markNav);
+    } else {
+        markNav();
+    }
+})();
+
 // Mobile Menu Toggle
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
@@ -252,4 +327,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', update, { passive: true });
     update();
+})();
+
+/* Load cookie consent script when the footer exposes settings but the page omitted cookies.js */
+(function loadCarSeeCookiesIfMissing() {
+    if (typeof window.CarSeeCookies !== 'undefined') return;
+    var settings = document.getElementById('cookiesSettings');
+    if (!settings) return;
+    if (document.querySelector('script[src*="cookies.js"]')) return;
+    var ref = document.querySelector('script[src*="main.js"]');
+    if (!ref || !ref.src) return;
+    var url = ref.src.replace(/\/js\/main\.js(\?.*)?$/i, '/js/cookies.js');
+    var s = document.createElement('script');
+    s.src = url;
+    s.async = true;
+    ref.parentNode.insertBefore(s, ref.nextSibling);
 })();

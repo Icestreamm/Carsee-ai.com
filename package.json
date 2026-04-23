@@ -4,6 +4,8 @@
   "private": true,
   "description": "CarSee static website — deploy to Cloudflare Pages via Wrangler",
   "scripts": {
+    "aeo:inject": "python tools/inject_aeo.py",
+    "serve": "npx --yes serve@14 . -l 5173",
     "deploy:pages": "wrangler pages deploy .",
     "deploy": "wrangler pages deploy ."
   },

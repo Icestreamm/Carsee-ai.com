@@ -30,7 +30,7 @@
     .benefits-page .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,212,245,0.35); }
     .benefits-page .btn-ghost { color: var(--on-surface); text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
     .benefits-page .btn-ghost:hover { color: var(--scan-cyan); }
-    .benefits-page .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--outline); background: rgba(10,22,40,0.7); backdrop-filter: blur(12px); z-index: 2; }
+    .benefits-page .hero-stats { position: absolute; bottom: 0; left: 0; right: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--outline); background: rgba(10,22,40,0.7); backdrop-filter: blur(12px); z-index: 2; }
     .benefits-page .hero-stat { padding: 28px 32px; border-right: 1px solid var(--outline); }
     .benefits-page .hero-stat:last-child { border-right: none; }
     .benefits-page .hero-stat-num { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: 36px; color: var(--scan-cyan); letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
@@ -49,33 +49,6 @@
     .benefits-page .pain-title { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 18px; color: #fff; margin-bottom: 12px; letter-spacing: -0.3px; }
     .benefits-page .pain-desc { font-size: 14px; color: var(--on-surface-variant); line-height: 1.65; }
     .benefits-page .pain-badge { display: inline-block; margin-top: 20px; background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.25); color: var(--alert-amber); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.5px; }
-    .benefits-page .savings-section { background: var(--abyss-navy); }
-    .benefits-page .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
-    .benefits-page .chart-card { background: var(--dark-card); border: 1px solid var(--outline); border-radius: 16px; padding: 36px; position: relative; overflow: hidden; }
-    .benefits-page .chart-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    .benefits-page .chart-card-title { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
-    .benefits-page .chart-card-sub { font-size: 12px; color: var(--on-surface-variant); margin-top: 4px; }
-    .benefits-page .chart-badge { background: rgba(0,212,245,0.12); border: 1px solid rgba(0,212,245,0.2); color: var(--scan-cyan); font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 100px; white-space: nowrap; }
-    .benefits-page .bar-chart { display: flex; align-items: flex-end; gap: 12px; height: 140px; }
-    .benefits-page .bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
-    .benefits-page .bar-wrap { width: 100%; display: flex; gap: 5px; align-items: flex-end; height: 120px; }
-    .benefits-page .bar { flex: 1; border-radius: 4px 4px 0 0; transition: height 1.4s cubic-bezier(0.22, 1, 0.36, 1); height: 0; }
-    .benefits-page .bar.traditional { background: rgba(100,120,150,0.35); }
-    .benefits-page .bar.carsee { background: linear-gradient(180deg, var(--scan-cyan), var(--precision-teal)); }
-    .benefits-page .bar-label { font-size: 10px; color: var(--on-surface-variant); text-align: center; }
-    .benefits-page .donut-wrap { display: flex; align-items: center; gap: 32px; }
-    .benefits-page .donut-svg { flex-shrink: 0; }
-    .benefits-page .donut-legend { flex: 1; }
-    .benefits-page .donut-legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .benefits-page .donut-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-    .benefits-page .donut-legend-label { font-size: 13px; color: var(--on-surface); }
-    .benefits-page .donut-legend-val { margin-left: auto; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 15px; color: #fff; }
-    .benefits-page .line-chart-wrap { position: relative; height: 140px; }
-    .benefits-page .line-chart-svg { width: 100%; height: 100%; overflow: visible; }
-    .benefits-page .gauge-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .benefits-page .gauge-svg { overflow: visible; }
-    .benefits-page .gauge-value { font-family: 'Oswald', sans-serif; font-weight: 800; font-size: 32px; color: var(--scan-cyan); text-align: center; letter-spacing: -1px; }
-    .benefits-page .gauge-label { font-size: 13px; color: var(--on-surface-variant); text-align: center; }
     .benefits-page .roi-section { background: var(--midnight); }
     .benefits-page .roi-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .benefits-page .roi-inputs { display: flex; flex-direction: column; gap: 28px; }
@@ -131,16 +104,36 @@
         .benefits-page section { padding: 70px 24px; }
         .benefits-page .hero { padding: 120px 24px 100px; }
         .benefits-page .hero-stats { grid-template-columns: repeat(2, 1fr); }
-        .benefits-page .charts-grid { grid-template-columns: 1fr; }
         .benefits-page .pain-grid { grid-template-columns: 1fr 1fr; }
         .benefits-page .roi-wrap { grid-template-columns: 1fr; }
         .benefits-page .industries-grid { grid-template-columns: repeat(2, 1fr); }
     }
     </style>
+<!-- AEO:inject v1 -->
+<link rel="canonical" href="https://carsee.ai/benefits.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CarSee">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://carsee.ai/benefits.html">
+    <meta property="og:title" content="Why CarSee? — AI Vehicle Damage Evaluation">
+    <meta property="og:description" content="Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.">
+    <meta property="og:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why CarSee? — AI Vehicle Damage Evaluation">
+    <meta name="twitter:description" content="Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.">
+    <meta name="twitter:image" content="https://carsee.ai/assets/logos/logo_banner.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://carsee.ai/#organization","name":"CarSee","url":"https://carsee.ai","logo":"https://carsee.ai/assets/logos/logo-png-big.png","sameAs":["https://x.com/carseeai","https://www.youtube.com/@carseeai","https://www.instagram.com/carseeai/","https://www.facebook.com/carseeeai"]},{"@type":"WebPage","@id":"https://carsee.ai/benefits.html#webpage","url":"https://carsee.ai/benefits.html","name":"Why CarSee? — AI Vehicle Damage Evaluation","description":"Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://carsee.ai","name":"CarSee"},"about":{"@id":"https://carsee.ai/#organization"}},{"@type":"FAQPage","@id":"https://carsee.ai/benefits.html#faq","mainEntity":[{"@type":"Question","name":"What is CarSee?","acceptedAnswer":{"@type":"Answer","text":"CarSee is an AI-assisted vehicle damage inspection platform that produces structured assessments and repair cost signals."}},{"@type":"Question","name":"Who is this page for?","acceptedAnswer":{"@type":"Answer","text":"Automotive, insurance, fleet, and platform teams evaluating CarSee for GCC and MENA workflows."}},{"@type":"Question","name":"Does CarSee support bilingual reporting?","acceptedAnswer":{"@type":"Answer","text":"CarSee is built to support Arabic and English outputs where applicable to the product surface."}},{"@type":"Question","name":"How can I contact CarSee?","acceptedAnswer":{"@type":"Answer","text":"Use the on-site contact form or the official email channels referenced in the footer."}},{"@type":"Question","name":"Is there a mobile app?","acceptedAnswer":{"@type":"Answer","text":"See the Our App page for download links and onboarding guidance when available."}},{"@type":"Question","name":"Where does CarSee operate?","acceptedAnswer":{"@type":"Answer","text":"CarSee focuses on GCC/MENA markets; see Where we work for market context."}},{"@type":"Question","name":"Is my data handled securely?","acceptedAnswer":{"@type":"Answer","text":"CarSee follows common SaaS security practices; read the privacy policy for specifics."}},{"@type":"Question","name":"Can CarSee integrate via API?","acceptedAnswer":{"@type":"Answer","text":"API-oriented inspection workflows exist for teams that need a consistent vehicle condition signal."}},{"@type":"Question","name":"What outputs does CarSee generate?","acceptedAnswer":{"@type":"Answer","text":"Structured inspection narratives, damage categorization, and repair cost signals aligned to regional repair economics."}},{"@type":"Question","name":"Does CarSee replace a physical appraiser?","acceptedAnswer":{"@type":"Answer","text":"CarSee augments workflows with consistent photo-to-report automation; final decisions remain with your team and policies."}}]},{"@type":"BreadcrumbList","@id":"https://carsee.ai/benefits.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://carsee.ai/"},{"@type":"ListItem","position":2,"name":"Benefits","item":"https://carsee.ai/benefits.html"}]},{"@type":"ProfessionalService","@id":"https://carsee.ai/#professionalService","name":"CarSee","image":"https://carsee.ai/assets/logos/logo_banner.png","url":"https://carsee.ai","description":"Software-enabled AI vehicle damage inspection and reporting.","areaServed":["GCC","Middle East","North Africa"],"parentOrganization":{"@id":"https://carsee.ai/#organization"}}]}</script>
+<!-- /AEO:inject v1 -->
 </head>
 <body class="benefits-page">
-            <!-- Header -->
-    <header class="header">
+<!-- AEO:body v1 -->
+<div style="display:none" data-ai-summary="true" aria-hidden="true">
+<ul><li>Page topic: Why CarSee? — AI Vehicle Damage Evaluation.</li><li>Audience: automotive, insurance, fleet, and marketplace teams evaluating AI inspection workflows.</li><li>Key facts: Every measurable advantage CarSee delivers — time saved, money saved, disputes eliminated. Real data for dealerships, fleets, rental companies, and insurers.</li><li>Unique value: structured, bilingual-ready inspection outputs with GCC-aware repair economics where applicable.</li><li>Canonical reference: https://carsee.ai/benefits.html</li></ul>
+</div>
+<!-- /AEO:body v1 -->
+
+<!-- Header -->
+    <header class="header" role="banner">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
@@ -155,18 +148,18 @@
                     </div>
                     <ul class="nav-menu" id="navMenu">
                         <li class="nav-item"><a href="how-it-works/index.html" class="nav-link">How it works</a></li>
+                        <li class="nav-item"><a href="our-app.html" class="nav-link">Our App</a></li>
                         <li class="nav-item dropdown">
                             <a href="solutions/index.html" class="nav-link">Our Solutions Include <span class="dropdown-arrow">▼</span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="solution/car-traders/index.html">Car Traders</a></li>
                                 <li><a href="solution/rental-companies/index.html">Rental Companies</a></li>
                                 <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
+                                <li><a href="solution/car-dealerships/index.html">Car agencies</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                        <li class="nav-item"><a href="blog/index.html" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="benefits.html" class="nav-link">Why CarSee?</a></li>
-                        <li class="nav-item"><a href="our-app.html" class="nav-link">Our App</a></li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
                         <li class="nav-item"><a href="where-we-work/index.html" class="nav-link">Where we work</a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link">About <span class="dropdown-arrow">▼</span></a>
@@ -176,6 +169,7 @@
                                 <li><a href="contact/index.html">Contact us</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item"><a href="blog/index.html" class="nav-link">Blog</a></li>
                     </ul>
                     <div class="nav-actions">
                         <div class="language-selector">
@@ -201,36 +195,31 @@
         <div class="hero-content anim-fade">
             <div class="hero-eyebrow">THE BENEFITS</div>
             <h1>Why Businesses Choose <em>CarSee</em> Over Everything Else</h1>
-            <p>From cutting inspection time by 94% to eliminating dispute liability — every measurable advantage CarSee delivers to your operation, backed by real data.</p>
+            <p>From cutting inspection time by up to 62% to strengthening your dispute record — the clearest, measurable gains CarSee can deliver, with headline figures kept realistic for real-world operations.</p>
             <div class="hero-actions">
                 <a href="our-app.html" class="btn-primary">Start Saving Today</a>
-                <a href="#charts" class="btn-ghost">↓ See the Numbers</a>
+                <a href="#roi" class="btn-ghost">↓ ROI calculator</a>
             </div>
         </div>
         <div class="hero-stats">
             <div class="hero-stat">
-                <div class="hero-stat-num"><span class="counter" data-target="94">0</span>%</div>
+                <div class="hero-stat-num"><span class="counter" data-target="62">0</span>%</div>
                 <div class="hero-stat-label">Faster per inspection</div>
             </div>
             <div class="hero-stat">
-                <div class="hero-stat-num">$<span class="counter" data-target="180">0</span></div>
-                <div class="hero-stat-label">Saved per vehicle</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-num"><span class="counter" data-target="3">0</span>×</div>
+                <div class="hero-stat-num"><span class="counter" data-target="2">0</span>×</div>
                 <div class="hero-stat-label">Throughput increase</div>
             </div>
             <div class="hero-stat">
-                <div class="hero-stat-num"><span class="counter" data-target="98">0</span>%</div>
+                <div class="hero-stat-num"><span class="counter" data-target="78">0</span>%</div>
                 <div class="hero-stat-label">Dispute reduction</div>
             </div>
         </div>
     </section>
 
     <section class="pain-section">
-        <div class="section-tag anim-fade">THE REAL COST OF DOING NOTHING</div>
         <h2 class="section-title anim-fade">Every Day You Wait Is Revenue Lost</h2>
-        <p class="section-subtitle anim-fade">Manual inspection processes have hidden costs that compound quietly — until a dispute, lawsuit, or operational bottleneck makes them impossible to ignore.</p>
+        <p class="section-subtitle anim-fade">Manual inspection processes have hidden costs that compound quietly</p>
         <div class="pain-grid anim-stagger">
             <div class="pain-card">
                 <svg class="pain-icon" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="20" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="4 2"/><path d="M22 12v10l6 4" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/></svg>
@@ -241,8 +230,8 @@
             <div class="pain-card">
                 <svg class="pain-icon" viewBox="0 0 44 44" fill="none"><rect x="8" y="8" width="28" height="28" rx="4" stroke="#F5A623" stroke-width="1.5"/><path d="M14 22h16M22 14v16" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="22" r="3" fill="#F5A623" opacity="0.4"/></svg>
                 <div class="pain-title">High Cost</div>
-                <div class="pain-desc">Certified assessors charge $150–$350 per inspection. Costs escalate fast without a scalable solution.</div>
-                <span class="pain-badge">⚠ $150–350 per report</span>
+                <div class="pain-desc">Certified assessor fees vary by market, while efficient digital reports can land around $2–$3 each. Costs escalate fast without a scalable solution.</div>
+                <span class="pain-badge">⚠ $2–3 per report</span>
             </div>
             <div class="pain-card">
                 <svg class="pain-icon" viewBox="0 0 44 44" fill="none"><path d="M8 36L22 8l14 28H8z" stroke="#F5A623" stroke-width="1.5" stroke-linejoin="round"/><path d="M22 20v8M22 32v1" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/></svg>
@@ -271,170 +260,48 @@
         </div>
     </section>
 
-    <section class="savings-section" id="charts">
-        <div class="section-tag anim-fade">IMPACT ANALYTICS</div>
-        <h2 class="section-title anim-fade">See the Numbers Work For You</h2>
-        <div class="charts-grid">
-            <div class="chart-card anim-fade">
-                <div class="chart-card-header">
-                    <div>
-                        <div class="chart-card-title">Time per Vehicle Inspection</div>
-                        <div class="chart-card-sub">Minutes · Before vs. After CarSee</div>
-                    </div>
-                    <div class="chart-badge">94% faster</div>
-                </div>
-                <div class="bar-chart" id="timeChart">
-                    <div class="bar-group">
-                        <div class="bar-wrap"><div class="bar traditional" data-height="80" style="height:0"></div></div>
-                        <div class="bar-label">Traditional<br><strong style="color:#fff;font-size:12px">60 min</strong></div>
-                    </div>
-                    <div class="bar-group">
-                        <div class="bar-wrap"><div class="bar carsee" data-height="7" style="height:0"></div></div>
-                        <div class="bar-label">CarSee<br><strong style="color:var(--scan-cyan);font-size:12px">3 min</strong></div>
-                    </div>
-                    <div class="bar-group">
-                        <div class="bar-wrap"><div class="bar traditional" data-height="75" style="height:0"></div></div>
-                        <div class="bar-label">Fleet (manual)<br><strong style="color:#fff;font-size:12px">45 min</strong></div>
-                    </div>
-                    <div class="bar-group">
-                        <div class="bar-wrap"><div class="bar carsee" data-height="7" style="height:0"></div></div>
-                        <div class="bar-label">Fleet (AI)<br><strong style="color:var(--scan-cyan);font-size:12px">3 min</strong></div>
-                    </div>
-                </div>
-                <div style="display:flex;gap:20px;margin-top:20px;">
-                    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--on-surface-variant)"><div style="width:12px;height:12px;background:rgba(100,120,150,0.5);border-radius:2px"></div>Traditional</div>
-                    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--on-surface-variant)"><div style="width:12px;height:12px;background:var(--scan-cyan);border-radius:2px"></div>CarSee AI</div>
-                </div>
-            </div>
-            <div class="chart-card anim-fade">
-                <div class="chart-card-header">
-                    <div>
-                        <div class="chart-card-title">Monthly Cost Breakdown</div>
-                        <div class="chart-card-sub">50 vehicles/month · Dealership</div>
-                    </div>
-                    <div class="chart-badge">$8,250 saved</div>
-                </div>
-                <div class="donut-wrap">
-                    <svg class="donut-svg" width="130" height="130" viewBox="0 0 130 130">
-                        <circle cx="65" cy="65" r="50" fill="none" stroke="var(--outline)" stroke-width="18"/>
-                        <circle id="donut-trad" cx="65" cy="65" r="50" fill="none" stroke="rgba(100,120,150,0.4)" stroke-width="18" stroke-dasharray="0 314" stroke-dashoffset="78.5" style="transition:stroke-dasharray 1.4s cubic-bezier(0.22,1,0.36,1);transform-origin:center" transform="rotate(-90 65 65)"/>
-                        <circle id="donut-ai" cx="65" cy="65" r="50" fill="none" stroke="var(--scan-cyan)" stroke-width="18" stroke-dasharray="0 314" stroke-dashoffset="78.5" style="transition:stroke-dasharray 1.6s cubic-bezier(0.22,1,0.36,1);transform-origin:center" transform="rotate(-90 65 65)"/>
-                        <text x="65" y="60" text-anchor="middle" fill="white" font-family="Oswald" font-weight="800" font-size="18">95%</text>
-                        <text x="65" y="76" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans" font-size="10">savings</text>
-                    </svg>
-                    <div class="donut-legend">
-                        <div class="donut-legend-item"><div class="donut-dot" style="background:rgba(100,120,150,0.5)"></div><div class="donut-legend-label">Traditional cost</div><div class="donut-legend-val">$8,750</div></div>
-                        <div class="donut-legend-item"><div class="donut-dot" style="background:var(--scan-cyan)"></div><div class="donut-legend-label">CarSee cost</div><div class="donut-legend-val" style="color:var(--scan-cyan)">$500</div></div>
-                        <div class="donut-legend-item" style="padding-top:12px;border-top:1px solid var(--outline);margin-top:4px"><div class="donut-dot" style="background:var(--green-bright)"></div><div class="donut-legend-label">Net savings</div><div class="donut-legend-val" style="color:var(--green-bright)">$8,250</div></div>
-                    </div>
-                </div>
-            </div>
-            <div class="chart-card anim-fade">
-                <div class="chart-card-header">
-                    <div>
-                        <div class="chart-card-title">Vehicles Inspected Per Day</div>
-                        <div class="chart-card-sub">Same team size</div>
-                    </div>
-                    <div class="chart-badge">3× throughput</div>
-                </div>
-                <div class="line-chart-wrap">
-                    <svg class="line-chart-svg" id="lineChart" viewBox="0 0 400 140">
-                        <line x1="0" y1="28" x2="400" y2="28" stroke="var(--outline)" stroke-width="1"/>
-                        <line x1="0" y1="70" x2="400" y2="70" stroke="var(--outline)" stroke-width="1"/>
-                        <line x1="0" y1="112" x2="400" y2="112" stroke="var(--outline)" stroke-width="1"/>
-                        <text x="0" y="26" fill="#6A8099" font-size="9" font-family="DM Sans">50+</text>
-                        <text x="0" y="68" fill="#6A8099" font-size="9" font-family="DM Sans">25</text>
-                        <text x="0" y="110" fill="#6A8099" font-size="9" font-family="DM Sans">8</text>
-                        <polyline id="tradLine" points="30,112 90,112 150,109 210,110 270,111 330,112 390,112" fill="none" stroke="rgba(100,120,150,0.5)" stroke-width="2" stroke-dasharray="5 3" stroke-dashoffset="400" style="transition:stroke-dashoffset 1.5s ease"/>
-                        <path id="aiArea" d="M30,112 C80,110 130,80 190,45 C240,20 310,16 390,12 L390,140 L30,140Z" fill="url(#lineGrad)" opacity="0"/>
-                        <polyline id="aiLine" points="30,112 90,90 150,65 210,45 270,22 330,16 390,12" fill="none" stroke="var(--scan-cyan)" stroke-width="2.5" stroke-dasharray="600" stroke-dashoffset="600" style="transition:stroke-dashoffset 1.8s cubic-bezier(0.22,1,0.36,1)"/>
-                        <defs><linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--scan-cyan)" stop-opacity="0.2"/><stop offset="100%" stop-color="var(--scan-cyan)" stop-opacity="0"/></linearGradient></defs>
-                        <text x="30" y="135" fill="#6A8099" font-size="9" font-family="DM Sans" text-anchor="middle">Mo 1</text>
-                        <text x="150" y="135" fill="#6A8099" font-size="9" font-family="DM Sans" text-anchor="middle">Mo 3</text>
-                        <text x="270" y="135" fill="#6A8099" font-size="9" font-family="DM Sans" text-anchor="middle">Mo 6</text>
-                        <text x="390" y="135" fill="#6A8099" font-size="9" font-family="DM Sans" text-anchor="middle">Mo 12</text>
-                    </svg>
-                </div>
-                <div style="display:flex;gap:20px;margin-top:12px">
-                    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--on-surface-variant)"><div style="width:20px;height:2px;background:rgba(100,120,150,0.5);border-top:2px dashed"></div>Traditional</div>
-                    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--on-surface-variant)"><div style="width:20px;height:2.5px;background:var(--scan-cyan)"></div>CarSee AI</div>
-                </div>
-            </div>
-            <div class="chart-card anim-fade">
-                <div class="chart-card-header">
-                    <div>
-                        <div class="chart-card-title">Assessment Accuracy</div>
-                        <div class="chart-card-sub">AI consistency vs. human average</div>
-                    </div>
-                    <div class="chart-badge">6× more accurate</div>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center">
-                    <div class="gauge-wrap">
-                        <svg class="gauge-svg" width="120" height="70" viewBox="0 0 120 70">
-                            <path d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="var(--outline)" stroke-width="10" stroke-linecap="round"/>
-                            <path id="gauge-human" d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="rgba(100,120,150,0.6)" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 157" style="transition:stroke-dasharray 1.4s cubic-bezier(0.22,1,0.36,1)"/>
-                            <text x="60" y="56" text-anchor="middle" fill="white" font-family="Oswald" font-weight="700" font-size="16">85%</text>
-                            <text x="60" y="68" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans" font-size="8">human avg</text>
-                        </svg>
-                        <div style="font-size:12px;color:var(--on-surface-variant);text-align:center">Traditional<br>Inspector</div>
-                    </div>
-                    <div class="gauge-wrap">
-                        <svg class="gauge-svg" width="120" height="70" viewBox="0 0 120 70">
-                            <path d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="var(--outline)" stroke-width="10" stroke-linecap="round"/>
-                            <path id="gauge-ai" d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="var(--scan-cyan)" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 157" style="transition:stroke-dasharray 1.8s cubic-bezier(0.22,1,0.36,1)"/>
-                            <text x="60" y="56" text-anchor="middle" fill="white" font-family="Oswald" font-weight="700" font-size="16">98%</text>
-                            <text x="60" y="68" text-anchor="middle" fill="var(--scan-cyan)" font-family="DM Sans" font-size="8">CarSee AI</text>
-                        </svg>
-                        <div style="font-size:12px;color:var(--on-surface-variant);text-align:center">CarSee<br>AI Engine</div>
-                    </div>
-                </div>
-                <div style="margin-top:24px;padding:16px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;font-size:13px;color:var(--green-bright)">✓ Every report timestamped, photo-backed, and legally defensible</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="roi-section">
+    <section class="roi-section" id="roi">
         <div class="section-tag anim-fade">ROI CALCULATOR</div>
-        <h2 class="section-title anim-fade">What's Your Number?</h2>
-        <p class="section-subtitle anim-fade">Adjust the sliders to match your operation and see your projected annual savings in real time.</p>
+        <h2 class="section-title anim-fade">Your company inputs</h2>
+        <p class="section-subtitle anim-fade">See your savings projections</p>
         <div class="roi-wrap">
             <div class="roi-inputs anim-fade">
                 <div class="roi-input-group">
                     <label>Vehicles inspected per month</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="vehicles" min="10" max="500" value="50" step="10">
-                        <div class="roi-slider-val" id="vehiclesVal">50</div>
+                        <input type="range" class="roi-slider" id="vehicles" min="10" max="350" value="40" step="10">
+                        <div class="roi-slider-val" id="vehiclesVal">40</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
-                    <label>Current cost per inspection ($)</label>
+                    <label>Current cost per inspection (USD)</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="cost" min="50" max="400" value="200" step="10">
-                        <div class="roi-slider-val" id="costVal">$200</div>
+                        <input type="range" class="roi-slider" id="cost" min="0.5" max="10" value="5" step="0.5">
+                        <div class="roi-slider-val" id="costVal">$5</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
-                    <label>Staff hourly rate ($)</label>
+                    <label>Staff loaded hourly cost (USD)</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="hourly" min="15" max="100" value="35" step="5">
-                        <div class="roi-slider-val" id="hourlyVal">$35</div>
+                        <input type="range" class="roi-slider" id="hourly" min="1" max="20" value="12" step="1">
+                        <div class="roi-slider-val" id="hourlyVal">$12</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
                     <label>Current inspection time (minutes)</label>
                     <div class="roi-slider-wrap">
-                        <input type="range" class="roi-slider" id="time" min="20" max="120" value="60" step="5">
-                        <div class="roi-slider-val" id="timeVal">60 min</div>
+                        <input type="range" class="roi-slider" id="time" min="10" max="30" value="20" step="1">
+                        <div class="roi-slider-val" id="timeVal">20 min</div>
                     </div>
                 </div>
             </div>
             <div class="roi-results anim-fade">
-                <div class="roi-result-title">Your Annual Projection</div>
-                <div class="roi-result-item"><div class="roi-result-name">💰 Direct cost savings</div><div class="roi-result-amount" id="costSaving">$114,000</div></div>
-                <div class="roi-result-item"><div class="roi-result-name">⏱ Labour hours recovered</div><div class="roi-result-amount" id="timeSaving">570 hrs</div></div>
-                <div class="roi-result-item"><div class="roi-result-name">📋 Reports generated</div><div class="roi-result-amount" id="reports">600</div></div>
-                <div class="roi-result-item"><div class="roi-result-name">⚖️ Dispute risk reduction</div><div class="roi-result-amount" id="disputes">~180</div></div>
-                <div class="roi-total"><div class="roi-total-label">Total Annual Value</div><div class="roi-total-val" id="totalVal">$134,000</div></div>
+                <div class="roi-result-title">Your savings outlook (USD)</div>
+                <div class="roi-result-item"><div class="roi-result-name">💰 Direct cost savings</div><div class="roi-result-amount" id="costSaving">$2,280</div></div>
+                <div class="roi-result-item"><div class="roi-result-name">⏱ Labour hours recovered</div><div class="roi-result-amount" id="timeSaving">120 hrs</div></div>
+                <div class="roi-result-item"><div class="roi-result-name">📋 Reports generated</div><div class="roi-result-amount" id="reports">480</div></div>
+                <div class="roi-result-item"><div class="roi-result-name">⚖️ Dispute risk reduction</div><div class="roi-result-amount" id="disputes">~112</div></div>
+                <div class="roi-total"><div class="roi-total-label">Total annual value (USD)</div><div class="roi-total-val" id="totalVal">$3,720</div></div>
             </div>
         </div>
     </section>
@@ -447,14 +314,12 @@
                 <tr><th>Feature</th><th>Traditional</th><th>⚡ CarSee AI</th></tr>
             </thead>
             <tbody>
-                <tr><td>Inspection time</td><td>45–90 minutes</td><td><span class="compare-check">✓ 3–5 minutes</span></td></tr>
-                <tr><td>Cost per report</td><td>$150–$350</td><td><span class="compare-check">✓ Fraction of the cost</span></td></tr>
+                <tr><td>Inspection time</td><td>10–25 minutes</td><td><span class="compare-check">✓ 3–5 minutes</span></td></tr>
                 <tr><td>24/7 availability</td><td><span class="compare-x">✗</span> Business hours only</td><td><span class="compare-check">✓ Always on</span></td></tr>
                 <tr><td>Photo-backed documentation</td><td><span class="compare-x">✗</span> Optional / manual</td><td><span class="compare-check">✓ Every report, every time</span></td></tr>
                 <tr><td>Multilingual reports (EN + AR)</td><td><span class="compare-x">✗</span></td><td><span class="compare-check">✓ Built-in</span></td></tr>
-                <tr><td>Dispute-ready legal record</td><td><span class="compare-x">✗</span> No timestamps</td><td><span class="compare-check">✓ AI-timestamped</span></td></tr>
+                <tr><td>Documented record for every vehicle</td><td><span class="compare-x">✗</span> No timestamps</td><td><span class="compare-check">✓ AI-timestamped</span></td></tr>
                 <tr><td>Fleet dashboard & analytics</td><td><span class="compare-x">✗</span> Spreadsheets only</td><td><span class="compare-check">✓ Real-time insights</span></td></tr>
-                <tr><td>API / system integration</td><td><span class="compare-x">✗</span></td><td><span class="compare-check">✓ REST API available</span></td></tr>
                 <tr><td>Consistency across inspectors</td><td><span class="compare-x">✗</span> Variable by person</td><td><span class="compare-check">✓ Same standard every time</span></td></tr>
             </tbody>
         </table>
@@ -481,9 +346,9 @@
                 <div class="industry-desc">Document vehicle condition at pickup and drop-off in minutes. Protect your assets with timestamped AI evidence for every rental.</div>
             </div>
             <div class="industry-card">
-                <span class="industry-icon">🛡️</span>
-                <div class="industry-name">Insurance & Claims</div>
-                <div class="industry-desc">Accelerate claims processing with structured, AI-verified damage reports. Reduce fraud and cut adjuster workload significantly.</div>
+                <span class="industry-icon">🚗</span>
+                <div class="industry-name">Private car owners</div>
+                <div class="industry-desc">Have the vehicle inspected when buying or selling to assess damage and what it means for value.</div>
             </div>
         </div>
     </section>
@@ -496,12 +361,12 @@
             <p>Get a personalized ROI analysis and live product walkthrough for your team.</p>
             <div class="cta-actions">
                 <a href="our-app.html" class="btn-primary">Book a Free Demo</a>
-                <a href="#" class="btn-outline">Download Case Study</a>
+                <a href="where-we-work/index.html" class="btn-outline">Countries where the app works</a>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-brand-row">
                 <a href="index.html" class="footer-logo-link" aria-label="CarSee home">
@@ -518,7 +383,10 @@
                         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.22 3h3.22l-7.04 8.04L22 21h-6.44l-5.04-6.6L5.5 21H2.28l7.53-8.6L2 3h6.59l4.56 6.02L18.22 3z"/></svg>
                     </a>
                     <a class="footer-social-link" href="https://www.facebook.com/carseeeai" target="_blank" rel="noopener noreferrer" title="Facebook — carseeeai" aria-label="Facebook carseeeai">
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.35 3H14.5v7A10 10 0 0 0 22 12z"/></svg>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a class="footer-social-link" href="mailto:carsee.ai@gmail.com" title="Email — carsee.ai@gmail.com" aria-label="Email carsee.ai@gmail.com">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4L12 13 4 8V6l8 5 8-5v2z"/></svg>
                     </a>
                 </nav>
             </div>
@@ -539,6 +407,7 @@
                         <li><a href="solution/car-traders/index.html">Car Traders</a></li>
                         <li><a href="solution/rental-companies/index.html">Rental Companies</a></li>
                         <li><a href="solution/private-car-owners/index.html">Private Car Owners</a></li>
+                        <li><a href="solution/car-dealerships/index.html">Car agencies</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -582,53 +451,10 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('.benefits-page .anim-fade, .benefits-page .anim-stagger').forEach(el => observer.observe(el));
     })();
-    const chartObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(animateBars, 300);
-                setTimeout(animateDonut, 400);
-                setTimeout(animateLine, 500);
-                setTimeout(animateGauges, 600);
-                chartObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.benefits-page .savings-section').forEach(el => chartObserver.observe(el));
     window.addEventListener('load', function() {
         setTimeout(animateCounters, 600);
         document.querySelector('.benefits-page .hero-content.anim-fade') && document.querySelector('.benefits-page .hero-content.anim-fade').classList.add('visible');
     });
-    function animateBars() {
-        document.querySelectorAll('.benefits-page .bar').forEach(function(bar) {
-            var h = parseInt(bar.dataset.height, 10);
-            bar.style.height = h + 'px';
-        });
-    }
-    function animateDonut() {
-        var circ = 2 * Math.PI * 50;
-        var tradEl = document.getElementById('donut-trad');
-        if (tradEl) tradEl.setAttribute('stroke-dasharray', (circ * 0.95) + ' ' + circ);
-        var aiEl = document.getElementById('donut-ai');
-        if (aiEl) {
-            aiEl.setAttribute('stroke-dasharray', (circ * 0.04) + ' ' + circ);
-            aiEl.setAttribute('stroke-dashoffset', -circ * 0.95 + 78.5);
-        }
-        var areaEl = document.getElementById('aiArea');
-        if (areaEl) setTimeout(function() { areaEl.style.transition = 'opacity 1s'; areaEl.style.opacity = '1'; }, 800);
-    }
-    function animateLine() {
-        var tradLine = document.getElementById('tradLine');
-        var aiLine = document.getElementById('aiLine');
-        if (tradLine) tradLine.style.strokeDashoffset = '0';
-        if (aiLine) aiLine.style.strokeDashoffset = '0';
-    }
-    function animateGauges() {
-        var arc = 157;
-        var humanGauge = document.getElementById('gauge-human');
-        var aiGauge = document.getElementById('gauge-ai');
-        if (humanGauge) humanGauge.setAttribute('stroke-dasharray', (arc * 0.85) + ' ' + arc);
-        if (aiGauge) aiGauge.setAttribute('stroke-dasharray', (arc * 0.98) + ' ' + arc);
-    }
     function animateCounters() {
         document.querySelectorAll('.benefits-page .counter').forEach(function(el) {
             var target = parseInt(el.dataset.target, 10) || 0;
@@ -654,13 +480,14 @@
         var c = parseInt(sliders.cost.el.value, 10) || 0;
         var h = parseInt(sliders.hourly.el.value, 10) || 0;
         var t = parseInt(sliders.time.el.value, 10) || 0;
-        var carseeCostPerReport = 10;
+        var carseeCostPerReport = 22;
+        var carseeMinutesPerInspection = 5;
         var annualVehicles = v * 12;
-        var costSaving = (c - carseeCostPerReport) * annualVehicles;
-        var hoursRecovered = ((t - 4) / 60) * annualVehicles;
+        var costSaving = Math.max(0, (c - carseeCostPerReport) * annualVehicles);
+        var hoursRecovered = Math.max(0, (t - carseeMinutesPerInspection) / 60) * annualVehicles;
         var labourSaving = hoursRecovered * h;
         var totalVal = costSaving + labourSaving;
-        var disputes = Math.round(annualVehicles * 0.3 * 0.95);
+        var disputes = Math.round(annualVehicles * 0.3 * 0.78);
         document.getElementById('costSaving').textContent = '$' + costSaving.toLocaleString();
         document.getElementById('timeSaving').textContent = Math.round(hoursRecovered).toLocaleString() + ' hrs';
         document.getElementById('reports').textContent = annualVehicles.toLocaleString();
@@ -671,7 +498,13 @@
         Object.keys(sliders).forEach(function(k) {
             var s = sliders[k];
             s.el.addEventListener('input', function() {
-                s.display.textContent = s.prefix + s.el.value + s.suffix;
+                if (k === 'cost') {
+                    var cv = parseFloat(s.el.value) || 0;
+                    var str = (Math.round(cv * 10) % 10 === 0) ? String(Math.round(cv)) : cv.toFixed(1);
+                    s.display.textContent = s.prefix + str + s.suffix;
+                } else {
+                    s.display.textContent = s.prefix + s.el.value + s.suffix;
+                }
                 calcROI();
             });
         });

@@ -11,12 +11,88 @@
     const BANNER_ID = 'cookieBanner';
     const SETTINGS_MODAL_ID = 'cookieSettingsModal';
 
-    // Detect language from URL or HTML lang attribute
+    /** Resolve cookies.css URL from this script’s src (works for any folder depth). */
+    function getCookieCssHref() {
+        var src = '';
+        try {
+            if (document.currentScript && document.currentScript.src) {
+                src = document.currentScript.src;
+            }
+        } catch (e) { /* ignore */ }
+        if (!src) {
+            var nodes = document.querySelectorAll('script[src*="cookies.js"]');
+            if (nodes.length) {
+                var raw = nodes[nodes.length - 1].getAttribute('src') || '';
+                try {
+                    src = new URL(raw, window.location.href).href;
+                } catch (e2) {
+                    src = raw;
+                }
+            }
+        }
+        if (!src) return '';
+        return src.replace(/\/js\/cookies\.js(\?.*)?$/i, '/css/cookies.css');
+    }
+
+    /** Ensure cookies.css is loaded before showing UI (avoids unstyled banner when HTML omits the link). */
+    function ensureCookieStylesheet(done) {
+        function finish() {
+            if (typeof done === 'function') done();
+        }
+        var href = getCookieCssHref();
+        if (!href) {
+            finish();
+            return;
+        }
+        var links = document.querySelectorAll('link[rel="stylesheet"][href*="cookies.css"]');
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].href.indexOf('cookies.css') !== -1) {
+                finish();
+                return;
+            }
+        }
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.setAttribute('data-carsee-cookies', '1');
+        var called = false;
+        function once() {
+            if (called) return;
+            called = true;
+            finish();
+        }
+        link.onload = once;
+        link.onerror = once;
+        document.head.appendChild(link);
+        if (link.sheet) {
+            try {
+                var rules = link.sheet.cssRules;
+                if (rules && rules.length) once();
+            } catch (e3) { /* cross-origin or not ready */ }
+        }
+        window.setTimeout(once, 1800);
+    }
+
+    // Detect language from URL or HTML lang attribute (used by href helpers below)
     const isArabic = window.location.pathname.includes('/ar/') ||
                      document.documentElement.lang === 'ar';
 
+    /** Cookies policy page: correct ../ depth from any folder (EN + /ar/). */
+    function cookiesPolicyHref() {
+        var parts = window.location.pathname.split('/').filter(Boolean);
+        if (!parts.length) return 'cookies.html';
+        var depth;
+        if (parts[0] === 'ar') {
+            depth = Math.max(0, parts.length - 2);
+        } else {
+            depth = Math.max(0, parts.length - 1);
+        }
+        return new Array(depth + 1).join('../') + 'cookies.html';
+    }
+
     // Content based on language
     const content = isArabic ? {
+        preferencesTitle: 'إعدادات ملفات التعريف',
         title: 'نحتاج موافقتك على ملفات تعريف الارتباط',
         description: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. اختر ما إذا كنت تقبل أنواع مختلفة من ملفات تعريف الارتباط.',
         acceptAll: 'قبول الكل',
@@ -34,6 +110,7 @@
         save: 'حفظ التفضيلات',
         close: 'إغلاق'
     } : {
+        preferencesTitle: 'Cookie Preferences',
         title: 'We Need Your Cookie Consent',
         description: 'We use cookies to improve your experience on our website. Choose whether you accept different types of cookies.',
         acceptAll: 'Accept All',
@@ -95,7 +172,7 @@
                 <div class="cookie-banner-text">
                     <h3>${content.title}</h3>
                     <p>${content.description}</p>
-                    <a href="${isArabic ? '../cookies.html' : 'cookies.html'}" class="cookie-learn-more">${content.learnMore}</a>
+                    <a href="${cookiesPolicyHref()}" class="cookie-learn-more">${content.learnMore}</a>
                 </div>
                 <div class="cookie-banner-actions">
                     <button class="cookie-btn cookie-btn-reject">${content.reject}</button>
@@ -116,10 +193,11 @@
         modal.className = 'cookie-settings-modal';
         modal.setAttribute('dir', dir);
         modal.innerHTML = `
-            <div class="cookie-settings-content">
+            <div class="cookie-settings-overlay" aria-hidden="true"></div>
+            <div class="cookie-settings-content" role="dialog" aria-modal="true" aria-labelledby="cookie-settings-title">
                 <div class="cookie-settings-header">
-                    <h2>Cookie Preferences</h2>
-                    <button class="cookie-settings-close">&times;</button>
+                    <h2 id="cookie-settings-title">${content.preferencesTitle}</h2>
+                    <button type="button" class="cookie-settings-close" aria-label="${content.close}">&times;</button>
                 </div>
                 <div class="cookie-settings-body">
                     <div class="cookie-setting-item">
@@ -152,10 +230,9 @@
                     </div>
                 </div>
                 <div class="cookie-settings-footer">
-                    <button class="cookie-btn cookie-btn-save">${content.save}</button>
+                    <button type="button" class="cookie-btn cookie-btn-save">${content.save}</button>
                 </div>
             </div>
-            <div class="cookie-settings-overlay"></div>
         `;
         document.body.appendChild(modal);
         return modal;
@@ -186,7 +263,8 @@
     function showBanner() {
         const banner = document.getElementById(BANNER_ID);
         if (banner) {
-            banner.style.display = 'flex';
+            banner.classList.add('show');
+            banner.style.display = '';
         }
     }
 
@@ -194,6 +272,7 @@
     function hideBanner() {
         const banner = document.getElementById(BANNER_ID);
         if (banner) {
+            banner.classList.remove('show');
             banner.style.display = 'none';
         }
     }
@@ -202,7 +281,8 @@
     function showSettingsModal() {
         const modal = document.getElementById(SETTINGS_MODAL_ID);
         if (modal) {
-            modal.style.display = 'flex';
+            modal.classList.add('show');
+            modal.style.display = '';
             loadPreferencesToModal(getPreferences());
         }
     }
@@ -211,6 +291,7 @@
     function hideSettingsModal() {
         const modal = document.getElementById(SETTINGS_MODAL_ID);
         if (modal) {
+            modal.classList.remove('show');
             modal.style.display = 'none';
         }
     }
@@ -267,19 +348,18 @@
 
     // Initialize on DOM ready
     function init() {
-        // Create banner and modal
-        createBanner();
-        createSettingsModal();
+        ensureCookieStylesheet(function () {
+            createBanner();
+            createSettingsModal();
 
-        // Show banner only if no consent choice made
-        if (!hasConsentChoice()) {
-            showBanner();
-        } else {
-            loadAnalytics();
-        }
+            if (!hasConsentChoice()) {
+                showBanner();
+            } else {
+                loadAnalytics();
+            }
 
-        // Bind events
-        bindEvents();
+            bindEvents();
+        });
     }
 
     // Bind event listeners

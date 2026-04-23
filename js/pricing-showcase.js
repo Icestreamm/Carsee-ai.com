@@ -26,11 +26,7 @@
 
   function formatUsd(amount) {
     var n = Math.round(amount * 100) / 100;
-    var s = n.toFixed(2);
-    if (s.endsWith(".00")) return "$" + s.slice(0, -3);
-    if (/0$/.test(s)) s = s.replace(/0$/, "");
-    if (s.endsWith(".")) s = s.slice(0, -1);
-    return "$" + s;
+    return "$" + n.toFixed(2);
   }
 
   function lang() {
@@ -39,7 +35,7 @@
 
   function currentPeriod() {
     var active = track.querySelector(".ps-billing__btn.active");
-    return active ? active.getAttribute("data-period") : "monthly";
+    return active ? active.getAttribute("data-period") : "annual";
   }
 
   var isVertical = function () {
