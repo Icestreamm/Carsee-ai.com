@@ -1,0 +1,927 @@
+{
+  "scannedAt": "2026-04-26T08:55:26.826Z",
+  "pageCount": 76,
+  "totals": {
+    "pagesWithMissingViewportMeta": 0,
+    "pagesWithConsoleErrors": 0,
+    "pagesWithBrokenImages": 0,
+    "pagesWithFormLabelIssues": 0,
+    "pagesWithTargetBlankNoNoopener": 0,
+    "pagesWithHorizontalOverflow": 0,
+    "pagesWithSmallTapTargets": 0
+  },
+  "pages": [
+    {
+      "file": "404.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/404.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/404.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/404.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/404.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/404.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/benefits.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/benefits.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/benefits.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/blog/gulf-insurers-ai-assessment.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/blog/gulf-insurers-ai-assessment.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/blog/gulf-insurers-ai-assessment.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/blog/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/blog/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/blog/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/blog/when-photo-becomes-report.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/blog/when-photo-becomes-report.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/blog/when-photo-becomes-report.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/dealerships/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/dealerships/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/dealerships/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/insurers-experts/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/insurers-experts/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/insurers-experts/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/leasing/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/leasing/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/leasing/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/oem/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/oem/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/oem/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/rental-cars-car-sharing/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/rental-cars-car-sharing/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/rental-cars-car-sharing/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/software-publishers/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/software-publishers/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/software-publishers/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/clients/uv-marketplaces/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/clients/uv-marketplaces/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/clients/uv-marketplaces/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/company/career/affiliate-sales-representative.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/company/career/affiliate-sales-representative.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/company/career/affiliate-sales-representative.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/company/career/general-inquiries.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/company/career/general-inquiries.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/company/career/general-inquiries.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/company/career/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/company/career/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/company/career/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/company/partners/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/company/partners/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/company/partners/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/contact/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/contact/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/contact/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/contact/thank-you.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/contact/thank-you.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/contact/thank-you.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/cookies.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/cookies.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/cookies.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/demo/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/demo/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/demo/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/how-it-works/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/how-it-works/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/how-it-works/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/our-app.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/our-app.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/our-app.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/pricing.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/pricing.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/pricing.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/privacy.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/privacy.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/privacy.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/car-dealerships/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/car-dealerships/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/car-dealerships/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/car-fleet/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/car-fleet/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/car-fleet/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/car-traders/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/car-traders/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/car-traders/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/inspection/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/inspection/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/inspection/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/on-site-trade-in/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/on-site-trade-in/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/on-site-trade-in/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/private-car-owners/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/private-car-owners/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/private-car-owners/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/remarketing/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/remarketing/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/remarketing/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/remote-trade-in/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/remote-trade-in/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/remote-trade-in/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solution/rental-companies/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solution/rental-companies/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solution/rental-companies/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/solutions/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/solutions/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/solutions/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/technology/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/technology/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/technology/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/terms.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/terms.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/terms.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "ar/where-we-work/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/ar/where-we-work/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/ar/where-we-work/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "benefits.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/benefits.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/benefits.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "blog/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/blog/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/blog/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/dealerships/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/dealerships/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/dealerships/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/insurers-experts/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/insurers-experts/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/insurers-experts/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/leasing/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/leasing/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/leasing/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/oem/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/oem/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/oem/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/rental-cars-car-sharing/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/rental-cars-car-sharing/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/rental-cars-car-sharing/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/software-publishers/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/software-publishers/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/software-publishers/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "clients/uv-marketplaces/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/clients/uv-marketplaces/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/clients/uv-marketplaces/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "company/career/affiliate-sales-representative.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/company/career/affiliate-sales-representative.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/company/career/affiliate-sales-representative.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "company/career/general-inquiries.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/company/career/general-inquiries.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/company/career/general-inquiries.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "company/career/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/company/career/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/company/career/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "company/partners/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/company/partners/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/company/partners/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "contact/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/contact/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/contact/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "contact/thank-you.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/contact/thank-you.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/contact/thank-you.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "cookies.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/cookies.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/cookies.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "demo/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/demo/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/demo/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "googleafb76d3b93629f91.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/googleafb76d3b93629f91.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/googleafb76d3b93629f91.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "how-it-works/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/how-it-works/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/how-it-works/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "our-app.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/our-app.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/our-app.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "pricing.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/pricing.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/pricing.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "privacy.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/privacy.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/privacy.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/car-dealerships/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/car-dealerships/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/car-dealerships/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/car-fleet/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/car-fleet/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/car-fleet/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/car-traders/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/car-traders/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/car-traders/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/inspection/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/inspection/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/inspection/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/on-site-trade-in/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/on-site-trade-in/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/on-site-trade-in/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/private-car-owners/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/private-car-owners/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/private-car-owners/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/remarketing/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/remarketing/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/remarketing/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/remote-trade-in/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/remote-trade-in/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/remote-trade-in/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solution/rental-companies/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solution/rental-companies/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solution/rental-companies/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "solutions/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/solutions/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/solutions/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "technology/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/technology/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/technology/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "terms.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/terms.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/terms.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "test_animation.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/test_animation.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/test_animation.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    },
+    {
+      "file": "where-we-work/index.html",
+      "hasViewportMeta": true,
+      "consoleErrors": [
+        "Navigation failed: page.goto: net::ERR_EMPTY_RESPONSE at http://127.0.0.1:4173/where-we-work/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:4173/where-we-work/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "brokenImages": [],
+      "formLabelIssues": [],
+      "targetBlankNoNoopener": [],
+      "overflowByViewport": {},
+      "smallTapTargetsByViewport": {}
+    }
+  ]
+}

@@ -209,7 +209,18 @@
   }
 
   const borderCountriesWanted = {
-    CHD: true, // Chad
+    TCD: true, // Chad (ISO; geo-countries uses TCD, not Natural Earth CHD)
+    CAF: true, // Central African Republic
+    ETH: true, // Ethiopia
+    ERI: true, // Eritrea
+    DJI: true, // Djibouti
+    SOM: true, // Somalia
+    KEN: true, // Kenya
+    BGR: true, // Bulgaria
+    GRC: true, // Greece
+    GEO: true, // Georgia
+    TKM: true, // Turkmenistan
+    AFG: true, // Afghanistan
     LBY: true, // Libya
     SDN: true, // Sudan
     SSD: true, // South Sudan
@@ -251,7 +262,8 @@
     const activeFeats = active.features || [];
     addFloatingCurrencyLabels(map, activeFeats);
 
-    var fixedViewBounds = L.latLngBounds([9.0, 12.0], [37.2, 62.5]);
+    /* Wide enough for Horn of Africa, eastern Med / Balkans, Caucasus, and Turkmenistan */
+    var fixedViewBounds = L.latLngBounds([-4.8, 12.0], [45.8, 67.2]);
     var fullRegionBounds = L.geoJSON(dataset).getBounds();
     var fitBounds = fixedViewBounds;
     if ((!fitBounds || !fitBounds.isValid()) && fullRegionBounds && fullRegionBounds.isValid()) {
@@ -267,7 +279,7 @@
         animate: false,
       });
       var lockedZoom = map.getZoom();
-      var targetZoom = lockedZoom + 0.75; // +10% more from previous locked view
+      var targetZoom = lockedZoom + 1.5; // +50% closer than previous locked view
       map.setZoom(targetZoom, { animate: false });
       map.panBy([Math.round(map.getSize().x * 0.1), -Math.round(map.getSize().y * 0.1)], { animate: false }); // shift right ~10% and up ~10%
       map.setMinZoom(targetZoom);

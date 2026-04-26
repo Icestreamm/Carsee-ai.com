@@ -77,6 +77,15 @@
             .sol-hero-img-overlay { background: linear-gradient(transparent, #070f1a 90%); }
             .sol-intro { grid-template-columns: 1fr; gap: 40px; }
             .sol-body .container { padding: 0 24px; }
+            .sol-stat { padding: 24px 12px; }
+            .sol-stat-num { font-size: 28px; }
+        }
+        @media (max-width: 480px) {
+            .sol-hero-left { padding: 48px 16px; }
+            .sol-stats-bar { grid-template-columns: 1fr; }
+            .sol-stat { padding: 20px 16px; border-right: none; border-bottom: 1px solid rgba(0,212,245,0.08); }
+            .sol-stat:last-child { border-bottom: none; }
+            .sol-feature { width: 100%; min-width: 0; }
         }
     </style>
 <!-- AEO:inject v1 -->

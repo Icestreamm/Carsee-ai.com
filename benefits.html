@@ -123,6 +123,9 @@
         .benefits-page .pain-grid { grid-template-columns: 1fr 1fr; }
         .benefits-page .roi-wrap { grid-template-columns: 1fr; }
         .benefits-page .industries-grid { grid-template-columns: repeat(2, 1fr); }
+        .benefits-page .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
+        .benefits-page .compare-table th,
+        .benefits-page .compare-table td { padding: 14px 16px; font-size: 13px; }
     }
     </style>
 <!-- AEO:inject v1 -->
@@ -293,21 +296,21 @@
         <div class="roi-wrap">
             <div class="roi-inputs anim-fade">
                 <div class="roi-input-group">
-                    <label>Vehicles inspected per month</label>
+                    <label for="vehicles">Vehicles inspected per month</label>
                     <div class="roi-slider-wrap">
                         <input type="range" class="roi-slider" id="vehicles" min="10" max="500" value="40" step="10">
                         <div class="roi-slider-val" id="vehiclesVal">40</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
-                    <label>Inspector monthly salary (<span id="salaryUnit">USD</span>)</label>
+                    <label for="salary">Inspector monthly salary (<span id="salaryUnit">USD</span>)</label>
                     <div class="roi-slider-wrap">
                         <input type="range" class="roi-slider" id="salary" min="200" max="8000" value="2000" step="100">
                         <div class="roi-slider-val" id="salaryVal">2,000</div>
                     </div>
                 </div>
                 <div class="roi-input-group">
-                    <label>Current time per inspection (minutes)</label>
+                    <label for="time">Current time per inspection (minutes)</label>
                     <div class="roi-slider-wrap">
                         <input type="range" class="roi-slider" id="time" min="10" max="60" value="25" step="1">
                         <div class="roi-slider-val" id="timeVal">25 min</div>
@@ -328,6 +331,7 @@
     <section class="compare-section">
         <div class="section-tag anim-fade">FEATURE COMPARISON</div>
         <h2 class="section-title anim-fade">CarSee vs. Traditional</h2>
+        <div class="compare-table-wrap">
         <table class="compare-table anim-fade">
             <thead>
                 <tr><th>Feature</th><th>Traditional</th><th>⚡ CarSee AI</th></tr>
@@ -342,6 +346,7 @@
                 <tr><td>Consistency across inspectors</td><td><span class="compare-x">✗</span> Variable by person</td><td><span class="compare-check">✓ Same standard every time</span></td></tr>
             </tbody>
         </table>
+        </div>
     </section>
 
     <section class="industries-section">
