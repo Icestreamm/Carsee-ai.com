@@ -39,9 +39,9 @@
         inset: 0;
         width: 100%;
         height: 100%;
-        perspective: none;
+        perspective: 1400px;
         overflow: hidden;
-        cursor: default;
+        cursor: crosshair;
     }
     #heroScene {
         position: absolute;
@@ -51,8 +51,8 @@
         top: 50%;
         margin-left: -310px;
         margin-top: -210px;
-        transform-style: flat;
-        will-change: auto;
+        transform-style: preserve-3d;
+        will-change: transform;
         transform-origin: center center;
     }
     #heroCar {
@@ -60,7 +60,7 @@
         width: 620px;
         z-index: 6;
         pointer-events: none;
-        will-change: auto;
+        will-change: transform;
     }
     #heroCar img { width: 100%; display: block; }
     #heroA1 {
@@ -68,7 +68,7 @@
         width: 190px;
         z-index: 12;
         pointer-events: none;
-        will-change: auto;
+        will-change: transform;
     }
     #heroA1 img { width: 100%; display: block; }
     #heroA2 {
@@ -76,7 +76,7 @@
         width: 180px;
         z-index: 7;
         pointer-events: none;
-        will-change: auto;
+        will-change: transform;
     }
     #heroA2 img { width: 100%; display: block; }
     #heroA3 {
@@ -84,7 +84,7 @@
         width: 170px;
         z-index: 10;
         pointer-events: none;
-        will-change: auto;
+        will-change: transform;
     }
     #heroA3 img { width: 100%; display: block; }
     #heroConnSvg {
@@ -117,17 +117,32 @@
         .hero-right { min-height: 420px; order: -1; }
     }
 
-    /* Homepage hero: static stacked imagery (no parallax/tilt on any viewport) */
-    #heroStage {
-        touch-action: manipulation;
-    }
-    #heroScene,
-    #heroCar,
-    #heroA1,
-    #heroA2,
-    #heroA3 {
-        animation: none !important;
-        transition: none !important;
+    /* Mobile/narrow: freeze hero “stacked photos” — no parallax/tilt transforms (also blocks JS inline transforms) */
+    @media (max-width: 992px) {
+        #heroStage {
+            cursor: default;
+            perspective: none;
+            touch-action: manipulation;
+        }
+        #heroScene,
+        #heroCar,
+        #heroA1,
+        #heroA2,
+        #heroA3 {
+            will-change: auto !important;
+            animation: none !important;
+            transition: none !important;
+        }
+        #heroScene {
+            transform: none !important;
+            transform-style: flat;
+        }
+        #heroCar,
+        #heroA1,
+        #heroA2,
+        #heroA3 {
+            transform: none !important;
+        }
     }
     </style>
 <!-- AEO:inject v1 -->
@@ -431,7 +446,7 @@
     <script src="where-we-work/script.js"></script>
     <script>
     /* ═══════════════════════════════════════════════════════
-       HERO COMPOSITOR — static layout (no motion / parallax)
+       HERO 3-D PARALLAX TILT — CarSee homepage background
     ═══════════════════════════════════════════════════════ */
     (function () {
         var heroStage = document.getElementById('heroStage');
@@ -451,8 +466,7 @@
         var gyroEnabled = false;
         var isMobileDevice = /Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''));
         function isHeroStaticViewport() {
-            /* Product decision: keep the homepage hero fully static on all devices */
-            return true;
+            return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 992px)').matches;
         }
         var rafId = null;
         var parallaxListenersAttached = false;
