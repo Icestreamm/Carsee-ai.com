@@ -22,6 +22,7 @@
     .header {
         padding: 16px 24px;
         overflow-x: clip;
+        border-bottom: none;
     }
     
     .nav-menu {
@@ -54,10 +55,44 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         overflow-y: auto;
     }
+
+    /* Mobile dropdowns should not depend on :hover */
+    .nav-item.dropdown .dropdown-menu {
+        position: static;
+        top: auto;
+        left: auto;
+        width: 100%;
+        min-width: 0;
+        margin-top: 8px;
+        border-radius: 8px;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .nav-item.dropdown .dropdown-menu.active {
+        display: block;
+    }
     
     .nav-menu.active {
         display: flex;
         border-top: 1px solid var(--outline, #2E3D52);
+    }
+
+    html[dir="rtl"] .nav-menu {
+        align-items: stretch;
+        text-align: right;
+    }
+
+    html[dir="rtl"] .nav-menu .nav-item,
+    html[dir="rtl"] .nav-menu .nav-link,
+    html[dir="rtl"] .nav-menu .dropdown-menu a {
+        width: 100%;
+        text-align: right;
+        justify-content: space-between;
     }
     
     .mobile-menu-toggle {
@@ -294,5 +329,6 @@
 @media screen and (max-width: 480px) {
     .header {
         padding: 12px 16px;
+        border-bottom: none;
     }
 }

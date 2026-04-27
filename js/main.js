@@ -77,20 +77,39 @@
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
 
-if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        mobileMenuToggle.classList.toggle('active');
+if (mobileMenuToggle && navMenu) {
+    const setMobileMenuOpen = (isOpen) => {
+        navMenu.classList.toggle('active', isOpen);
+        mobileMenuToggle.classList.toggle('active', isOpen);
+        mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        if (!isOpen) {
+            navMenu.querySelectorAll('.dropdown-menu.active').forEach(menu => menu.classList.remove('active'));
+        }
+    };
+
+    mobileMenuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setMobileMenuOpen(!navMenu.classList.contains('active'));
+    });
+
+    // Keep menu open while interacting inside it; close only on true outside taps/clicks.
+    navMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!navMenu.classList.contains('active')) return;
+        if (navMenu.contains(e.target) || mobileMenuToggle.contains(e.target)) return;
+        setMobileMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            setMobileMenuOpen(false);
+        }
     });
 }
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (navMenu && !navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-        navMenu.classList.remove('active');
-        mobileMenuToggle.classList.remove('active');
-    }
-});
 
 // Survey Banner Close
 const closeBanner = document.getElementById('closeBanner');
@@ -129,11 +148,16 @@ document.querySelectorAll('.nav-item.dropdown').forEach(item => {
     const link = item.querySelector('.nav-link');
     const menu = item.querySelector('.dropdown-menu');
     
-    if (window.innerWidth <= 992) {
+    if (window.innerWidth <= 992 && link && menu) {
         // Mobile: toggle on click
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            menu.classList.toggle('active');
+            e.stopPropagation();
+            const isOpen = menu.classList.contains('active');
+            document.querySelectorAll('.nav-item.dropdown .dropdown-menu.active').forEach(openMenu => {
+                if (openMenu !== menu) openMenu.classList.remove('active');
+            });
+            menu.classList.toggle('active', !isOpen);
         });
     }
 });

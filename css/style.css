@@ -142,7 +142,7 @@ body::before {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1200;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -447,6 +447,7 @@ body::before {
 
 .language-selector {
     position: relative;
+    z-index: 1301;
 }
 
 .language-selector span,
@@ -490,6 +491,7 @@ body::before {
     transform: translateY(-10px);
     transition: all 0.3s;
     margin-top: 8px;
+    z-index: 1302;
 }
 
 .language-selector:hover .language-menu {
