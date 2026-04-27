@@ -100,6 +100,10 @@
 
   let selectedLayer = null;
   let selectedFeature = null;
+  var homeCenter = null;
+  var homeZoom = null;
+  var snapBackTimer = null;
+  var isSnappingBack = false;
 
   function applyLayerStyle(layer, feature, mode) {
     if (!layer || !feature) return;
@@ -154,6 +158,20 @@
     }
     selectedLayer = null;
     selectedFeature = null;
+  }
+
+  function scheduleSnapBack() {
+    if (!homeCenter || typeof homeZoom !== "number" || isSnappingBack) return;
+    if (snapBackTimer) {
+      clearTimeout(snapBackTimer);
+    }
+    snapBackTimer = setTimeout(function () {
+      isSnappingBack = true;
+      map.flyTo(homeCenter, homeZoom, { animate: true, duration: 0.45 });
+      setTimeout(function () {
+        isSnappingBack = false;
+      }, 520);
+    }, 120);
   }
 
   function onEachActiveFeature(feature, layer) {
@@ -224,6 +242,7 @@
     LBY: true, // Libya
     SDN: true, // Sudan
     SSD: true, // South Sudan
+    SOL: true, // Somaliland
     YEM: true, // Yemen
     PAK: true, // Pakistan
     ISR: true,
@@ -279,14 +298,23 @@
         animate: false,
       });
       var lockedZoom = map.getZoom();
-      // +~0.32 zoom levels ≈ 25% larger scale (2^0.32 ≈ 1.25)
-      var targetZoom = lockedZoom - 0.36;
+      // Extra zoom-in from current setting for a tighter default view.
+      var targetZoom = lockedZoom + 1.1;
       map.setZoom(targetZoom, { animate: false });
       map.panBy([Math.round(map.getSize().x * 0.1), -Math.round(map.getSize().y * 0.1)], { animate: false }); // shift right ~10% and up ~10%
+      homeCenter = map.getCenter();
+      homeZoom = map.getZoom();
       map.setMinZoom(targetZoom - 0.8);
       map.setMaxZoom(targetZoom + 0.8);
       map.setMaxBounds(fitBounds.pad(0.02));
     }
+
+    map.on("dragend", function () {
+      scheduleSnapBack();
+    });
+    map.on("zoomend", function () {
+      scheduleSnapBack();
+    });
 
     map.on("click", function (e) {
       var t = e.originalEvent && e.originalEvent.target;
@@ -325,7 +353,10 @@
         for (var i = 0; i < world.features.length; i++) {
           var f = world.features[i];
           var code = adm0A3(f);
-          if (borderCountriesWanted[code] && !existing[code]) {
+          var p = f.properties || {};
+          var adminName = String(p.ADMIN || p.NAME || p.NAME_LONG || "").toLowerCase();
+          var isSomalilandByName = adminName.indexOf("somaliland") !== -1;
+          if ((borderCountriesWanted[code] || isSomalilandByName) && !existing[code]) {
             added.push(f);
             existing[code] = true;
           }
@@ -338,7 +369,58 @@
       });
   }
 
-  ensureBorderCountries(data).then(renderMap);
+  function addManualFallbackRegions(dataset) {
+    var feats = (dataset && dataset.features) ? dataset.features.slice() : [];
+    var hasSomaliland = feats.some(function (f) {
+      var code = adm0A3(f);
+      var p = f.properties || {};
+      var n = String(p.ADMIN || p.NAME || p.NAME_LONG || "").toLowerCase();
+      return code === "SOL" || n.indexOf("somaliland") !== -1;
+    });
+    if (hasSomaliland) return dataset;
+
+    feats.push({
+      type: "Feature",
+      properties: {
+        ADMIN: "Somaliland",
+        NAME: "Somaliland",
+        NAME_LONG: "Somaliland",
+        ADM0_A3: "SOL",
+        ISO_A3: "SOL",
+      },
+      geometry: {
+        type: "Polygon",
+        coordinates: [[
+          [43.25, 11.46],
+          [43.7, 11.4],
+          [44.5, 11.1],
+          [45.3, 11.3],
+          [46.0, 11.2],
+          [47.0, 11.1],
+          [48.0, 11.0],
+          [48.9, 10.5],
+          [49.2, 10.0],
+          [49.0, 9.5],
+          [48.9, 9.0],
+          [48.0, 8.2],
+          [47.0, 8.0],
+          [46.0, 7.9],
+          [45.0, 8.0],
+          [44.0, 8.1],
+          [43.5, 8.3],
+          [43.0, 9.0],
+          [42.8, 9.6],
+          [42.6, 10.3],
+          [43.0, 10.9],
+          [43.25, 11.46],
+        ]],
+      },
+    });
+
+    return { type: "FeatureCollection", features: feats };
+  }
+
+  ensureBorderCountries(data).then(addManualFallbackRegions).then(renderMap);
 
   // Subtle hover/parallax feedback on desktop.
   var hoverMaxPx = 6;
