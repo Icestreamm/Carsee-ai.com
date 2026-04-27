@@ -279,7 +279,7 @@
         animate: false,
       });
       var lockedZoom = map.getZoom();
-      var targetZoom = lockedZoom - 1.0; // ~50% zoomed out from previous locked view
+      var targetZoom = lockedZoom - 0.68; // 25% zoom-in from prior 50%-out setting (approx)
       map.setZoom(targetZoom, { animate: false });
       map.panBy([Math.round(map.getSize().x * 0.1), -Math.round(map.getSize().y * 0.1)], { animate: false }); // shift right ~10% and up ~10%
       map.setMinZoom(targetZoom - 0.8);

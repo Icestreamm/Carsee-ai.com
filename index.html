@@ -437,6 +437,9 @@
 
         var tarX = 0, tarY = 0, curX = 0, curY = 0, drift = 0;
         var gyroEnabled = false;
+        var isMobileDevice = /Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''));
+        var idleSwayReady = false;
+        var hasDirectInput = false;
 
         var heroScene = document.getElementById('heroScene');
         var heroCar   = document.getElementById('heroCar');
@@ -456,6 +459,21 @@
         heroStage.addEventListener('mouseleave', function () {
             if (!gyroEnabled) { tarX = 0; tarY = 0; }
         });
+        heroStage.addEventListener('touchmove', function (e) {
+            if (!e.touches || !e.touches.length) return;
+            var t = e.touches[0];
+            var r = heroStage.getBoundingClientRect();
+            tarX = ((t.clientX - r.left)  / r.width  - 0.5) * 2;
+            tarY = ((t.clientY - r.top)   / r.height - 0.5) * 2;
+            hasDirectInput = true;
+            idleSwayReady = false;
+        }, { passive: true });
+        heroStage.addEventListener('touchend', function () {
+            if (!gyroEnabled) { tarX = 0; tarY = 0; }
+        }, { passive: true });
+        heroStage.addEventListener('touchcancel', function () {
+            if (!gyroEnabled) { tarX = 0; tarY = 0; }
+        }, { passive: true });
 
         /* Gyroscope (mobile): subscribe after first tap — required on many Android Chrome builds and iOS (permission). */
         var orientHasValues = false;
@@ -465,6 +483,8 @@
             if (typeof e.gamma === 'number' && typeof e.beta === 'number' &&
                 !isNaN(e.gamma) && !isNaN(e.beta)) {
                 orientHasValues = true;
+                hasDirectInput = true;
+                idleSwayReady = false;
                 tarX = clamp(e.gamma / 45, -1, 1);
                 tarY = clamp((e.beta - 30) / 45, -1, 1);
             }
@@ -478,6 +498,8 @@
             var z = typeof acc.z === 'number' ? acc.z : 0;
             var len = Math.sqrt(x * x + y * y + z * z);
             if (!len || len < 0.5) return;
+            hasDirectInput = true;
+            idleSwayReady = false;
             tarX = clamp((x / len) * 1.8, -1, 1);
             tarY = clamp(-(y / len) * 1.25, -1, 1);
         }
@@ -511,7 +533,12 @@
             attachSensors();
         }
         function armMobileGyro() {
-            if (!/Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''))) return;
+            if (!isMobileDevice) return;
+            if (!(typeof DeviceOrientationEvent !== 'undefined' &&
+                  typeof DeviceOrientationEvent.requestPermission === 'function')) {
+                attachSensors();
+                return;
+            }
             function onFirstInteraction() {
                 enableGyro();
             }
@@ -519,8 +546,19 @@
             window.addEventListener('pointerdown', onFirstInteraction, { once: true, capture: true });
         }
         armMobileGyro();
+        if (isMobileDevice) {
+            setTimeout(function () {
+                if (!hasDirectInput && !gyroEnabled) {
+                    idleSwayReady = true;
+                }
+            }, 1500);
+        }
 
         function animate() {
+            if (idleSwayReady && !hasDirectInput && !gyroEnabled) {
+                tarX = Math.sin(drift * 1.7) * 0.15;
+                tarY = Math.cos(drift * 1.2) * 0.10;
+            }
             curX += (tarX - curX) * 0.07;
             curY += (tarY - curY) * 0.07;
             drift += 0.007;
