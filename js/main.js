@@ -93,15 +93,20 @@ if (mobileMenuToggle && navMenu) {
         setMobileMenuOpen(!navMenu.classList.contains('active'));
     });
 
-    // Keep menu open while interacting inside it; close only on true outside taps/clicks.
+    // Keep menu open while interacting inside it.
     navMenu.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
-    document.addEventListener('click', (e) => {
-        if (!navMenu.classList.contains('active')) return;
-        if (navMenu.contains(e.target) || mobileMenuToggle.contains(e.target)) return;
-        setMobileMenuOpen(false);
+    // On mobile, close only on intentional actions:
+    // 1) tapping burger again, or 2) selecting an actual destination link.
+    navMenu.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth > 992) return;
+            const href = (link.getAttribute('href') || '').trim();
+            if (!href || href === '#' || link.closest('.dropdown-menu')) return;
+            setMobileMenuOpen(false);
+        });
     });
 
     document.addEventListener('keydown', (e) => {
