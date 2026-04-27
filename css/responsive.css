@@ -22,6 +22,7 @@
     .header {
         padding: 16px 24px;
         overflow-x: clip;
+        overflow-y: visible;
         border-bottom: none;
     }
     
@@ -41,12 +42,12 @@
     
     .nav-menu {
         display: none;
-        position: fixed;
-        top: 72px;
+        position: absolute;
+        top: 100%;
         left: 0;
-        z-index: 1201;
+        z-index: 1300;
         width: 100%;
-        height: calc(100vh - 72px);
+        height: calc(100dvh - 72px);
         background: var(--dark-navy, #0A1628);
         flex-direction: column;
         align-items: flex-start;
