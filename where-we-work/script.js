@@ -132,10 +132,10 @@
   }
 
   const map = L.map(mapEl, {
-    scrollWheelZoom: false,
-    dragging: false,
-    touchZoom: false,
-    doubleClickZoom: false,
+    scrollWheelZoom: true,
+    dragging: true,
+    touchZoom: true,
+    doubleClickZoom: true,
     boxZoom: false,
     keyboard: false,
     zoomSnap: 0.1,
@@ -279,11 +279,11 @@
         animate: false,
       });
       var lockedZoom = map.getZoom();
-      var targetZoom = lockedZoom + 1.5; // +50% closer than previous locked view
+      var targetZoom = lockedZoom - 1.0; // ~50% zoomed out from previous locked view
       map.setZoom(targetZoom, { animate: false });
       map.panBy([Math.round(map.getSize().x * 0.1), -Math.round(map.getSize().y * 0.1)], { animate: false }); // shift right ~10% and up ~10%
-      map.setMinZoom(targetZoom);
-      map.setMaxZoom(targetZoom);
+      map.setMinZoom(targetZoom - 0.8);
+      map.setMaxZoom(targetZoom + 0.8);
       map.setMaxBounds(fitBounds.pad(0.02));
     }
 
@@ -338,4 +338,24 @@
   }
 
   ensureBorderCountries(data).then(renderMap);
+
+  // Subtle hover/parallax feedback on desktop.
+  var hoverMaxPx = 6;
+  function onShellMove(ev) {
+    if (!shell) return;
+    var rect = shell.getBoundingClientRect();
+    var x = ((ev.clientX - rect.left) / rect.width - 0.5) * 2;
+    var y = ((ev.clientY - rect.top) / rect.height - 0.5) * 2;
+    var tx = Math.round(x * hoverMaxPx * 10) / 10;
+    var ty = Math.round(y * hoverMaxPx * 10) / 10;
+    shell.style.transform = "translate(" + tx + "px, " + ty + "px)";
+  }
+
+  if (shell && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    shell.style.transition = "opacity 380ms ease, transform 220ms ease";
+    shell.addEventListener("mousemove", onShellMove);
+    shell.addEventListener("mouseleave", function () {
+      shell.style.transform = "translate(0px, 0px)";
+    });
+  }
 })();
