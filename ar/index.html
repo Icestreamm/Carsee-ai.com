@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarSee - فحص المركبات بالذكاء الاصطناعي | فحوصات أسرع وأدق للمركبات</title>
     <meta name="description" content="CarSee: فحص مركبات بالذكاء الاصطناعي للوكلاء والمنصات—الاستبدال عن بُعد، التقاط في الموقع، صور جاهزة لإعادة التسويق، تقديرات إصلاح للخليج، وواجهة برمجية للفحص.">
-    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="../assets/logos/cyan-carsee-logo-svg2.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -636,6 +636,9 @@
 
         var tarX = 0, tarY = 0, curX = 0, curY = 0, drift = 0;
         var gyroEnabled = false;
+        var isMobileDevice = /Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''));
+        var idleSwayReady = false;
+        var hasDirectInput = false;
 
         var heroScene = document.getElementById('heroScene');
         var heroCar   = document.getElementById('heroCar');
@@ -654,17 +657,71 @@
         heroStage.addEventListener('mouseleave', function () {
             if (!gyroEnabled) { tarX = 0; tarY = 0; }
         });
+        heroStage.addEventListener('touchmove', function (e) {
+            if (gyroEnabled && orientHasValues) return;
+            if (!e.touches || !e.touches.length) return;
+            var t = e.touches[0];
+            var r = heroStage.getBoundingClientRect();
+            tarX = ((t.clientX - r.left)  / r.width  - 0.5) * 2;
+            tarY = ((t.clientY - r.top)   / r.height - 0.5) * 2;
+            hasDirectInput = true;
+            idleSwayReady = false;
+        }, { passive: true });
+        heroStage.addEventListener('touchend', function () {
+            if (!gyroEnabled) { tarX = 0; tarY = 0; }
+        }, { passive: true });
+        heroStage.addEventListener('touchcancel', function () {
+            if (!gyroEnabled) { tarX = 0; tarY = 0; }
+        }, { passive: true });
 
         var orientHasValues = false;
+        var orientCalibrated = false;
+        var baseGamma = 0, baseBeta = 0;
+        var baseAlpha = null;
         function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+        function wrapAngleDeg(d) {
+            d = ((d % 360) + 360) % 360;
+            if (d > 180) d -= 360;
+            return d;
+        }
         function onOrient(e) {
             if (!e) return;
-            if (typeof e.gamma === 'number' && typeof e.beta === 'number' &&
-                !isNaN(e.gamma) && !isNaN(e.beta)) {
+            if (typeof e.gamma !== 'number' || typeof e.beta !== 'number' ||
+                isNaN(e.gamma) || isNaN(e.beta)) return;
+
+            if (!orientCalibrated) {
+                baseGamma = e.gamma;
+                baseBeta = e.beta;
+                if (typeof e.alpha === 'number' && !isNaN(e.alpha)) {
+                    baseAlpha = e.alpha;
+                }
+                orientCalibrated = true;
                 orientHasValues = true;
-                tarX = clamp(e.gamma / 45, -1, 1);
-                tarY = clamp((e.beta - 30) / 45, -1, 1);
+                hasDirectInput = true;
+                idleSwayReady = false;
+                tarX = 0;
+                tarY = 0;
+                return;
             }
+
+            var dGamma = wrapAngleDeg(e.gamma - baseGamma);
+            var dBeta = e.beta - baseBeta;
+            var gx = clamp(dGamma / 45, -1, 1);
+            var gy = clamp(dBeta / 45, -1, 1);
+            var ax = 0;
+            if (typeof e.alpha === 'number' && !isNaN(e.alpha)) {
+                if (baseAlpha === null) {
+                    baseAlpha = e.alpha;
+                } else {
+                    ax = clamp(wrapAngleDeg(e.alpha - baseAlpha) / 50, -1, 1);
+                }
+            }
+            tarX = clamp(gx * 0.55 + ax * 0.65, -1, 1);
+            tarY = gy;
+
+            orientHasValues = true;
+            hasDirectInput = true;
+            idleSwayReady = false;
         }
         function onMotion(e) {
             if (orientHasValues) return;
@@ -675,6 +732,8 @@
             var z = typeof acc.z === 'number' ? acc.z : 0;
             var len = Math.sqrt(x * x + y * y + z * z);
             if (!len || len < 0.5) return;
+            hasDirectInput = true;
+            idleSwayReady = false;
             tarX = clamp((x / len) * 1.8, -1, 1);
             tarY = clamp(-(y / len) * 1.25, -1, 1);
         }
@@ -708,7 +767,12 @@
             attachSensors();
         }
         function armMobileGyro() {
-            if (!/Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''))) return;
+            if (!isMobileDevice) return;
+            if (!(typeof DeviceOrientationEvent !== 'undefined' &&
+                  typeof DeviceOrientationEvent.requestPermission === 'function')) {
+                attachSensors();
+                return;
+            }
             function onFirstInteraction() {
                 enableGyro();
             }
@@ -716,8 +780,19 @@
             window.addEventListener('pointerdown', onFirstInteraction, { once: true, capture: true });
         }
         armMobileGyro();
+        if (isMobileDevice) {
+            setTimeout(function () {
+                if (!hasDirectInput && !gyroEnabled) {
+                    idleSwayReady = true;
+                }
+            }, 1500);
+        }
 
         function animate() {
+            if (idleSwayReady && !hasDirectInput && !gyroEnabled) {
+                tarX = Math.sin(drift * 1.7) * 0.15;
+                tarY = Math.cos(drift * 1.2) * 0.10;
+            }
             curX += (tarX - curX) * 0.07;
             curY += (tarY - curY) * 0.07;
             drift += 0.007;

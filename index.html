@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarSee - AI Vehicle Inspection | Unlock faster, more accurate vehicle AI-inspections</title>
     <meta name="description" content="CarSee: AI vehicle inspection for dealers and platforms—remote trade-in, on-site capture, remarketing-ready photos, GCC repair estimates, and a vehicle inspection API.">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="assets/logos/cyan-carsee-logo-svg2.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -460,6 +460,7 @@
             if (!gyroEnabled) { tarX = 0; tarY = 0; }
         });
         heroStage.addEventListener('touchmove', function (e) {
+            if (gyroEnabled && orientHasValues) return;
             if (!e.touches || !e.touches.length) return;
             var t = e.touches[0];
             var r = heroStage.getBoundingClientRect();
@@ -477,17 +478,53 @@
 
         /* Gyroscope (mobile): subscribe after first tap — required on many Android Chrome builds and iOS (permission). */
         var orientHasValues = false;
+        var orientCalibrated = false;
+        var baseGamma = 0, baseBeta = 0;
+        var baseAlpha = null;
         function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
+        function wrapAngleDeg(d) {
+            d = ((d % 360) + 360) % 360;
+            if (d > 180) d -= 360;
+            return d;
+        }
         function onOrient(e) {
             if (!e) return;
-            if (typeof e.gamma === 'number' && typeof e.beta === 'number' &&
-                !isNaN(e.gamma) && !isNaN(e.beta)) {
+            if (typeof e.gamma !== 'number' || typeof e.beta !== 'number' ||
+                isNaN(e.gamma) || isNaN(e.beta)) return;
+
+            if (!orientCalibrated) {
+                baseGamma = e.gamma;
+                baseBeta = e.beta;
+                if (typeof e.alpha === 'number' && !isNaN(e.alpha)) {
+                    baseAlpha = e.alpha;
+                }
+                orientCalibrated = true;
                 orientHasValues = true;
                 hasDirectInput = true;
                 idleSwayReady = false;
-                tarX = clamp(e.gamma / 45, -1, 1);
-                tarY = clamp((e.beta - 30) / 45, -1, 1);
+                tarX = 0;
+                tarY = 0;
+                return;
             }
+
+            var dGamma = wrapAngleDeg(e.gamma - baseGamma);
+            var dBeta = e.beta - baseBeta;
+            var gx = clamp(dGamma / 45, -1, 1);
+            var gy = clamp(dBeta / 45, -1, 1);
+            var ax = 0;
+            if (typeof e.alpha === 'number' && !isNaN(e.alpha)) {
+                if (baseAlpha === null) {
+                    baseAlpha = e.alpha;
+                } else {
+                    ax = clamp(wrapAngleDeg(e.alpha - baseAlpha) / 50, -1, 1);
+                }
+            }
+            tarX = clamp(gx * 0.55 + ax * 0.65, -1, 1);
+            tarY = gy;
+
+            orientHasValues = true;
+            hasDirectInput = true;
+            idleSwayReady = false;
         }
         function onMotion(e) {
             if (orientHasValues) return;
