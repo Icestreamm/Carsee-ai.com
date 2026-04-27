@@ -116,6 +116,34 @@
         .hero-inner { grid-template-columns: 1fr; }
         .hero-right { min-height: 420px; order: -1; }
     }
+
+    /* Mobile/narrow: freeze hero “stacked photos” — no parallax/tilt transforms (also blocks JS inline transforms) */
+    @media (max-width: 992px) {
+        #heroStage {
+            cursor: default;
+            perspective: none;
+            touch-action: manipulation;
+        }
+        #heroScene,
+        #heroCar,
+        #heroA1,
+        #heroA2,
+        #heroA3 {
+            will-change: auto !important;
+            animation: none !important;
+            transition: none !important;
+        }
+        #heroScene {
+            transform: none !important;
+            transform-style: flat;
+        }
+        #heroCar,
+        #heroA1,
+        #heroA2,
+        #heroA3 {
+            transform: none !important;
+        }
+    }
     </style>
 <!-- AEO:inject v1 -->
 <link rel="canonical" href="https://carsee.ai/">
@@ -437,10 +465,11 @@
         var tarX = 0, tarY = 0, curX = 0, curY = 0, drift = 0;
         var gyroEnabled = false;
         var isMobileDevice = /Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''));
-        /* Keep hero visuals static on phones/small widths — continuous transforms can confuse hit-testing with overlays/menus */
-        var disableParallax =
-            isMobileDevice ||
-            (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 900px)').matches);
+        function isHeroStaticViewport() {
+            return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 992px)').matches;
+        }
+        var rafId = null;
+        var parallaxListenersAttached = false;
         var idleSwayReady = false;
         var hasDirectInput = false;
 
@@ -452,7 +481,9 @@
         var hcLine1   = document.getElementById('hcLine1');
         var hcLine2   = document.getElementById('hcLine2');
 
-        if (!disableParallax) {
+        function attachParallaxListeners() {
+            if (parallaxListenersAttached) return;
+            parallaxListenersAttached = true;
             /* Mouse tracking only on the right panel (parallax stage) */
             heroStage.addEventListener('mousemove', function (e) {
                 if (gyroEnabled) return;
@@ -547,9 +578,19 @@
         }
         function attachSensors() {
             if (gyroEnabled) return;
+            if (isHeroStaticViewport()) return;
             window.addEventListener('deviceorientation', onOrient, { passive: true });
             window.addEventListener('devicemotion', onMotion, { passive: true });
             gyroEnabled = true;
+        }
+        function detachSensors() {
+            if (!gyroEnabled) return;
+            window.removeEventListener('deviceorientation', onOrient, { passive: true });
+            window.removeEventListener('devicemotion', onMotion, { passive: true });
+            gyroEnabled = false;
+            orientHasValues = false;
+            orientCalibrated = false;
+            baseAlpha = null;
         }
         var orientPermPending = false;
         function enableGyro() {
@@ -575,7 +616,7 @@
             attachSensors();
         }
         function armMobileGyro() {
-            if (!isMobileDevice || disableParallax) return;
+            if (!isMobileDevice || isHeroStaticViewport()) return;
             if (!(typeof DeviceOrientationEvent !== 'undefined' &&
                   typeof DeviceOrientationEvent.requestPermission === 'function')) {
                 attachSensors();
@@ -587,15 +628,14 @@
             window.addEventListener('touchstart', onFirstInteraction, { once: true, capture: true, passive: true });
             window.addEventListener('pointerdown', onFirstInteraction, { once: true, capture: true });
         }
-        if (!disableParallax) {
-            armMobileGyro();
-            if (isMobileDevice) {
-                setTimeout(function () {
-                    if (!hasDirectInput && !gyroEnabled) {
-                        idleSwayReady = true;
-                    }
-                }, 1500);
-            }
+        function armIdleSwayTimer() {
+            if (isHeroStaticViewport()) return;
+            if (!isMobileDevice) return;
+            setTimeout(function () {
+                if (!hasDirectInput && !gyroEnabled) {
+                    idleSwayReady = true;
+                }
+            }, 1500);
         }
 
         function layoutHeroStaticOnce() {
@@ -653,6 +693,12 @@
         }
 
         function animate() {
+            if (isHeroStaticViewport()) {
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = null;
+                layoutHeroStaticOnce();
+                return;
+            }
             if (idleSwayReady && !hasDirectInput && !gyroEnabled) {
                 tarX = Math.sin(drift * 1.7) * 0.15;
                 tarY = Math.cos(drift * 1.2) * 0.10;
@@ -718,20 +764,40 @@
                 hcLine2.setAttribute('y2', String(a2T));
             }
 
-            requestAnimationFrame(animate);
+            rafId = requestAnimationFrame(animate);
         }
 
-        if (disableParallax) {
-            heroStage.style.cursor = 'default';
-            layoutHeroStaticOnce();
-            window.addEventListener('resize', function () {
-                if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 900px)').matches) {
-                    layoutHeroStaticOnce();
-                }
-            }, { passive: true });
-        } else {
-            animate();
+        function updateHeroMode() {
+            if (isHeroStaticViewport()) {
+                heroStage.style.cursor = 'default';
+                detachSensors();
+                idleSwayReady = false;
+                hasDirectInput = false;
+                tarX = 0;
+                tarY = 0;
+                curX = 0;
+                curY = 0;
+                drift = 0;
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = null;
+                layoutHeroStaticOnce();
+                return;
+            }
+
+            attachParallaxListeners();
+            armMobileGyro();
+            armIdleSwayTimer();
+            if (!rafId) {
+                rafId = requestAnimationFrame(animate);
+            }
         }
+
+        updateHeroMode();
+        var resizeHeroT = 0;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeHeroT);
+            resizeHeroT = setTimeout(updateHeroMode, 120);
+        }, { passive: true });
     })();
     </script>
 </body>
