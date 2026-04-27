@@ -79,6 +79,7 @@ const navMenu = document.getElementById('navMenu');
 
 if (mobileMenuToggle && navMenu) {
     const headerEl = document.querySelector('.header');
+    const heroStage = document.getElementById('heroStage');
     const backdrop = document.createElement('div');
     backdrop.id = 'mobileNavBackdrop';
     backdrop.className = 'mobile-nav-backdrop';
@@ -87,7 +88,11 @@ if (mobileMenuToggle && navMenu) {
     document.body.appendChild(backdrop);
 
     function syncBackdropLayout() {
-        if (!headerEl) return;
+        if (!headerEl) {
+            backdrop.style.top = '0px';
+            backdrop.style.height = '100dvh';
+            return;
+        }
         var h = headerEl.offsetHeight || 72;
         backdrop.style.top = h + 'px';
         backdrop.style.height = 'calc(100dvh - ' + h + 'px)';
@@ -106,10 +111,16 @@ if (mobileMenuToggle && navMenu) {
             backdrop.hidden = !isOpen;
             backdrop.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
             document.body.style.overflow = isOpen ? 'hidden' : '';
+            if (heroStage) {
+                heroStage.style.pointerEvents = isOpen ? 'none' : '';
+            }
         } else {
             backdrop.hidden = true;
             backdrop.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
+            if (heroStage) {
+                heroStage.style.pointerEvents = '';
+            }
         }
     };
 
@@ -119,10 +130,22 @@ if (mobileMenuToggle && navMenu) {
         setMobileMenuOpen(!navMenu.classList.contains('active'));
     });
 
-    backdrop.addEventListener('click', () => {
+    function onBackdropDismiss() {
         if (window.innerWidth > 992) return;
         setMobileMenuOpen(false);
-    });
+    }
+    var backdropLastDismiss = 0;
+    function onBackdropPointerDismiss() {
+        var now = Date.now();
+        if (now - backdropLastDismiss < 350) return;
+        backdropLastDismiss = now;
+        onBackdropDismiss();
+    }
+    backdrop.addEventListener('click', onBackdropPointerDismiss);
+    backdrop.addEventListener('touchend', function (e) {
+        e.preventDefault();
+        onBackdropPointerDismiss();
+    }, { passive: false });
 
     window.addEventListener('resize', () => {
         if (navMenu.classList.contains('active')) syncBackdropLayout();

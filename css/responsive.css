@@ -42,7 +42,8 @@
         left: 0;
         right: 0;
         width: 100%;
-        z-index: 1180;
+        /* Above homepage hero layers / parallax stage; below .nav-menu (1300) and header chrome */
+        z-index: 10000;
         background: rgba(0, 0, 0, 0.45);
         -webkit-tap-highlight-color: transparent;
     }
