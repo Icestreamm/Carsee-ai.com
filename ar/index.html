@@ -213,7 +213,7 @@
         [dir="rtl"] .nav-actions { margin-right: auto; margin-left: 0; }
         [dir="rtl"] .dropdown-menu { right: auto; left: 0; }
 
-        /* Hero 50%–50%: in RTL first column = text (right), second = parallax (left) */
+        /* Hero: RTL grid — text column first, product visual second (matches EN homepage) */
         .hero-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -227,89 +227,41 @@
         }
         .hero-right {
             position: relative;
-            min-height: 700px;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
         #heroStage {
-            position: absolute;
-            inset: 0;
             width: 100%;
             height: 100%;
-            perspective: 1400px;
-            overflow: hidden;
-            cursor: crosshair;
+            min-height: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        #heroScene {
-            position: absolute;
-            width: 620px;
-            height: 420px;
-            left: 50%;
-            top: 50%;
-            margin-left: -310px;
-            margin-top: -210px;
-            transform-style: preserve-3d;
-            will-change: transform;
-            transform-origin: center center;
+        .hero-right__visual {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            box-sizing: border-box;
         }
-        #heroCar {
-            position: absolute;
-            width: 620px;
-            z-index: 6;
-            pointer-events: none;
-            will-change: transform;
+        .hero-right__visual img {
+            width: 100%;
+            height: auto;
+            max-height: min(720px, 88vh);
+            object-fit: contain;
+            object-position: center center;
+            display: block;
         }
-        #heroCar img { width: 100%; display: block; }
-        #heroA1 {
-            position: absolute;
-            width: 190px;
-            z-index: 12;
-            pointer-events: none;
-            will-change: transform;
-        }
-        #heroA1 img { width: 100%; display: block; }
-        #heroA2 {
-            position: absolute;
-            width: 180px;
-            z-index: 7;
-            pointer-events: none;
-            will-change: transform;
-        }
-        #heroA2 img { width: 100%; display: block; }
-        #heroA3 {
-            position: absolute;
-            width: 170px;
-            z-index: 10;
-            pointer-events: none;
-            will-change: transform;
-        }
-        #heroA3 img { width: 100%; display: block; }
-        #heroConnSvg {
-            position: absolute;
-            left: 0; top: 0;
-            width: 620px; height: 420px;
-            overflow: visible;
-            pointer-events: none;
-            z-index: 5;
-        }
-        #heroConnSvg line {
-            stroke: #00D4F5;
-            stroke-width: 1;
-            stroke-dasharray: 5 5;
-            opacity: 0.22;
-        }
-        .hero-bracket {
-            position: absolute;
-            width: 40px; height: 40px;
-            opacity: 0.22;
-            pointer-events: none;
-            z-index: 25;
-        }
-        .hero-br-tl { top: 12px; left: 12px; border-top: 2px solid #00D4F5; border-left: 2px solid #00D4F5; border-radius: 5px 0 0 0; }
-        .hero-br-tr { top: 12px; right: 12px; border-top: 2px solid #00D4F5; border-right: 2px solid #00D4F5; border-radius: 0 5px 0 0; }
-        .hero-br-bl { bottom: 12px; left: 12px; border-bottom: 2px solid #00D4F5; border-left: 2px solid #00D4F5; border-radius: 0 0 0 5px; }
-        .hero-br-br { bottom: 12px; right: 12px; border-bottom: 2px solid #00D4F5; border-right: 2px solid #00D4F5; border-radius: 0 0 5px 0; }
         @media (max-width: 900px) {
             .hero-inner { grid-template-columns: 1fr; }
-            .hero-right { min-height: 420px; order: -1; }
+            .hero-right { min-height: 360px; order: -1; }
         }
 
     </style>
@@ -393,7 +345,7 @@
             </div>
         </nav>
     </header>
-<!-- Hero Section — 50% text (right in RTL), 50% parallax (left in RTL) -->
+<!-- Hero Section — 50% text (right in RTL), 50% product visual (left in RTL) -->
     <section class="hero" id="heroSection">
         <div class="hero-inner">
             <div class="hero-left">
@@ -429,20 +381,9 @@
             </div>
             <div class="hero-right" id="heroStageWrap">
                 <div id="heroStage" aria-hidden="true">
-                    <div class="hero-bracket hero-br-tl"></div>
-                    <div class="hero-bracket hero-br-tr"></div>
-                    <div class="hero-bracket hero-br-bl"></div>
-                    <div class="hero-bracket hero-br-br"></div>
-                    <div id="heroScene">
-                        <svg id="heroConnSvg" viewBox="0 0 620 420" preserveAspectRatio="none">
-                            <line id="hcLine1"/>
-                            <line id="hcLine2"/>
-                        </svg>
-                        <div id="heroCar"><img src="../assets/images/demo-car.png" alt=""></div>
-                        <div id="heroA1"><img src="../assets/images/demo-anchor1.png" alt=""></div>
-                        <div id="heroA2"><img src="../assets/images/demo-anchor2.png" alt=""></div>
-                        <div id="heroA3"><img src="../assets/images/demo-anchor3.png" alt=""></div>
-                    </div>
+                    <figure class="hero-right__visual">
+                        <img src="../assets/images/hero-ai-damage-scan.png" width="1600" height="900" alt="فحص أضرار المركبة بالذكاء الاصطناعي مع بطاقات تكلفة الإصلاح بالريال" decoding="async" fetchpriority="high">
+                    </figure>
                 </div>
             </div>
         </div>
@@ -618,238 +559,5 @@
     };
     </script>
     <script src="../where-we-work/script.js"></script>
-    <script>
-    /* Hero 3-D parallax — Arabic home (text right, parallax left via RTL grid) */
-    (function () {
-        var heroStage = document.getElementById('heroStage');
-        if (!heroStage) return;
-
-        var P = {
-            maxTiltX : 20,
-            maxTiltY : 19,
-            car : { x: -16,  y: -14,  s: 1.4  },
-            a1  : { x: 251,  y: -17,  i: 14,  s: 1.3  },
-            a2  : { x: -122, y: -120, i: 16,  s: 0.65 },
-            a3  : { x: 141,  y: 104,  i: 61,  s: 1.35 }
-        };
-
-        var tarX = 0, tarY = 0, curX = 0, curY = 0, drift = 0;
-        var gyroEnabled = false;
-        var isMobileDevice = /Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''));
-        var idleSwayReady = false;
-        var hasDirectInput = false;
-
-        var heroScene = document.getElementById('heroScene');
-        var heroCar   = document.getElementById('heroCar');
-        var heroA1    = document.getElementById('heroA1');
-        var heroA2    = document.getElementById('heroA2');
-        var heroA3    = document.getElementById('heroA3');
-        var hcLine1   = document.getElementById('hcLine1');
-        var hcLine2   = document.getElementById('hcLine2');
-
-        heroStage.addEventListener('mousemove', function (e) {
-            if (gyroEnabled) return;
-            var r = heroStage.getBoundingClientRect();
-            tarX = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
-            tarY = ((e.clientY - r.top)   / r.height - 0.5) * 2;
-        });
-        heroStage.addEventListener('mouseleave', function () {
-            if (!gyroEnabled) { tarX = 0; tarY = 0; }
-        });
-        heroStage.addEventListener('touchmove', function (e) {
-            if (gyroEnabled && orientHasValues) return;
-            if (!e.touches || !e.touches.length) return;
-            var t = e.touches[0];
-            var r = heroStage.getBoundingClientRect();
-            tarX = ((t.clientX - r.left)  / r.width  - 0.5) * 2;
-            tarY = ((t.clientY - r.top)   / r.height - 0.5) * 2;
-            hasDirectInput = true;
-            idleSwayReady = false;
-        }, { passive: true });
-        heroStage.addEventListener('touchend', function () {
-            if (!gyroEnabled) { tarX = 0; tarY = 0; }
-        }, { passive: true });
-        heroStage.addEventListener('touchcancel', function () {
-            if (!gyroEnabled) { tarX = 0; tarY = 0; }
-        }, { passive: true });
-
-        var orientHasValues = false;
-        var orientCalibrated = false;
-        var baseGamma = 0, baseBeta = 0;
-        var baseAlpha = null;
-        function clamp(v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; }
-        function wrapAngleDeg(d) {
-            d = ((d % 360) + 360) % 360;
-            if (d > 180) d -= 360;
-            return d;
-        }
-        function onOrient(e) {
-            if (!e) return;
-            if (typeof e.gamma !== 'number' || typeof e.beta !== 'number' ||
-                isNaN(e.gamma) || isNaN(e.beta)) return;
-
-            if (!orientCalibrated) {
-                baseGamma = e.gamma;
-                baseBeta = e.beta;
-                if (typeof e.alpha === 'number' && !isNaN(e.alpha)) {
-                    baseAlpha = e.alpha;
-                }
-                orientCalibrated = true;
-                orientHasValues = true;
-                hasDirectInput = true;
-                idleSwayReady = false;
-                tarX = 0;
-                tarY = 0;
-                return;
-            }
-
-            var dGamma = wrapAngleDeg(e.gamma - baseGamma);
-            var dBeta = e.beta - baseBeta;
-            var gx = clamp(dGamma / 45, -1, 1);
-            var gy = clamp(dBeta / 45, -1, 1);
-            var ax = 0;
-            if (typeof e.alpha === 'number' && !isNaN(e.alpha)) {
-                if (baseAlpha === null) {
-                    baseAlpha = e.alpha;
-                } else {
-                    ax = clamp(wrapAngleDeg(e.alpha - baseAlpha) / 50, -1, 1);
-                }
-            }
-            tarX = clamp(gx * 0.55 + ax * 0.65, -1, 1);
-            tarY = gy;
-
-            orientHasValues = true;
-            hasDirectInput = true;
-            idleSwayReady = false;
-        }
-        function onMotion(e) {
-            if (orientHasValues) return;
-            var acc = e && e.accelerationIncludingGravity;
-            if (!acc || typeof acc.x !== 'number' || typeof acc.y !== 'number') return;
-            var x = acc.x;
-            var y = acc.y;
-            var z = typeof acc.z === 'number' ? acc.z : 0;
-            var len = Math.sqrt(x * x + y * y + z * z);
-            if (!len || len < 0.5) return;
-            hasDirectInput = true;
-            idleSwayReady = false;
-            tarX = clamp((x / len) * 1.8, -1, 1);
-            tarY = clamp(-(y / len) * 1.25, -1, 1);
-        }
-        function attachSensors() {
-            if (gyroEnabled) return;
-            window.addEventListener('deviceorientation', onOrient, { passive: true });
-            window.addEventListener('devicemotion', onMotion, { passive: true });
-            gyroEnabled = true;
-        }
-        var orientPermPending = false;
-        function enableGyro() {
-            if (gyroEnabled) return;
-            if (typeof DeviceOrientationEvent !== 'undefined' &&
-                typeof DeviceOrientationEvent.requestPermission === 'function') {
-                if (orientPermPending) return;
-                orientPermPending = true;
-                DeviceOrientationEvent.requestPermission()
-                    .then(function (perm) {
-                        orientPermPending = false;
-                        if (perm !== 'granted') return;
-                        var chain = Promise.resolve();
-                        if (typeof DeviceMotionEvent !== 'undefined' &&
-                            typeof DeviceMotionEvent.requestPermission === 'function') {
-                            chain = DeviceMotionEvent.requestPermission().catch(function () {});
-                        }
-                        return chain.then(function () { attachSensors(); });
-                    })
-                    .catch(function () { orientPermPending = false; });
-                return;
-            }
-            attachSensors();
-        }
-        function armMobileGyro() {
-            if (!isMobileDevice) return;
-            if (!(typeof DeviceOrientationEvent !== 'undefined' &&
-                  typeof DeviceOrientationEvent.requestPermission === 'function')) {
-                attachSensors();
-                return;
-            }
-            function onFirstInteraction() {
-                enableGyro();
-            }
-            window.addEventListener('touchstart', onFirstInteraction, { once: true, capture: true, passive: true });
-            window.addEventListener('pointerdown', onFirstInteraction, { once: true, capture: true });
-        }
-        armMobileGyro();
-        if (isMobileDevice) {
-            setTimeout(function () {
-                if (!hasDirectInput && !gyroEnabled) {
-                    idleSwayReady = true;
-                }
-            }, 1500);
-        }
-
-        function animate() {
-            if (idleSwayReady && !hasDirectInput && !gyroEnabled) {
-                tarX = Math.sin(drift * 1.7) * 0.15;
-                tarY = Math.cos(drift * 1.2) * 0.10;
-            }
-            curX += (tarX - curX) * 0.07;
-            curY += (tarY - curY) * 0.07;
-            drift += 0.007;
-
-            var stageW = heroStage.offsetWidth;
-            var stageH = heroStage.offsetHeight;
-            var SW = 620, SH = 420;
-            var fit = Math.min(stageW / SW, stageH / SH, 1);
-
-            var rotX = -curY * P.maxTiltX;
-            var rotY =  curX * P.maxTiltY;
-
-            heroScene.style.transform =
-                'scale(' + fit + ') rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
-
-            var cL = SW / 2 + P.car.x;
-            var cT = SH / 2 + P.car.y;
-            heroCar.style.left      = cL + 'px';
-            heroCar.style.top       = cT + 'px';
-            heroCar.style.transform = 'translate(-50%,-50%) scale(' + P.car.s + ')';
-
-            var a1L = SW / 2 + P.a1.x + curX * P.a1.i;
-            var a1T = SH / 2 + P.a1.y + curY * (P.a1.i * 0.68);
-            heroA1.style.left      = a1L + 'px';
-            heroA1.style.top       = a1T + 'px';
-            heroA1.style.transform = 'translate(-50%,-50%) scale(' + P.a1.s + ')';
-            heroA1.style.zIndex    = '12';
-
-            var dX = Math.cos(drift) * 9;
-            var dY = Math.sin(drift) * 9;
-            var a2L = SW / 2 + P.a2.x - curX * P.a2.i + dX;
-            var a2T = SH / 2 + P.a2.y - curY * (P.a2.i * 0.68) + dY;
-            heroA2.style.left      = a2L + 'px';
-            heroA2.style.top       = a2T + 'px';
-            heroA2.style.transform = 'translate(-50%,-50%) scale(' + P.a2.s + ')';
-            heroA2.style.zIndex    = rotY > 4 ? '3' : '8';
-
-            var a3L = SW / 2 + P.a3.x - curX * P.a3.i;
-            var a3T = SH / 2 + P.a3.y - curY * (P.a3.i * 0.68);
-            heroA3.style.left      = a3L + 'px';
-            heroA3.style.top       = a3T + 'px';
-            heroA3.style.transform = 'translate(-50%,-50%) scale(' + P.a3.s + ')';
-
-            hcLine1.setAttribute('x1', String(cL + 155));
-            hcLine1.setAttribute('y1', String(cT - 20));
-            hcLine1.setAttribute('x2', String(a1L));
-            hcLine1.setAttribute('y2', String(a1T));
-
-            hcLine2.setAttribute('x1', String(cL + 145));
-            hcLine2.setAttribute('y1', String(cT + 30));
-            hcLine2.setAttribute('x2', String(a2L));
-            hcLine2.setAttribute('y2', String(a2T));
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    })();
-    </script>
 </body>
 </html>
