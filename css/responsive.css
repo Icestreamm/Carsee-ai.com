@@ -36,6 +36,22 @@
 }
 
 @media screen and (max-width: 992px) {
+    /* Full-screen dim layer below header; blocks accidental taps through to hero while menu is open */
+    .mobile-nav-backdrop {
+        position: fixed;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1180;
+        background: rgba(0, 0, 0, 0.45);
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-nav-backdrop[hidden] {
+        display: none !important;
+        pointer-events: none !important;
+    }
+
     .container {
         max-width: 960px;
     }

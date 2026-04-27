@@ -78,12 +78,38 @@ const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
 
 if (mobileMenuToggle && navMenu) {
+    const headerEl = document.querySelector('.header');
+    const backdrop = document.createElement('div');
+    backdrop.id = 'mobileNavBackdrop';
+    backdrop.className = 'mobile-nav-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+    document.body.appendChild(backdrop);
+
+    function syncBackdropLayout() {
+        if (!headerEl) return;
+        var h = headerEl.offsetHeight || 72;
+        backdrop.style.top = h + 'px';
+        backdrop.style.height = 'calc(100dvh - ' + h + 'px)';
+    }
+
     const setMobileMenuOpen = (isOpen) => {
         navMenu.classList.toggle('active', isOpen);
         mobileMenuToggle.classList.toggle('active', isOpen);
         mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         if (!isOpen) {
             navMenu.querySelectorAll('.dropdown-menu.active').forEach(menu => menu.classList.remove('active'));
+        }
+        var mobile = window.innerWidth <= 992;
+        if (mobile) {
+            syncBackdropLayout();
+            backdrop.hidden = !isOpen;
+            backdrop.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        } else {
+            backdrop.hidden = true;
+            backdrop.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
         }
     };
 
@@ -93,10 +119,15 @@ if (mobileMenuToggle && navMenu) {
         setMobileMenuOpen(!navMenu.classList.contains('active'));
     });
 
-    // Keep menu open while interacting inside it.
-    navMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
+    backdrop.addEventListener('click', () => {
+        if (window.innerWidth > 992) return;
+        setMobileMenuOpen(false);
     });
+
+    window.addEventListener('resize', () => {
+        if (navMenu.classList.contains('active')) syncBackdropLayout();
+        if (window.innerWidth > 992) setMobileMenuOpen(false);
+    }, { passive: true });
 
     // On mobile, close only on intentional actions:
     // 1) tapping burger again, or 2) selecting an actual destination link.
