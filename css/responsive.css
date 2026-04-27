@@ -18,53 +18,33 @@
     }
 }
 
+/* Mobile header + burger panel — aligned with version220126_2.24 (fixed slide-in drawer) */
 @media screen and (max-width: 900px) {
     .header {
         padding: 16px 24px;
-        overflow-x: clip;
-        overflow-y: visible;
-        border-bottom: none;
     }
-    
+
     .nav-menu {
         display: none;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
     }
 }
 
 @media screen and (max-width: 992px) {
-    /* Full-screen dim layer below header; blocks accidental taps through to hero while menu is open */
-    .mobile-nav-backdrop {
-        position: fixed;
-        left: 0;
-        right: 0;
-        width: 100%;
-        /* Above homepage hero layers / parallax stage; below .nav-menu (1300) and header chrome */
-        z-index: 10000;
-        background: rgba(0, 0, 0, 0.45);
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .mobile-nav-backdrop[hidden] {
-        display: none !important;
-        pointer-events: none !important;
-    }
-
     .container {
         max-width: 960px;
     }
-    
+
     .nav-menu {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1300;
+        position: fixed;
+        top: 72px;
+        left: -100%;
         width: 100%;
-        height: calc(100dvh - 72px);
+        height: calc(100vh - 72px);
         background: var(--dark-navy, #0A1628);
         flex-direction: column;
         align-items: flex-start;
@@ -75,7 +55,7 @@
         overflow-y: auto;
     }
 
-    /* Mobile dropdowns should not depend on :hover */
+    /* Mobile: .nav-link toggles .active on .dropdown-menu (see main.js); no :hover dependency */
     .nav-item.dropdown .dropdown-menu {
         position: static;
         top: auto;
@@ -95,25 +75,13 @@
     .nav-item.dropdown .dropdown-menu.active {
         display: block;
     }
-    
+
     .nav-menu.active {
+        left: 0;
         display: flex;
         border-top: 1px solid var(--outline, #2E3D52);
     }
 
-    html[dir="rtl"] .nav-menu {
-        align-items: stretch;
-        text-align: right;
-    }
-
-    html[dir="rtl"] .nav-menu .nav-item,
-    html[dir="rtl"] .nav-menu .nav-link,
-    html[dir="rtl"] .nav-menu .dropdown-menu a {
-        width: 100%;
-        text-align: right;
-        justify-content: space-between;
-    }
-    
     .mobile-menu-toggle {
         display: flex;
     }

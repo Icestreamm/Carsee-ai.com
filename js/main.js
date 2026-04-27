@@ -73,171 +73,24 @@
     }
 })();
 
-/**
- * Mobile navigation (burger + dropdowns + overlay) — single coordinated controller.
- * Avoids multiple competing document listeners and accidental “click-through” on the homepage hero.
- */
-(function CarSeeMobileNav() {
-    if (window.__CarSeeMobileNavInit) return;
-    window.__CarSeeMobileNavInit = true;
+// Mobile menu toggle (same pattern as version220126_2.24 — fixed panel + simple outside close)
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navMenu = document.getElementById('navMenu');
 
-    function isMobileNav() {
-        return window.matchMedia && window.matchMedia('(max-width: 992px)').matches;
+if (mobileMenuToggle && navMenu) {
+    mobileMenuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    });
+}
+
+document.addEventListener('click', (e) => {
+    if (!navMenu || !mobileMenuToggle) return;
+    if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
     }
-
-    function boot() {
-        var toggle = document.getElementById('mobileMenuToggle');
-        var nav = document.getElementById('navMenu');
-        if (!toggle || !nav) return;
-
-        var header = document.querySelector('.header');
-        var heroStage = document.getElementById('heroStage');
-
-        var backdrop = document.getElementById('mobileNavBackdrop');
-        if (!backdrop) {
-            backdrop = document.createElement('div');
-            backdrop.id = 'mobileNavBackdrop';
-            backdrop.className = 'mobile-nav-backdrop';
-            backdrop.setAttribute('aria-hidden', 'true');
-            backdrop.hidden = true;
-            document.body.appendChild(backdrop);
-        }
-
-        function syncBackdropLayout() {
-            if (!header) {
-                backdrop.style.top = '0px';
-                backdrop.style.height = '100dvh';
-                return;
-            }
-            var h = header.offsetHeight || 72;
-            backdrop.style.top = h + 'px';
-            backdrop.style.height = 'calc(100dvh - ' + h + 'px)';
-        }
-
-        function closeAllDropdowns() {
-            nav.querySelectorAll('.dropdown-menu.active').forEach(function (m) {
-                m.classList.remove('active');
-            });
-        }
-
-        function setMenuOpen(wantOpen) {
-            var open = !!wantOpen;
-            nav.classList.toggle('active', open);
-            toggle.classList.toggle('active', open);
-            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-
-            if (!open) closeAllDropdowns();
-
-            if (isMobileNav()) {
-                syncBackdropLayout();
-                backdrop.hidden = !open;
-                backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
-                document.body.style.overflow = open ? 'hidden' : '';
-                if (heroStage) heroStage.style.pointerEvents = open ? 'none' : '';
-            } else {
-                backdrop.hidden = true;
-                backdrop.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                if (heroStage) heroStage.style.pointerEvents = '';
-            }
-        }
-
-        function toggleMenu() {
-            setMenuOpen(!nav.classList.contains('active'));
-        }
-
-        function closeDesktopDropdownsIfOutside(target) {
-            if (isMobileNav()) return;
-            if (!target || !target.closest) return;
-            if (target.closest('.nav-item.dropdown')) return;
-            closeAllDropdowns();
-        }
-
-        // Burger
-        toggle.addEventListener('click', function (e) {
-            if (!isMobileNav()) return;
-            e.preventDefault();
-            toggleMenu();
-        });
-
-        // Backdrop tap closes menu (mobile only)
-        backdrop.addEventListener('click', function () {
-            if (!isMobileNav()) return;
-            setMenuOpen(false);
-        });
-
-        // Dropdown toggles (mobile): one delegated handler (resize-safe)
-        nav.addEventListener('click', function (e) {
-            if (!isMobileNav()) return;
-            var t = e.target;
-            if (!t || !t.closest) return;
-
-            var item = t.closest('.nav-item.dropdown');
-            if (!item || !nav.contains(item)) return;
-
-            var parentLink = item.querySelector(':scope > a.nav-link');
-            if (!parentLink || !parentLink.contains(t) && t !== parentLink) return;
-
-            e.preventDefault();
-            var menu = item.querySelector('.dropdown-menu');
-            if (!menu) return;
-
-            var willOpen = !menu.classList.contains('active');
-            nav.querySelectorAll('.nav-item.dropdown .dropdown-menu.active').forEach(function (openMenu) {
-                if (openMenu !== menu) openMenu.classList.remove('active');
-            });
-            menu.classList.toggle('active', willOpen);
-        });
-
-        // Close menu after navigating to a real page link (mobile)
-        nav.addEventListener('click', function (e) {
-            if (!isMobileNav()) return;
-            var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-            if (!a || !nav.contains(a)) return;
-            var href = (a.getAttribute('href') || '').trim();
-            if (!href || href === '#') return;
-            if (a.closest('.dropdown-menu')) return;
-            setMenuOpen(false);
-        });
-
-        // Outside interactions: close overlays without fighting hero scripts
-        document.addEventListener('pointerdown', function (e) {
-            closeDesktopDropdownsIfOutside(e.target);
-
-            if (!isMobileNav()) return;
-            if (!nav.classList.contains('active')) return;
-
-            var target = e.target;
-            if (!target || !target.closest) return;
-            if (target.closest('#navMenu') || target.closest('#mobileMenuToggle') || target.closest('.language-selector')) {
-                return;
-            }
-            setMenuOpen(false);
-        }, true);
-
-        window.addEventListener('resize', function () {
-            syncBackdropLayout();
-            if (!isMobileNav()) {
-                setMenuOpen(false);
-            } else if (nav.classList.contains('active')) {
-                syncBackdropLayout();
-            }
-        }, { passive: true });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                closeAllDropdowns();
-                setMenuOpen(false);
-            }
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', boot);
-    } else {
-        boot();
-    }
-})();
+});
 
 // Survey Banner Close
 const closeBanner = document.getElementById('closeBanner');
@@ -269,6 +122,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
+});
+
+// Dropdown menu handling (mobile: tap parent row to expand/collapse — v2.24 behavior)
+document.querySelectorAll('.nav-item.dropdown').forEach(item => {
+    const link = item.querySelector('.nav-link');
+    const menu = item.querySelector('.dropdown-menu');
+
+    if (window.innerWidth <= 992 && link && menu) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            menu.classList.toggle('active');
+        });
+    }
+});
+
+// Language selector: clicks don’t bubble to document listener (closes main menu)
+const languageSelector = document.querySelector('.language-selector');
+if (languageSelector) {
+    languageSelector.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-item.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.classList.remove('active');
+        });
+    }
 });
 
 // Contact and Demo button handlers (now links, so no special handling needed)
