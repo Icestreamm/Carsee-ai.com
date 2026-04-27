@@ -437,6 +437,10 @@
         var tarX = 0, tarY = 0, curX = 0, curY = 0, drift = 0;
         var gyroEnabled = false;
         var isMobileDevice = /Mobi|Android|iPhone|iPad|Tablet|Opera Mini/i.test(String(navigator.userAgent || ''));
+        /* Keep hero visuals static on phones/small widths — continuous transforms can confuse hit-testing with overlays/menus */
+        var disableParallax =
+            isMobileDevice ||
+            (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 900px)').matches);
         var idleSwayReady = false;
         var hasDirectInput = false;
 
@@ -448,32 +452,34 @@
         var hcLine1   = document.getElementById('hcLine1');
         var hcLine2   = document.getElementById('hcLine2');
 
-        /* Mouse tracking only on the right panel (parallax stage) */
-        heroStage.addEventListener('mousemove', function (e) {
-            if (gyroEnabled) return;
-            var r = heroStage.getBoundingClientRect();
-            tarX = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
-            tarY = ((e.clientY - r.top)   / r.height - 0.5) * 2;
-        });
-        heroStage.addEventListener('mouseleave', function () {
-            if (!gyroEnabled) { tarX = 0; tarY = 0; }
-        });
-        heroStage.addEventListener('touchmove', function (e) {
-            if (gyroEnabled && orientHasValues) return;
-            if (!e.touches || !e.touches.length) return;
-            var t = e.touches[0];
-            var r = heroStage.getBoundingClientRect();
-            tarX = ((t.clientX - r.left)  / r.width  - 0.5) * 2;
-            tarY = ((t.clientY - r.top)   / r.height - 0.5) * 2;
-            hasDirectInput = true;
-            idleSwayReady = false;
-        }, { passive: true });
-        heroStage.addEventListener('touchend', function () {
-            if (!gyroEnabled) { tarX = 0; tarY = 0; }
-        }, { passive: true });
-        heroStage.addEventListener('touchcancel', function () {
-            if (!gyroEnabled) { tarX = 0; tarY = 0; }
-        }, { passive: true });
+        if (!disableParallax) {
+            /* Mouse tracking only on the right panel (parallax stage) */
+            heroStage.addEventListener('mousemove', function (e) {
+                if (gyroEnabled) return;
+                var r = heroStage.getBoundingClientRect();
+                tarX = ((e.clientX - r.left)  / r.width  - 0.5) * 2;
+                tarY = ((e.clientY - r.top)   / r.height - 0.5) * 2;
+            });
+            heroStage.addEventListener('mouseleave', function () {
+                if (!gyroEnabled) { tarX = 0; tarY = 0; }
+            });
+            heroStage.addEventListener('touchmove', function (e) {
+                if (gyroEnabled && orientHasValues) return;
+                if (!e.touches || !e.touches.length) return;
+                var t = e.touches[0];
+                var r = heroStage.getBoundingClientRect();
+                tarX = ((t.clientX - r.left)  / r.width  - 0.5) * 2;
+                tarY = ((t.clientY - r.top)   / r.height - 0.5) * 2;
+                hasDirectInput = true;
+                idleSwayReady = false;
+            }, { passive: true });
+            heroStage.addEventListener('touchend', function () {
+                if (!gyroEnabled) { tarX = 0; tarY = 0; }
+            }, { passive: true });
+            heroStage.addEventListener('touchcancel', function () {
+                if (!gyroEnabled) { tarX = 0; tarY = 0; }
+            }, { passive: true });
+        }
 
         /* Gyroscope (mobile): subscribe after first tap — required on many Android Chrome builds and iOS (permission). */
         var orientHasValues = false;
@@ -569,7 +575,7 @@
             attachSensors();
         }
         function armMobileGyro() {
-            if (!isMobileDevice) return;
+            if (!isMobileDevice || disableParallax) return;
             if (!(typeof DeviceOrientationEvent !== 'undefined' &&
                   typeof DeviceOrientationEvent.requestPermission === 'function')) {
                 attachSensors();
@@ -581,13 +587,69 @@
             window.addEventListener('touchstart', onFirstInteraction, { once: true, capture: true, passive: true });
             window.addEventListener('pointerdown', onFirstInteraction, { once: true, capture: true });
         }
-        armMobileGyro();
-        if (isMobileDevice) {
-            setTimeout(function () {
-                if (!hasDirectInput && !gyroEnabled) {
-                    idleSwayReady = true;
-                }
-            }, 1500);
+        if (!disableParallax) {
+            armMobileGyro();
+            if (isMobileDevice) {
+                setTimeout(function () {
+                    if (!hasDirectInput && !gyroEnabled) {
+                        idleSwayReady = true;
+                    }
+                }, 1500);
+            }
+        }
+
+        function layoutHeroStaticOnce() {
+            tarX = 0;
+            tarY = 0;
+            curX = 0;
+            curY = 0;
+            drift = 0;
+
+            var stageW = heroStage.offsetWidth;
+            var stageH = heroStage.offsetHeight;
+            var SW = 620, SH = 420;
+            var fit = Math.min(stageW / SW, stageH / SH, 1);
+
+            heroScene.style.transform =
+                'scale(' + fit + ') rotateX(0deg) rotateY(0deg)';
+
+            var cL = SW / 2 + P.car.x;
+            var cT = SH / 2 + P.car.y;
+            heroCar.style.left      = cL + 'px';
+            heroCar.style.top       = cT + 'px';
+            heroCar.style.transform = 'translate(-50%,-50%) scale(' + P.car.s + ')';
+
+            var a1L = SW / 2 + P.a1.x;
+            var a1T = SH / 2 + P.a1.y;
+            heroA1.style.left      = a1L + 'px';
+            heroA1.style.top       = a1T + 'px';
+            heroA1.style.transform = 'translate(-50%,-50%) scale(' + P.a1.s + ')';
+            heroA1.style.zIndex    = '12';
+
+            var a2L = SW / 2 + P.a2.x;
+            var a2T = SH / 2 + P.a2.y;
+            heroA2.style.left      = a2L + 'px';
+            heroA2.style.top       = a2T + 'px';
+            heroA2.style.transform = 'translate(-50%,-50%) scale(' + P.a2.s + ')';
+            heroA2.style.zIndex    = '8';
+
+            var a3L = SW / 2 + P.a3.x;
+            var a3T = SH / 2 + P.a3.y;
+            heroA3.style.left      = a3L + 'px';
+            heroA3.style.top       = a3T + 'px';
+            heroA3.style.transform = 'translate(-50%,-50%) scale(' + P.a3.s + ')';
+
+            if (hcLine1 && hcLine2) {
+                hcLine1.setAttribute('x1', String(cL + 155));
+                hcLine1.setAttribute('y1', String(cT - 20));
+                hcLine1.setAttribute('x2', String(a1L));
+                hcLine1.setAttribute('y2', String(a1T));
+
+                hcLine2.setAttribute('x1', String(cL + 145));
+                hcLine2.setAttribute('y1', String(cT + 30));
+                hcLine2.setAttribute('x2', String(a2L));
+                hcLine2.setAttribute('y2', String(a2T));
+            }
         }
 
         function animate() {
@@ -644,20 +706,32 @@
             heroA3.style.transform = 'translate(-50%,-50%) scale(' + P.a3.s + ')';
 
             /* Connector lines */
-            hcLine1.setAttribute('x1', String(cL + 155));
-            hcLine1.setAttribute('y1', String(cT - 20));
-            hcLine1.setAttribute('x2', String(a1L));
-            hcLine1.setAttribute('y2', String(a1T));
+            if (hcLine1 && hcLine2) {
+                hcLine1.setAttribute('x1', String(cL + 155));
+                hcLine1.setAttribute('y1', String(cT - 20));
+                hcLine1.setAttribute('x2', String(a1L));
+                hcLine1.setAttribute('y2', String(a1T));
 
-            hcLine2.setAttribute('x1', String(cL + 145));
-            hcLine2.setAttribute('y1', String(cT + 30));
-            hcLine2.setAttribute('x2', String(a2L));
-            hcLine2.setAttribute('y2', String(a2T));
+                hcLine2.setAttribute('x1', String(cL + 145));
+                hcLine2.setAttribute('y1', String(cT + 30));
+                hcLine2.setAttribute('x2', String(a2L));
+                hcLine2.setAttribute('y2', String(a2T));
+            }
 
             requestAnimationFrame(animate);
         }
 
-        animate();
+        if (disableParallax) {
+            heroStage.style.cursor = 'default';
+            layoutHeroStaticOnce();
+            window.addEventListener('resize', function () {
+                if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 900px)').matches) {
+                    layoutHeroStaticOnce();
+                }
+            }, { passive: true });
+        } else {
+            animate();
+        }
     })();
     </script>
 </body>
