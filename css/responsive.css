@@ -44,6 +44,7 @@
         position: fixed;
         top: 72px;
         left: 0;
+        z-index: 1201;
         width: 100%;
         height: calc(100vh - 72px);
         background: var(--dark-navy, #0A1628);
