@@ -298,8 +298,8 @@
         animate: false,
       });
       var lockedZoom = map.getZoom();
-      // Extra zoom-in from current setting for a tighter default view.
-      var targetZoom = lockedZoom + 1.1;
+      // Extra zoom-in from fitBounds for a tighter default; pull back ~1 level (~50% wider) for homepage.
+      var targetZoom = lockedZoom + 1.1 - 1;
       map.setZoom(targetZoom, { animate: false });
       map.panBy([Math.round(map.getSize().x * 0.1), -Math.round(map.getSize().y * 0.1)], { animate: false }); // shift right ~10% and up ~10%
       homeCenter = map.getCenter();
