@@ -64,7 +64,10 @@
     .app-page .hero .hero-p {
       font-size:16px; line-height:1.7; color:rgba(200,216,238,0.96); margin-bottom:40px;
     }
-    .app-page .hero-actions { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:0; }
+    .app-page .hero-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-items:stretch; margin-bottom:0; }
+    .app-page .hero-actions > .btn-store,
+    .app-page .hero-actions > .btn-ghost-line { width:100%; min-height:54px; box-sizing:border-box; padding:12px 16px; justify-content:flex-start; }
+    .app-page .hero-actions > .btn-ghost-line { justify-content:center; font-size:14px; }
 
     .app-page .phone-cluster { position:relative; width:440px; height:560px; flex-shrink:0; transform-style:preserve-3d; }
     .app-page .phone-cluster .phone-center { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); animation:floatCenter 5s ease-in-out infinite; z-index:3; filter:drop-shadow(0 32px 48px rgba(0,0,0,0.55)); }
@@ -87,13 +90,13 @@
 
     .app-page .btn-primary { display:inline-flex; align-items:center; gap:10px; background:var(--scan-cyan); color:var(--abyss-navy); border:none; padding:14px 28px; border-radius:12px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:15px; cursor:pointer; text-decoration:none; transition:all 0.25s; white-space:nowrap; }
     .app-page .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 36px rgba(0,212,245,0.35); }
-    .app-page .btn-store { display:inline-flex; align-items:center; gap:12px; background:var(--dark-card); color:#fff; border:1.5px solid var(--outline); padding:12px 22px; border-radius:12px; text-decoration:none; cursor:pointer; transition:all 0.25s; white-space:nowrap; }
+    .app-page .btn-store { display:inline-flex; align-items:center; gap:12px; background:var(--dark-card); color:#fff; border:1.5px solid var(--outline); padding:12px 16px; border-radius:12px; text-decoration:none; cursor:pointer; transition:all 0.25s; white-space:nowrap; min-height:54px; box-sizing:border-box; }
     .app-page .btn-store:hover { border-color:rgba(0,212,245,0.5); background:#1e2e42; transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
     .app-page .btn-store-icon { flex-shrink:0; }
     .app-page .btn-store-text { text-align:left; }
     .app-page .btn-store-sub { font-size:10px; color:var(--on-surface-variant); display:block; line-height:1; margin-bottom:2px; }
     .app-page .btn-store-name { font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; display:block; }
-    .app-page .btn-ghost-line { display:inline-flex; align-items:center; gap:8px; color:var(--scan-cyan); border:1.5px solid rgba(0,212,245,0.35); background:transparent; padding:13px 26px; border-radius:12px; text-decoration:none; font-size:15px; font-weight:500; transition:all 0.2s; cursor:pointer; white-space:nowrap; }
+    .app-page .btn-ghost-line { display:inline-flex; align-items:center; gap:8px; color:var(--scan-cyan); border:1.5px solid rgba(0,212,245,0.35); background:transparent; padding:12px 16px; border-radius:12px; text-decoration:none; font-size:14px; font-weight:500; transition:all 0.2s; cursor:pointer; white-space:nowrap; min-height:54px; box-sizing:border-box; }
     .app-page .btn-ghost-line:hover { background:rgba(0,212,245,0.08); border-color:var(--scan-cyan); }
 
     /* Hero: one glass panel for all copy — no nested blur stacks (AR) */
@@ -165,7 +168,9 @@
     .app-page .download-strip-left { max-width:420px; }
     .app-page .download-strip-title { font-family:'Oswald',sans-serif; font-weight:800; font-size:22px; color:#fff; letter-spacing:-0.5px; margin-bottom:4px; }
     .app-page .download-strip-sub { font-size:14px; color:var(--on-surface-variant); }
-    .app-page .download-strip-actions { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+    .app-page .download-strip-actions { display:flex; gap:14px; flex-wrap:wrap; align-items:stretch; }
+    .app-page .download-strip-actions .btn-store,
+    .app-page .download-strip-actions .btn-primary { min-height:54px; box-sizing:border-box; }
 
     .app-page .showcase-section { padding:100px 60px; background:var(--midnight); position:relative; z-index:1; overflow:hidden; }
     .app-page .showcase-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
@@ -222,7 +227,7 @@
     @media (max-width:600px) {
       .app-page .showcase-grid { grid-template-columns:1fr 1fr; }
       .app-page .hero .hero-content-panel { padding:18px 16px 20px; }
-      .app-page .hero-actions { flex-direction:column; align-items:flex-start; }
+      .app-page .hero-actions { grid-template-columns:1fr; }
       .app-page .cta-actions { flex-direction:column; align-items:center; }
     }
     </style>
@@ -551,15 +556,15 @@
             <h2 class="cta-h2">حمّل CarSee.<br>التقرير الأول مجاني.</h2>
             <p class="cta-p">لا بطاقة ائتمان. لا التزام. افحص مركبتك الأولى في أقل من 5 دقائق.</p>
             <div class="cta-actions">
-                <a href="ios-web-app/index.html" class="btn-store" style="padding:14px 26px">
+                <a href="ios-web-app/index.html" class="btn-store">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     <div class="btn-store-text"><span class="btn-store-sub">حمّل من</span><span class="btn-store-name">App Store</span></div>
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.carsee.damage_detector&hl=en" class="btn-store" style="padding:14px 26px" target="_blank" rel="noopener noreferrer">
+                <a href="https://play.google.com/store/apps/details?id=com.carsee.damage_detector&hl=en" class="btn-store" target="_blank" rel="noopener noreferrer">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.23.99.16l12.14-6.99-2.54-2.54-10.59 9.37zm-.99-20.6v19.69c0 .37.1.7.29.97l.09.08 11.02-11.02v-.26L2.48 2.11l-.29.05c-.19.27-.29.6-.29.97zm17.5 8.32l-2.44-1.41-2.86 2.86 2.86 2.86 2.44-1.41c.7-.4.7-1.5 0-1.9zM4.17 0l12.14 6.99-2.54 2.54L3.18.16C3.48-.01 3.86-.05 4.17 0z"/></svg>
                     <div class="btn-store-text"><span class="btn-store-sub">احصل عليه من</span><span class="btn-store-name">Google Play</span></div>
                 </a>
-                <a href="https://app.carsee-ai.com" class="btn-store" style="padding:14px 26px" target="_blank" rel="noopener noreferrer">
+                <a href="https://app.carsee-ai.com" class="btn-store" target="_blank" rel="noopener noreferrer">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M21 4H3c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h7v2H7v2h10v-2h-3v-2h7c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 12H3V6h18v10z"/></svg>
                     <div class="btn-store-text"><span class="btn-store-sub">استخدم على</span><span class="btn-store-name">Windows و Mac</span></div>
                 </a>
