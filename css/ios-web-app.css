@@ -1,0 +1,268 @@
+/* iOS web app install guide — scoped to .ios-guide-page */
+.ios-guide-page {
+  --ios-abyss: #091425;
+  --ios-cyan: #00d4f5;
+  --ios-muted: rgba(255, 255, 255, 0.58);
+  --ios-border: rgba(0, 212, 245, 0.14);
+  --ios-surface: rgba(13, 59, 110, 0.32);
+  background: var(--ios-abyss);
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
+}
+
+.ios-guide-page[dir="rtl"] {
+  font-family: "Cairo", sans-serif;
+}
+
+.ios-guide-page *,
+.ios-guide-page *::before,
+.ios-guide-page *::after {
+  box-sizing: border-box;
+}
+
+.ios-guide-main {
+  padding: 120px 24px 80px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.ios-guide-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ios-guide-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ios-cyan);
+  border: 1px solid rgba(0, 212, 245, 0.28);
+  border-radius: 999px;
+  padding: 6px 16px;
+  margin-bottom: 20px;
+}
+
+.ios-guide-hero h1 {
+  font-family: "Cairo", sans-serif;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.ios-guide-hero h1 em {
+  font-style: normal;
+  color: var(--ios-cyan);
+}
+
+.ios-guide-lead {
+  font-size: 17px;
+  color: var(--ios-muted);
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+
+.ios-guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ios-guide-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ios-cyan);
+  color: #091425;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ios-guide-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 212, 245, 0.28);
+}
+
+.ios-guide-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ios-cyan);
+  border: 1.5px solid rgba(0, 212, 245, 0.35);
+  padding: 13px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.ios-guide-btn-ghost:hover {
+  background: rgba(0, 212, 245, 0.08);
+}
+
+.ios-guide-notice {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 40px;
+}
+
+.ios-guide-notice-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: #f5a623;
+}
+
+.ios-guide-notice p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+}
+
+.ios-guide-notice strong {
+  color: #fff;
+}
+
+.ios-guide-steps {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.ios-guide-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: start;
+  background: var(--ios-surface);
+  border: 1px solid var(--ios-border);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+
+.ios-guide-step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(0, 212, 245, 0.12);
+  border: 1px solid rgba(0, 212, 245, 0.28);
+  color: var(--ios-cyan);
+  font-family: "Cairo", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ios-guide-step h2 {
+  font-family: "Cairo", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.ios-guide-step p {
+  margin: 0;
+  color: var(--ios-muted);
+  font-size: 15px;
+}
+
+.ios-guide-step code,
+.ios-guide-url {
+  font-family: "DM Mono", "DM Sans", monospace;
+  font-size: 14px;
+  color: var(--ios-cyan);
+  word-break: break-all;
+}
+
+.ios-guide-page[dir="rtl"] .ios-guide-step code,
+.ios-guide-page[dir="rtl"] .ios-guide-url {
+  font-family: "Cairo", sans-serif;
+}
+
+.ios-guide-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.ios-guide-benefit {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.ios-guide-benefit h3 {
+  font-family: "Cairo", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #fff;
+}
+
+.ios-guide-benefit p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ios-muted);
+}
+
+.ios-guide-faq h2 {
+  font-family: "Cairo", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 20px;
+}
+
+.ios-guide-faq details {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+
+.ios-guide-faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  list-style: none;
+}
+
+.ios-guide-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.ios-guide-faq details p {
+  margin: 10px 0 0;
+  color: var(--ios-muted);
+  font-size: 15px;
+}
+
+@media (max-width: 640px) {
+  .ios-guide-main {
+    padding-top: 100px;
+  }
+
+  .ios-guide-step {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
