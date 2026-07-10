@@ -140,7 +140,7 @@
 
 .ios-guide-steps-layout {
   display: grid;
-  grid-template-columns: 473px minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 36px;
   align-items: start;
   margin-bottom: 40px;
@@ -164,7 +164,7 @@
 
 .ios-guide-visual img {
   display: block;
-  width: 473px;
+  width: 60px;
   max-width: 100%;
   height: auto;
   border-radius: 14px;
@@ -311,7 +311,7 @@
   .ios-guide-steps-col--visual {
     position: static;
     order: -1;
-    max-width: 473px;
+    max-width: 60px;
     margin: 0 auto;
     width: 100%;
   }
