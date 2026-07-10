@@ -140,8 +140,8 @@
 
 .ios-guide-steps-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 36px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 28px;
   align-items: start;
   margin-bottom: 40px;
 }
@@ -155,19 +155,19 @@
   margin: 0;
   background: var(--ios-surface);
   border: 1px solid var(--ios-border);
-  border-radius: 20px;
-  padding: 14px;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
   width: fit-content;
   max-width: 100%;
 }
 
 .ios-guide-visual img {
   display: block;
-  width: 400px;
+  width: 260px;
   max-width: 100%;
   height: auto;
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
 .ios-guide-visual figcaption {
@@ -311,7 +311,7 @@
   .ios-guide-steps-col--visual {
     position: static;
     order: -1;
-    max-width: 400px;
+    max-width: 260px;
     margin: 0 auto;
     width: 100%;
   }
